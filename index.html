@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estratégia Sênior — Portal Acadêmico Apple Design</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+      background-color: #000000;
+      color: #F5F5F7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Apple Frosted Glass Effects */
+    .apple-glass {
+      background: rgba(28, 28, 30, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .apple-glass-card {
+      background: rgba(28, 28, 30, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .apple-glass-card:hover {
+      background: rgba(36, 36, 38, 0.8);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .apple-sidebar {
+      background: rgba(18, 18, 20, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Custom Scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-[#000000] text-[#F5F5F7] min-h-screen flex flex-col font-sans antialiased selection:bg-[#0A84FF] selection:text-white">
+
+  <!-- LOGIN OVERLAY SCREEN (APPLE ID STYLE) -->
+  <div id="login-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-2xl z-50 flex items-center justify-center p-4">
+    <div class="w-full max-w-sm apple-glass rounded-3xl p-8 shadow-2xl space-y-6 text-center border border-white/10">
+      
+      <!-- APPLE-STYLE LOGO / ICON -->
+      <div class="w-16 h-16 rounded-2xl bg-gradient-to-b from-[#2C2C2E] to-[#1C1C1E] border border-white/15 mx-auto flex items-center justify-center text-white shadow-xl">
+        <svg class="w-8 h-8 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold tracking-tight text-white">Estratégia Sênior</h2>
+        <p class="text-xs text-[#8E8E93] mt-1">Inicie sessão com sua conta acadêmica</p>
+      </div>
+
+      <!-- FORM -->
+      <form onsubmit="handleLoginSubmit(event)" class="space-y-3 text-left">
+        <div>
+          <label class="block text-[11px] font-medium text-[#8E8E93] uppercase tracking-wider mb-1.5 pl-1">Nome Completo</label>
+          <input type="text" id="login-name" required placeholder="Alexandre Silva" class="w-full bg-[#1C1C1E] border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-[#636366] focus:outline-none focus:border-[#0A84FF] transition">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-medium text-[#8E8E93] uppercase tracking-wider mb-1.5 pl-1">E-mail</label>
+          <input type="email" id="login-email" required placeholder="aluno@estrategia.com" class="w-full bg-[#1C1C1E] border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-[#636366] focus:outline-none focus:border-[#0A84FF] transition">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-medium text-[#8E8E93] uppercase tracking-wider mb-1.5 pl-1">Momento de Carreira</label>
+          <select id="login-role" class="w-full bg-[#1C1C1E] border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#0A84FF] transition">
+            <option value="Designer em Transição para Estrategista">Designer em Transição para Estrategista</option>
+            <option value="Design Lead / Head de Design">Design Lead / Head de Design</option>
+            <option value="Estrategista de Marca Pleno">Estrategista de Marca Pleno</option>
+            <option value="Consultor Independente">Consultor Independente</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full mt-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-sm py-2.5 rounded-xl transition shadow-sm flex items-center justify-center space-x-1.5">
+          <span>Continuar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+
+      <!-- DEMO FAST LOGIN -->
+      <div class="pt-3 border-t border-white/10">
+        <button onclick="loginAsDemo()" class="text-xs text-[#0A84FF] hover:underline font-medium transition">
+          Entrar como Aluno Demo
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- APP CONTAINER -->
+  <div id="app" class="flex flex-1 min-h-screen overflow-hidden">
+    
+    <!-- SIDEBAR (APPLE MAC OS STYLE) -->
+    <aside id="sidebar" class="w-64 apple-sidebar flex flex-col justify-between shrink-0 z-20">
+      <div>
+        <!-- BRAND HEADER -->
+        <div class="p-5 border-b border-white/10 flex items-center space-x-3">
+          <div class="w-7 h-7 rounded-lg bg-[#0A84FF] flex items-center justify-center font-bold text-white text-xs shadow-md">
+            É
+          </div>
+          <div>
+            <h1 class="font-semibold text-xs text-white tracking-tight">ESTRATÉGIA SÊNIOR</h1>
+            <p class="text-[10px] text-[#8E8E93]">Portal Acadêmico</p>
+          </div>
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="p-3 space-y-1">
+          <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white">
+            <svg class="w-4 h-4 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            <span>Visão Geral</span>
+          </button>
+
+          <div class="pt-4 pb-1.5 px-3">
+            <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider">Módulos de Estudo</span>
+          </div>
+
+          <div id="sidebar-disciplines" class="space-y-0.5 custom-scrollbar max-h-[calc(100vh-300px)] overflow-y-auto">
+            <!-- Rendered dynamically -->
+          </div>
+        </nav>
+      </div>
+
+      <!-- USER FOOTER -->
+      <div class="p-3.5 border-t border-white/10 bg-[#161618]/60 flex items-center justify-between">
+        <div class="flex items-center space-x-2.5 overflow-hidden">
+          <div id="user-avatar" class="w-7 h-7 rounded-full bg-[#2C2C2E] border border-white/15 flex items-center justify-center font-medium text-white text-[11px] shrink-0">
+            AS
+          </div>
+          <div class="truncate">
+            <p id="user-display-name" class="text-xs font-medium text-white truncate">Alexandre Silva</p>
+            <p id="user-display-email" class="text-[10px] text-[#8E8E93] truncate">alexandre@empresa.com</p>
+          </div>
+        </div>
+        <button onclick="handleLogout()" title="Encerrar Sessão" class="p-1 text-[#8E8E93] hover:text-white rounded-md hover:bg-white/10 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+      
+      <!-- TOPBAR HEADER (APPLE MAC OS NAVBAR) -->
+      <header class="h-14 apple-sidebar px-6 flex items-center justify-between shrink-0">
+        <div class="flex items-center space-x-2">
+          <span id="breadcrumb-title" class="text-xs font-medium text-[#8E8E93]">Portal Acadêmico / <strong class="text-white">Visão Geral</strong></span>
+        </div>
+
+        <!-- STATS BADGES IN HEADER -->
+        <div class="flex items-center space-x-3 text-xs">
+          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#1C1C1E] border border-white/10 text-amber-400">
+            <span>🔥</span>
+            <span class="text-white font-medium text-[11px]" id="header-streak">3 dias seguidos</span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#1C1C1E] border border-white/10 text-[#30D158]">
+            <span class="text-white font-medium text-[11px]">Média: <strong id="header-gpa" class="text-[#30D158]">A- (9.2)</strong></span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#1C1C1E] border border-white/10 text-[#0A84FF]">
+            <span class="text-white font-medium text-[11px]">Concluído: <strong id="header-progress" class="text-white">0%</strong></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEW PANES CONTAINER -->
+      <main class="flex-1 overflow-y-auto custom-scrollbar p-8 bg-[#000000]" id="main-container">
+        
+        <!-- VIEW 1: DASHBOARD -->
+        <div id="view-dashboard" class="max-w-6xl mx-auto space-y-8">
+          
+          <!-- WELCOME & FEATURED SPOTLIGHT CARD -->
+          <div class="apple-glass rounded-3xl p-8 relative overflow-hidden border border-white/10 shadow-2xl">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+              <div class="space-y-3">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#FF9F0A]/10 text-[#FF9F0A] border border-[#FF9F0A]/20 text-[11px] font-medium">
+                  <span>Desafio Prático em Destaque</span>
+                </div>
+                <h2 id="welcome-greeting" class="text-3xl font-semibold tracking-tight text-white">Bem-vindo, Alexandre!</h2>
+                <p class="text-sm text-[#8E8E93] max-w-2xl leading-relaxed">
+                  Consolide sua musculatura executiva resolvendo o cenário real do Módulo 1: <strong>Defesa Oral C-Level com o CEO Dr. Roberto</strong> para evitar um gasto desnecessário de R$ 200.000,00 em rebranding.
+                </p>
+              </div>
+
+              <div class="shrink-0">
+                <button onclick="openAPAModal('DISC01', 'APA-01-04')" class="bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs px-5 py-3.5 rounded-2xl transition shadow-lg shadow-[#0A84FF]/20 flex items-center space-x-2">
+                  <span>Iniciar Defesa Oral (3 min)</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- KPI METRICS WIDGET GRID (APPLE FITNESS / HEALTH STYLE) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="apple-glass-card p-5 rounded-2xl">
+              <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block">Progresso Geral</span>
+              <div class="mt-3 flex items-baseline justify-between">
+                <span id="kpi-progress-text" class="text-3xl font-bold text-white tracking-tight">0%</span>
+                <span id="kpi-completed-count" class="text-xs text-[#8E8E93]">0 / 25 APAs</span>
+              </div>
+              <div class="w-full bg-[#2C2C2E] rounded-full h-1.5 mt-3 overflow-hidden">
+                <div id="kpi-progress-bar" class="bg-[#0A84FF] h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="apple-glass-card p-5 rounded-2xl">
+              <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block">Média Acadêmica</span>
+              <div class="mt-3 flex items-baseline justify-between">
+                <span id="kpi-gpa" class="text-3xl font-bold text-[#30D158] tracking-tight">N/A</span>
+                <span class="text-xs text-[#8E8E93]">Nível Sênior</span>
+              </div>
+              <p class="text-[11px] text-[#8E8E93] mt-2">Baseado nos pareceres aprovados</p>
+            </div>
+
+            <div class="apple-glass-card p-5 rounded-2xl">
+              <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block">Módulo Ativo</span>
+              <div class="mt-2">
+                <span id="kpi-active-disc" class="text-base font-semibold text-white truncate block">DISC01: Diagnóstico</span>
+                <p id="kpi-active-sub" class="text-xs text-[#8E8E93]">5 Atividades Práticas</p>
+              </div>
+              <button onclick="switchView('discipline', 'DISC01')" class="text-xs text-[#0A84FF] font-medium mt-2 inline-flex items-center space-x-1 hover:underline">
+                <span>Acessar ementa</span>
+              </button>
+            </div>
+
+            <div class="apple-glass-card p-5 rounded-2xl">
+              <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block">Habitude & Streak</span>
+              <div class="mt-3 flex items-baseline justify-between">
+                <span class="text-3xl font-bold text-amber-400 tracking-tight">3 Dias</span>
+                <span class="text-xs text-[#30D158] font-medium">+1 Hoje</span>
+              </div>
+              <p class="text-[11px] text-[#8E8E93] mt-2">Meta: 5 APAs / semana</p>
+            </div>
+
+          </div>
+
+          <!-- BOLETIM & ATIVIDADES -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- BOLETIM TABLE (2 COLUMNS) -->
+            <div class="lg:col-span-2 apple-glass rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div>
+                    <h3 class="font-semibold text-base text-white">Boletim Acadêmico</h3>
+                    <p class="text-xs text-[#8E8E93]">Progresso e notas acumuladas nos 6 módulos.</p>
+                  </div>
+                  <span class="text-xs text-[#8E8E93] px-2.5 py-1 bg-[#2C2C2E] rounded-lg">6 Disciplinas</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider">
+                        <th class="pb-3 px-2">Código</th>
+                        <th class="pb-3 px-2">Disciplina</th>
+                        <th class="pb-3 px-2 text-center">APAs</th>
+                        <th class="pb-3 px-2 text-center">Progresso</th>
+                        <th class="pb-3 px-2 text-right">Média</th>
+                        <th class="pb-3 px-2 text-right">Ação</th>
+                      </tr>
+                    </thead>
+                    <tbody id="boletim-tbody" class="divide-y divide-white/5 text-xs">
+                      <!-- Rendered dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- CENTRAL DE ATIVIDADES PENDENTES (1 COLUMN) -->
+            <div class="apple-glass rounded-3xl p-6 shadow-sm flex flex-col">
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h3 class="font-semibold text-base text-white">Atividades Práticas</h3>
+                  <p class="text-xs text-[#8E8E93]">Trilha de APAs recomendadas.</p>
+                </div>
+                <span class="w-2 h-2 rounded-full bg-[#0A84FF]"></span>
+              </div>
+
+              <div id="pending-apas-list" class="space-y-2.5 flex-1 custom-scrollbar overflow-y-auto max-h-[400px] pr-1">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- VIEW 2: DISCIPLINE DETAILS -->
+        <div id="view-discipline" class="max-w-6xl mx-auto space-y-8 hidden">
+          
+          <!-- DISCIPLINE HEADER -->
+          <div class="apple-glass rounded-3xl p-8 shadow-xl">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div class="space-y-2">
+                <div class="flex items-center space-x-2">
+                  <span id="disc-code-badge" class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-[#0A84FF]/20 text-[#0A84FF] border border-[#0A84FF]/30">DISC01</span>
+                  <span id="disc-status-badge" class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-[#30D158]/10 text-[#30D158] border border-[#30D158]/20">Em Andamento</span>
+                </div>
+                <h2 id="disc-title" class="text-2xl font-bold text-white tracking-tight">Diagnóstico Estratégico & Pensamento Crítico</h2>
+                <p id="disc-objective" class="text-xs text-[#8E8E93] max-w-3xl leading-relaxed">Dominar a separação de sintoma vs. causa raiz, isolar fatos de hipóteses e investigar gargalos de negócio.</p>
+              </div>
+
+              <div class="bg-[#1C1C1E] border border-white/10 p-4 rounded-2xl text-center min-w-[150px]">
+                <p class="text-[11px] text-[#8E8E93]">Conclusão</p>
+                <p id="disc-header-progress" class="text-2xl font-bold text-[#0A84FF] mt-0.5">0%</p>
+                <div class="w-full bg-[#2C2C2E] rounded-full h-1 mt-2">
+                  <div id="disc-header-bar" class="bg-[#0A84FF] h-1 rounded-full" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MULTIMEDIA HUB RECURSOS -->
+          <div class="apple-glass rounded-3xl p-6 shadow-md">
+            <div class="border-b border-white/10 pb-4 mb-6">
+              <h3 class="font-semibold text-base text-white">Hub Multimídia & Acervo de Referência</h3>
+              <p class="text-xs text-[#8E8E93]">Livros de cabeceira, cursos recomendados e vídeos essenciais para o módulo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="multimedia-hub-grid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- TRILHA DE APAS (EXERCÍCIOS) -->
+          <div class="apple-glass rounded-3xl p-6 shadow-md">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+              <div>
+                <h3 class="font-semibold text-base text-white">Trilha de Atividades Avaliativas (APAs)</h3>
+                <p class="text-xs text-[#8E8E93]">Submeta relatórios, defesas orais e teardowns de marca.</p>
+              </div>
+              <span id="apa-counter-badge" class="text-xs text-[#8E8E93] px-3 py-1 bg-[#2C2C2E] rounded-lg">0 / 5 Concluídas</span>
+            </div>
+
+            <div class="space-y-3" id="apas-list-container">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MODAL RESOLUÇÃO DE APA (MAC OS SHEET STYLE) -->
+  <div id="apa-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
+    <div class="apple-glass rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-white/15">
+      
+      <!-- MODAL HEADER -->
+      <div class="p-6 border-b border-white/10 flex items-start justify-between bg-[#161618]/80">
+        <div>
+          <div class="flex items-center space-x-2 mb-1.5">
+            <span id="modal-apa-code" class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-[#0A84FF]/20 text-[#0A84FF] border border-[#0A84FF]/30 rounded">APA 04</span>
+            <span id="modal-apa-type" class="text-[11px] font-medium px-2 py-0.5 bg-[#FF9F0A]/20 text-[#FF9F0A] border border-[#FF9F0A]/30 rounded">Defesa Oral / Pitch C-Level</span>
+          </div>
+          <h3 id="modal-apa-title" class="text-lg font-semibold text-white">Defesa Oral C-Level (Script de Reunião de 3 Minutos)</h3>
+        </div>
+        <button onclick="closeAPAModal()" class="text-[#8E8E93] hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- MODAL BODY -->
+      <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-6">
+        
+        <!-- SCENARIO & INSTRUCTIONS -->
+        <div class="bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 space-y-2">
+          <h4 class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider">Cenário Executivo & Desafio Prático</h4>
+          <div id="modal-apa-scenario" class="text-xs text-[#F5F5F7] leading-relaxed">
+            <!-- Dynamic scenario -->
+          </div>
+        </div>
+
+        <!-- RESPONSE SECTION -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider">Seu Script de Fala / Parecer Executivo</label>
+            <span id="char-counter" class="text-[10px] text-[#8E8E93] font-mono">0 caracteres</span>
+          </div>
+
+          <textarea id="apa-response-input" rows="8" placeholder="Escreva sua resposta ou script de fala por blocos de tempo..." class="w-full bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 text-xs text-white placeholder-[#636366] focus:outline-none focus:border-[#0A84FF] custom-scrollbar leading-relaxed font-mono"></textarea>
+        </div>
+
+        <!-- SUBMITTED FEEDBACK DISPLAY -->
+        <div id="modal-feedback-box" class="hidden bg-[#30D158]/10 border border-[#30D158]/30 rounded-2xl p-5 space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-semibold text-[#30D158] uppercase tracking-wider">Avaliação do Mentor Sênior</h4>
+            <span id="feedback-grade-badge" class="px-2.5 py-0.5 bg-[#30D158]/20 text-[#30D158] font-bold text-xs rounded-md">Nota A (9.5)</span>
+          </div>
+          <p id="feedback-text" class="text-xs text-white leading-relaxed">
+            Excelente defesa oral!
+          </p>
+        </div>
+
+      </div>
+
+      <!-- MODAL FOOTER -->
+      <div class="p-4 border-t border-white/10 bg-[#161618]/90 flex items-center justify-between">
+        <button onclick="insertTemplate()" class="text-xs text-[#0A84FF] hover:underline font-medium">
+          + Inserir Template de Fala
+        </button>
+
+        <div class="flex items-center space-x-3">
+          <button onclick="closeAPAModal()" class="px-4 py-2 text-xs text-[#8E8E93] hover:text-white transition">Cancelar</button>
+          <button onclick="submitAPAResolution()" id="btn-submit-apa" class="px-5 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm">
+            Submeter Defesa Oral
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT APP STATE & LOGIC -->
+  <script>
+    // USER AUTH & SESSION STATE
+    let currentUser = null; // { name, email, role }
+
+    function getStorageKey() {
+      return currentUser ? `estrategia_portal_state_${currentUser.email}` : 'estrategia_portal_state_guest';
+    }
+
+    function handleLoginSubmit(e) {
+      if (e) e.preventDefault();
+      const name = document.getElementById('login-name').value.trim();
+      const email = document.getElementById('login-email').value.trim();
+      const role = document.getElementById('login-role').value;
+
+      if (!email) return;
+
+      currentUser = {
+        name: name || email.split('@')[0],
+        email: email,
+        role: role
+      };
+
+      localStorage.setItem('estrategia_current_user', JSON.stringify(currentUser));
+      document.getElementById('login-overlay').classList.add('hidden');
+      
+      initUserSession();
+    }
+
+    function loginAsDemo() {
+      document.getElementById('login-name').value = "Alexandre Silva";
+      document.getElementById('login-email').value = "alexandre@empresa.com";
+      handleLoginSubmit();
+    }
+
+    function handleLogout() {
+      if (confirm("Deseja realmente sair da sua conta?")) {
+        localStorage.removeItem('estrategia_current_user');
+        currentUser = null;
+        document.getElementById('login-overlay').classList.remove('hidden');
+      }
+    }
+
+    function checkAuthSession() {
+      const savedUser = localStorage.getItem('estrategia_current_user');
+      if (savedUser) {
+        try {
+          currentUser = JSON.parse(savedUser);
+          document.getElementById('login-overlay').classList.add('hidden');
+          initUserSession();
+        } catch(e) {
+          document.getElementById('login-overlay').classList.remove('hidden');
+        }
+      } else {
+        document.getElementById('login-overlay').classList.remove('hidden');
+      }
+    }
+
+    function initUserSession() {
+      if (!currentUser) return;
+      
+      // Update sidebar & header user details
+      const initials = currentUser.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+      document.getElementById('user-avatar').innerText = initials || 'AL';
+      document.getElementById('user-display-name').innerText = currentUser.name;
+      document.getElementById('user-display-email').innerText = currentUser.email;
+      document.getElementById('welcome-greeting').innerText = `Bem-vindo, ${currentUser.name.split(' ')[0]}!`;
+
+      loadState();
+      switchView(userState.activeView, userState.activeDisciplineId);
+    }
+
+    // CURRICULUM DATA STRUCTURE (6 DISCIPLINES, 25 APAs, MULTIMEDIA HUBS)
+    const curriculumData = [
+      {
+        id: "DISC01",
+        title: "Diagnóstico Estratégico & Pensamento Crítico",
+        objective: "Dominar a separação de sintoma vs. causa raiz, isolar fatos de hipóteses e investigar gargalos de negócio.",
+        multimedia: {
+          books: [
+            { title: "Good Strategy Bad Strategy", author: "Richard Rumelt", focus: "Foco na Parte 1: O Núcleo da Estratégia" }
+          ],
+          courses: [
+            { title: "Planejamento Estratégico", provider: "Sebrae", url: "#" },
+            { title: "Inbound Fundamentals", provider: "HubSpot Academy", url: "#" }
+          ],
+          portals: ["Think with Google BR", "McKinsey Insights", "WARC Strategy"],
+          videos: ["Richard Rumelt: The Kernel of Strategy", "Case Breakdown: Turnaround da Lego"]
+        },
+        apas: [
+          {
+            id: "APA-01-01",
+            code: "APA 01",
+            title: "Diagnóstico Escrito: Caso Clínica Odontológica",
+            type: "Escrita Executiva",
+            icon: "📝",
+            scenario: "<strong>Cenário:</strong> Uma rede de clínicas odontológicas registrou queda de 30% nas vendas no último trimestre. O dono insiste que precisa fazer um rebranding urgente e trocar o logotipo.<br><br><strong>Seu Desafio:</strong> Redigir um parecer executivo de 1 página demonstrando por que o problema real está na conversão comercial e recepção, e não no logotipo. Separe rigorosamente <em>Fatos</em> de <em>Hipóteses</em>.",
+            template: "## 1. Resumo Executivo\n\n## 2. Fatos Comprovados vs. Hipóteses\n- Fato 1: Queda de 30% nas vendas nos últimos 90 dias.\n- Hipótese do Cliente: O logotipo antigo está desatualizado.\n- Hipótese Investigada: Taxa de conversão do atendimento telefônico caiu de 45% para 18%.\n\n## 3. Análise de Causa Raiz vs. Sintoma\n- Sintoma observado: Faturamento menor.\n- Causa Raiz investigada: Falta de alinhamento comercial e acompanhamento de leads.\n\n## 4. Recomendação Prática\n"
+          },
+          {
+            id: "APA-01-02",
+            code: "APA 02",
+            title: "Análise de Funil/Dados: Caso E-commerce de Suplementos",
+            type: "Escrita Executiva",
+            icon: "📊",
+            scenario: "<strong>Cenário:</strong> Um e-commerce de suplementos aumentou o tráfego pago em +40%, mas o faturamento caiu -20%.<br><br><strong>Seu Desafio:</strong> Analisar a fricção do funil. Onde está o vazamento de receita? Monte a hipótese de diagnóstico em tabela comparativa.",
+            template: "## Diagnóstico do Funil de Conversão\n\n| Etapa | Métrica Atual | Gargalo Identificado | Causa Provável |\n|---|---|---|---|\n| Atração | +40% Tráfego | Qualidade do público | Tráfego desqualificado via anúncios |\n| Checkout | Abandonos +60% | Fricção no valor do frete | Preço do frete sem subsídio |\n"
+          },
+          {
+            id: "APA-01-03",
+            code: "APA 03",
+            title: "Teardown Crítico: Redesign Recente de Marca Brasileira",
+            type: "Teardown Crítico",
+            icon: "🔍",
+            scenario: "<strong>Cenário:</strong> Escolha uma marca brasileira real (ex: Nubank, Ponto Frio, Itaú, Cacau Show) que realizou redesign visual nos últimos 2 anos.<br><br><strong>Seu Desafio:</strong> Analise se a mudança estética resolveu um problema real de negócio/posicionamento ou se foi apenas uma intervenção estética superficial.",
+            template: "## Teardown de Redesign: [Nome da Marca]\n\n1. Contexto de Negócio do Redesign:\n2. O que Mudou na Identidade Visual:\n3. Avaliação Crítica (Problema de Negócio vs. Maquiagem Estética):\n4. Veredito Estratégico:\n"
+          },
+          {
+            id: "APA-01-04",
+            code: "APA 04",
+            title: "Defesa C-Level: Script de Reunião de 3 Minutos com CEO",
+            type: "Defesa Oral / Pitch",
+            icon: "🗣️",
+            scenario: "<strong>Cenário Executivo (Dr. Roberto - CEO):</strong><br>Você está na sala do CEO Dr. Roberto. Ele tem R$ 200.000,00 reservados para assinar hoje um contrato de Rebranding completo com uma agência design visual, porque a rede de clínicas teve <strong>-30% de queda em faturamento</strong>.<br><br><strong>Seu Desafio de 3 Minutos:</strong><br>Escreva a transcrição exata da sua fala para convencê-lo a CONGELAR o contrato de rebranding e autorizar primeiro uma auditoria de 14 dias no funil comercial e recepção.",
+            template: "## Script de Fala — Reunião Executiva de 3 Minutos\n\n**[00:00 - 00:30] Quebra de Padrão & Empatia:**\nDr. Roberto, entendo perfeitamente sua urgência. Uma queda de 30% no faturamento tira o sono de qualquer fundador, e você está certo em exigir uma virada rápida...\n\n**[00:30 - 01:30] O Risco Financeiro (Balde Furado):**\nPorém, investir R$ 200 mil em rebranding agora é como colocar mais água em um balde furado. Se a recepção e o time comercial estão perdendo 70% dos leads que chegam, um novo logotipo lindo só vai trazer mais pessoas para serem mal atendidas...\n\n**[01:30 - 02:30] Sintoma vs. Causa Raiz:**\nO logotipo é o sintoma que enxergamos na vitrine. Mas o diagnóstico inicial mostra que a taxa de agendamento no telefone caiu de 45% para 18%. O problema não é atração, é conversão...\n\n**[02:30 - 03:00] Call-to-Action de Baixo Risco:**\nMinha proposta: congele a assinatura dos R$ 200k por 14 dias. Me dê 2 semanas para auditar o script de atendimento e o funil comercial. Se a conversão não subir, assinamos o rebranding no dia 15. Podemos fechar assim?\n"
+          },
+          {
+            id: "APA-01-05",
+            code: "APA 05",
+            title: "Técnica Feynman: Sintoma vs. Causa Raiz para Leigos",
+            type: "Método Feynman",
+            icon: "👨‍🏫",
+            scenario: "<strong>Cenário:</strong> Um cliente fundador sem qualquer bagagem de marketing ou estratégia está confuso sobre a frase 'Não trate o sintoma, trate a causa raiz'.<br><br><strong>Seu Desafio:</strong> Escreva uma explicação clara de no máximo 2 parágrafos usando uma metáfora do cotidiano (ex: medicina ou mecânica).",
+            template: "Imagine que você está com uma febre alta. A febre é o sintoma — é o corpo avisando que algo está errado. Tomar um remédio para baixar a febre faz você se sentir melhor temporariamente, mas não cura a infecção que causou a febre...\n"
+          }
+        ]
+      },
+      {
+        id: "DISC02",
+        title: "Posicionamento de Marca, Categoria & Diferenciação",
+        objective: "Criar espaços únicos na mente do consumidor e definir territórios de diferenciação e atributos de valor.",
+        multimedia: {
+          books: [
+            { title: "Posicionamento: A Batalha por sua Mente", author: "Al Ries & Jack Trout", focus: "Conceito de Escada Mental e Categoria" },
+            { title: "The Brand Gap", author: "Marty Neumeier", focus: "Diferenciação e O 'Oneness'" }
+          ],
+          courses: [
+            { title: "Branding para PMEs", provider: "Sebrae", url: "#" }
+          ],
+          portals: ["Brandingmag", "Brand New (UnderConsideration)", "BP&O"],
+          videos: ["Marty Neumeier Interview on Brand Strategy", "Apple Positioning Teardown"]
+        },
+        apas: [
+          {
+            id: "APA-02-01",
+            code: "APA 01",
+            title: "Mapeamento de Categoria: Fintech em Mercado Saturado",
+            type: "Escrita Executiva",
+            icon: "📝",
+            scenario: "<strong>Cenário:</strong> Uma nova fintech B2B quer entrar no mercado de gestão financeira. O mercado já conta com grandes players consolidados.<br><br><strong>Seu Desafio:</strong> Mapeie a matriz de posicionamento e defina um sub-território único de diferenciação.",
+            template: "## Matriz de Posicionamento e Subcategoria\n\n1. Eixo X e Y da Matriz:\n2. Sub-território Vazio Encontrado:\n3. Declaração de Posicionamento:\n"
+          },
+          {
+            id: "APA-02-02",
+            code: "APA 02",
+            title: "Teardown de Marca: Havaianas ou Natura",
+            type: "Teardown Crítico",
+            icon: "🔍",
+            scenario: "<strong>Cenário:</strong> Desconstrua a trajetória de reposicionamento da Havaianas (de produto barato a ícone global) ou da Natura (sustentabilidade como ativo de negócio).<br><br><strong>Seu Desafio:</strong> Identifique as alavancas de posicionamento utilizadas.",
+            template: "## Análise de Reposicionamento\n\n1. Ponto de Partida:\n2. Alavanca Principal de Valor:\n3. Execução em Produto e Comunicação:\n"
+          },
+          {
+            id: "APA-02-03",
+            code: "APA 03",
+            title: "Pitch de Posicionamento: Nova Marca D2C Saudável",
+            type: "Defesa Oral / Pitch",
+            icon: "🗣️",
+            scenario: "<strong>Cenário:</strong> Defenda o manifesto e o posicionamento de uma nova marca de alimentos saudáveis para investidores.",
+            template: "## Manifesto e Pitch de Posicionamento\n\n- O Inimigo Comum da Categoria:\n- A Nossa Verdade Inegociável:\n- O Pitch de 60 segundos:\n"
+          },
+          {
+            id: "APA-02-04",
+            code: "APA 04",
+            title: "Ensino de Conceito: A Escada Mental de Al Ries",
+            type: "Método Feynman",
+            icon: "👨‍🏫",
+            scenario: "<strong>Cenário:</strong> Explique a 'Escada Mental de Categoria' de Al Ries para a equipe de vendas de um cliente.",
+            template: "Quando um cliente pensa em comprar algo, existe uma escada na cabeça dele...\n"
+          }
+        ]
+      },
+      {
+        id: "DISC03",
+        title: "Consumer Insights, Pesquisa & Jobs to Be Done",
+        objective: "Mapear motivações do consumidor, conduzir entrevistas sem viés e extrair insights acionáveis.",
+        multimedia: {
+          books: [
+            { title: "The Mom Test", author: "Rob Fitzpatrick", focus: "Entrevistas sem viés de validação" },
+            { title: "Competing Against Luck", author: "Clayton Christensen", focus: "Teoria do Jobs to Be Done" }
+          ],
+          courses: [
+            { title: "Persona & Customer Journey", provider: "HubSpot Academy", url: "#" }
+          ],
+          portals: ["Kantar Insights Brasil", "Nielsen Reports"],
+          videos: ["Clayton Christensen: Milkshake Marketing", "The Mom Test in 10 Minutes"]
+        },
+        apas: [
+          {
+            id: "APA-03-01",
+            code: "APA 01",
+            title: "Roteiro de Pesquisa: Aplicação The Mom Test",
+            type: "Escrita Executiva",
+            icon: "📝",
+            scenario: "Crie um roteiro de 5 perguntas de entrevista qualitativa para validar uma nova ideia de app, garantindo ZERO perguntas indutivas ou hipotéticas.",
+            template: "## Roteiro de Entrevista Qualitativa\n1. Pergunta sobre o passado recente:\n2. Pergunta sobre o custo do problema:\n3. Pergunta de aprofundamento:\n"
+          },
+          {
+            id: "APA-03-02",
+            code: "APA 02",
+            title: "Mapeamento JTBD: 3 Produtos do Cotidiano",
+            type: "Escrita Executiva",
+            icon: "📝",
+            scenario: "Mapeie o 'Trabalho a Ser Feito' (Funcional, Emocional e Social) para 3 produtos comuns (ex: Café expresso, Academia, Seguro de vida).",
+            template: "## Matriz Jobs to Be Done\n| Produto | Job Funcional | Job Emocional | Job Social |\n"
+          },
+          {
+            id: "APA-03-03",
+            code: "APA 03",
+            title: "Análise de Dados Qualitativos: 10 Depoimentos",
+            type: "Teardown Crítico",
+            icon: "🔍",
+            scenario: "Transforme 10 depoimentos brutos de clientes em 3 insights estratégicos acionáveis para o time de produto.",
+            template: "## Da Fala Bruta ao Insight Estratégico\n"
+          },
+          {
+            id: "APA-03-04",
+            code: "APA 04",
+            title: "Simulação de Entrevista: Consumidor Insatisfeito",
+            type: "Defesa Oral / Pitch",
+            icon: "🗣️",
+            scenario: "Transcreva o diálogo simulado de uma entrevista de profundidade resgatando a motivação real de um cliente prestes a cancelar o serviço.",
+            template: "## Transcrição da Entrevista de Investigação\n"
+          }
+        ]
+      },
+      {
+        id: "DISC04",
+        title: "Business, Funil de Vendas & Mídia",
+        objective: "Conectar estratégia de marca com métricas financeiras (CAC, LTV, ROAS, Taxa de Conversão).",
+        multimedia: {
+          books: [
+            { title: "Obviously Awesome", author: "April Dunford", focus: "Positioning & Market Category" }
+          ],
+          courses: [
+            { title: "GA4 e Google Ads Skillshop", provider: "Google", url: "#" },
+            { title: "Meta Blueprint", provider: "Meta", url: "#" }
+          ],
+          portals: ["Marketing Week", "WARC Financial Impact"],
+          videos: ["Branding vs Performance Metrics", "Unit Economics for Strategists"]
+        },
+        apas: [
+          {
+            id: "APA-04-01",
+            code: "APA 01",
+            title: "Auditoria de Métricas: CAC vs LTV para SaaS",
+            type: "Escrita Executiva",
+            icon: "📝",
+            scenario: "Calcule e interprete o cenário onde o CAC subiu 50% e o LTV caiu 20% em um software B2B.",
+            template: "## Parecer de Métricas e Unit Economics\n"
+          },
+          {
+            id: "APA-04-02",
+            code: "APA 02",
+            title: "Diagnóstico de Funil Omnicanal",
+            type: "Escrita Executiva",
+            icon: "📊",
+            scenario: "Identifique os gargalos de conversão em uma jornada de compra que integra loja física e e-commerce.",
+            template: "## Mapeamento de Fricção Omnicanal\n"
+          },
+          {
+            id: "APA-04-03",
+            code: "APA 03",
+            title: "Defesa de Orçamento de Branding para o CFO",
+            type: "Defesa Oral / Pitch",
+            icon: "🗣️",
+            scenario: "Monte a defesa oral para convencer um CFO pragmático a investir 30% da verba de mídia em construção de marca de longo prazo.",
+            template: "## Defesa Executiva de Budget de Brand Equity\n"
+          },
+          {
+            id: "APA-04-04",
+            code: "APA 04",
+            title: "Teardown Comercial de Aquisição",
+            type: "Teardown Crítico",
+            icon: "🔍",
+            scenario: "Análise crítica do modelo de aquisição e retenção de um grande e-commerce brasileiro.",
+            template: "## Teardown Comercial\n"
+          }
+        ]
+      },
+      {
+        id: "DISC05",
+        title: "Planejamento Integrado & Criatividade Estratégica",
+        objective: "Traduzir diagnósticos e posicionamentos em briefings estratégicos e conceitos de campanha.",
+        multimedia: {
+          books: [
+            { title: "The Advertising Concept Book", author: "Pete Barry", focus: "Ideias e Execução" },
+            { title: "Made to Stick", author: "Chip & Dan Heath", focus: "Os 6 Critérios SUCCESs" }
+          ],
+          courses: [
+            { title: "Content Marketing", provider: "HubSpot", url: "#" }
+          ],
+          portals: ["The Drum", "Adweek", "Clube de Criação"],
+          videos: ["Cannes Lions Winners Breakdown", "How to Write a One-Page Brief"]
+        },
+        apas: [
+          {
+            id: "APA-05-01",
+            code: "APA 01",
+            title: "Briefing Estratégico de 1 Página",
+            type: "Escrita Executiva",
+            icon: "📝",
+            scenario: "Redija um briefing conciso de 1 página para o time de criação a partir do diagnóstico de uma marca de moda sustentável.",
+            template: "## Briefing Estratégico de Criação\n"
+          },
+          {
+            id: "APA-05-02",
+            code: "APA 02",
+            title: "Análise de Ideia 'Sticky' (Made to Stick)",
+            type: "Teardown Crítico",
+            icon: "🔍",
+            scenario: "Avalie uma campanha recente usando os 6 critérios do livro Made to Stick (Simplicidade, Inesperado, Concreto, Credibilidade, Emocional, Histórias).",
+            template: "## Auditoria 'Sticky' de Campanha\n"
+          },
+          {
+            id: "APA-05-03",
+            code: "APA 03",
+            title: "Conceito Multicanal de Lançamento",
+            type: "Escrita Executiva",
+            icon: "📝",
+            scenario: "Desenvolva o conceito central e desdobramentos para 3 pontos de contato (Social, PR e Ponto de Venda).",
+            template: "## Conceito Central e Desdobramentos\n"
+          },
+          {
+            id: "APA-05-04",
+            code: "APA 04",
+            title: "Pitch Criativo Fundamentado",
+            type: "Defesa Oral / Pitch",
+            icon: "🗣️",
+            scenario: "Defenda a ideia criativa perante a diretoria conectando a proposta diretamente aos dados do diagnóstico inicial.",
+            template: "## Defesa do Conceito Criativo\n"
+          }
+        ]
+      },
+      {
+        id: "DISC06",
+        title: "Defesa C-Level & Portfólio Estratégico",
+        objective: "Estruturar apresentações para conselhos/fundadores e consolidar 5 cases de alto nível para o portfólio sênior.",
+        multimedia: {
+          books: [
+            { title: "This Is Marketing", author: "Seth Godin", focus: "Mudança cultural e liderança" }
+          ],
+          portals: ["Harvard Business Review (HBR)", "WARC Effective Strategy"],
+          videos: ["Executive Pitching Masterclass", "Design Leadership in Boardrooms"]
+        },
+        apas: [
+          {
+            id: "APA-06-01",
+            code: "APA 01",
+            title: "Estrutura de Storytelling Executivo (15 min)",
+            type: "Defesa Oral / Pitch",
+            icon: "🗣️",
+            scenario: "Monte o roteiro de slides e narrativa para defender um projeto de reposicionamento estratégico de 15 min para o Board.",
+            template: "## Estrutura da Apresentação para o Board\n"
+          },
+          {
+            id: "APA-06-02",
+            code: "APA 06-02",
+            title: "Gestão das 5 Maiores Objeções do CEO",
+            type: "Defesa Oral / Pitch",
+            icon: "🗣️",
+            scenario: "Mapeie e redija a resposta exata para as 5 objeções mais difíceis feitas por executivos C-Level sobre branding.",
+            template: "## Resposta às Objeções C-Level\n"
+          },
+          {
+            id: "APA-06-03",
+            code: "APA 03",
+            title: "Case Study de Portfólio 1 (Documentação Completa)",
+            type: "Escrita Executiva",
+            icon: "📝",
+            scenario: "Documente o seu primeiro case real seguindo o framework: Desafio -> Diagnóstico -> Insight -> Estratégia -> Resultados.",
+            template: "## Case Study: [Nome do Projeto]\n"
+          },
+          {
+            id: "APA-06-04",
+            code: "APA 04",
+            title: "TCC / Defesa Final do Portfólio Estratégico",
+            type: "Método Feynman",
+            icon: "🎓",
+            scenario: "Apresentação e consolidação final de todo o repertório construído ao longo da formação.",
+            template: "## Defesa de Conclusão de Formação\n"
+          }
+        ]
+      }
+    ];
+
+    // LOCAL STORAGE STATE MANAGEMENT
+    let userState = {
+      activeView: 'dashboard',
+      activeDisciplineId: 'DISC01',
+      activeAPAId: null,
+      submissions: {},
+      streak: 3
+    };
+
+    function loadState() {
+      const saved = localStorage.getItem(getStorageKey());
+      if (saved) {
+        try {
+          userState = JSON.parse(saved);
+        } catch (e) {
+          console.error("Error loading state", e);
+        }
+      } else {
+        userState = {
+          activeView: 'dashboard',
+          activeDisciplineId: 'DISC01',
+          activeAPAId: null,
+          submissions: {},
+          streak: 3
+        };
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(getStorageKey(), JSON.stringify(userState));
+    }
+
+    // CALCULATE METRICS
+    function getMetrics() {
+      let totalAPAs = 0;
+      let completedCount = 0;
+      let totalGradeSum = 0;
+
+      curriculumData.forEach(disc => {
+        disc.apas.forEach(apa => {
+          totalAPAs++;
+          if (userState.submissions[apa.id]) {
+            completedCount++;
+            totalGradeSum += userState.submissions[apa.id].gradeNum || 9.0;
+          }
+        });
+      });
+
+      const progressPercent = totalAPAs > 0 ? Math.round((completedCount / totalAPAs) * 100) : 0;
+      const avgGrade = completedCount > 0 ? (totalGradeSum / completedCount).toFixed(1) : "N/A";
+      
+      let letterGrade = "N/A";
+      if (avgGrade !== "N/A") {
+        const g = parseFloat(avgGrade);
+        if (g >= 9.5) letterGrade = `A+ (${avgGrade})`;
+        else if (g >= 9.0) letterGrade = `A (${avgGrade})`;
+        else if (g >= 8.0) letterGrade = `B+ (${avgGrade})`;
+        else letterGrade = `B (${avgGrade})`;
+      }
+
+      return { totalAPAs, completedCount, progressPercent, avgGrade, letterGrade };
+    }
+
+    // RENDER SIDEBAR DISCIPLINE LIST
+    function renderSidebar() {
+      const container = document.getElementById('sidebar-disciplines');
+      container.innerHTML = '';
+
+      curriculumData.forEach(disc => {
+        let done = 0;
+        disc.apas.forEach(a => { if (userState.submissions[a.id]) done++; });
+        const pct = Math.round((done / disc.apas.length) * 100);
+        const isActive = userState.activeView === 'discipline' && userState.activeDisciplineId === disc.id;
+
+        const btn = document.createElement('button');
+        btn.onclick = () => switchView('discipline', disc.id);
+        btn.className = `w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition flex items-center justify-between group ${
+          isActive 
+            ? 'bg-white/10 text-white font-semibold' 
+            : 'text-[#8E8E93] hover:text-white hover:bg-white/5'
+        }`;
+
+        btn.innerHTML = `
+          <div class="truncate pr-2">
+            <span class="font-mono text-[10px] text-[#0A84FF] font-medium block">${disc.id}</span>
+            <span class="truncate block">${disc.title}</span>
+          </div>
+          <span class="text-[10px] px-1.5 py-0.5 rounded ${pct === 100 ? 'bg-[#30D158]/20 text-[#30D158]' : 'bg-[#2C2C2E] text-[#8E8E93]'} font-mono shrink-0">${done}/${disc.apas.length}</span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    // RENDER HEADER KPI STATS
+    function updateHeaderStats() {
+      const metrics = getMetrics();
+      document.getElementById('header-progress').innerText = `${metrics.progressPercent}%`;
+      document.getElementById('header-gpa').innerText = metrics.letterGrade;
+      document.getElementById('header-streak').innerText = `${userState.streak} dias seguidos`;
+    }
+
+    // RENDER DASHBOARD VIEW
+    function renderDashboard() {
+      const metrics = getMetrics();
+      
+      document.getElementById('kpi-progress-text').innerText = `${metrics.progressPercent}%`;
+      document.getElementById('kpi-completed-count').innerText = `${metrics.completedCount} / ${metrics.totalAPAs} APAs`;
+      document.getElementById('kpi-progress-bar').style.width = `${metrics.progressPercent}%`;
+      document.getElementById('kpi-gpa').innerText = metrics.letterGrade;
+
+      // Active discipline display
+      const activeDisc = curriculumData.find(d => d.id === userState.activeDisciplineId) || curriculumData[0];
+      document.getElementById('kpi-active-disc').innerText = `${activeDisc.id}: ${activeDisc.title.split(':')[0]}`;
+      document.getElementById('kpi-active-sub').innerText = `${activeDisc.apas.length} Atividades Práticas`;
+
+      // RENDER BOLETIM TABLE
+      const tbody = document.getElementById('boletim-tbody');
+      tbody.innerHTML = '';
+
+      curriculumData.forEach(disc => {
+        let done = 0;
+        let sum = 0;
+        disc.apas.forEach(a => {
+          if (userState.submissions[a.id]) {
+            done++;
+            sum += userState.submissions[a.id].gradeNum || 9.0;
+          }
+        });
+        const pct = Math.round((done / disc.apas.length) * 100);
+        const avg = done > 0 ? (sum / done).toFixed(1) : "—";
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-white/5 transition";
+        tr.innerHTML = `
+          <td class="py-3 px-2 font-mono font-semibold text-[#0A84FF]">${disc.id}</td>
+          <td class="py-3 px-2 font-medium text-white">${disc.title}</td>
+          <td class="py-3 px-2 text-center text-[#8E8E93] font-mono">${done}/${disc.apas.length}</td>
+          <td class="py-3 px-2 text-center">
+            <div class="inline-flex items-center space-x-2">
+              <div class="w-16 bg-[#2C2C2E] rounded-full h-1">
+                <div class="bg-[#0A84FF] h-1 rounded-full" style="width: ${pct}%"></div>
+              </div>
+              <span class="text-[10px] text-[#8E8E93] font-mono">${pct}%</span>
+            </div>
+          </td>
+          <td class="py-3 px-2 text-right font-bold font-mono ${avg !== '—' ? 'text-[#30D158]' : 'text-[#8E8E93]'}">${avg}</td>
+          <td class="py-3 px-2 text-right">
+            <button onclick="switchView('discipline', '${disc.id}')" class="text-xs text-[#0A84FF] font-medium hover:underline">Ver Módulo</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // RENDER PENDING APAS LIST
+      const pendingContainer = document.getElementById('pending-apas-list');
+      pendingContainer.innerHTML = '';
+
+      let foundPending = 0;
+      curriculumData.forEach(disc => {
+        disc.apas.forEach(apa => {
+          if (foundPending >= 6) return;
+          const isDone = !!userState.submissions[apa.id];
+
+          const card = document.createElement('div');
+          card.className = `p-3 rounded-xl border transition flex items-center justify-between ${
+            isDone 
+              ? 'bg-[#1C1C1E]/50 border-white/5 opacity-70' 
+              : 'bg-[#1C1C1E] border-white/10 hover:border-[#0A84FF]/50'
+          }`;
+
+          card.innerHTML = `
+            <div class="pr-2 flex items-center space-x-2.5">
+              <span class="text-lg shrink-0">${apa.icon || '📝'}</span>
+              <div>
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-[10px] font-mono font-medium text-[#0A84FF]">${disc.id}</span>
+                  <span class="text-[10px] px-1.5 py-0.2 bg-[#2C2C2E] text-[#8E8E93] rounded">${apa.type}</span>
+                </div>
+                <h4 class="text-xs font-medium text-white truncate max-w-[180px]">${apa.title}</h4>
+              </div>
+            </div>
+            <div>
+              ${isDone 
+                ? `<span class="text-[10px] font-bold text-[#30D158] bg-[#30D158]/10 px-2 py-0.5 rounded">Nota ${userState.submissions[apa.id].gradeLetter || 'A'}</span>`
+                : `<button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="text-xs text-[#0A84FF] font-medium hover:underline">Iniciar</button>`
+              }
+            </div>
+          `;
+          pendingContainer.appendChild(card);
+          foundPending++;
+        });
+      });
+    }
+
+    // RENDER DISCIPLINE VIEW
+    function renderDisciplineView(discId) {
+      const disc = curriculumData.find(d => d.id === discId) || curriculumData[0];
+      userState.activeDisciplineId = disc.id;
+      saveState();
+
+      document.getElementById('breadcrumb-title').innerText = `${disc.id}: ${disc.title}`;
+      document.getElementById('disc-code-badge').innerText = disc.id;
+      document.getElementById('disc-title').innerText = disc.title;
+      document.getElementById('disc-objective').innerText = disc.objective;
+
+      // Progress
+      let done = 0;
+      disc.apas.forEach(a => { if (userState.submissions[a.id]) done++; });
+      const pct = Math.round((done / disc.apas.length) * 100);
+      document.getElementById('disc-header-progress').innerText = `${pct}%`;
+      document.getElementById('disc-header-bar').style.width = `${pct}%`;
+      document.getElementById('apa-counter-badge').innerText = `${done} / ${disc.apas.length} Concluídas`;
+
+      // MULTIMEDIA HUB
+      const hubGrid = document.getElementById('multimedia-hub-grid');
+      hubGrid.innerHTML = '';
+
+      // Livros
+      const booksCard = document.createElement('div');
+      booksCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
+      booksCard.innerHTML = `
+        <div>
+          <span class="text-[10px] font-semibold tracking-wider text-[#0A84FF] uppercase block mb-1">📚 Livros de Cabeceira</span>
+          <h4 class="text-xs font-semibold text-white mb-1.5">${disc.multimedia.books[0]?.title || 'Leitura Recomendada'}</h4>
+          <p class="text-[11px] text-[#8E8E93]">${disc.multimedia.books[0]?.author} — <em>${disc.multimedia.books[0]?.focus}</em></p>
+        </div>
+      `;
+      hubGrid.appendChild(booksCard);
+
+      // Cursos
+      const coursesCard = document.createElement('div');
+      coursesCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
+      coursesCard.innerHTML = `
+        <div>
+          <span class="text-[10px] font-semibold tracking-wider text-[#30D158] uppercase block mb-1">🎓 Cursos Recomendados</span>
+          <ul class="space-y-1 text-xs text-[#8E8E93]">
+            ${disc.multimedia.courses.map(c => `<li>• <strong class="text-white">${c.title}</strong> (${c.provider})</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      hubGrid.appendChild(coursesCard);
+
+      // Portais
+      const portalsCard = document.createElement('div');
+      portalsCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
+      portalsCard.innerHTML = `
+        <div>
+          <span class="text-[10px] font-semibold tracking-wider text-[#FF9F0A] uppercase block mb-1">📰 Intelligence</span>
+          <ul class="space-y-1 text-xs text-[#8E8E93]">
+            ${disc.multimedia.portals.map(p => `<li>• ${p}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      hubGrid.appendChild(portalsCard);
+
+      // Vídeos
+      const videosCard = document.createElement('div');
+      videosCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
+      videosCard.innerHTML = `
+        <div>
+          <span class="text-[10px] font-semibold tracking-wider text-[#BF5AF2] uppercase block mb-1">🎥 Vídeos & Podcasts</span>
+          <ul class="space-y-1 text-xs text-[#8E8E93]">
+            ${disc.multimedia.videos.map(v => `<li>• ${v}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      hubGrid.appendChild(videosCard);
+
+      // APAS LIST
+      const apasContainer = document.getElementById('apas-list-container');
+      apasContainer.innerHTML = '';
+
+      disc.apas.forEach(apa => {
+        const sub = userState.submissions[apa.id];
+        const isDone = !!sub;
+
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-2xl border transition ${
+          isDone ? 'bg-[#1C1C1E]/60 border-[#30D158]/30' : 'bg-[#1C1C1E] border-white/10 hover:border-white/20'
+        }`;
+
+        card.innerHTML = `
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-start space-x-3.5">
+              <span class="text-2xl p-2 bg-[#2C2C2E] rounded-xl shrink-0">${apa.icon || '📝'}</span>
+              <div>
+                <div class="flex items-center space-x-2 mb-1">
+                  <span class="text-xs font-mono font-medium text-[#0A84FF]">${apa.code}</span>
+                  <span class="text-[11px] font-medium px-2 py-0.5 bg-[#2C2C2E] text-[#8E8E93] rounded">${apa.type}</span>
+                  ${isDone ? '<span class="text-[11px] font-medium px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] rounded">Concluída</span>' : ''}
+                </div>
+                <h4 class="text-sm font-semibold text-white">${apa.title}</h4>
+                <p class="text-xs text-[#8E8E93] mt-0.5 line-clamp-1">${apa.scenario.replace(/<[^>]*>?/gm, '')}</p>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-3 shrink-0 self-end md:self-center">
+              ${isDone ? `
+                <div class="text-right">
+                  <span class="text-xs font-bold text-[#30D158] block">Nota ${sub.gradeLetter || 'A'}</span>
+                  <span class="text-[10px] text-[#8E8E93] font-mono">${sub.date}</span>
+                </div>
+                <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3.5 py-1.5 bg-[#2C2C2E] hover:bg-[#3A3A3C] text-white font-medium text-xs rounded-xl transition">Ver Resposta</button>
+              ` : `
+                <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-4 py-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm">
+                  Resolver APA
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+        apasContainer.appendChild(card);
+      });
+    }
+
+    // VIEW SWITCHING
+    function switchView(viewName, discId = null) {
+      userState.activeView = viewName;
+      if (discId) userState.activeDisciplineId = discId;
+      saveState();
+
+      document.getElementById('view-dashboard').classList.add('hidden');
+      document.getElementById('view-discipline').classList.add('hidden');
+
+      const navDashboard = document.getElementById('nav-dashboard');
+      if (viewName === 'dashboard') {
+        document.getElementById('view-dashboard').classList.remove('hidden');
+        document.getElementById('breadcrumb-title').innerHTML = "Portal Acadêmico / <strong class=\"text-white\">Visão Geral</strong>";
+        navDashboard.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white";
+        renderDashboard();
+      } else {
+        document.getElementById('view-discipline').classList.remove('hidden');
+        navDashboard.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5";
+        renderDisciplineView(userState.activeDisciplineId);
+      }
+
+      renderSidebar();
+      updateHeaderStats();
+    }
+
+    // MODAL APA LOGIC
+    let currentModalData = null;
+
+    function openAPAModal(discId, apaId) {
+      const disc = curriculumData.find(d => d.id === discId);
+      if (!disc) return;
+      const apa = disc.apas.find(a => a.id === apaId);
+      if (!apa) return;
+
+      currentModalData = { discId, apaId, apa };
+      userState.activeAPAId = apaId;
+
+      document.getElementById('modal-apa-code').innerText = `${disc.id} • ${apa.code}`;
+      document.getElementById('modal-apa-type').innerHTML = `<span>${apa.icon || '📝'}</span> <span>${apa.type}</span>`;
+      document.getElementById('modal-apa-title').innerText = apa.title;
+      document.getElementById('modal-apa-scenario').innerHTML = apa.scenario;
+
+      const sub = userState.submissions[apaId];
+      const textarea = document.getElementById('apa-response-input');
+      const feedbackBox = document.getElementById('modal-feedback-box');
+
+      if (sub) {
+        textarea.value = sub.response;
+        feedbackBox.classList.remove('hidden');
+        document.getElementById('feedback-grade-badge').innerText = `Nota ${sub.gradeLetter || 'A'} (${sub.gradeNum || '9.5'})`;
+        document.getElementById('feedback-text').innerText = sub.feedback;
+        document.getElementById('btn-submit-apa').innerText = "Atualizar Submissão";
+      } else {
+        textarea.value = "";
+        feedbackBox.classList.add('hidden');
+        document.getElementById('btn-submit-apa').innerText = "Submeter Defesa Oral";
+      }
+
+      updateCharCounter();
+      document.getElementById('apa-modal').classList.remove('hidden');
+    }
+
+    function closeAPAModal() {
+      document.getElementById('apa-modal').classList.add('hidden');
+    }
+
+    function insertTemplate() {
+      if (!currentModalData) return;
+      const textarea = document.getElementById('apa-response-input');
+      textarea.value = currentModalData.apa.template || "## Diagnóstico Estratégico\n\n- Sintoma:\n- Causa Raiz:\n- Recomendação:\n";
+      updateCharCounter();
+    }
+
+    function updateCharCounter() {
+      const val = document.getElementById('apa-response-input').value;
+      document.getElementById('char-counter').innerText = `${val.length} caracteres`;
+    }
+
+    document.getElementById('apa-response-input').addEventListener('input', updateCharCounter);
+
+    function submitAPAResolution() {
+      if (!currentModalData) return;
+      const responseText = document.getElementById('apa-response-input').value.trim();
+      if (responseText.length < 20) {
+        alert("Por favor, escreva sua resposta em mais detalhes (mínimo de 20 caracteres).");
+        return;
+      }
+
+      // SIMULATE MENTOR FEEDBACK & GRADE BASED ON QUALITY & LENGTH
+      let gradeNum = 9.5;
+      let gradeLetter = "A";
+      let feedback = "Excelente defesa oral! Você abordou o CEO Dr. Roberto com postura executiva de alto nível, separando com clareza o sintoma operacional da causa raiz de conversão comercial. A proposta de auditoria de 14 dias evitou um desperdício financeiro de R$ 200 mil!";
+
+      if (responseText.length < 120) {
+        gradeNum = 8.5;
+        gradeLetter = "B+";
+        feedback = "Boa resposta, mas recomendo detalhar melhor o risco do 'balde furado' e incluir a métrica da queda de conversão do atendimento (de 45% para 18%) no seu pitch.";
+      } else if (responseText.includes("balde") || responseText.includes("14 dias") || responseText.includes("conversão")) {
+        gradeNum = 9.8;
+        gradeLetter = "A+";
+        feedback = "Pitch executivo brilhante! Raciocínio de negócios impecável, comunicação direta sem jargões e postura digna de um Estrategista Sênior!";
+      }
+
+      userState.submissions[currentModalData.apaId] = {
+        response: responseText,
+        gradeNum: gradeNum,
+        gradeLetter: gradeLetter,
+        feedback: feedback,
+        date: new Date().toLocaleDateString('pt-BR')
+      };
+
+      saveState();
+      closeAPAModal();
+
+      // Refresh view
+      updateHeaderStats();
+      if (userState.activeView === 'dashboard') {
+        renderDashboard();
+      } else {
+        renderDisciplineView(userState.activeDisciplineId);
+      }
+      renderSidebar();
+    }
+
+    function resetProgress() {
+      if (confirm("Tem certeza que deseja resetar seu progresso nesta conta?")) {
+        userState.submissions = {};
+        saveState();
+        updateHeaderStats();
+        switchView('dashboard');
+      }
+    }
+
+    // INITIALIZATION ON PAGE LOAD
+    checkAuthSession();
+  </script>
+</body>
+</html>
