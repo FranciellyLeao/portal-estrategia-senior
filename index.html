@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estratégia Sênior — Engine Multimodal & Aulas Teóricas (Apple HIG)</title>
+  <title>Estratégia Sênior — Aulas Teóricas & Exercícios Multimodais (Apple HIG)</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -138,16 +138,21 @@
             <span>Visão Geral</span>
           </button>
 
+          <button onclick="openLessonModal('DISC01', 'U1.1')" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#30D158] hover:bg-[#30D158]/10 border border-[#30D158]/20 my-1">
+            <svg class="w-4 h-4 text-[#30D158]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>📖 Aulas Teóricas (Unidade 1 & 2)</span>
+          </button>
+
           <button onclick="openCodeModal()" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5">
             <svg class="w-4 h-4 text-[#BF5AF2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-            <span>TypeScript Engine (`activitiesEngine.ts`)</span>
+            <span>TypeScript Specification</span>
           </button>
 
           <div class="pt-4 pb-1.5 px-3">
             <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider">Disciplinas do Curso</span>
           </div>
 
-          <div id="sidebar-disciplines" class="space-y-0.5 custom-scrollbar max-h-[calc(100vh-320px)] overflow-y-auto">
+          <div id="sidebar-disciplines" class="space-y-0.5 custom-scrollbar max-h-[calc(100vh-340px)] overflow-y-auto">
             <!-- Rendered dynamically -->
           </div>
         </nav>
@@ -204,24 +209,89 @@
           <div class="apple-glass rounded-3xl p-8 relative overflow-hidden border border-white/10 shadow-2xl">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
               <div class="space-y-3 max-w-2xl">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#0A84FF]/10 border border-[#0A84FF]/20 text-[#0A84FF] text-[11px] font-medium">
-                  <span class="w-2 h-2 rounded-full bg-[#0A84FF] animate-pulse"></span>
-                  <span>Aulas Teóricas & Exercícios Multimodais</span>
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#30D158]/10 border border-[#30D158]/20 text-[#30D158] text-[11px] font-medium">
+                  <span class="w-2 h-2 rounded-full bg-[#30D158] animate-pulse"></span>
+                  <span>Aulas Teóricas Didáticas (Richard Rumelt & Ries/Trout)</span>
                 </div>
                 <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-white" id="welcome-greeting">Bem-vindo, Alexandre!</h2>
                 <p class="text-xs lg:text-sm text-[#8E8E93] leading-relaxed">
-                  Aulas em texto corrido (Rumelt & Ries/Trout) com leitor integrado + 15 formatos de exercícios práticos (roleplays C-Level, auditorias de funil e pareceres).
+                  Acesse abaixo as aulas didáticas em texto corrido (Markdown) para aprofundar os fundamentos de Diagnóstico Estratégico antes dos exercícios práticos.
                 </p>
               </div>
 
               <!-- ENGINE QUICK ACTION BADGE -->
-              <div class="shrink-0 flex flex-col items-start lg:items-end space-y-2">
-                <button onclick="openCodeModal()" class="px-5 py-2.5 bg-gradient-to-r from-[#0A84FF] to-[#BF5AF2] hover:opacity-90 text-white font-semibold text-xs rounded-xl transition shadow-lg flex items-center space-x-2">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                  <span>TypeScript Engine (`activitiesEngine.ts`)</span>
+              <div class="shrink-0 flex flex-wrap gap-2 items-center lg:justify-end">
+                <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-lg flex items-center space-x-2">
+                  <span>📖 Abrir Aula: O Kernel do Diagnóstico (U1.1)</span>
                 </button>
-                <span class="text-[10px] text-[#8E8E93]">Fundamentos Teóricos + Prática C-Level</span>
+                <button onclick="openCodeModal()" class="px-4 py-2.5 bg-[#1C1C1E] hover:bg-[#2C2C2E] text-white border border-white/10 font-semibold text-xs rounded-xl transition">
+                  <span>TypeScript Engine</span>
+                </button>
               </div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO EM DESTAQUE: AULAS TEÓRICAS DIDÁTICAS (DISC01) -->
+          <div class="apple-glass rounded-3xl p-6 shadow-xl border border-[#30D158]/20">
+            <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">DISC01 • Fundamentos Teóricos</span>
+                <h3 class="font-bold text-lg text-white flex items-center space-x-2">
+                  <span>📚 Unidades Teóricas em Texto Corrido (Markdown)</span>
+                </h3>
+                <p class="text-xs text-[#8E8E93] mt-0.5">Leitura recomendada antes da realização das APAs.</p>
+              </div>
+              <span class="text-xs text-[#30D158] font-mono px-3 py-1 bg-[#30D158]/10 rounded-lg border border-[#30D158]/30">2 Aulas Disponíveis</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              
+              <!-- UNIDADE 1 CARD -->
+              <div class="p-6 bg-[#1C1C1E] border border-white/10 rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#30D158]/40 transition group">
+                <div class="space-y-2.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded-md">Unidade U1.1</span>
+                    <span class="text-[11px] text-[#8E8E93]">⏱️ 8 min de leitura</span>
+                  </div>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#30D158] transition leading-snug">
+                    O Kernel do Diagnóstico e a Armadilha da Solução Precoce
+                  </h4>
+                  <p class="text-xs text-[#8E8E93] leading-relaxed line-clamp-3">
+                    Conceitos de Richard Rumelt (<em>Good Strategy / Bad Strategy</em>): O Núcleo da Estratégia (Diagnóstico, Guiding Policy, Coherent Actions), Os 4 Sinais da Má Estratégia e o Separador de 6 Camadas de Raciocínio (Fato → Hipótese → Investigação → Insight → Estratégia → Expressão).
+                  </p>
+                </div>
+
+                <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                  <span class="text-[11px] font-medium text-[#8E8E93]">Autor: Richard Rumelt</span>
+                  <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-4 py-2 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-sm flex items-center space-x-1.5">
+                    <span>Ler Aula Completa 📖</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- UNIDADE 2 CARD -->
+              <div class="p-6 bg-[#1C1C1E] border border-white/10 rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#30D158]/40 transition group">
+                <div class="space-y-2.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded-md">Unidade U1.2</span>
+                    <span class="text-[11px] text-[#8E8E93]">⏱️ 10 min de leitura</span>
+                  </div>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#30D158] transition leading-snug">
+                    Análise de Funil e Mapeamento de Causas Conflitantes
+                  </h4>
+                  <p class="text-xs text-[#8E8E93] leading-relaxed line-clamp-3">
+                    Conceitos de Al Ries & Jack Trout (<em>Posicionamento</em>): A batalha pela mente do consumidor, diferenciação entre Sintoma e Causa Raiz em E-commerce e as 3 métricas críticas de investigação (Taxa de Conversão, Abandono de Checkout, CAC vs LTV).
+                  </p>
+                </div>
+
+                <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                  <span class="text-[11px] font-medium text-[#8E8E93]">Autores: Ries & Trout</span>
+                  <button onclick="openLessonModal('DISC01', 'U1.2')" class="px-4 py-2 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-sm flex items-center space-x-1.5">
+                    <span>Ler Aula Completa 📖</span>
+                  </button>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -336,7 +406,7 @@
           </div>
 
           <!-- UNIDADES DE ESTUDO & AULAS TEÓRICAS (LESSONS) -->
-          <div class="apple-glass rounded-3xl p-6 shadow-md">
+          <div class="apple-glass rounded-3xl p-6 shadow-md border border-[#30D158]/20">
             <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
               <div>
                 <h3 class="font-semibold text-base text-white">Unidades de Aprendizagem & Fundamentos Teóricos</h3>
@@ -754,7 +824,7 @@ De acordo com Richard Rumelt (*Good Strategy Bad Strategy*), uma estratégia rea
 ### 2. Os Quatro Sinais da Má Estratégia
 Rumelt alerta que a "má estratégia" se manifesta por meio de quatro características centrais:
 
-* **Fluff (Linguagem Oca):** Uso de jargões complicados que criam a illusions de pensamento de alto nível, mas não possuem substância.
+* **Fluff (Linguagem Oca):** Uso de jargões complicados que criam a ilusão de pensamento de alto nível, mas não possuem substância.
 * **Incapacidade de Enfrentar o Desafio:** Omitir ou falhar em definir o verdadeiro problema da empresa.
 * **Confundir Metas com Estratégia:** Tratar desejos de crescimento (ex: *"crescer 30% no ano"*) como se fossem o plano para alcançar esse resultado.
 * **Objetivos Estratégicos Ruins:** Traçar metas impraticáveis ou contraditórias por incapacidade de fazer escolhas duras (*trade-offs*).
