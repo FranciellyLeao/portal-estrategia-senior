@@ -3,106 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estratégia Sênior — Portal Multimodal EAD (Apple HIG & Light/Dark Mode)</title>
+  <title>Estratégia Sênior — Portal Multimodal EAD (Apple HIG System)</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
+    :root {
+      --bg-main: #000000;
+      --bg-card: rgba(28, 28, 30, 0.75);
+      --bg-card-solid: #1C1C1E;
+      --bg-sidebar: rgba(18, 18, 20, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --text-main: #F5F5F7;
+      --text-muted: #8E8E93;
+    }
+
+    html.light {
+      --bg-main: #F5F5F7;
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-card-solid: #FFFFFF;
+      --bg-sidebar: rgba(242, 242, 247, 0.95);
+      --border-subtle: rgba(0, 0, 0, 0.1);
+      --text-main: #1C1C1E;
+      --text-muted: #636366;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
-      background-color: #000000;
-      color: #F5F5F7;
+      background-color: var(--bg-main);
+      color: var(--text-main);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     /* Apple Frosted Glass Effects */
     .apple-glass {
-      background: rgba(28, 28, 30, 0.75);
+      background: var(--bg-card);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: background 0.3s ease, border-color 0.3s ease;
+      border: 1px solid var(--border-subtle);
+      transition: background 0.25s ease, border-color 0.25s ease;
     }
     
     .apple-glass-card {
-      background: rgba(28, 28, 30, 0.6);
+      background: var(--bg-card);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: background 0.3s ease, border-color 0.3s ease;
+      border: 1px solid var(--border-subtle);
+      transition: background 0.25s ease, border-color 0.25s ease;
     }
 
     .apple-glass-card:hover {
-      background: rgba(36, 36, 38, 0.8);
-      border-color: rgba(255, 255, 255, 0.15);
+      border-color: rgba(10, 132, 255, 0.4);
     }
 
     .apple-sidebar {
-      background: rgba(18, 18, 20, 0.85);
+      background: var(--bg-sidebar);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-      transition: background 0.3s ease, border-color 0.3s ease;
+      border-right: 1px solid var(--border-subtle);
+      transition: background 0.25s ease, border-color 0.25s ease;
     }
 
-    /* LIGHT MODE APPLE SYSTEM STYLES */
-    html.light body {
-      background-color: #F5F5F7 !important;
-      color: #1C1C1E !important;
+    /* DARK HERO BANNER - GUARANTEED HIGH CONTRAST IN BOTH LIGHT & DARK MODES */
+    .hero-cinematic-banner {
+      background: linear-gradient(135deg, #1C1C1E 0%, #121214 60%, #0A0A0C 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FFFFFF !important;
     }
 
-    html.light .apple-glass {
-      background: rgba(255, 255, 255, 0.85) !important;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(0, 0, 0, 0.1) !important;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    .hero-cinematic-banner h2,
+    .hero-cinematic-banner p,
+    .hero-cinematic-banner span.hero-text-bright {
+      color: #FFFFFF !important;
     }
 
-    html.light .apple-glass-card {
-      background: rgba(255, 255, 255, 0.75) !important;
-      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    .hero-cinematic-banner p.hero-description {
+      color: #D1D1D6 !important;
     }
 
-    html.light .apple-sidebar {
-      background: rgba(242, 242, 247, 0.95) !important;
-      border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+    .hero-cinematic-banner .hero-muted {
+      color: #98989D !important;
     }
 
+    html.light .hero-cinematic-banner {
+      background: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%) !important;
+      border: 1px solid rgba(0, 0, 0, 0.15) !important;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+
+    /* Light mode text & container adjustments */
     html.light main {
       background-color: #F5F5F7 !important;
     }
 
-    html.light .text-white {
+    html.light .theme-text-main {
       color: #1C1C1E !important;
     }
 
-    html.light .bg-\[\#1C1C1E\] {
+    html.light .theme-bg-card {
       background-color: #FFFFFF !important;
       border-color: rgba(0,0,0,0.08) !important;
     }
 
-    html.light .bg-\[\#2C2C2E\] {
+    html.light .theme-bg-subtle {
       background-color: #E5E5EA !important;
       color: #1C1C1E !important;
     }
 
-    html.light .bg-\[\#161618\] {
-      background-color: #F2F2F7 !important;
-    }
-
-    html.light .bg-\[\#0A0A0C\] {
-      background-color: #FFFFFF !important;
-    }
-
-    html.light .text-\[\#8E8E93\] {
+    html.light .theme-text-muted {
       color: #636366 !important;
-    }
-
-    html.light .text-\[\#F5F5F7\] {
-      color: #1C1C1E !important;
     }
 
     /* Custom Scrollbar */
@@ -114,51 +125,54 @@
       background: transparent;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(142, 142, 147, 0.3);
       border-radius: 9999px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(142, 142, 147, 0.5);
     }
   </style>
 </head>
-<body class="bg-[#000000] text-[#F5F5F7] min-h-screen flex flex-col font-sans antialiased selection:bg-[#0A84FF] selection:text-white">
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-[#0A84FF] selection:text-white">
 
   <!-- FLOATING THEME TOGGLE BUTTON (BOTTOM RIGHT CORNER) -->
-  <button onclick="toggleTheme()" id="theme-toggle-btn" title="Alternar entre Modo Claro e Escuro" class="fixed bottom-6 right-6 z-40 apple-glass px-4 py-2.5 rounded-full border border-white/20 shadow-2xl flex items-center space-x-2 text-xs font-semibold hover:scale-105 transition active:scale-95 cursor-pointer">
-    <span id="theme-toggle-icon" class="text-base">☀️</span>
-    <span id="theme-toggle-text" class="text-white">Modo Claro</span>
+  <button onclick="toggleTheme()" id="theme-toggle-btn" title="Alternar entre Modo Claro e Escuro" class="fixed bottom-6 right-6 z-40 apple-glass px-4 py-2.5 rounded-full border shadow-2xl flex items-center space-x-2 text-xs font-semibold hover:scale-105 transition active:scale-95 cursor-pointer">
+    <span id="theme-toggle-icon-box" class="w-4 h-4 flex items-center justify-center text-[#0A84FF]">
+      <svg id="theme-icon-sun" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      <svg id="theme-icon-moon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+    </span>
+    <span id="theme-toggle-text" class="theme-text-main font-medium">Modo Claro</span>
   </button>
 
   <!-- LOGIN OVERLAY SCREEN (APPLE ID STYLE) -->
-  <div id="login-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-2xl z-50 flex items-center justify-center p-4">
-    <div class="w-full max-w-sm apple-glass rounded-3xl p-8 shadow-2xl space-y-6 text-center border border-white/10">
+  <div id="login-overlay" class="fixed inset-0 bg-black/85 backdrop-blur-2xl z-50 flex items-center justify-center p-4">
+    <div class="w-full max-w-sm apple-glass rounded-3xl p-8 shadow-2xl space-y-6 text-center border">
       
       <!-- APPLE-STYLE LOGO / ICON -->
-      <div class="w-16 h-16 rounded-2xl bg-gradient-to-b from-[#2C2C2E] to-[#1C1C1E] border border-white/15 mx-auto flex items-center justify-center text-white shadow-xl">
-        <svg class="w-8 h-8 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+      <div class="w-14 h-14 rounded-2xl bg-gradient-to-b from-[#2C2C2E] to-[#1C1C1E] border border-white/15 mx-auto flex items-center justify-center text-white shadow-xl">
+        <svg class="w-7 h-7 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
       </div>
 
       <div>
-        <h2 class="text-xl font-semibold tracking-tight text-white">Estratégia Sênior</h2>
-        <p class="text-xs text-[#8E8E93] mt-1">Portal Acadêmico Multimodal • 6 Módulos & 15 Formatos</p>
+        <h2 class="text-xl font-semibold tracking-tight theme-text-main">Estratégia Sênior</h2>
+        <p class="text-xs theme-text-muted mt-1">Portal Acadêmico Multimodal • 6 Módulos & 15 Formatos</p>
       </div>
 
       <!-- FORM -->
-      <form onsubmit="handleLoginSubmit(event)" class="space-y-3 text-left">
+      <form onsubmit="handleLoginSubmit(event)" class="space-y-3.5 text-left">
         <div>
-          <label class="block text-[11px] font-medium text-[#8E8E93] uppercase tracking-wider mb-1.5 pl-1">Nome Completo</label>
-          <input type="text" id="login-name" required placeholder="Alexandre Silva" class="w-full bg-[#1C1C1E] border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-[#636366] focus:outline-none focus:border-[#0A84FF] transition">
+          <label class="block text-[11px] font-semibold theme-text-muted uppercase tracking-wider mb-1.5 pl-1">Nome Completo</label>
+          <input type="text" id="login-name" required placeholder="Alexandre Silva" class="w-full theme-bg-card border rounded-xl px-3.5 py-2.5 text-sm theme-text-main focus:outline-none focus:border-[#0A84FF] transition">
         </div>
 
         <div>
-          <label class="block text-[11px] font-medium text-[#8E8E93] uppercase tracking-wider mb-1.5 pl-1">E-mail</label>
-          <input type="email" id="login-email" required placeholder="aluno@estrategia.com" class="w-full bg-[#1C1C1E] border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-[#636366] focus:outline-none focus:border-[#0A84FF] transition">
+          <label class="block text-[11px] font-semibold theme-text-muted uppercase tracking-wider mb-1.5 pl-1">E-mail</label>
+          <input type="email" id="login-email" required placeholder="aluno@estrategia.com" class="w-full theme-bg-card border rounded-xl px-3.5 py-2.5 text-sm theme-text-main focus:outline-none focus:border-[#0A84FF] transition">
         </div>
 
         <div>
-          <label class="block text-[11px] font-medium text-[#8E8E93] uppercase tracking-wider mb-1.5 pl-1">Momento de Carreira</label>
-          <select id="login-role" class="w-full bg-[#1C1C1E] border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#0A84FF] transition">
+          <label class="block text-[11px] font-semibold theme-text-muted uppercase tracking-wider mb-1.5 pl-1">Momento de Carreira</label>
+          <select id="login-role" class="w-full theme-bg-card border rounded-xl px-3 py-2.5 text-xs theme-text-main focus:outline-none focus:border-[#0A84FF] transition">
             <option value="Designer em Transição para Estrategista">Designer em Transição para Estrategista</option>
             <option value="Design Lead / Head de Design">Design Lead / Head de Design</option>
             <option value="Estrategista de Marca Pleno">Estrategista de Marca Pleno</option>
@@ -191,43 +205,43 @@
         <!-- BRAND HEADER -->
         <div class="p-5 border-b border-white/10 flex items-center space-x-3">
           <div class="w-7 h-7 rounded-lg bg-[#0A84FF] flex items-center justify-center font-bold text-white text-xs shadow-md">
-            É
+            E
           </div>
           <div>
-            <h1 class="font-semibold text-xs text-white tracking-tight">ESTRATÉGIA SÊNIOR</h1>
-            <p class="text-[10px] text-[#8E8E93]">Portal Multimodal EAD</p>
+            <h1 class="font-semibold text-xs tracking-tight theme-text-main">ESTRATÉGIA SÊNIOR</h1>
+            <p class="text-[10px] theme-text-muted">Portal Multimodal EAD</p>
           </div>
         </div>
 
         <!-- NAVIGATION -->
         <nav class="p-3 space-y-1">
-          <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white cursor-pointer">
+          <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main cursor-pointer">
             <svg class="w-4 h-4 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
             <span>Visão Geral</span>
           </button>
 
-          <button onclick="switchView('all-disciplines')" id="nav-all-disciplines" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer">
+          <button onclick="switchView('all-disciplines')" id="nav-all-disciplines" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
             <svg class="w-4 h-4 text-[#30D158]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-            <span>📚 Todas as Disciplinas (1 a 6)</span>
+            <span>Todas as Disciplinas (1 a 6)</span>
           </button>
 
-          <button onclick="switchView('all-apas')" id="nav-all-apas" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer">
+          <button onclick="switchView('all-apas')" id="nav-all-apas" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
             <svg class="w-4 h-4 text-[#FF9F0A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-            <span>🎯 Banco de Exercícios (15 Formatos)</span>
+            <span>Banco de Exercícios (15 Formatos)</span>
           </button>
 
-          <button onclick="switchView('global-acervo')" id="nav-global-acervo" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer">
+          <button onclick="switchView('global-acervo')" id="nav-global-acervo" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
             <svg class="w-4 h-4 text-[#BF5AF2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            <span>📂 Acervo Multimídia Global</span>
+            <span>Acervo Multimídia Global</span>
           </button>
 
-          <button onclick="openCodeModal()" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer">
+          <button onclick="openCodeModal()" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
             <svg class="w-4 h-4 text-[#64D2FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
             <span>TypeScript Spec</span>
           </button>
 
           <div class="pt-4 pb-1.5 px-3">
-            <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider">Módulos do Curso</span>
+            <span class="text-[10px] font-semibold theme-text-muted uppercase tracking-wider">Módulos do Curso</span>
           </div>
 
           <div id="sidebar-disciplines" class="space-y-0.5 custom-scrollbar max-h-[calc(100vh-380px)] overflow-y-auto">
@@ -237,17 +251,17 @@
       </div>
 
       <!-- USER FOOTER -->
-      <div class="p-3.5 border-t border-white/10 bg-[#161618]/60 flex items-center justify-between">
+      <div class="p-3.5 border-t border-white/10 flex items-center justify-between">
         <div class="flex items-center space-x-2.5 overflow-hidden">
-          <div id="user-avatar" class="w-7 h-7 rounded-full bg-[#2C2C2E] border border-white/15 flex items-center justify-center font-medium text-white text-[11px] shrink-0">
+          <div id="user-avatar" class="w-7 h-7 rounded-full bg-[#0A84FF] flex items-center justify-center font-bold text-white text-[11px] shrink-0">
             AS
           </div>
           <div class="truncate">
-            <p id="user-display-name" class="text-xs font-medium text-white truncate">Alexandre Silva</p>
-            <p id="user-display-email" class="text-[10px] text-[#8E8E93] truncate">alexandre@empresa.com</p>
+            <p id="user-display-name" class="text-xs font-medium theme-text-main truncate">Alexandre Silva</p>
+            <p id="user-display-email" class="text-[10px] theme-text-muted truncate">alexandre@empresa.com</p>
           </div>
         </div>
-        <button onclick="handleLogout()" title="Encerrar Sessão" class="p-1 text-[#8E8E93] hover:text-white rounded-md hover:bg-white/10 transition cursor-pointer">
+        <button onclick="handleLogout()" title="Encerrar Sessão" class="p-1.5 text-[#8E8E93] hover:text-white rounded-md hover:bg-white/10 transition cursor-pointer">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
         </button>
       </div>
@@ -259,40 +273,40 @@
       <!-- TOPBAR HEADER (APPLE MAC OS NAVBAR) -->
       <header class="h-14 apple-sidebar px-6 flex items-center justify-between shrink-0">
         <div class="flex items-center space-x-2">
-          <span id="breadcrumb-title" class="text-xs font-medium text-[#8E8E93]">Portal Acadêmico / <strong class="text-white">Visão Geral</strong></span>
+          <span id="breadcrumb-title" class="text-xs font-medium theme-text-muted">Portal Acadêmico / <strong class="theme-text-main">Visão Geral</strong></span>
         </div>
 
         <!-- STATS BADGES IN HEADER -->
         <div class="flex items-center space-x-3 text-xs">
-          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#1C1C1E] border border-white/10 text-amber-400">
-            <span>🔥</span>
-            <span class="text-white font-medium text-[11px]" id="header-streak">3 dias seguidos</span>
+          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full theme-bg-card border text-amber-500">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+            <span class="theme-text-main font-medium text-[11px]" id="header-streak">3 dias seguidos</span>
           </div>
-          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#1C1C1E] border border-white/10 text-[#30D158]">
-            <span class="text-white font-medium text-[11px]">Média: <strong id="header-gpa" class="text-[#30D158]">A- (9.2)</strong></span>
+          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full theme-bg-card border text-[#30D158]">
+            <span class="theme-text-main font-medium text-[11px]">Média: <strong id="header-gpa" class="text-[#30D158]">A- (9.2)</strong></span>
           </div>
-          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#1C1C1E] border border-white/10 text-[#0A84FF]">
-            <span class="text-white font-medium text-[11px]">Concluído: <strong id="header-progress" class="text-white">0%</strong></span>
+          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full theme-bg-card border text-[#0A84FF]">
+            <span class="theme-text-main font-medium text-[11px]">Concluído: <strong id="header-progress" class="theme-text-main">0%</strong></span>
           </div>
         </div>
       </header>
 
       <!-- VIEW PANES CONTAINER -->
-      <main class="flex-1 overflow-y-auto custom-scrollbar p-8 bg-[#000000]" id="main-container">
+      <main class="flex-1 overflow-y-auto custom-scrollbar p-8" id="main-container">
         
         <!-- VIEW 1: DASHBOARD -->
         <div id="view-dashboard" class="max-w-6xl mx-auto space-y-8">
           
           <!-- WELCOME & FEATURED SPOTLIGHT CARD -->
-          <div class="apple-glass rounded-3xl p-8 relative overflow-hidden border border-white/10 shadow-2xl">
+          <div class="apple-glass rounded-3xl p-8 relative overflow-hidden border shadow-2xl">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
               <div class="space-y-3 max-w-2xl">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#30D158]/10 border border-[#30D158]/20 text-[#30D158] text-[11px] font-medium">
                   <span class="w-2 h-2 rounded-full bg-[#30D158] animate-pulse"></span>
                   <span>6 Módulos & 15 Formatos de Exercícios Práticos</span>
                 </div>
-                <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-white" id="welcome-greeting">Bem-vindo, Alexandre!</h2>
-                <p class="text-xs lg:text-sm text-[#8E8E93] leading-relaxed">
+                <h2 class="text-2xl lg:text-3xl font-bold tracking-tight theme-text-main" id="welcome-greeting">Bem-vindo, Alexandre!</h2>
+                <p class="text-xs lg:text-sm theme-text-muted leading-relaxed">
                   Acesse todas as disciplinas em estilo streaming, estude a fundamentação teórica em Markdown e resolva os exercícios de simulação executiva com avaliação instantânea!
                 </p>
               </div>
@@ -300,10 +314,12 @@
               <!-- QUICK ACTIONS -->
               <div class="shrink-0 flex flex-wrap gap-2 items-center lg:justify-end">
                 <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-lg flex items-center space-x-2 cursor-pointer">
-                  <span>📖 Abrir Aula: O Kernel do Diagnóstico (U1.1)</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                  <span>Abrir Aula: O Kernel do Diagnóstico (U1.1)</span>
                 </button>
-                <button onclick="switchView('discipline', 'DISC01')" class="px-4 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-semibold text-xs rounded-xl transition cursor-pointer">
-                  <span>▶ Entrar no Módulo 1</span>
+                <button onclick="switchView('discipline', 'DISC01')" class="px-4 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-semibold text-xs rounded-xl transition cursor-pointer flex items-center space-x-1.5">
+                  <span>Entrar no Módulo 1</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
               </div>
             </div>
@@ -314,10 +330,10 @@
             <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
               <div>
                 <span class="text-[10px] font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">DISC01 • Fundamentos Teóricos</span>
-                <h3 class="font-bold text-lg text-white flex items-center space-x-2">
-                  <span>📚 Unidades Teóricas em Texto Corrido (Markdown)</span>
+                <h3 class="font-bold text-lg theme-text-main flex items-center space-x-2">
+                  <span>Unidades Teóricas em Texto Corrido (Markdown)</span>
                 </h3>
-                <p class="text-xs text-[#8E8E93] mt-0.5">Leitura recomendada antes da realização dos exercícios práticos.</p>
+                <p class="text-xs theme-text-muted mt-0.5">Leitura recomendada antes da realização dos exercícios práticos.</p>
               </div>
               <span class="text-xs text-[#30D158] font-mono px-3 py-1 bg-[#30D158]/10 rounded-lg border border-[#30D158]/30">2 Aulas Disponíveis</span>
             </div>
@@ -325,47 +341,47 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
               
               <!-- UNIDADE 1 CARD -->
-              <div class="p-6 bg-[#1C1C1E] border border-white/10 rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#30D158]/40 transition group">
+              <div class="p-6 theme-bg-card border rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#30D158]/40 transition group">
                 <div class="space-y-2.5">
                   <div class="flex items-center justify-between">
                     <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded-md">Unidade U1.1</span>
-                    <span class="text-[11px] text-[#8E8E93]">⏱️ 8 min de leitura</span>
+                    <span class="text-[11px] theme-text-muted">8 min de leitura</span>
                   </div>
-                  <h4 class="text-base font-bold text-white group-hover:text-[#30D158] transition leading-snug">
+                  <h4 class="text-base font-bold theme-text-main group-hover:text-[#30D158] transition leading-snug">
                     O Kernel do Diagnóstico e a Armadilha da Solução Precoce
                   </h4>
-                  <p class="text-xs text-[#8E8E93] leading-relaxed line-clamp-3">
-                    Conceitos de Richard Rumelt (<em>Good Strategy / Bad Strategy</em>): O Núcleo da Estratégia (Diagnóstico, Guiding Policy, Coherent Actions), Os 4 Sinais da Má Estratégia e o Separador de 6 Camadas de Raciocínio.
+                  <p class="text-xs theme-text-muted leading-relaxed line-clamp-3">
+                    Conceitos de Richard Rumelt (Good Strategy / Bad Strategy): O Núcleo da Estratégia (Diagnóstico, Guiding Policy, Coherent Actions), Os 4 Sinais da Má Estratégia e o Separador de 6 Camadas de Raciocínio.
                   </p>
                 </div>
 
                 <div class="pt-3 border-t border-white/10 flex items-center justify-between">
-                  <span class="text-[11px] font-medium text-[#8E8E93]">Autor: Richard Rumelt</span>
+                  <span class="text-[11px] font-medium theme-text-muted">Autor: Richard Rumelt</span>
                   <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-4 py-2 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-sm flex items-center space-x-1.5 cursor-pointer">
-                    <span>Ler Aula Completa 📖</span>
+                    <span>Ler Aula Completa</span>
                   </button>
                 </div>
               </div>
 
               <!-- UNIDADE 2 CARD -->
-              <div class="p-6 bg-[#1C1C1E] border border-white/10 rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#30D158]/40 transition group">
+              <div class="p-6 theme-bg-card border rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#30D158]/40 transition group">
                 <div class="space-y-2.5">
                   <div class="flex items-center justify-between">
                     <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded-md">Unidade U1.2</span>
-                    <span class="text-[11px] text-[#8E8E93]">⏱️ 10 min de leitura</span>
+                    <span class="text-[11px] theme-text-muted">10 min de leitura</span>
                   </div>
-                  <h4 class="text-base font-bold text-white group-hover:text-[#30D158] transition leading-snug">
+                  <h4 class="text-base font-bold theme-text-main group-hover:text-[#30D158] transition leading-snug">
                     Análise de Funil e Mapeamento de Causas Conflitantes
                   </h4>
-                  <p class="text-xs text-[#8E8E93] leading-relaxed line-clamp-3">
-                    Conceitos de Al Ries & Jack Trout (<em>Posicionamento</em>): A batalha pela mente do consumidor, diferenciação entre Sintoma e Causa Raiz em E-commerce e métricas críticas de investigação.
+                  <p class="text-xs theme-text-muted leading-relaxed line-clamp-3">
+                    Conceitos de Al Ries & Jack Trout (Posicionamento): A batalha pela mente do consumidor, diferenciação entre Sintoma e Causa Raiz em E-commerce e métricas críticas de investigação.
                   </p>
                 </div>
 
                 <div class="pt-3 border-t border-white/10 flex items-center justify-between">
-                  <span class="text-[11px] font-medium text-[#8E8E93]">Autores: Ries & Trout</span>
+                  <span class="text-[11px] font-medium theme-text-muted">Autores: Ries & Trout</span>
                   <button onclick="openLessonModal('DISC01', 'U1.2')" class="px-4 py-2 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-sm flex items-center space-x-1.5 cursor-pointer">
-                    <span>Ler Aula Completa 📖</span>
+                    <span>Ler Aula Completa</span>
                   </button>
                 </div>
               </div>
@@ -376,33 +392,36 @@
           <!-- KPI STAT CARDS -->
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             
-            <div class="apple-glass rounded-2xl p-5 border border-white/10">
-              <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block mb-1">Progresso Geral</span>
+            <div class="apple-glass rounded-2xl p-5 border">
+              <span class="text-[11px] font-semibold theme-text-muted uppercase tracking-wider block mb-1">Progresso Geral</span>
               <div class="flex items-baseline space-x-2">
-                <span class="text-2xl font-bold text-white font-mono" id="kpi-progress-text">0%</span>
-                <span class="text-xs text-[#8E8E93]" id="kpi-completed-count">0 / 18 Atividades</span>
+                <span class="text-2xl font-bold theme-text-main font-mono" id="kpi-progress-text">0%</span>
+                <span class="text-xs theme-text-muted" id="kpi-completed-count">0 / 18 Atividades</span>
               </div>
-              <div class="w-full bg-[#2C2C2E] rounded-full h-1.5 mt-3">
+              <div class="w-full bg-[#2C2C2E]/40 rounded-full h-1.5 mt-3">
                 <div id="kpi-progress-bar" class="bg-[#0A84FF] h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
               </div>
             </div>
 
-            <div class="apple-glass rounded-2xl p-5 border border-white/10">
-              <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block mb-1">Média Acadêmica (GPA)</span>
+            <div class="apple-glass rounded-2xl p-5 border">
+              <span class="text-[11px] font-semibold theme-text-muted uppercase tracking-wider block mb-1">Média Acadêmica (GPA)</span>
               <span class="text-2xl font-bold text-[#30D158] font-mono block" id="kpi-gpa">A (9.5)</span>
-              <span class="text-[10px] text-[#8E8E93] mt-1 block">Avaliação Contínua do Mentor</span>
+              <span class="text-[10px] theme-text-muted mt-1 block">Avaliação Contínua do Mentor</span>
             </div>
 
-            <div class="apple-glass rounded-2xl p-5 border border-white/10">
-              <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block mb-1">Módulo Atual</span>
-              <span class="text-sm font-semibold text-white truncate block" id="kpi-active-disc">DISC01: Diagnóstico</span>
+            <div class="apple-glass rounded-2xl p-5 border">
+              <span class="text-[11px] font-semibold theme-text-muted uppercase tracking-wider block mb-1">Módulo Atual</span>
+              <span class="text-sm font-semibold theme-text-main truncate block" id="kpi-active-disc">DISC01: Diagnóstico</span>
               <span class="text-[10px] text-[#0A84FF] mt-1 block" id="kpi-active-sub">5 Exercícios Multimodais</span>
             </div>
 
-            <div class="apple-glass rounded-2xl p-5 border border-white/10">
-              <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block mb-1">Ritmo de Estudo</span>
-              <span class="text-2xl font-bold text-amber-400 font-mono block">🔥 3 Dias</span>
-              <span class="text-[10px] text-[#8E8E93] mt-1 block">Sequência Ativa de Estudos</span>
+            <div class="apple-glass rounded-2xl p-5 border">
+              <span class="text-[11px] font-semibold theme-text-muted uppercase tracking-wider block mb-1">Ritmo de Estudo</span>
+              <span class="text-2xl font-bold text-amber-500 font-mono block flex items-center space-x-1">
+                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+                <span>3 Dias</span>
+              </span>
+              <span class="text-[10px] theme-text-muted mt-1 block">Sequência Ativa de Estudos</span>
             </div>
 
           </div>
@@ -411,11 +430,11 @@
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             <!-- BOLETIM ACADÊMICO POR DISCIPLINA (2 COLS) -->
-            <div class="lg:col-span-2 apple-glass rounded-3xl p-6 shadow-sm">
+            <div class="lg:col-span-2 apple-glass rounded-3xl p-6 shadow-sm border">
               <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
                 <div>
-                  <h3 class="font-semibold text-base text-white">Boletim das 6 Disciplinas</h3>
-                  <p class="text-xs text-[#8E8E93]">Desempenho nos 18 exercícios multimodais.</p>
+                  <h3 class="font-semibold text-base theme-text-main">Boletim das 6 Disciplinas</h3>
+                  <p class="text-xs theme-text-muted">Desempenho nos 18 exercícios multimodais.</p>
                 </div>
                 <button onclick="resetProgress()" class="text-xs text-red-400 hover:underline cursor-pointer">Resetar Progresso</button>
               </div>
@@ -423,7 +442,7 @@
               <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr class="border-b border-white/10 text-[#8E8E93] uppercase text-[10px] tracking-wider">
+                    <tr class="border-b border-white/10 theme-text-muted uppercase text-[10px] tracking-wider">
                       <th class="py-2.5 px-2 font-semibold">Cód.</th>
                       <th class="py-2.5 px-2 font-semibold">Disciplina</th>
                       <th class="py-2.5 px-2 font-semibold text-center">Concluídos</th>
@@ -440,13 +459,13 @@
             </div>
 
             <!-- EXERCÍCIOS RECOMENDADOS (1 COL) -->
-            <div class="apple-glass rounded-3xl p-6 shadow-sm flex flex-col">
+            <div class="apple-glass rounded-3xl p-6 shadow-sm flex flex-col border">
               <div class="flex items-center justify-between mb-4">
                 <div>
-                  <h3 class="font-semibold text-base text-white">Próximos Exercícios</h3>
-                  <p class="text-xs text-[#8E8E93]">Trilha de APAs recomendadas.</p>
+                  <h3 class="font-semibold text-base theme-text-main">Próximos Exercícios</h3>
+                  <p class="text-xs theme-text-muted">Trilha de APAs recomendadas.</p>
                 </div>
-                <span class="w-2 h-2 rounded-full bg-[#0A84FF]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#0A84FF]"></span>
               </div>
 
               <div id="pending-apas-list" class="space-y-2.5 flex-1 custom-scrollbar overflow-y-auto max-h-[400px] pr-1">
@@ -458,11 +477,11 @@
 
         </div>
 
-        <!-- VIEW 2: DISCIPLINE DETAILS (STREAMING NETFLIX STYLE) -->
+        <!-- VIEW 2: DISCIPLINE DETAILS (HIGH CONTRAST NETFLIX STYLE BANNER) -->
         <div id="view-discipline" class="max-w-6xl mx-auto space-y-8 hidden">
           
-          <!-- STREAMING CINEMATIC HERO BANNER -->
-          <div class="rounded-3xl p-8 shadow-2xl relative overflow-hidden border border-white/15 bg-gradient-to-r from-[#1C1C1E] via-[#121214] to-[#0A0A0C]">
+          <!-- STREAMING CINEMATIC HERO BANNER (FORCED PURE WHITE HIGH-CONTRAST TYPOGRAPHY) -->
+          <div class="hero-cinematic-banner rounded-3xl p-8 shadow-2xl relative overflow-hidden">
             <div class="relative z-10 space-y-4">
               <div class="flex items-center space-x-3">
                 <span id="disc-code-badge" class="px-3 py-1 rounded-md text-xs font-mono font-bold bg-[#0A84FF] text-white shadow-md">DISC01</span>
@@ -473,8 +492,8 @@
               <h2 id="disc-title" class="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-none">Diagnóstico Estratégico & Pensamento Crítico</h2>
               
               <!-- INTRODUÇÃO GERAL DO MÓDULO (SYNPOSIS ESTILO STREAMING) -->
-              <div class="p-4 bg-black/40 border border-white/10 rounded-2xl max-w-4xl backdrop-blur-md">
-                <p id="disc-objective" class="text-xs lg:text-sm text-[#F5F5F7] leading-relaxed">
+              <div class="p-4 bg-black/60 border border-white/15 rounded-2xl max-w-4xl backdrop-blur-md">
+                <p id="disc-objective" class="text-xs lg:text-sm text-[#F5F5F7] hero-description leading-relaxed">
                   Dominar a separação de sintoma vs. causa raiz, isolar fatos de hipóteses e investigar gargalos de negócio.
                 </p>
               </div>
@@ -484,17 +503,17 @@
                 <div class="flex items-center space-x-3">
                   <button id="disc-hero-start-btn" onclick="openLessonModal('DISC01', 'U1.1')" class="px-6 py-3 bg-[#30D158] hover:bg-[#28B84C] text-black font-extrabold text-xs rounded-xl shadow-lg transition flex items-center space-x-2 cursor-pointer">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    <span>▶ Iniciar Teoria</span>
+                    <span>Iniciar Teoria</span>
                   </button>
-                  <a href="#apas-list-container" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl transition border border-white/15">
-                    <span>⚡ Ver Exercícios Práticos (APAs)</span>
+                  <a href="#apas-list-container" class="px-5 py-3 bg-white/15 hover:bg-white/25 text-white font-semibold text-xs rounded-xl transition border border-white/20 flex items-center space-x-1.5">
+                    <span>Ver Exercícios Práticos (APAs)</span>
                   </a>
                 </div>
 
-                <div class="flex items-center space-x-3 bg-[#1C1C1E] px-4 py-2 rounded-2xl border border-white/10">
-                  <span class="text-xs text-[#8E8E93]">Progresso do Módulo:</span>
+                <div class="flex items-center space-x-3 bg-black/50 px-4 py-2 rounded-2xl border border-white/15">
+                  <span class="text-xs text-[#D1D1D6]">Progresso do Módulo:</span>
                   <span id="disc-header-progress" class="text-sm font-bold text-[#0A84FF] font-mono">0%</span>
-                  <div class="w-24 bg-[#2C2C2E] rounded-full h-1.5">
+                  <div class="w-24 bg-white/20 rounded-full h-1.5">
                     <div id="disc-header-bar" class="bg-[#0A84FF] h-1.5 rounded-full" style="width: 0%"></div>
                   </div>
                 </div>
@@ -502,15 +521,15 @@
             </div>
           </div>
 
-          <!-- FILEIRA 1: EPISÓDIOS & AULAS TEÓRICAS (ESTILO NETFLIX) -->
+          <!-- FILEIRA 1: EPISÓDIOS & AULAS TEÓRICAS -->
           <div class="apple-glass rounded-3xl p-6 shadow-md border border-[#30D158]/20">
             <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
               <div>
                 <span class="text-[10px] font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">FILEIRA DE EPISÓDIOS TEÓRICOS</span>
-                <h3 class="font-bold text-base text-white">📖 Aulas Didáticas em Texto Corrido (Markdown)</h3>
-                <p class="text-xs text-[#8E8E93]">Fundamentos teóricos da disciplina para leitura prévia.</p>
+                <h3 class="font-bold text-base theme-text-main">Aulas Didáticas em Texto Corrido (Markdown)</h3>
+                <p class="text-xs theme-text-muted">Fundamentos teóricos da disciplina para leitura prévia.</p>
               </div>
-              <span class="text-[10px] text-[#30D158] font-medium bg-[#30D158]/10 px-2.5 py-1 rounded-full border border-[#30D158]/20">Fundamentação 📖</span>
+              <span class="text-[10px] text-[#30D158] font-medium bg-[#30D158]/10 px-2.5 py-1 rounded-full border border-[#30D158]/20">Fundamentação Teórica</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="lessons-grid">
@@ -519,14 +538,14 @@
           </div>
 
           <!-- FILEIRA 2: TRILHA DE EXERCÍCIOS PRÁTICOS (APAS) -->
-          <div class="apple-glass rounded-3xl p-6 shadow-md">
+          <div class="apple-glass rounded-3xl p-6 shadow-md border">
             <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <div>
                 <span class="text-[10px] font-mono font-bold text-[#0A84FF] uppercase tracking-wider block mb-1">DESAFIOS PRÁTICOS C-LEVEL</span>
-                <h3 class="font-bold text-base text-white">⚡ Trilha de Exercícios Multimodais</h3>
-                <p class="text-xs text-[#8E8E93]">Exercícios com dados simulados, roleplays C-Level e pareceres executivos.</p>
+                <h3 class="font-bold text-base theme-text-main">Trilha de Exercícios Multimodais</h3>
+                <p class="text-xs theme-text-muted">Exercícios com dados simulados, roleplays C-Level e pareceres executivos.</p>
               </div>
-              <span id="apa-counter-badge" class="text-xs text-[#8E8E93] px-3 py-1 bg-[#2C2C2E] rounded-lg">0 / 5 Concluídos</span>
+              <span id="apa-counter-badge" class="text-xs theme-text-muted px-3 py-1 theme-bg-subtle rounded-lg">0 / 5 Concluídos</span>
             </div>
 
             <div class="space-y-3" id="apas-list-container">
@@ -535,16 +554,16 @@
           </div>
 
           <!-- FILEIRA 3: ACERVO MULTIMÍDIA COM CHECKLIST INTERATIVO -->
-          <div class="apple-glass rounded-3xl p-6 shadow-md border border-white/10">
+          <div class="apple-glass rounded-3xl p-6 shadow-md border">
             <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
               <div>
                 <span class="text-[10px] font-mono font-bold text-[#FF9F0A] uppercase tracking-wider block mb-1">ATIVIDADES EXTRAS & RECURSOS COMPLEMENTARES</span>
-                <h3 class="font-bold text-base text-white">✅ Checklist Interativo do Acervo Multimídia</h3>
-                <p class="text-xs text-[#8E8E93]">Marque os livros lidos, cursos feitos e portais consultados nesta disciplina.</p>
+                <h3 class="font-bold text-base theme-text-main">Checklist Interativo do Acervo Multimídia</h3>
+                <p class="text-xs theme-text-muted">Marque os livros lidos, cursos feitos e portais consultados nesta disciplina.</p>
               </div>
               
-              <div class="flex items-center space-x-2 bg-[#1C1C1E] px-3 py-1.5 rounded-xl border border-white/10">
-                <span class="text-xs text-[#8E8E93]">Checklist:</span>
+              <div class="flex items-center space-x-2 theme-bg-card px-3 py-1.5 rounded-xl border">
+                <span class="text-xs theme-text-muted">Checklist:</span>
                 <span id="checklist-progress-text" class="text-xs font-bold text-[#30D158] font-mono">0 / 0 Feitos</span>
               </div>
             </div>
@@ -558,12 +577,12 @@
 
         <!-- VIEW 3: TODAS AS DISCIPLINAS (MÓDULOS 1 AO 6) -->
         <div id="view-all-disciplines" class="max-w-6xl mx-auto space-y-8 hidden">
-          <div class="apple-glass rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
+          <div class="apple-glass rounded-3xl p-8 border shadow-2xl space-y-6">
             <div class="flex items-center justify-between border-b border-white/10 pb-6">
               <div>
                 <span class="text-xs font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">GRADE CURRICULAR COMPLETA</span>
-                <h2 class="text-2xl font-bold text-white">Todas as Disciplinas da Formação (Módulos 1 ao 6)</h2>
-                <p class="text-xs text-[#8E8E93] mt-1">Conheça a jornada de aprendizado para se tornar um Estrategista de Marca Sênior.</p>
+                <h2 class="text-2xl font-bold theme-text-main">Todas as Disciplinas da Formação (Módulos 1 ao 6)</h2>
+                <p class="text-xs theme-text-muted mt-1">Conheça a jornada de aprendizado para se tornar um Estrategista de Marca Sênior.</p>
               </div>
               <span class="px-3 py-1 bg-[#30D158]/10 text-[#30D158] border border-[#30D158]/30 rounded-xl text-xs font-mono font-bold">6 Módulos Disponíveis</span>
             </div>
@@ -576,32 +595,32 @@
 
         <!-- VIEW 4: BANCO DE EXERCÍCIOS MULTIMODAIS (15 FORMATOS) -->
         <div id="view-all-apas" class="max-w-6xl mx-auto space-y-8 hidden">
-          <div class="apple-glass rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
+          <div class="apple-glass rounded-3xl p-8 border shadow-2xl space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-6 gap-4">
               <div>
                 <span class="text-xs font-mono font-bold text-[#FF9F0A] uppercase tracking-wider block mb-1">BANCO DE ATIVIDADES MULTIMODAIS</span>
-                <h2 class="text-2xl font-bold text-white">Acervo Geral de Exercícios Práticos (15 Formatos)</h2>
-                <p class="text-xs text-[#8E8E93] mt-1">Filtre por formato de atividade para treinar habilidades executivas específicas.</p>
+                <h2 class="text-2xl font-bold theme-text-main">Acervo Geral de Exercícios Práticos (15 Formatos)</h2>
+                <p class="text-xs theme-text-muted mt-1">Filtre por formato de atividade para treinar habilidades executivas específicas.</p>
               </div>
 
               <div class="flex items-center space-x-2">
-                <select id="apa-filter-type" onchange="renderAllAPAsView()" class="bg-[#1C1C1E] border border-white/10 text-xs text-white rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#0A84FF]">
+                <select id="apa-filter-type" onchange="renderAllAPAsView()" class="theme-bg-card border text-xs theme-text-main rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#0A84FF]">
                   <option value="ALL">Todos os Formatos (15 Tipos)</option>
-                  <option value="ROLEPLAY_C_LEVEL">🎙️ Roleplay C-Level</option>
-                  <option value="METRICS_DASHBOARD">📊 Painel de Métricas</option>
-                  <option value="FIX_THE_BRIEF">⚠️ Caça-Erros de Briefing</option>
-                  <option value="PERCEPTUAL_MAPPING">🗺️ Mapeamento Perceptual</option>
-                  <option value="EXECUTIVE_MEMO">📝 Memo Executivo</option>
-                  <option value="FEYNMAN_TECHNIQUE">💬 Pílula Feynman</option>
-                  <option value="MANIFESTO_VALUE_PROP">📜 Redação de Manifesto</option>
-                  <option value="CROSS_INDUSTRY">🔄 Inovação Cruzada</option>
-                  <option value="DEVILS_ADVOCATE">⚔️ Advogado do Diabo</option>
-                  <option value="REVERSE_ENGINEERING">🔍 Engenharia Reversa</option>
-                  <option value="HARD_TRADE_OFFS">⚖️ Escolhas Difíceis</option>
-                  <option value="CREATIVE_BRIEF">📐 Briefing Criativo</option>
-                  <option value="MOM_TEST_INTERVIEW">🎙️ Entrevista Mom Test</option>
-                  <option value="EXTREME_CONSTRAINT">⚡ Restrição Extrema</option>
-                  <option value="CRISIS_PR_SIMULATION">🔥 Crise de PR</option>
+                  <option value="ROLEPLAY_C_LEVEL">Roleplay C-Level</option>
+                  <option value="METRICS_DASHBOARD">Painel de Métricas</option>
+                  <option value="FIX_THE_BRIEF">Caça-Erros de Briefing</option>
+                  <option value="PERCEPTUAL_MAPPING">Mapeamento Perceptual</option>
+                  <option value="EXECUTIVE_MEMO">Memo Executivo</option>
+                  <option value="FEYNMAN_TECHNIQUE">Pílula Feynman</option>
+                  <option value="MANIFESTO_VALUE_PROP">Redação de Manifesto</option>
+                  <option value="CROSS_INDUSTRY">Inovação Cruzada</option>
+                  <option value="DEVILS_ADVOCATE">Advogado do Diabo</option>
+                  <option value="REVERSE_ENGINEERING">Engenharia Reversa</option>
+                  <option value="HARD_TRADE_OFFS">Escolhas Difíceis</option>
+                  <option value="CREATIVE_BRIEF">Briefing Criativo</option>
+                  <option value="MOM_TEST_INTERVIEW">Entrevista Mom Test</option>
+                  <option value="EXTREME_CONSTRAINT">Restrição Extrema</option>
+                  <option value="CRISIS_PR_SIMULATION">Crise de PR</option>
                 </select>
               </div>
             </div>
@@ -614,16 +633,16 @@
 
         <!-- VIEW 5: ACERVO MULTIMÍDIA GLOBAL -->
         <div id="view-global-acervo" class="max-w-6xl mx-auto space-y-8 hidden">
-          <div class="apple-glass rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
+          <div class="apple-glass rounded-3xl p-8 border shadow-2xl space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-6 gap-4">
               <div>
                 <span class="text-xs font-mono font-bold text-[#BF5AF2] uppercase tracking-wider block mb-1">HUB ACADÊMICO INTEGRADO</span>
-                <h2 class="text-2xl font-bold text-white">Acervo Multimídia & Referências com Checklist</h2>
-                <p class="text-xs text-[#8E8E93] mt-1">Todos os livros, cursos recomendados, portais de inteligência e vídeos dos 6 módulos reunidos em um único acervo clicável.</p>
+                <h2 class="text-2xl font-bold theme-text-main">Acervo Multimídia & Referências com Checklist</h2>
+                <p class="text-xs theme-text-muted mt-1">Todos os livros, cursos recomendados, portais de inteligência e vídeos dos 6 módulos reunidos em um único acervo clicável.</p>
               </div>
 
               <div class="flex items-center space-x-2">
-                <input type="text" id="acervo-search-input" oninput="renderGlobalAcervoView()" placeholder="Buscar por título ou autor..." class="bg-[#1C1C1E] border border-white/10 text-xs text-white rounded-xl px-3.5 py-2.5 w-64 focus:outline-none focus:border-[#BF5AF2]">
+                <input type="text" id="acervo-search-input" oninput="renderGlobalAcervoView()" placeholder="Buscar por título ou autor..." class="theme-bg-card border text-xs theme-text-main rounded-xl px-3.5 py-2.5 w-64 focus:outline-none focus:border-[#BF5AF2]">
               </div>
             </div>
 
@@ -639,35 +658,35 @@
 
   <!-- MODAL DE LEITURA DA AULA TEÓRICA (LESSON READER SHEET) -->
   <div id="lesson-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
-    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-white/15">
+    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border">
       
       <!-- LESSON MODAL HEADER -->
-      <div class="p-6 border-b border-white/10 flex items-start justify-between bg-[#161618]/90">
+      <div class="p-6 border-b border-white/10 flex items-start justify-between">
         <div>
           <div class="flex items-center space-x-2 mb-1.5">
             <span id="modal-lesson-id" class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded">U1.1</span>
-            <span id="modal-lesson-time" class="text-[11px] font-medium px-2 py-0.5 bg-[#2C2C2E] text-[#8E8E93] rounded">⏱️ 8 min de leitura</span>
+            <span id="modal-lesson-time" class="text-[11px] font-medium px-2 py-0.5 theme-bg-subtle theme-text-muted rounded">8 min de leitura</span>
           </div>
-          <h3 id="modal-lesson-title" class="text-lg font-semibold text-white">Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce</h3>
+          <h3 id="modal-lesson-title" class="text-lg font-semibold theme-text-main">Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce</h3>
         </div>
-        <button onclick="closeLessonModal()" class="text-[#8E8E93] hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition cursor-pointer">
+        <button onclick="closeLessonModal()" class="theme-text-muted hover:theme-text-main p-1.5 rounded-lg hover:bg-white/10 transition cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
       <!-- LESSON MODAL BODY (MARKDOWN RENDERED) -->
-      <div class="p-8 overflow-y-auto custom-scrollbar flex-1 bg-[#0A0A0C] space-y-4" id="modal-lesson-content">
+      <div class="p-8 overflow-y-auto custom-scrollbar flex-1 theme-bg-card space-y-4" id="modal-lesson-content">
         <!-- Rendered dynamically by parseMarkdownToHTML -->
       </div>
 
       <!-- LESSON MODAL FOOTER -->
-      <div class="p-4 border-t border-white/10 bg-[#161618]/90 flex items-center justify-between">
-        <span class="text-xs text-[#8E8E93]" id="lesson-status-text">Fundamentação Teórica • Módulo de Estudo</span>
+      <div class="p-4 border-t border-white/10 flex items-center justify-between">
+        <span class="text-xs theme-text-muted" id="lesson-status-text">Fundamentação Teórica • Módulo de Estudo</span>
 
         <div class="flex items-center space-x-3">
-          <button onclick="closeLessonModal()" class="px-4 py-2 text-xs text-[#8E8E93] hover:text-white transition cursor-pointer">Fechar</button>
+          <button onclick="closeLessonModal()" class="px-4 py-2 text-xs theme-text-muted hover:theme-text-main transition cursor-pointer">Fechar</button>
           <button onclick="toggleLessonComplete()" id="btn-toggle-lesson" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer">
-            Marcar Unidade como Lida ✅
+            Marcar Unidade como Lida
           </button>
         </div>
       </div>
@@ -677,47 +696,47 @@
 
   <!-- MODAL RESOLUÇÃO DE APA MULTIMODAL (MAC OS SHEET STYLE) -->
   <div id="apa-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
-    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-white/15">
+    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border">
       
       <!-- MODAL HEADER -->
-      <div class="p-6 border-b border-white/10 flex items-start justify-between bg-[#161618]/80">
+      <div class="p-6 border-b border-white/10 flex items-start justify-between">
         <div>
           <div class="flex items-center space-x-2 mb-1.5" id="modal-apa-badges">
             <span id="modal-apa-code" class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-[#0A84FF]/20 text-[#0A84FF] border border-[#0A84FF]/30 rounded">APA 01</span>
             <span id="modal-apa-type-badge" class="text-[11px] font-medium px-2 py-0.5 bg-[#FF9F0A]/20 text-[#FF9F0A] border border-[#FF9F0A]/30 rounded">Roleplay C-Level</span>
-            <span id="modal-apa-level-badge" class="text-[11px] font-medium px-2 py-0.5 bg-[#2C2C2E] text-[#8E8E93] rounded">Sênior C-Level</span>
+            <span id="modal-apa-level-badge" class="text-[11px] font-medium px-2 py-0.5 theme-bg-subtle theme-text-muted rounded">Sênior C-Level</span>
           </div>
-          <h3 id="modal-apa-title" class="text-lg font-semibold text-white">Simulação C-Level: CEO Exigindo Rebranding em 30 Dias</h3>
+          <h3 id="modal-apa-title" class="text-lg font-semibold theme-text-main">Simulação C-Level: CEO Exigindo Rebranding em 30 Dias</h3>
         </div>
-        <button onclick="closeAPAModal()" class="text-[#8E8E93] hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition cursor-pointer">
+        <button onclick="closeAPAModal()" class="theme-text-muted hover:theme-text-main p-1.5 rounded-lg hover:bg-white/10 transition cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
       <!-- MODAL BODY CONTAINER -->
-      <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-6 bg-[#0A0A0C]">
+      <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-6 theme-bg-card">
         
         <!-- CLIENT PROFILE CARD -->
-        <div id="modal-client-card" class="p-4 bg-[#1C1C1E] border border-white/10 rounded-2xl flex items-center justify-between hidden">
+        <div id="modal-client-card" class="p-4 theme-bg-card border rounded-2xl flex items-center justify-between hidden">
           <div>
-            <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider block">Perfil do Cliente & Stakeholder</span>
-            <span id="modal-client-name" class="text-sm font-bold text-white block mt-0.5">Rede FitPrime Academias</span>
-            <span id="modal-client-details" class="text-xs text-[#8E8E93]">Segmento: Fitness | Stakeholder: CEO & Sócio</span>
+            <span class="text-[10px] font-semibold theme-text-muted uppercase tracking-wider block">Perfil do Cliente & Stakeholder</span>
+            <span id="modal-client-name" class="text-sm font-bold theme-text-main block mt-0.5">Rede FitPrime Academias</span>
+            <span id="modal-client-details" class="text-xs theme-text-muted">Segmento: Fitness | Stakeholder: CEO & Sócio</span>
           </div>
           <span class="px-3 py-1 bg-[#0A84FF]/10 text-[#0A84FF] text-xs font-medium rounded-xl border border-[#0A84FF]/30">C-Level Persona</span>
         </div>
 
         <!-- SCENARIO & CONTEXT -->
         <div class="space-y-2">
-          <h4 class="text-xs font-semibold text-[#8E8E93] uppercase tracking-wider">Cenário & Desafio do Negócio</h4>
-          <div id="modal-apa-scenario" class="p-4 bg-[#1C1C1E]/60 border border-white/10 rounded-2xl text-xs text-[#F5F5F7] leading-relaxed">
+          <h4 class="text-xs font-semibold theme-text-muted uppercase tracking-wider">Cenário & Desafio do Negócio</h4>
+          <div id="modal-apa-scenario" class="p-4 theme-bg-card border rounded-2xl text-xs theme-text-main leading-relaxed">
             <!-- Scenario text -->
           </div>
         </div>
 
         <!-- SIMULATED DATA PANEL (IF APPLICABLE) -->
         <div id="modal-data-panel" class="space-y-2 hidden">
-          <h4 class="text-xs font-semibold text-[#8E8E93] uppercase tracking-wider">Painel de Métricas do Negócio</h4>
+          <h4 class="text-xs font-semibold theme-text-muted uppercase tracking-wider">Painel de Métricas do Negócio</h4>
           <div id="data-panel-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <!-- Rendered dynamically -->
           </div>
@@ -729,7 +748,7 @@
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
             <span class="text-xs font-bold uppercase tracking-wider">Restrição de Defesa Executiva (Termos Bloqueados)</span>
           </div>
-          <p class="text-[11px] text-[#8E8E93]">Neste exercício C-Level, sua resposta <strong>não pode</strong> conter os seguintes termos visuais/estéticos:</p>
+          <p class="text-[11px] theme-text-muted">Neste exercício C-Level, sua resposta <strong>não pode</strong> conter os seguintes termos visuais/estéticos:</p>
           <div id="modal-forbidden-tags" class="flex flex-wrap gap-1.5 pt-1">
             <!-- Tags rendered -->
           </div>
@@ -737,8 +756,8 @@
 
         <!-- INSTRUCTIONS -->
         <div class="space-y-2">
-          <h4 class="text-xs font-semibold text-[#8E8E93] uppercase tracking-wider">Instruções de Execução</h4>
-          <ul id="modal-instructions-list" class="space-y-1.5 text-xs text-[#F5F5F7] list-disc list-inside bg-[#1C1C1E]/40 p-4 rounded-2xl border border-white/5">
+          <h4 class="text-xs font-semibold theme-text-muted uppercase tracking-wider">Instruções de Execução</h4>
+          <ul id="modal-instructions-list" class="space-y-1.5 text-xs theme-text-main list-disc list-inside theme-bg-card p-4 rounded-2xl border">
             <!-- Instructions rendered -->
           </ul>
         </div>
@@ -746,18 +765,18 @@
         <!-- STUDENT INPUT AREA -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <h4 class="text-xs font-semibold text-white uppercase tracking-wider">Sua Resposta Estratégica</h4>
+            <h4 class="text-xs font-semibold theme-text-main uppercase tracking-wider">Sua Resposta Estratégica</h4>
             <div class="flex items-center space-x-3">
-              <span id="char-counter" class="text-[10px] text-[#8E8E93] font-mono">0 caracteres</span>
+              <span id="char-counter" class="text-[10px] theme-text-muted font-mono">0 caracteres</span>
               <button onclick="insertTemplate()" class="text-[11px] text-[#0A84FF] hover:underline font-medium cursor-pointer">Inserir Estrutura Sugerida</button>
             </div>
           </div>
           
           <div class="relative">
-            <textarea id="apa-response-input" rows="7" placeholder="Desenvolva sua resposta em Markdown ou script de reunião..." class="w-full bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 text-xs text-white placeholder-[#636366] focus:outline-none focus:border-[#0A84FF] transition font-mono leading-relaxed"></textarea>
+            <textarea id="apa-response-input" rows="7" placeholder="Desenvolva sua resposta em Markdown ou script de reunião..." class="w-full theme-bg-card border rounded-2xl p-4 text-xs theme-text-main placeholder-[#8E8E93] focus:outline-none focus:border-[#0A84FF] transition font-mono leading-relaxed"></textarea>
             
             <div id="forbidden-live-warning" class="hidden absolute bottom-3 right-3 bg-red-500/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg backdrop-blur-md shadow-lg">
-              ⚠️ Alerta: Termo proibido detectado no texto!
+              Alerta: Termo proibido detectado no texto!
             </div>
           </div>
         </div>
@@ -765,17 +784,17 @@
         <!-- CRITERIA & MENTOR TIP -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="space-y-2">
-            <h4 class="text-xs font-semibold text-[#8E8E93] uppercase tracking-wider">Critérios de Avaliação do Mentor</h4>
+            <h4 class="text-xs font-semibold theme-text-muted uppercase tracking-wider">Critérios de Avaliação do Mentor</h4>
             <div id="modal-criteria-list" class="space-y-2 text-xs">
               <!-- Criteria rendered -->
             </div>
           </div>
 
           <div class="space-y-2">
-            <h4 class="text-xs font-semibold text-amber-400 uppercase tracking-wider flex items-center space-x-1">
-              <span>💡 Dica de Mentoria Executiva</span>
+            <h4 class="text-xs font-semibold text-amber-500 uppercase tracking-wider flex items-center space-x-1">
+              <span>Dica de Mentoria Executiva</span>
             </h4>
-            <div class="p-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl text-xs text-amber-200/90 leading-relaxed italic" id="modal-mentor-tip-text">
+            <div class="p-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl text-xs theme-text-main leading-relaxed italic" id="modal-mentor-tip-text">
               <!-- Mentor tip -->
             </div>
           </div>
@@ -785,25 +804,25 @@
         <div id="modal-feedback-box" class="p-5 bg-[#30D158]/10 border border-[#30D158]/30 rounded-2xl space-y-2 hidden">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold text-[#30D158] flex items-center space-x-1.5">
-              <span>✅ Exercício Avaliado pelo Mentor</span>
+              <span>Exercício Avaliado pelo Mentor</span>
             </span>
             <span id="feedback-grade-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#30D158] text-black">Nota A (9.5)</span>
           </div>
-          <p id="feedback-text" class="text-xs text-[#F5F5F7] leading-relaxed">Excelente raciocínio executivo.</p>
+          <p id="feedback-text" class="text-xs theme-text-main leading-relaxed">Excelente raciocínio executivo.</p>
           <div class="pt-2 border-t border-[#30D158]/20">
-            <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider block">Gabarito de Referência Sênior:</span>
-            <p id="feedback-gabarito-text" class="text-xs text-[#8E8E93] italic mt-0.5"></p>
+            <span class="text-[10px] font-semibold theme-text-muted uppercase tracking-wider block">Gabarito de Referência Sênior:</span>
+            <p id="feedback-gabarito-text" class="text-xs theme-text-muted italic mt-0.5"></p>
           </div>
         </div>
 
       </div>
 
       <!-- MODAL FOOTER -->
-      <div class="p-4 border-t border-white/10 bg-[#161618]/80 flex items-center justify-between">
-        <span class="text-xs text-[#8E8E93]">Submissão sujeita a validação de jargões e consistência de métricas.</span>
+      <div class="p-4 border-t border-white/10 flex items-center justify-between">
+        <span class="text-xs theme-text-muted">Submissão sujeita a validação de jargões e consistência de métricas.</span>
 
         <div class="flex items-center space-x-3">
-          <button onclick="closeAPAModal()" class="px-4 py-2 text-xs text-[#8E8E93] hover:text-white transition cursor-pointer">Cancelar</button>
+          <button onclick="closeAPAModal()" class="px-4 py-2 text-xs theme-text-muted hover:theme-text-main transition cursor-pointer">Cancelar</button>
           <button onclick="submitAPAResolution()" id="btn-submit-apa" class="px-5 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer">
             Submeter Exercício
           </button>
@@ -815,19 +834,19 @@
 
   <!-- TYPESCRIPT SPECIFICATION CODE MODAL -->
   <div id="code-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
-    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-white/15">
-      <div class="p-6 border-b border-white/10 flex items-center justify-between bg-[#161618]/80">
+    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border">
+      <div class="p-6 border-b border-white/10 flex items-center justify-between">
         <div>
           <span class="text-[10px] font-mono text-[#BF5AF2] uppercase tracking-wider block">ESPECIFICAÇÃO DE DADOS</span>
-          <h3 class="text-base font-bold text-white">TypeScript Engine & Data Schema (`activitiesEngine.ts`)</h3>
+          <h3 class="text-base font-bold theme-text-main">TypeScript Engine & Data Schema (`activitiesEngine.ts`)</h3>
         </div>
-        <button onclick="closeCodeModal()" class="text-[#8E8E93] hover:text-white p-1 rounded-md hover:bg-white/10 transition cursor-pointer">
+        <button onclick="closeCodeModal()" class="theme-text-muted hover:theme-text-main p-1 rounded-md hover:bg-white/10 transition cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
       <div class="p-6 overflow-y-auto custom-scrollbar flex-1 bg-[#0A0A0C]">
-        <pre class="text-[11px] font-mono text-emerald-400 bg-black/60 p-5 rounded-2xl border border-white/10 leading-relaxed overflow-x-auto selection:bg-[#0A84FF]" id="ts-code-block">
+        <pre class="text-[11px] font-mono text-emerald-400 bg-black/80 p-5 rounded-2xl border border-white/10 leading-relaxed overflow-x-auto selection:bg-[#0A84FF]" id="ts-code-block">
 export type ActivityType =
   | 'REVERSE_ENGINEERING'      // Engenharia Reversa de Campanha/Marca
   | 'FIX_THE_BRIEF'            // Caça-Erros e Reescrita de Briefing
@@ -881,10 +900,10 @@ export interface Activity {
         </pre>
       </div>
 
-      <div class="p-4 border-t border-white/10 bg-[#161618]/80 flex items-center justify-between">
-        <span class="text-xs text-[#8E8E93]">Pronto para integração com NestJS, Next.js ou backend TypeScript.</span>
+      <div class="p-4 border-t border-white/10 flex items-center justify-between">
+        <span class="text-xs theme-text-muted">Pronto para integração com NestJS, Next.js ou backend TypeScript.</span>
         <button onclick="copyTSCode()" class="px-4 py-2 bg-[#BF5AF2] hover:bg-[#A242D6] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer">
-          Copiar Código TypeScript 📋
+          Copiar Código TypeScript
         </button>
       </div>
     </div>
@@ -906,18 +925,21 @@ export interface Activity {
     }
 
     function applyTheme(theme) {
-      const btnIcon = document.getElementById('theme-toggle-icon');
       const btnText = document.getElementById('theme-toggle-text');
+      const sunIcon = document.getElementById('theme-icon-sun');
+      const moonIcon = document.getElementById('theme-icon-moon');
 
       if (theme === 'light') {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
-        if (btnIcon) btnIcon.innerText = '🌙';
+        if (sunIcon) sunIcon.classList.add('hidden');
+        if (moonIcon) moonIcon.classList.remove('hidden');
         if (btnText) btnText.innerText = 'Modo Escuro';
       } else {
         document.documentElement.classList.remove('light');
         document.documentElement.classList.add('dark');
-        if (btnIcon) btnIcon.innerText = '☀️';
+        if (sunIcon) sunIcon.classList.remove('hidden');
+        if (moonIcon) moonIcon.classList.add('hidden');
         if (btnText) btnText.innerText = 'Modo Claro';
       }
     }
@@ -992,7 +1014,7 @@ export interface Activity {
       switchView(userState.activeView, userState.activeDisciplineId);
     }
 
-    // EXPANDED MULTIMODAL CURRICULUM DATABASE WITH ALL 6 DISCIPLINES
+    // EXPANDED MULTIMODAL CURRICULUM DATABASE WITH ALL 6 DISCIPLINES (ZERO EMOJIS)
     const curriculumData = [
       {
         id: "DISC01",
@@ -1003,13 +1025,13 @@ export interface Activity {
             unitId: 'U1.1',
             unitTitle: 'Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce',
             readingTimeMinutes: 8,
-            lessonTextMarkdown: `### 🏛️ O Kernel do Diagnóstico Estratégico\n\nA maioria dos profissionais de criação opera sob uma lógica reativa: diante de uma queixa comercial do cliente, saltam imediatamente para uma proposta visual ou de comunicação. Essa tendência de pular etapas gera o seguinte atalho lógico:\n\n**Problema de Vendas → Mudar Posicionamento → Criar Marca Premium → Nova Identidade Visual**\n\nO papel de um estrategista sênior é quebrar essa ansiedade por respostas imediatas e segurar a solução até entender profundamente a causa raiz do problema.\n\n---\n\n### 1. O Núcleo da Estratégia (*The Kernel*)\nDe acordo com Richard Rumelt (*Good Strategy Bad Strategy*), uma estratégia real não se define por metas financeiras ou desejos de crescimento. Toda boa estratégia possui uma estrutura interna coesa denominada **Kernel** (o Núcleo), composta por três elementos fundamentais:\n\n1. **O Diagnóstico:** Define a natureza exata do desafio. Ele simplifica a complexidade do cenário ao identificar quais aspectos da realidade são realmente críticos. Responde à pergunta: *"O que realmente está acontecendo aqui?"*.\n2. **A Política Guiada (*Guiding Policy*):** É a abordagem geral escolhida para superar os obstáculos identificados no diagnóstico. Ela direciona a energia e os recursos sem detalhar cada passo operacional.\n3. **As Ações Coerentes (*Coherent Actions*):** Conjunto de passos coordenados entre si para executar a política guiada. A força da estratégia reside na coerência dessas ações direcionadas ao mesmo objetivo.\n\n---\n\n### 2. Os Quatro Sinais da Má Estratégia\nRumelt alerta que a "má estratégia" se manifesta por meio de quatro características centrais:\n\n* **Fluff (Linguagem Oca):** Uso de jargões complicados que criam a ilusão de pensamento de alto nível, mas não possuem substância.\n* **Incapacidade de Enfrentar o Desafio:** Omitir ou falhar em definir o verdadeiro problema da empresa.\n* **Confundir Metas com Estratégia:** Tratar desejos de crescimento (ex: *"crescer 30% no ano"*) como se fossem o plano para alcançar esse resultado.\n* **Objetivos Estratégicos Ruins:** Traçar metas impraticáveis ou contraditórias por incapacidade de fazer escolhas duras (*trade-offs*).\n\n---\n\n### 3. O Separador de Raciocínio na Prática\nPara atuar no nível sênior, o profissional precisa categorizar as informações do cliente em seis camadas:\n\n* **Fato:** O dado objetivo e comprovado (ex: *"A receita caiu 30% nos últimos dois trimestres"*).\n* **Hipótese:** Uma explicação plausível que precisa ser testada (ex: *"A queda pode estar ligada ao cancelamento de clientes antigos"*).\n* **Investigação:** As perguntas e pesquisas necessárias para auditar a hipótese.\n* **Insight:** A descoberta profunda sobre o comportamento ou operação após a investigação.\n* **Estratégia:** A decisão de onde alocar recursos e qual oportunidade perseguir.\n* **Expressão:** A tradução em identidade visual, linguagem, conteúdo e experiência.`
+            lessonTextMarkdown: `### O Kernel do Diagnóstico Estratégico\n\nA maioria dos profissionais de criação opera sob uma lógica reativa: diante de uma queixa comercial do cliente, saltam imediatamente para uma proposta visual ou de comunicação. Essa tendência de pular etapas gera o seguinte atalho lógico:\n\n**Problema de Vendas → Mudar Posicionamento → Criar Marca Premium → Nova Identidade Visual**\n\nO papel de um estrategista sênior é quebrar essa ansiedade por respostas imediatas e segurar a solução até entender profundamente a causa raiz do problema.\n\n---\n\n### 1. O Núcleo da Estratégia (The Kernel)\nDe acordo com Richard Rumelt (Good Strategy Bad Strategy), uma estratégia real não se define por metas financeiras ou desejos de crescimento. Toda boa estratégia possui uma estrutura interna coesa denominada **Kernel** (o Núcleo), composta por três elementos fundamentais:\n\n1. **O Diagnóstico:** Define a natureza exata do desafio. Ele simplifica a complexidade do cenário ao identificar quais aspectos da realidade são realmente críticos. Responde à pergunta: *"O que realmente está acontecendo aqui?"*.\n2. **A Política Guiada (Guiding Policy):** É a abordagem geral escolhida para superar os obstáculos identificados no diagnóstico. Ela direciona a energia e os recursos sem detalhar cada passo operacional.\n3. **As Ações Coerentes (Coherent Actions):** Conjunto de passos coordenados entre si para executar a política guiada. A força da estratégia reside na coerência dessas ações direcionadas ao mesmo objetivo.\n\n---\n\n### 2. Os Quatro Sinais da Má Estratégia\nRumelt alerta que a "má estratégia" se manifesta por meio de quatro características centrais:\n\n* **Fluff (Linguagem Oca):** Uso de jargões complicados que criam a ilusão de pensamento de alto nível, mas não possuem substância.\n* **Incapacidade de Enfrentar o Desafio:** Omitir ou falhar em definir o verdadeiro problema da empresa.\n* **Confundir Metas com Estratégia:** Tratar desejos de crescimento (ex: *"crescer 30% no ano"*) como se fossem o plano para alcançar esse resultado.\n* **Objetivos Estratégicos Ruins:** Traçar metas impraticáveis ou contraditórias por incapacidade de fazer escolhas duras (*trade-offs*).\n\n---\n\n### 3. O Separador de Raciocínio na Prática\nPara atuar no nível sênior, o profissional precisa categorizar as informações do cliente em seis camadas:\n\n* **Fato:** O dado objetivo e comprovado (ex: *"A receita caiu 30% nos últimos dois trimestres"*).\n* **Hipótese:** Uma explicação plausível que precisa ser testada (ex: *"A queda pode estar ligada ao cancelamento de clientes antigos"*).\n* **Investigação:** As perguntas e pesquisas necessárias para auditar a hipótese.\n* **Insight:** A descoberta profunda sobre o comportamento ou operação após a investigação.\n* **Estratégia:** A decisão de onde alocar recursos e qual oportunidade perseguir.\n* **Expressão:** A tradução em identidade visual, linguagem, conteúdo e experiência.`
           },
           {
             unitId: 'U1.2',
             unitTitle: 'Unidade 2: Análise de Funil e Mapeamento de Causas Conflitantes',
             readingTimeMinutes: 10,
-            lessonTextMarkdown: `### 📊 Diagnóstico de Funil de Vendas e Comportamento\n\nQuando investigamos um negócio, a opinião do fundador ou cliente frequentemente contém vícios de julgamento. Para realizar um diagnóstico preciso, é preciso analisar os dados de comportamento ao longo do funil de vendas.\n\n---\n\n### 1. A Batalha pela Mente e a Percepção de Valor\nComo destacam Al Ries e Jack Trout (*Posicionamento*), o marketing moderno não é uma batalha de produtos ou atributos objetivos, mas uma **batalha de percepções na mente do consumidor**.\n\nSe um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 20% no faturamento, o problema não está na atração (topo de funil), mas na **qualidade do tráfego** ou na **falta de clareza do valor percebido** no meio/fim do funil.\n\n---\n\n### 2. Sintoma vs. Causa Raiz no E-commerce\n* **Sintoma:** Queda na taxa de conversão de vendas.\n* **Hipótese Falsa do Cliente:** *"Nosso preço está alto, precisamos dar desconto ou mudar a marca."*\n* **Causa Raiz Real (Exemplo):** Anúncios focados apenas em estética atraem visitantes curiosos sem intenção de compra. Quando chegam à página do produto, não encontram a explicação clara dos benefícios do produto.\n\n---\n\n### 3. As 3 Métricas Críticas de Investigação\n1. **Taxa de Conversão (CR):** Avalia a eficiência da página de destino em transformar visitantes em compradores.\n2. **Taxa de Abandono de Checkout:** Revela se o obstáculo está no momento do pagamento, frete ou decisão final.\n3. **Custo de Aquisição (CAC) vs. LTV (Lifetime Value):** Indica se o negócio é sustentável a longo prazo ou se está queimando caixa para atrair clientes que não retornam.`
+            lessonTextMarkdown: `### Diagnóstico de Funil de Vendas e Comportamento\n\nQuando investigamos um negócio, a opinião do fundador ou cliente frequentemente contém vícios de julgamento. Para realizar um diagnóstico preciso, é preciso analisar os dados de comportamento ao longo do funil de vendas.\n\n---\n\n### 1. A Batalha pela Mente e a Percepção de Valor\nComo destacam Al Ries e Jack Trout (Posicionamento), o marketing moderno não é uma batalha de produtos ou atributos objetivos, mas uma **batalha de percepções na mente do consumidor**.\n\nSe um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 20% no faturamento, o problema não está na atração (topo de funil), mas na **qualidade do tráfego** ou na **falta de clareza do valor percebido** no meio/fim do funil.\n\n---\n\n### 2. Sintoma vs. Causa Raiz no E-commerce\n* **Sintoma:** Queda na taxa de conversão de vendas.\n* **Hipótese Falsa do Cliente:** *"Nosso preço está alto, precisamos dar desconto ou mudar a marca."*\n* **Causa Raiz Real (Exemplo):** Anúncios focados apenas em estética atraem visitantes curiosos sem intenção de compra. Quando chegam à página do produto, não encontram a explicação clara dos benefícios do produto.\n\n---\n\n### 3. As 3 Métricas Críticas de Investigação\n1. **Taxa de Conversão (CR):** Avalia a eficiência da página de destino em transformar visitantes em compradores.\n2. **Taxa de Abandono de Checkout:** Revela se o obstáculo está no momento do pagamento, frete ou decisão final.\n3. **Custo de Aquisição (CAC) vs. LTV (Lifetime Value):** Indica se o negócio é sustentável a longo prazo ou se está queimando caixa para atrair clientes que não retornam.`
           }
         ],
         multimedia: {
@@ -1037,10 +1059,9 @@ export interface Activity {
             type: 'EXECUTIVE_MEMO',
             level: 'Intermediário',
             estimatedMinutes: 20,
-            badgeLabel: '📝 Memo Executivo',
-            icon: 'FileText',
+            badgeLabel: 'Memo Executivo',
             clientProfile: { companyName: 'Clínica OdontoLife', segment: 'Saúde / Odontologia', stakeholderRole: 'Fundador' },
-            scenarioText: 'O fundador relata queda de 30% nas vendas nos últimos 2 trimestres e quer fazer um rebranding urgente porque acha a marca "antiquada".',
+            scenarioText: 'O fundador relata queda de 30% nas vendas nos últimos 2 trimestres e quer fazer um rebranding urgente porque acha a marca antiquada.',
             instructions: ['Separe os fatos comprovados das meras opiniões do cliente.', 'Identifique por que o rebranding não deve ser a solução imediata.', 'Apresente 3 perguntas de investigação comercial.'],
             placeholderText: '### 1. Fatos vs. Interpretações...\n### 2. Diagnóstico de Risco...\n### 3. Perguntas de Investigação...',
             evaluationCriteria: [{ id: 'c1', label: 'Isolamento de Fatos', description: 'Separou receita (-30%) de opinião visual.' }, { id: 'c2', label: 'Visão Comercial', description: 'Evitou soluções de design precoces.' }],
@@ -1054,8 +1075,7 @@ export interface Activity {
             type: 'METRICS_DASHBOARD',
             level: 'Intermediário',
             estimatedMinutes: 25,
-            badgeLabel: '📊 Análise de Painel',
-            icon: 'BarChart2',
+            badgeLabel: 'Painel de Métricas',
             dataPanel: [
               { label: 'Tráfego Mensal', value: '140.000', change: '+40%', status: 'success' },
               { label: 'Faturamento', value: 'R$ 180.000', change: '-20%', status: 'danger' },
@@ -1076,8 +1096,7 @@ export interface Activity {
             type: 'ROLEPLAY_C_LEVEL',
             level: 'Sênior C-Level',
             estimatedMinutes: 30,
-            badgeLabel: '🎙️ Roleplay C-Level',
-            icon: 'Mic',
+            badgeLabel: 'Roleplay C-Level',
             forbiddenTerms: ['paleta de cores', 'logo', 'feed', 'tipografia', 'aesthetic', 'instagramável'],
             clientProfile: { companyName: 'Rede FitPrime Academias', segment: 'Fitness Premium', stakeholderRole: 'CEO & Sócio Majoritário' },
             scenarioText: '"Nossa marca está ultrapassada! As redes nacionais estão com neon e luzes modernas. Quero um rebranding completo em 30 dias para estancar a perda de alunos."',
@@ -1094,8 +1113,7 @@ export interface Activity {
             type: 'FIX_THE_BRIEF',
             level: 'Avançado',
             estimatedMinutes: 20,
-            badgeLabel: '⚠️ Caça-Erros',
-            icon: 'AlertTriangle',
+            badgeLabel: 'Caça-Erros',
             scenarioText: 'Briefing recebido do cliente: "Queremos ser o Uber dos pet shops. Nosso público é todo mundo que ama animais. Precisamos de um posicionamento jovem, moderno, barato e de luxo ao mesmo tempo."',
             instructions: ['Identifique os 4 erros graves e contradições deste briefing.', 'Reescreva o objetivo estratégico de forma coerente e focada.'],
             placeholderText: '### Erros Identificados...\n### Briefing Reestruturado...',
@@ -1110,8 +1128,7 @@ export interface Activity {
             type: 'FEYNMAN_TECHNIQUE',
             level: 'Iniciante',
             estimatedMinutes: 15,
-            badgeLabel: '💬 Pílula para Leigos',
-            icon: 'Smile',
+            badgeLabel: 'Pílula Feynman',
             forbiddenTerms: ['brand equity', 'funil', 'conversion rate', 'touchpoints', 'kpi'],
             scenarioText: 'Um dono de uma padaria local quer entender por que você insiste em investigar o atendimento da recepção antes de mudar a placa da fachada da loja.',
             instructions: ['Explique a diferença entre "Tratar o Sintoma" e "Resolver a Causa Raiz".', 'Use uma analogia do cotidiano (ex: medicina ou mecânica).', 'Não utilize nenhum jargão de marketing.'],
@@ -1131,13 +1148,13 @@ export interface Activity {
             unitId: 'U2.1',
             unitTitle: 'Unidade 1: Leis Fundamentais do Posicionamento e Construção de Categoria',
             readingTimeMinutes: 9,
-            lessonTextMarkdown: `### 🧠 Leis do Posicionamento (Al Ries & Jack Trout)\n\nPosicionamento não é o que você faz com um produto. Posicionamento é o que você faz com a mente do potencial comprador.\n\n---\n\n### 1. A Lei do Primeiro (*The Law of Leadership*)\nÉ preferível ser o primeiro do que ser o melhor. A marca líder na mente de uma categoria geralmente retém mais da metade da fatia de mercado.\n\n### 2. A Lei da Categoria (*The Law of Category*)\nSe você não puder ser o primeiro em uma categoria, crie uma nova categoria em que você possa ser o primeiro.\n\n### 3. A Lei da Mente (*The Law of the Mind*)\nÉ melhor ser o primeiro na mente do que ser o primeiro na loja. A percepção do consumidor sobre se a marca é referência define o comportamento de escolha.`
+            lessonTextMarkdown: `### Leis do Posicionamento (Al Ries & Jack Trout)\n\nPosicionamento não é o que você faz com um produto. Posicionamento é o que você faz com a mente do potencial comprador.\n\n---\n\n### 1. A Lei do Primeiro (The Law of Leadership)\nÉ preferível ser o primeiro do que ser o melhor. A marca líder na mente de uma categoria geralmente retém mais da metade da fatia de mercado.\n\n### 2. A Lei da Categoria (The Law of Category)\nSe você não puder ser o primeiro em uma categoria, crie uma nova categoria em que você possa ser o primeiro.\n\n### 3. A Lei da Mente (The Law of the Mind)\nÉ melhor ser o primeiro na mente do que ser o primeiro na loja. A percepção do consumidor sobre se a marca é referência define o comportamento de escolha.`
           },
           {
             unitId: 'U2.2',
             unitTitle: 'Unidade 2: O Brand Gap e a Fórmula do ZAG (Marty Neumeier)',
             readingTimeMinutes: 11,
-            lessonTextMarkdown: `### ⚡ A Fórmula do ZAG (Marty Neumeier)\n\nQuando todo mundo faz ZIG, faça ZAG.\n\n---\n\n### 1. O Teste de Diferenciação Radical\nPara testar se uma proposta de valor é verdadeiramente diferenciada, submeta a marca à seguinte declaração de uma frase:\n\n> *"Nossa marca é a ÚNICA [Substantivo de Categoria] que [Diferencial Único] para [Público-Alvo Específico] em [Geografia/Segmento] durante [Tensão do Mercado]."*`
+            lessonTextMarkdown: `### A Fórmula do ZAG (Marty Neumeier)\n\nQuando todo mundo faz ZIG, faça ZAG.\n\n---\n\n### 1. O Teste de Diferenciação Radical\nPara testar se uma proposta de valor é verdadeiramente diferenciada, submeta a marca à seguinte declaração de uma frase:\n\n> *"Nossa marca é a ÚNICA [Substantivo de Categoria] que [Diferencial Único] para [Público-Alvo Específico] em [Geografia/Segmento] durante [Tensão do Mercado]."*`
           }
         ],
         multimedia: {
@@ -1166,8 +1183,7 @@ export interface Activity {
             type: 'PERCEPTUAL_MAPPING',
             level: 'Intermediário',
             estimatedMinutes: 25,
-            badgeLabel: '🗺️ Mapeamento Perceptual',
-            icon: 'Compass',
+            badgeLabel: 'Mapeamento Perceptual',
             scenarioText: 'O mercado de fintechs B2B possui bancos tradicionais (alta burocracia, alto custo) e contas digitais simples (baixo custo, zero atendimento humano).',
             instructions: ['Defina os eixos X e Y da matriz de posicionamento.', 'Identifique o quadrante desatendido no mercado.', 'Escreva a proposta de valor em 1 frase.'],
             placeholderText: '### Eixo X & Y...\n### Quadrante de Oportunidade...\n### Proposta de Valor...',
@@ -1182,10 +1198,9 @@ export interface Activity {
             type: 'MANIFESTO_VALUE_PROP',
             level: 'Avançado',
             estimatedMinutes: 20,
-            badgeLabel: '📜 Redação de Manifesto',
-            icon: 'Feather',
+            badgeLabel: 'Redação de Manifesto',
             scenarioText: 'Um software de gestão para escritórios de advocacia deseja se posicionar não como "sistema administrativo", mas como "libertador de tempo estratégico para advogados".',
-            instructions: ['Escreva um manifesto de 3 parágrafos em tom aspiracional.', 'Elabore a declaração de "Único" de Marty Neumeier.'],
+            instructions: ['Escreva um manifesto de 3 parágrafos em tom aspiracional.', 'Elabore a declaração de Único de Marty Neumeier.'],
             placeholderText: '### Manifesto de Marca...\n### Declaração de Diferenciação...',
             evaluationCriteria: [{ id: 'c1', label: 'Poder de Invocação', description: 'Criou um manifesto emocionante focado no problema do cliente.' }],
             mentorTip: 'Manifestos não vendem recursos do software, vendem a transformação na vida do usuário.',
@@ -1198,8 +1213,7 @@ export interface Activity {
             type: 'CROSS_INDUSTRY',
             level: 'Avançado',
             estimatedMinutes: 20,
-            badgeLabel: '🔄 Inovação Cruzada',
-            icon: 'RefreshCw',
+            badgeLabel: 'Inovação Cruzada',
             scenarioText: 'Uma rede de clínicas dermatológicas quer eliminar a sensação fria de "sala de espera hospitalar" inspirando-se no hospitality de hotéis 5 estrelas (ex: Ritz-Carlton).',
             instructions: ['Selecione 3 rituais do Ritz-Carlton ou Four Seasons.', 'Adapte esses 3 rituais para a jornada de atendimento do paciente.'],
             placeholderText: '### 1. Ritual de Boas-Vindas...\n### 2. Personalização do Espaço...\n### 3. Acompanhamento Pós-Consulta...',
@@ -1214,8 +1228,7 @@ export interface Activity {
             type: 'DEVILS_ADVOCATE',
             level: 'Sênior C-Level',
             estimatedMinutes: 30,
-            badgeLabel: '⚔️ Defender 2 Lados',
-            icon: 'ShieldAlert',
+            badgeLabel: 'Defender 2 Lados',
             scenarioText: 'Uma agência de branding tem receita estagnada em R$ 500k/ano. O fundador quer decidir se deve focar 100% em Saúde (Niche) ou continuar atendendo todos os segmentos (Generalista).',
             instructions: ['Escreva a defesa ferrenha da opção A (Nichar 100% em Saúde).', 'Escreva a defesa ferrenha da opção B (Permanecer Generalista).', 'Conclua com seu parecer final fundamentado.'],
             placeholderText: '### Defesa Lado A (Especialização em Saúde)...\n### Defesa Lado B (Manutenção de Portfólio Amplo)...\n### Veredito Estratégico...',
@@ -1234,7 +1247,7 @@ export interface Activity {
             unitId: 'U3.1',
             unitTitle: 'Unidade 1: Modelos Clássicos de Arquitetura de Marca (David Aaker)',
             readingTimeMinutes: 10,
-            lessonTextMarkdown: `### 🏢 Modelos de Arquitetura de Marca (David Aaker)\n\nArquitetura de marca é a estrutura de relacionamento entre as marcas de uma corporação.\n\n---\n\n### 1. Branded House (Monolítica)\nUma única marca forte cobre todos os produtos (ex: Virgin, Google, FedEx). Vantagem: eficiência em custos de marketing.\n\n### 2. House of Brands (Independente)\nMarcas autônomas operando para públicos distintos (ex: Unilever, Procter & Gamble). Vantagem: isolamento de crise de reputação.\n\n### 3. Endorsed Brands & Sub-brands\nCombinações onde a marca-mãe confere credibilidade à nova submarca (ex: Courtyard by Marriott, Apple iPhone).`
+            lessonTextMarkdown: `### Modelos de Arquitetura de Marca (David Aaker)\n\nArquitetura de marca é a estrutura de relacionamento entre as marcas de uma corporação.\n\n---\n\n### 1. Branded House (Monolítica)\nUma única marca forte cobre todos os produtos (ex: Virgin, Google, FedEx). Vantagem: eficiência em custos de marketing.\n\n### 2. House of Brands (Independente)\nMarcas autônomas operando para públicos distintos (ex: Unilever, Procter & Gamble). Vantagem: isolamento de crise de reputação.\n\n### 3. Endorsed Brands & Sub-brands\nCombinações onde a marca-mãe confere credibilidade à nova submarca (ex: Courtyard by Marriott, Apple iPhone).`
           }
         ],
         multimedia: {
@@ -1259,14 +1272,13 @@ export interface Activity {
             type: 'REVERSE_ENGINEERING',
             level: 'Intermediário',
             estimatedMinutes: 20,
-            badgeLabel: '🔍 Engenharia Reversa',
-            icon: 'Search',
+            badgeLabel: 'Engenharia Reversa',
             scenarioText: 'Desconstrua a estratégia por trás da escolha da Apple em manter uma Branded House monolítica contra a escolha da Unilever em gerir uma House of Brands.',
             instructions: ['Compare o custo de lançamento de um novo produto para a Apple vs Unilever.', 'Identifique o risco de reputação caso 1 produto falhe gravemente.'],
             placeholderText: '### Análise de Eficiência de Mídia...\n### Gestão de Risco de Imagem...',
             evaluationCriteria: [{ id: 'c1', label: 'Domínio dos Modelos', description: 'Explicou corretamente a diferença entre os modelos de Aaker.' }],
             mentorTip: 'Lembre-se que a Apple vende um ecossistema integrado; a Unilever vende bens de consumo de giro rápido.',
-            sampleGabarito: 'A Apple economiza em construção de autoridade pois o sufixo "Mac" ou "iPad" herda a confiança da marca-mãe. A Unilever aceita o custo maior para atingir gôndolas concorrentes.'
+            sampleGabarito: 'A Apple economiza em construção de autoridade pois o sufixo Mac ou iPad herda a confiança da marca-mãe. A Unilever aceita o custo maior para atingir gôndolas concorrentes.'
           },
           {
             id: 'APA-3.2',
@@ -1275,8 +1287,7 @@ export interface Activity {
             type: 'HARD_TRADE_OFFS',
             level: 'Sênior C-Level',
             estimatedMinutes: 25,
-            badgeLabel: '⚖️ Escolha Difícil',
-            icon: 'Scissors',
+            badgeLabel: 'Escolha Difícil',
             scenarioText: 'Um grupo alimentício possui 3 linhas de biscoitos: Linha Tradicional (margem 5%, receita alta), Linha Fit (margem 25%, receita baixa) e Linha Gourmet (prejuízo há 2 anos). O orçamento de marketing foi cortado em 50%.',
             instructions: ['Escolha qual linha descontinuar imediatamente e qual manter.', 'Justifique a decisão com base em margem de contribuição e equity.'],
             placeholderText: '### Linha Descontinuada...\n### Reorganização do Caixa...',
@@ -1291,8 +1302,7 @@ export interface Activity {
             type: 'CREATIVE_BRIEF',
             level: 'Avançado',
             estimatedMinutes: 25,
-            badgeLabel: '📐 Briefing Criativo',
-            icon: 'Compass',
+            badgeLabel: 'Briefing Criativo',
             scenarioText: 'Uma marca popular de produtos de limpeza quer lançar uma linha ecológica premium para a classe A/B sem contaminar sua percepção de marca de preço baixo.',
             instructions: ['Defina a estratégia de naming e endosso da marca-mãe.', 'Escreva o briefing de criação para a equipe de design.'],
             placeholderText: '### Naming & Endosso...\n### Diretrizes do Briefing Criativo...',
@@ -1311,7 +1321,7 @@ export interface Activity {
             unitId: 'U4.1',
             unitTitle: 'Unidade 1: O Método The Mom Test para Entrevistas sem Viés (Rob Fitzpatrick)',
             readingTimeMinutes: 9,
-            lessonTextMarkdown: `### 🗣️ O Método The Mom Test (Rob Fitzpatrick)\n\nRegra de Ouro: Nunca pergunte a ninguém se sua ideia é boa. Todo mundo mentirá para não ferir seus sentimentos.\n\n---\n\n### 1. As 3 Regras do Mom Test\n1. **Fale sobre a vida do entrevistado**, não sobre a sua ideia.\n2. **Pergunte sobre fatos do passado**, não sobre opiniões ou intenções futuras.\n3. **Fale menos e ouça mais**.`
+            lessonTextMarkdown: `### O Método The Mom Test (Rob Fitzpatrick)\n\nRegra de Ouro: Nunca pergunte a ninguém se sua ideia é boa. Todo mundo mentirá para não ferir seus sentimentos.\n\n---\n\n### 1. As 3 Regras do Mom Test\n1. **Fale sobre a vida do entrevistado**, não sobre a sua ideia.\n2. **Pergunte sobre fatos do passado**, não sobre opiniões ou intenções futuras.\n3. **Fale menos e ouça mais**.`
           }
         ],
         multimedia: {
@@ -1336,8 +1346,7 @@ export interface Activity {
             type: 'MOM_TEST_INTERVIEW',
             level: 'Intermediário',
             estimatedMinutes: 20,
-            badgeLabel: '🎙️ Entrevista Mom Test',
-            icon: 'Mic',
+            badgeLabel: 'Entrevista Mom Test',
             forbiddenTerms: ['você pagaria', 'você gostaria', 'o que acha da ideia', 'é legal'],
             scenarioText: 'Você está validando um aplicativo de marmitas saudáveis por assinatura. Reescreva as 3 perguntas indutivas do fundador em perguntas válidas do método Mom Test.',
             instructions: ['Pergunta Ruim 1: "Você compraria um app de marmitas?" -> Reescreva.', 'Pergunta Ruim 2: "Você acha que economizaria dinheiro?" -> Reescreva.', 'Pergunta Ruim 3: "Você gosta de comer saudável?" -> Reescreva.'],
@@ -1353,8 +1362,7 @@ export interface Activity {
             type: 'EXTREME_CONSTRAINT',
             level: 'Avançado',
             estimatedMinutes: 20,
-            badgeLabel: '⚡ Restrição Extrema',
-            icon: 'Zap',
+            badgeLabel: 'Restrição Extrema',
             scenarioText: 'Sua equipe tem 48 horas e R$ 0 de verba para entender por que mulheres acima de 40 anos estão abandonando um aplicativo de meditação.',
             instructions: ['Desenhe um plano de escuta digital e recrutamento sem custo.', 'Indique 2 fontes não convencionais de dados de reclamação.'],
             placeholderText: '### Plano de Escuta em 48h...\n### Fontes de Dados Gratuitas...',
@@ -1373,7 +1381,7 @@ export interface Activity {
             unitId: 'U5.1',
             unitTitle: 'Unidade 1: Estrutura de Plataforma de Marca e Tom de Voz',
             readingTimeMinutes: 8,
-            lessonTextMarkdown: `### 📢 Plataforma de Marca e Tom de Voz\n\nUma plataforma de marca não é um manual de marca em PDF guardado em uma gaveta. É o sistema operacional de todas as mensagens emitidas pela empresa.\n\n---\n\n### 1. Pilares da Plataforma de Marca\n* **Propósito:** Por que existimos além de fazer dinheiro?\n* **Promessa:** O compromisso inegociável entregue em cada interação.\n* **Valores:** Os princípios que guiam o comportamento dos colaboradores.\n* **Tom de Voz:** A personalidade verbal refletida no vocabulário e ritmo.`
+            lessonTextMarkdown: `### Plataforma de Marca e Tom de Voz\n\nUma plataforma de marca não é um manual de marca em PDF guardado em uma gaveta. É o sistema operacional de todas as mensagens emitidas pela empresa.\n\n---\n\n### 1. Pilares da Plataforma de Marca\n* **Propósito:** Por que existimos além de fazer dinheiro?\n* **Promessa:** O compromisso inegociável entregue em cada interação.\n* **Valores:** Os princípios que guiam o comportamento dos colaboradores.\n* **Tom de Voz:** A personalidade verbal refletida no vocabulário e ritmo.`
           }
         ],
         multimedia: {
@@ -1398,8 +1406,7 @@ export interface Activity {
             type: 'CRISIS_PR_SIMULATION',
             level: 'Sênior C-Level',
             estimatedMinutes: 30,
-            badgeLabel: '🔥 Crise de PR',
-            icon: 'Flame',
+            badgeLabel: 'Crise de PR',
             forbiddenTerms: ['lamentamos se alguém se sentiu', 'foi um mal entendido', 'desculpe o inconveniente'],
             scenarioText: 'A base de e-mails da sua marca e-commerce foi vazada e clientes estão recebendo mensagens de phishing nas redes sociais.',
             instructions: ['Escreva a nota oficial de esclarecimento e retratação para a imprensa.', 'Assuma a responsabilidade sem expor a empresa a passivos jurídicos desnecessários.'],
@@ -1415,8 +1422,7 @@ export interface Activity {
             type: 'MANIFESTO_VALUE_PROP',
             level: 'Intermediário',
             estimatedMinutes: 20,
-            badgeLabel: '📜 Manifesto de Marca',
-            icon: 'Feather',
+            badgeLabel: 'Manifesto de Marca',
             scenarioText: 'Crie o manifesto e os 4 pilares de tom de voz para uma marca de roupas sustentáveis de produção desacelerada (slow fashion).',
             instructions: ['Escreva o texto do manifesto de 250 palavras.', 'Defina o tom de voz com a matriz "Somos [X], Mas Não Somos [Y]".'],
             placeholderText: '### Manifesto da Marca...\n### Matriz de Tom de Voz...',
@@ -1435,7 +1441,7 @@ export interface Activity {
             unitId: 'U6.1',
             unitTitle: 'Unidade 1: Avaliação Financeira de Marca (ISO 10668 Valuation)',
             readingTimeMinutes: 10,
-            lessonTextMarkdown: `### 📈 Avaliação Financeira e Valuation de Marca (ISO 10668)\n\nBranding não é gasto de marketing; é investimento em ativo intangível acumulado no balanço patrimonial.\n\n---\n\n### 1. As 3 Abordagens da ISO 10668\n1. **Abordagem de Mercado:** Comparação com transações de marcas similares.\n2. **Abordagem de Custo:** Custo acumulado para recriar uma marca equivalente do zero.\n3. **Abordagem de Renda (Relief from Royalty):** Valor presente dos royalties futuros economizados por possuir a marca.`
+            lessonTextMarkdown: `### Avaliação Financeira e Valuation de Marca (ISO 10668)\n\nBranding não é gasto de marketing; é investimento em ativo intangível acumulado no balanço patrimonial.\n\n---\n\n### 1. As 3 Abordagens da ISO 10668\n1. **Abordagem de Mercado:** Comparação com transações de marcas similares.\n2. **Abordagem de Custo:** Custo acumulado para recriar uma marca equivalente do zero.\n3. **Abordagem de Renda (Relief from Royalty):** Valor presente dos royalties futuros economizados por possuir a marca.`
           }
         ],
         multimedia: {
@@ -1460,8 +1466,7 @@ export interface Activity {
             type: 'ROLEPLAY_C_LEVEL',
             level: 'Sênior C-Level',
             estimatedMinutes: 30,
-            badgeLabel: '🎙️ Defesa no Conselho',
-            icon: 'DollarSign',
+            badgeLabel: 'Defesa no Conselho',
             forbiddenTerms: ['amor à marca', 'propósito bonito', 'design moderno', 'ficar bonito', 'feed de fotos'],
             clientProfile: { companyName: 'Fintech CreditMais', segment: 'Crédito B2B', stakeholderRole: 'CFO (Chief Financial Officer)' },
             scenarioText: 'O CFO quer cortar 40% do orçamento de branding alegando que "branding não traz tráfego direto nem vendas imediatas no mês".',
@@ -1478,8 +1483,7 @@ export interface Activity {
             type: 'METRICS_DASHBOARD',
             level: 'Avançado',
             estimatedMinutes: 25,
-            badgeLabel: '📊 Painel de Metrics',
-            icon: 'TrendingUp',
+            badgeLabel: 'Painel de Métricas',
             dataPanel: [
               { label: 'NPS (Net Promoter Score)', value: '68', change: '+12 pts', status: 'success' },
               { label: 'LTV (Lifetime Value)', value: 'R$ 4.200', change: '+18%', status: 'success' },
@@ -1497,23 +1501,23 @@ export interface Activity {
       }
     ];
 
-    // RENDER RULES FOR THE 15 FORMATS
+    // RENDER RULES FOR THE 15 FORMATS (CLEAN WITHOUT EMOJIS)
     const RENDER_RULES = {
-      ROLEPLAY_C_LEVEL: { color: 'bg-red-500/10 border-red-500/30 text-red-400', label: '🎙️ Roleplay C-Level', icon: '🎙️' },
-      METRICS_DASHBOARD: { color: 'bg-blue-500/10 border-blue-500/30 text-blue-400', label: '📊 Painel de Métricas', icon: '📊' },
-      FIX_THE_BRIEF: { color: 'bg-amber-500/10 border-amber-500/30 text-amber-400', label: '⚠️ Caça-Erros', icon: '⚠️' },
-      PERCEPTUAL_MAPPING: { color: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400', label: '🗺️ Mapeamento Perceptual', icon: '🗺️' },
-      EXECUTIVE_MEMO: { color: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400', label: '📝 Memo Executivo', icon: '📝' },
-      FEYNMAN_TECHNIQUE: { color: 'bg-teal-500/10 border-teal-500/30 text-teal-400', label: '💬 Pílula Feynman', icon: '💬' },
-      MANIFESTO_VALUE_PROP: { color: 'bg-purple-500/10 border-purple-500/30 text-purple-400', label: '📜 Manifesto & Proposta', icon: '📜' },
-      CROSS_INDUSTRY: { color: 'bg-pink-500/10 border-pink-500/30 text-pink-400', label: '🔄 Inovação Cruzada', icon: '🔄' },
-      DEVILS_ADVOCATE: { color: 'bg-orange-500/10 border-orange-500/30 text-orange-400', label: '⚔️ Defender 2 Lados', icon: '⚔️' },
-      REVERSE_ENGINEERING: { color: 'bg-[#64D2FF]/10 border-[#64D2FF]/30 text-[#64D2FF]', label: '🔍 Engenharia Reversa', icon: '🔍' },
-      HARD_TRADE_OFFS: { color: 'bg-rose-500/10 border-rose-500/30 text-rose-400', label: '⚖️ Escolha Difícil', icon: '⚖️' },
-      CREATIVE_BRIEF: { color: 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400', label: '📐 Briefing Criativo', icon: '📐' },
-      MOM_TEST_INTERVIEW: { color: 'bg-lime-500/10 border-lime-500/30 text-lime-400', label: '🎙️ Entrevista Mom Test', icon: '🎙️' },
-      EXTREME_CONSTRAINT: { color: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400', label: '⚡ Restrição Extrema', icon: '⚡' },
-      CRISIS_PR_SIMULATION: { color: 'bg-red-600/10 border-red-600/30 text-red-500', label: '🔥 Crise de PR', icon: '🔥' }
+      ROLEPLAY_C_LEVEL: { color: 'bg-red-500/10 border-red-500/30 text-red-400', label: 'Roleplay C-Level' },
+      METRICS_DASHBOARD: { color: 'bg-blue-500/10 border-blue-500/30 text-blue-400', label: 'Painel de Métricas' },
+      FIX_THE_BRIEF: { color: 'bg-amber-500/10 border-amber-500/30 text-amber-400', label: 'Caça-Erros' },
+      PERCEPTUAL_MAPPING: { color: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400', label: 'Mapeamento Perceptual' },
+      EXECUTIVE_MEMO: { color: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400', label: 'Memo Executivo' },
+      FEYNMAN_TECHNIQUE: { color: 'bg-teal-500/10 border-teal-500/30 text-teal-400', label: 'Pílula Feynman' },
+      MANIFESTO_VALUE_PROP: { color: 'bg-purple-500/10 border-purple-500/30 text-purple-400', label: 'Manifesto & Proposta' },
+      CROSS_INDUSTRY: { color: 'bg-pink-500/10 border-pink-500/30 text-pink-400', label: 'Inovação Cruzada' },
+      DEVILS_ADVOCATE: { color: 'bg-orange-500/10 border-orange-500/30 text-orange-400', label: 'Defender 2 Lados' },
+      REVERSE_ENGINEERING: { color: 'bg-[#64D2FF]/10 border-[#64D2FF]/30 text-[#64D2FF]', label: 'Engenharia Reversa' },
+      HARD_TRADE_OFFS: { color: 'bg-rose-500/10 border-rose-500/30 text-rose-400', label: 'Escolha Difícil' },
+      CREATIVE_BRIEF: { color: 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400', label: 'Briefing Criativo' },
+      MOM_TEST_INTERVIEW: { color: 'bg-lime-500/10 border-lime-500/30 text-lime-400', label: 'Entrevista Mom Test' },
+      EXTREME_CONSTRAINT: { color: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400', label: 'Restrição Extrema' },
+      CRISIS_PR_SIMULATION: { color: 'bg-red-600/10 border-red-600/30 text-red-500', label: 'Crise de PR' }
     };
 
     // STATE MANAGEMENT WITH MULTI-ACCOUNT ISOLATION
@@ -1615,8 +1619,8 @@ export interface Activity {
         btn.onclick = () => switchView('discipline', disc.id);
         btn.className = `w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition flex items-center justify-between group cursor-pointer ${
           isActive 
-            ? 'bg-white/10 text-white font-semibold' 
-            : 'text-[#8E8E93] hover:text-white hover:bg-white/5'
+            ? 'bg-white/10 theme-text-main font-semibold' 
+            : 'theme-text-muted hover:theme-text-main hover:bg-white/5'
         }`;
 
         btn.innerHTML = `
@@ -1624,7 +1628,7 @@ export interface Activity {
             <span class="font-mono text-[10px] text-[#0A84FF] font-medium block">${disc.id}</span>
             <span class="truncate block">${disc.title}</span>
           </div>
-          <span class="text-[10px] px-1.5 py-0.5 rounded ${pct === 100 ? 'bg-[#30D158]/20 text-[#30D158]' : 'bg-[#2C2C2E] text-[#8E8E93]'} font-mono shrink-0">${done}/${disc.apas.length}</span>
+          <span class="text-[10px] px-1.5 py-0.5 rounded ${pct === 100 ? 'bg-[#30D158]/20 text-[#30D158]' : 'theme-bg-subtle theme-text-muted'} font-mono shrink-0">${done}/${disc.apas.length}</span>
         `;
         container.appendChild(btn);
       });
@@ -1668,19 +1672,19 @@ export interface Activity {
         tr.className = "hover:bg-white/5 transition";
         tr.innerHTML = `
           <td class="py-3 px-2 font-mono font-semibold text-[#0A84FF]">${disc.id}</td>
-          <td class="py-3 px-2 font-medium text-white">${disc.title}</td>
-          <td class="py-3 px-2 text-center text-[#8E8E93] font-mono">${done}/${disc.apas.length}</td>
+          <td class="py-3 px-2 font-medium theme-text-main">${disc.title}</td>
+          <td class="py-3 px-2 text-center theme-text-muted font-mono">${done}/${disc.apas.length}</td>
           <td class="py-3 px-2 text-center">
             <div class="inline-flex items-center space-x-2">
-              <div class="w-16 bg-[#2C2C2E] rounded-full h-1">
+              <div class="w-16 theme-bg-subtle rounded-full h-1">
                 <div class="bg-[#0A84FF] h-1 rounded-full" style="width: ${pct}%"></div>
               </div>
-              <span class="text-[10px] text-[#8E8E93] font-mono">${pct}%</span>
+              <span class="text-[10px] theme-text-muted font-mono">${pct}%</span>
             </div>
           </td>
-          <td class="py-3 px-2 text-right font-bold font-mono ${avg !== '—' ? 'text-[#30D158]' : 'text-[#8E8E93]'}">${avg}</td>
+          <td class="py-3 px-2 text-right font-bold font-mono ${avg !== '—' ? 'text-[#30D158]' : 'theme-text-muted'}">${avg}</td>
           <td class="py-3 px-2 text-right">
-            <button onclick="switchView('discipline', '${disc.id}')" class="text-xs text-[#0A84FF] font-medium hover:underline cursor-pointer">Ver Módulo ▶</button>
+            <button onclick="switchView('discipline', '${disc.id}')" class="text-xs text-[#0A84FF] font-medium hover:underline cursor-pointer">Ver Módulo</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -1697,14 +1701,14 @@ export interface Activity {
             const rule = RENDER_RULES[apa.type] || { color: 'bg-blue-500/10 border-blue-500/30 text-blue-400', label: apa.badgeLabel || 'Exercício' };
             
             const item = document.createElement('div');
-            item.className = "p-3 bg-[#1C1C1E] border border-white/10 rounded-2xl flex items-center justify-between hover:border-white/20 transition";
+            item.className = "p-3 theme-bg-card border rounded-2xl flex items-center justify-between hover:border-white/20 transition";
             item.innerHTML = `
               <div class="space-y-1 truncate pr-2">
                 <div class="flex items-center space-x-2">
                   <span class="text-[10px] font-mono text-[#0A84FF] font-semibold">${apa.code}</span>
                   <span class="text-[10px] px-2 py-0.5 rounded ${rule.color}">${rule.label}</span>
                 </div>
-                <h4 class="text-xs font-semibold text-white truncate">${apa.title}</h4>
+                <h4 class="text-xs font-semibold theme-text-main truncate">${apa.title}</h4>
               </div>
               <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3 py-1.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-[11px] rounded-xl shrink-0 transition cursor-pointer">
                 Iniciar
@@ -1716,7 +1720,7 @@ export interface Activity {
       });
 
       if (foundPending === 0) {
-        pendingContainer.innerHTML = `<div class="p-6 text-center text-xs text-[#30D158]">🎉 Parabéns! Você concluiu todos os exercícios multimodais ativos!</div>`;
+        pendingContainer.innerHTML = `<div class="p-6 text-center text-xs text-[#30D158]">Parabéns! Você concluiu todos os exercícios multimodais ativos!</div>`;
       }
     }
 
@@ -1747,24 +1751,24 @@ export interface Activity {
           const isRead = !!userState.completedLessons[unit.unitId];
           const card = document.createElement('div');
           card.className = `p-5 rounded-2xl border transition flex flex-col justify-between space-y-4 ${
-            isRead ? 'bg-[#1C1C1E]/60 border-[#30D158]/30' : 'bg-[#1C1C1E] border-white/10 hover:border-white/20'
+            isRead ? 'theme-bg-card border-[#30D158]/40' : 'theme-bg-card border hover:border-white/20'
           }`;
 
           card.innerHTML = `
             <div class="space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded">${unit.unitId}</span>
-                <span class="text-[10px] text-[#8E8E93] font-medium">⏱️ ${unit.readingTimeMinutes} min de leitura</span>
+                <span class="text-[10px] theme-text-muted font-medium">${unit.readingTimeMinutes} min de leitura</span>
               </div>
-              <h4 class="text-sm font-semibold text-white leading-snug">${unit.unitTitle}</h4>
+              <h4 class="text-sm font-semibold theme-text-main leading-snug">${unit.unitTitle}</h4>
             </div>
 
             <div class="flex items-center justify-between pt-2 border-t border-white/10">
-              <span class="text-[11px] font-medium ${isRead ? 'text-[#30D158]' : 'text-[#8E8E93]'}">
-                ${isRead ? '✅ Aula Concluída' : '📖 Não Lida'}
+              <span class="text-[11px] font-medium ${isRead ? 'text-[#30D158]' : 'theme-text-muted'}">
+                ${isRead ? 'Aula Concluída' : 'Leitura Pendente'}
               </span>
               <button onclick="openLessonModal('${disc.id}', '${unit.unitId}')" class="px-3.5 py-1.5 bg-[#30D158]/10 hover:bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 font-medium text-xs rounded-xl transition flex items-center space-x-1 cursor-pointer">
-                <span>${isRead ? 'Revisar Aula' : 'Ler Aula 📖'}</span>
+                <span>${isRead ? 'Revisar Aula' : 'Ler Aula'}</span>
               </button>
             </div>
           `;
@@ -1772,8 +1776,8 @@ export interface Activity {
         });
       } else {
         lessonsGrid.innerHTML = `
-          <div class="col-span-2 p-4 bg-[#1C1C1E] border border-white/10 rounded-2xl text-xs text-[#8E8E93] text-center">
-            📖 Leituras adicionais e fundamentação teórica para esta disciplina estão no Acervo Multimídia com Checklist abaixo.
+          <div class="col-span-2 p-4 theme-bg-card border rounded-2xl text-xs theme-text-muted text-center">
+            Leituras adicionais e fundamentação teórica para esta disciplina estão no Acervo Multimídia com Checklist abaixo.
           </div>
         `;
       }
@@ -1802,22 +1806,22 @@ export interface Activity {
 
       // Livros Card Checklist
       const booksCard = document.createElement('div');
-      booksCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
+      booksCard.className = "theme-bg-card border rounded-2xl p-4 flex flex-col justify-between";
       booksCard.innerHTML = `
         <div class="space-y-3">
-          <span class="text-[10px] font-semibold tracking-wider text-[#0A84FF] uppercase block">📚 Livros de Cabeceira</span>
+          <span class="text-[10px] font-semibold tracking-wider text-[#0A84FF] uppercase block">Livros de Cabeceira</span>
           <div class="space-y-2">
             ${(disc.multimedia.books || []).map(b => {
               const isChecked = !!userState.completedResources[b.id];
               return `
-                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'theme-bg-subtle'} flex items-start space-x-2.5">
                   <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${b.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
                   <div class="overflow-hidden">
-                    <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                    <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'theme-text-main'} hover:underline flex items-center space-x-1 group">
                       <span>${b.title}</span>
                       <svg class="w-3 h-3 text-[#0A84FF] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
-                    <p class="text-[10px] text-[#8E8E93] mt-0.5">${b.author} — <em>${b.focus}</em></p>
+                    <p class="text-[10px] theme-text-muted mt-0.5">${b.author} — <em>${b.focus}</em></p>
                   </div>
                 </div>
               `;
@@ -1829,22 +1833,22 @@ export interface Activity {
 
       // Cursos Card Checklist
       const coursesCard = document.createElement('div');
-      coursesCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
+      coursesCard.className = "theme-bg-card border rounded-2xl p-4 flex flex-col justify-between";
       coursesCard.innerHTML = `
         <div class="space-y-3">
-          <span class="text-[10px] font-semibold tracking-wider text-[#30D158] uppercase block">🎓 Cursos Recomendados</span>
+          <span class="text-[10px] font-semibold tracking-wider text-[#30D158] uppercase block">Cursos Recomendados</span>
           <div class="space-y-2">
             ${(disc.multimedia.courses || []).map(c => {
               const isChecked = !!userState.completedResources[c.id];
               return `
-                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'theme-bg-subtle'} flex items-start space-x-2.5">
                   <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${c.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
                   <div class="overflow-hidden">
-                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'theme-text-main'} hover:underline flex items-center space-x-1 group">
                       <span class="truncate">${c.title}</span>
                       <svg class="w-3 h-3 text-[#30D158] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
-                    <p class="text-[10px] text-[#8E8E93] mt-0.5">Plataforma: ${c.provider}</p>
+                    <p class="text-[10px] theme-text-muted mt-0.5">Plataforma: ${c.provider}</p>
                   </div>
                 </div>
               `;
@@ -1856,18 +1860,18 @@ export interface Activity {
 
       // Portais Card Checklist
       const portalsCard = document.createElement('div');
-      portalsCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
+      portalsCard.className = "theme-bg-card border rounded-2xl p-4 flex flex-col justify-between";
       portalsCard.innerHTML = `
         <div class="space-y-3">
-          <span class="text-[10px] font-semibold tracking-wider text-[#FF9F0A] uppercase block">📰 Intelligence & Portais</span>
+          <span class="text-[10px] font-semibold tracking-wider text-[#FF9F0A] uppercase block">Intelligence e Portais</span>
           <div class="space-y-2">
             ${(disc.multimedia.portals || []).map(p => {
               const isChecked = !!userState.completedResources[p.id];
               return `
-                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'theme-bg-subtle'} flex items-start space-x-2.5">
                   <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${p.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
                   <div class="overflow-hidden">
-                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'theme-text-main'} hover:underline flex items-center space-x-1 group">
                       <span class="truncate">${p.name}</span>
                       <svg class="w-3 h-3 text-[#FF9F0A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
@@ -1882,18 +1886,18 @@ export interface Activity {
 
       // Vídeos Card Checklist
       const videosCard = document.createElement('div');
-      videosCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
+      videosCard.className = "theme-bg-card border rounded-2xl p-4 flex flex-col justify-between";
       videosCard.innerHTML = `
         <div class="space-y-3">
-          <span class="text-[10px] font-semibold tracking-wider text-[#BF5AF2] uppercase block">🎥 Vídeos & Podcasts</span>
+          <span class="text-[10px] font-semibold tracking-wider text-[#BF5AF2] uppercase block">Vídeos e Podcasts</span>
           <div class="space-y-2">
             ${(disc.multimedia.videos || []).map(v => {
               const isChecked = !!userState.completedResources[v.id];
               return `
-                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'theme-bg-subtle'} flex items-start space-x-2.5">
                   <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${v.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
                   <div class="overflow-hidden">
-                    <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                    <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'theme-text-main'} hover:underline flex items-center space-x-1 group">
                       <span class="truncate">${v.title}</span>
                       <svg class="w-3 h-3 text-[#BF5AF2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
@@ -1917,25 +1921,25 @@ export interface Activity {
 
         const card = document.createElement('div');
         card.className = `p-5 rounded-2xl border transition ${
-          isDone ? 'bg-[#1C1C1E]/60 border-[#30D158]/30' : 'bg-[#1C1C1E] border-white/10 hover:border-white/20'
+          isDone ? 'theme-bg-card border-[#30D158]/40' : 'theme-bg-card border hover:border-white/20'
         }`;
 
         card.innerHTML = `
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div class="flex items-start space-x-3.5">
-              <div class="w-10 h-10 rounded-xl bg-[#2C2C2E] flex items-center justify-center text-xl shrink-0">
-                ${rule.icon || '📝'}
+              <div class="w-10 h-10 rounded-xl theme-bg-subtle flex items-center justify-center font-bold text-[#0A84FF] text-xs shrink-0">
+                ${apa.code.replace('APA ', '')}
               </div>
               <div>
                 <div class="flex flex-wrap items-center gap-2 mb-1">
-                  <span class="text-xs font-mono font-medium text-[#0A84FF]">${apa.code}</span>
+                  <span class="text-xs font-mono font-semibold text-[#0A84FF]">${apa.code}</span>
                   <span class="text-[10px] font-medium px-2 py-0.5 rounded border ${rule.color}">${rule.label}</span>
-                  <span class="text-[10px] font-medium px-2 py-0.5 bg-[#2C2C2E] text-[#8E8E93] rounded">${apa.level || 'Intermediário'}</span>
-                  ${apa.forbiddenTerms ? '<span class="text-[10px] font-medium px-2 py-0.5 bg-red-500/20 text-red-400 rounded border border-red-500/30">⚠️ Com Restrições</span>' : ''}
+                  <span class="text-[10px] font-medium px-2 py-0.5 theme-bg-subtle theme-text-muted rounded">${apa.level || 'Intermediário'}</span>
+                  ${apa.forbiddenTerms ? '<span class="text-[10px] font-medium px-2 py-0.5 bg-red-500/10 text-red-400 rounded border border-red-500/20">Com Restrições</span>' : ''}
                   ${isDone ? '<span class="text-[10px] font-medium px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] rounded">Concluído</span>' : ''}
                 </div>
-                <h4 class="text-sm font-semibold text-white">${apa.title}</h4>
-                <p class="text-xs text-[#8E8E93] mt-1 line-clamp-2">${(apa.scenarioText || '').replace(/<[^>]*>?/gm, '')}</p>
+                <h4 class="text-sm font-semibold theme-text-main">${apa.title}</h4>
+                <p class="text-xs theme-text-muted mt-1 line-clamp-2">${(apa.scenarioText || '').replace(/<[^>]*>?/gm, '')}</p>
               </div>
             </div>
 
@@ -1943,9 +1947,9 @@ export interface Activity {
               ${isDone ? `
                 <div class="text-right">
                   <span class="text-xs font-bold text-[#30D158] block">Nota ${sub.gradeLetter || 'A'}</span>
-                  <span class="text-[10px] text-[#8E8E93] font-mono">${sub.date}</span>
+                  <span class="text-[10px] theme-text-muted font-mono">${sub.date}</span>
                 </div>
-                <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3.5 py-1.5 bg-[#2C2C2E] hover:bg-[#3A3A3C] text-white font-medium text-xs rounded-xl transition cursor-pointer">Ver Resposta</button>
+                <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3.5 py-1.5 theme-bg-subtle hover:bg-white/10 theme-text-main font-medium text-xs rounded-xl transition cursor-pointer">Ver Resposta</button>
               ` : `
                 <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-4 py-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer">
                   Resolver Exercício
@@ -1969,27 +1973,27 @@ export interface Activity {
         const pct = Math.round((done / disc.apas.length) * 100);
 
         const card = document.createElement('div');
-        card.className = "apple-glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between space-y-4 hover:border-[#0A84FF]/40 transition group";
+        card.className = "apple-glass-card rounded-2xl p-6 border flex flex-col justify-between space-y-4 hover:border-[#0A84FF]/40 transition group";
         card.innerHTML = `
           <div class="space-y-3">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-[#0A84FF] text-white">${disc.id}</span>
-              <span class="text-xs font-mono font-medium ${pct === 100 ? 'text-[#30D158]' : 'text-[#8E8E93]'}">${done} / ${disc.apas.length} Exercícios</span>
+              <span class="text-xs font-mono font-medium ${pct === 100 ? 'text-[#30D158]' : 'theme-text-muted'}">${done} / ${disc.apas.length} Exercícios</span>
             </div>
-            <h3 class="text-lg font-bold text-white group-hover:text-[#0A84FF] transition leading-snug">${disc.title}</h3>
-            <p class="text-xs text-[#8E8E93] line-clamp-3 leading-relaxed">${disc.objective}</p>
+            <h3 class="text-lg font-bold theme-text-main group-hover:text-[#0A84FF] transition leading-snug">${disc.title}</h3>
+            <p class="text-xs theme-text-muted line-clamp-3 leading-relaxed">${disc.objective}</p>
           </div>
 
           <div class="space-y-3 pt-4 border-t border-white/10">
-            <div class="flex items-center justify-between text-xs text-[#8E8E93]">
+            <div class="flex items-center justify-between text-xs theme-text-muted">
               <span>Progresso</span>
-              <span class="font-mono font-bold text-white">${pct}%</span>
+              <span class="font-mono font-bold theme-text-main">${pct}%</span>
             </div>
-            <div class="w-full bg-[#2C2C2E] rounded-full h-1.5">
+            <div class="w-full theme-bg-subtle rounded-full h-1.5">
               <div class="bg-[#0A84FF] h-1.5 rounded-full" style="width: ${pct}%"></div>
             </div>
 
-            <button onclick="switchView('discipline', '${disc.id}')" class="w-full mt-2 py-2.5 bg-white/10 hover:bg-[#0A84FF] text-white font-medium text-xs rounded-xl transition cursor-pointer flex items-center justify-center space-x-1.5">
+            <button onclick="switchView('discipline', '${disc.id}')" class="w-full mt-2 py-2.5 bg-[#0A84FF]/10 hover:bg-[#0A84FF] text-[#0A84FF] hover:text-white font-medium text-xs rounded-xl transition cursor-pointer flex items-center justify-center space-x-1.5">
               <span>Acessar Módulo</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
@@ -2016,25 +2020,25 @@ export interface Activity {
 
             const card = document.createElement('div');
             card.className = `p-5 rounded-2xl border transition ${
-              isDone ? 'bg-[#1C1C1E]/60 border-[#30D158]/30' : 'bg-[#1C1C1E] border-white/10 hover:border-white/20'
+              isDone ? 'theme-bg-card border-[#30D158]/40' : 'theme-bg-card border hover:border-white/20'
             }`;
 
             card.innerHTML = `
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div class="flex items-start space-x-3.5">
-                  <div class="w-10 h-10 rounded-xl bg-[#2C2C2E] flex items-center justify-center text-xl shrink-0">
-                    ${rule.icon || '📝'}
+                  <div class="w-10 h-10 rounded-xl theme-bg-subtle flex items-center justify-center font-bold text-[#0A84FF] text-xs shrink-0">
+                    ${apa.code.replace('APA ', '')}
                   </div>
                   <div>
                     <div class="flex flex-wrap items-center gap-2 mb-1">
                       <span class="text-xs font-mono font-medium text-[#0A84FF]">${disc.id} • ${apa.code}</span>
                       <span class="text-[10px] font-medium px-2 py-0.5 rounded border ${rule.color}">${rule.label}</span>
-                      <span class="text-[10px] font-medium px-2 py-0.5 bg-[#2C2C2E] text-[#8E8E93] rounded">${apa.level || 'Intermediário'}</span>
-                      ${apa.forbiddenTerms ? '<span class="text-[10px] font-medium px-2 py-0.5 bg-red-500/20 text-red-400 rounded border border-red-500/30">⚠️ Restrições C-Level</span>' : ''}
+                      <span class="text-[10px] font-medium px-2 py-0.5 theme-bg-subtle theme-text-muted rounded">${apa.level || 'Intermediário'}</span>
+                      ${apa.forbiddenTerms ? '<span class="text-[10px] font-medium px-2 py-0.5 bg-red-500/10 text-red-400 rounded border border-red-500/20">Restrições C-Level</span>' : ''}
                       ${isDone ? '<span class="text-[10px] font-medium px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] rounded">Concluído</span>' : ''}
                     </div>
-                    <h4 class="text-sm font-semibold text-white">${apa.title}</h4>
-                    <p class="text-xs text-[#8E8E93] mt-1 line-clamp-2">${apa.scenarioText}</p>
+                    <h4 class="text-sm font-semibold theme-text-main">${apa.title}</h4>
+                    <p class="text-xs theme-text-muted mt-1 line-clamp-2">${apa.scenarioText}</p>
                   </div>
                 </div>
 
@@ -2042,9 +2046,9 @@ export interface Activity {
                   ${isDone ? `
                     <div class="text-right">
                       <span class="text-xs font-bold text-[#30D158] block">Nota ${sub.gradeLetter || 'A'}</span>
-                      <span class="text-[10px] text-[#8E8E93] font-mono">${sub.date}</span>
+                      <span class="text-[10px] theme-text-muted font-mono">${sub.date}</span>
                     </div>
-                    <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3.5 py-1.5 bg-[#2C2C2E] hover:bg-[#3A3A3C] text-white font-medium text-xs rounded-xl transition cursor-pointer">Ver Resposta</button>
+                    <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3.5 py-1.5 theme-bg-subtle hover:bg-white/10 theme-text-main font-medium text-xs rounded-xl transition cursor-pointer">Ver Resposta</button>
                   ` : `
                     <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-4 py-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer">
                       Resolver Exercício
@@ -2059,7 +2063,7 @@ export interface Activity {
       });
 
       if (count === 0) {
-        container.innerHTML = `<div class="p-8 text-center text-xs text-[#8E8E93]">Nenhum exercício encontrado para o filtro selecionado.</div>`;
+        container.innerHTML = `<div class="p-8 text-center text-xs theme-text-muted">Nenhum exercício encontrado para o filtro selecionado.</div>`;
       }
     }
 
@@ -2093,22 +2097,22 @@ export interface Activity {
 
       // Books Card
       const booksCard = document.createElement('div');
-      booksCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 flex flex-col justify-between";
+      booksCard.className = "theme-bg-card border rounded-2xl p-5 flex flex-col justify-between";
       booksCard.innerHTML = `
         <div class="space-y-3">
-          <span class="text-xs font-semibold tracking-wider text-[#0A84FF] uppercase block">📚 Livros de Cabeceira</span>
+          <span class="text-xs font-semibold tracking-wider text-[#0A84FF] uppercase block">Livros de Cabeceira</span>
           <div class="space-y-2.5">
             ${allBooks.map(b => {
               const isChecked = !!userState.completedResources[b.id];
               return `
-                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'theme-bg-subtle'} flex items-start space-x-2.5">
                   <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${b.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
                   <div class="overflow-hidden">
-                    <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                    <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'theme-text-main'} hover:underline flex items-center space-x-1 group">
                       <span>${b.title}</span>
                       <svg class="w-3 h-3 text-[#0A84FF] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
-                    <p class="text-[10px] text-[#8E8E93] mt-0.5">${b.author} • <span class="font-mono text-[#0A84FF]">${b.discId}</span></p>
+                    <p class="text-[10px] theme-text-muted mt-0.5">${b.author} • <span class="font-mono text-[#0A84FF]">${b.discId}</span></p>
                   </div>
                 </div>
               `;
@@ -2120,22 +2124,22 @@ export interface Activity {
 
       // Courses Card
       const coursesCard = document.createElement('div');
-      coursesCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 flex flex-col justify-between";
+      coursesCard.className = "theme-bg-card border rounded-2xl p-5 flex flex-col justify-between";
       coursesCard.innerHTML = `
         <div class="space-y-3">
-          <span class="text-xs font-semibold tracking-wider text-[#30D158] uppercase block">🎓 Cursos Recomendados</span>
+          <span class="text-xs font-semibold tracking-wider text-[#30D158] uppercase block">Cursos Recomendados</span>
           <div class="space-y-2.5">
             ${allCourses.map(c => {
               const isChecked = !!userState.completedResources[c.id];
               return `
-                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'theme-bg-subtle'} flex items-start space-x-2.5">
                   <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${c.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
                   <div class="overflow-hidden">
-                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'theme-text-main'} hover:underline flex items-center space-x-1 group">
                       <span class="truncate">${c.title}</span>
                       <svg class="w-3 h-3 text-[#30D158] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
-                    <p class="text-[10px] text-[#8E8E93] mt-0.5">${c.provider} • <span class="font-mono text-[#30D158]">${c.discId}</span></p>
+                    <p class="text-[10px] theme-text-muted mt-0.5">${c.provider} • <span class="font-mono text-[#30D158]">${c.discId}</span></p>
                   </div>
                 </div>
               `;
@@ -2145,20 +2149,20 @@ export interface Activity {
       `;
       grid.appendChild(coursesCard);
 
-      // Portals Card
+      // Portais Card
       const portalsCard = document.createElement('div');
-      portalsCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 flex flex-col justify-between";
+      portalsCard.className = "theme-bg-card border rounded-2xl p-5 flex flex-col justify-between";
       portalsCard.innerHTML = `
         <div class="space-y-3">
-          <span class="text-xs font-semibold tracking-wider text-[#FF9F0A] uppercase block">📰 Intelligence & Portais</span>
+          <span class="text-xs font-semibold tracking-wider text-[#FF9F0A] uppercase block">Intelligence e Portais</span>
           <div class="space-y-2.5">
             ${allPortals.map(p => {
               const isChecked = !!userState.completedResources[p.id];
               return `
-                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'theme-bg-subtle'} flex items-start space-x-2.5">
                   <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${p.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
                   <div class="overflow-hidden">
-                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'theme-text-main'} hover:underline flex items-center space-x-1 group">
                       <span class="truncate">${p.name}</span>
                       <svg class="w-3 h-3 text-[#FF9F0A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
@@ -2173,18 +2177,18 @@ export interface Activity {
 
       // Videos Card
       const videosCard = document.createElement('div');
-      videosCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 flex flex-col justify-between";
+      videosCard.className = "theme-bg-card border rounded-2xl p-5 flex flex-col justify-between";
       videosCard.innerHTML = `
         <div class="space-y-3">
-          <span class="text-xs font-semibold tracking-wider text-[#BF5AF2] uppercase block">🎥 Vídeos & Podcasts</span>
+          <span class="text-xs font-semibold tracking-wider text-[#BF5AF2] uppercase block">Vídeos e Podcasts</span>
           <div class="space-y-2.5">
             ${allVideos.map(v => {
               const isChecked = !!userState.completedResources[v.id];
               return `
-                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'theme-bg-subtle'} flex items-start space-x-2.5">
                   <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${v.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
                   <div class="overflow-hidden">
-                    <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                    <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'theme-text-main'} hover:underline flex items-center space-x-1 group">
                       <span class="truncate">${v.title}</span>
                       <svg class="w-3 h-3 text-[#BF5AF2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
@@ -2211,35 +2215,35 @@ export interface Activity {
 
       ['nav-dashboard', 'nav-all-disciplines', 'nav-all-apas', 'nav-global-acervo'].forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer";
+        if (el) el.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer";
       });
 
       const breadcrumb = document.getElementById('breadcrumb-title');
 
       if (viewName === 'dashboard') {
         document.getElementById('view-dashboard').classList.remove('hidden');
-        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="text-white">Visão Geral</strong>';
-        document.getElementById('nav-dashboard').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white font-semibold cursor-pointer";
+        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Visão Geral</strong>';
+        document.getElementById('nav-dashboard').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderDashboard();
       } else if (viewName === 'all-disciplines') {
         document.getElementById('view-all-disciplines').classList.remove('hidden');
-        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="text-white">Todas as Disciplinas</strong>';
-        document.getElementById('nav-all-disciplines').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white font-semibold cursor-pointer";
+        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Todas as Disciplinas</strong>';
+        document.getElementById('nav-all-disciplines').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderAllDisciplinesView();
       } else if (viewName === 'all-apas') {
         document.getElementById('view-all-apas').classList.remove('hidden');
-        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="text-white">Banco de Exercícios</strong>';
-        document.getElementById('nav-all-apas').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white font-semibold cursor-pointer";
+        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Banco de Exercícios</strong>';
+        document.getElementById('nav-all-apas').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderAllAPAsView();
       } else if (viewName === 'global-acervo') {
         document.getElementById('view-global-acervo').classList.remove('hidden');
-        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="text-white">Acervo Multimídia Global</strong>';
-        document.getElementById('nav-global-acervo').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white font-semibold cursor-pointer";
+        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Acervo Multimídia Global</strong>';
+        document.getElementById('nav-global-acervo').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderGlobalAcervoView();
       } else {
         document.getElementById('view-discipline').classList.remove('hidden');
         const disc = curriculumData.find(d => d.id === userState.activeDisciplineId) || curriculumData[0];
-        breadcrumb.innerHTML = `Portal Acadêmico / Disciplinas / <strong class="text-white">${disc.id}</strong>`;
+        breadcrumb.innerHTML = `Portal Acadêmico / Disciplinas / <strong class="theme-text-main">${disc.id}</strong>`;
         renderDisciplineView(userState.activeDisciplineId);
       }
 
@@ -2260,7 +2264,7 @@ export interface Activity {
       userState.activeLessonId = unitId;
 
       document.getElementById('modal-lesson-id').innerText = lesson.unitId;
-      document.getElementById('modal-lesson-time').innerText = `⏱️ ${lesson.readingTimeMinutes} min de leitura`;
+      document.getElementById('modal-lesson-time').innerText = `${lesson.readingTimeMinutes} min de leitura`;
       document.getElementById('modal-lesson-title').innerText = lesson.unitTitle;
 
       const html = parseMarkdownToHTML(lesson.lessonTextMarkdown);
@@ -2271,13 +2275,13 @@ export interface Activity {
       const statusText = document.getElementById('lesson-status-text');
 
       if (isRead) {
-        btn.innerText = "Desmarcar Leitura ↩️";
-        btn.className = "px-5 py-2.5 bg-[#2C2C2E] text-white hover:bg-[#3A3A3C] font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer";
-        statusText.innerText = "Status: ✅ Aula Concluída";
+        btn.innerText = "Desmarcar Leitura";
+        btn.className = "px-5 py-2.5 theme-bg-subtle theme-text-main hover:bg-white/10 font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer";
+        statusText.innerText = "Status: Aula Concluída";
       } else {
-        btn.innerText = "Marcar Unidade como Lida ✅";
+        btn.innerText = "Marcar Unidade como Lida";
         btn.className = "px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer";
-        statusText.innerText = "Status: 📖 Leitura Pendente";
+        statusText.innerText = "Status: Leitura Pendente";
       }
 
       document.getElementById('lesson-modal').classList.remove('hidden');
@@ -2320,20 +2324,20 @@ export interface Activity {
         } else if (trimmed.startsWith('## ')) {
           if (inList) { html += '</ul>'; inList = false; }
           const text = trimmed.substring(3);
-          html += `<h2 class="text-lg font-bold text-white mt-8 mb-4 border-b border-white/10 pb-2">${parseInlineMarkdown(text)}</h2>`;
+          html += `<h2 class="text-lg font-bold theme-text-main mt-8 mb-4 border-b border-white/10 pb-2">${parseInlineMarkdown(text)}</h2>`;
         } else if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
           if (!inList) { html += '<ul class="space-y-2.5 my-3 pl-2">'; inList = true; }
           const text = trimmed.substring(2);
-          html += `<li class="text-xs text-[#F5F5F7] leading-relaxed flex items-start space-x-2"><span class="text-[#0A84FF] shrink-0 mt-0.5">•</span><span>${parseInlineMarkdown(text)}</span></li>`;
+          html += `<li class="text-xs theme-text-main leading-relaxed flex items-start space-x-2"><span class="text-[#0A84FF] shrink-0 mt-0.5">•</span><span>${parseInlineMarkdown(text)}</span></li>`;
         } else if (trimmed.startsWith('> ')) {
           if (inList) { html += '</ul>'; inList = false; }
           const text = trimmed.substring(2);
-          html += `<blockquote class="border-l-2 border-[#0A84FF] pl-4 py-2 my-4 text-xs text-[#8E8E93] italic bg-white/5 rounded-r-xl leading-relaxed">${parseInlineMarkdown(text)}</blockquote>`;
+          html += `<blockquote class="border-l-2 border-[#0A84FF] pl-4 py-2 my-4 text-xs theme-text-muted italic theme-bg-subtle rounded-r-xl leading-relaxed">${parseInlineMarkdown(text)}</blockquote>`;
         } else if (trimmed.length === 0) {
           if (inList) { html += '</ul>'; inList = false; }
         } else {
           if (inList) { html += '</ul>'; inList = false; }
-          html += `<p class="text-xs text-[#F5F5F7] leading-relaxed my-2">${parseInlineMarkdown(trimmed)}</p>`;
+          html += `<p class="text-xs theme-text-main leading-relaxed my-2">${parseInlineMarkdown(trimmed)}</p>`;
         }
       });
 
@@ -2343,9 +2347,9 @@ export interface Activity {
 
     function parseInlineMarkdown(text) {
       return text
-        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em class="text-[#8E8E93]">$1</em>')
-        .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 bg-[#2C2C2E] text-[#0A84FF] font-mono text-[11px] rounded">$1</code>');
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="theme-text-main font-semibold">$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em class="theme-text-muted">$1</em>')
+        .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 theme-bg-subtle text-[#0A84FF] font-mono text-[11px] rounded">$1</code>');
     }
 
     // MODAL APA LOGIC & REAL-TIME FORBIDDEN TERMS CHECK
@@ -2384,16 +2388,16 @@ export interface Activity {
         dataPanelBox.classList.remove('hidden');
         dataGrid.innerHTML = '';
         apa.dataPanel.forEach(m => {
-          let statusBg = "text-white";
+          let statusBg = "theme-text-main";
           if (m.status === 'success') statusBg = "text-[#30D158]";
           else if (m.status === 'danger') statusBg = "text-red-400";
           else if (m.status === 'warning') statusBg = "text-amber-400";
 
           const tile = document.createElement('div');
-          tile.className = "bg-[#1C1C1E] border border-white/10 rounded-xl p-3 text-center";
+          tile.className = "theme-bg-card border rounded-xl p-3 text-center";
           tile.innerHTML = `
-            <span class="text-[10px] text-[#8E8E93] font-medium block truncate">${m.label}</span>
-            <span class="text-base font-bold font-mono text-white mt-0.5 block">${m.value}</span>
+            <span class="text-[10px] theme-text-muted font-medium block truncate">${m.label}</span>
+            <span class="text-base font-bold font-mono theme-text-main mt-0.5 block">${m.value}</span>
             ${m.change ? `<span class="text-[10px] font-mono font-semibold ${statusBg}">${m.change}</span>` : ''}
           `;
           dataGrid.appendChild(tile);
@@ -2406,7 +2410,7 @@ export interface Activity {
       const forbiddenTags = document.getElementById('modal-forbidden-tags');
       if (apa.forbiddenTerms && apa.forbiddenTerms.length > 0) {
         forbiddenBox.classList.remove('hidden');
-        forbiddenTags.innerHTML = apa.forbiddenTerms.map(t => `<span class="px-2 py-0.5 bg-red-500/20 text-red-300 font-mono text-[10px] rounded border border-red-500/40">"${t}"</span>`).join('');
+        forbiddenTags.innerHTML = apa.forbiddenTerms.map(t => `<span class="px-2 py-0.5 bg-red-500/20 text-red-400 font-mono text-[10px] rounded border border-red-500/30">"${t}"</span>`).join('');
       } else {
         forbiddenBox.classList.add('hidden');
       }
@@ -2416,9 +2420,9 @@ export interface Activity {
 
       const criteriaList = document.getElementById('modal-criteria-list');
       criteriaList.innerHTML = (apa.evaluationCriteria || []).map(c => `
-        <div class="p-2 bg-[#2C2C2E]/60 rounded-lg border border-white/5 space-y-0.5">
-          <span class="font-semibold text-white block">${c.label}</span>
-          <span class="text-[#8E8E93] block text-[11px]">${c.description}</span>
+        <div class="p-2.5 theme-bg-card rounded-xl border space-y-0.5">
+          <span class="font-semibold theme-text-main block">${c.label}</span>
+          <span class="theme-text-muted block text-[11px]">${c.description}</span>
         </div>
       `).join('');
 
