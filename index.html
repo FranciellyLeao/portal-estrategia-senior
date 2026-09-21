@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estratégia Sênior — Aulas Teóricas & Exercícios Multimodais (Apple HIG)</title>
+  <title>Estratégia Sênior — Portal Streaming & Checklist Multimídia (Apple & Netflix HIG)</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -73,7 +73,7 @@
 
       <div>
         <h2 class="text-xl font-semibold tracking-tight text-white">Estratégia Sênior</h2>
-        <p class="text-xs text-[#8E8E93] mt-1">Portal Acadêmico • Teoria & Prática Multimodal</p>
+        <p class="text-xs text-[#8E8E93] mt-1">Portal Acadêmico • Layout Streaming & Checklist</p>
       </div>
 
       <!-- FORM -->
@@ -127,7 +127,7 @@
           </div>
           <div>
             <h1 class="font-semibold text-xs text-white tracking-tight">ESTRATÉGIA SÊNIOR</h1>
-            <p class="text-[10px] text-[#8E8E93]">Portal Multimodal EAD</p>
+            <p class="text-[10px] text-[#8E8E93]">Portal Streaming & Checklist</p>
           </div>
         </div>
 
@@ -211,11 +211,11 @@
               <div class="space-y-3 max-w-2xl">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#30D158]/10 border border-[#30D158]/20 text-[#30D158] text-[11px] font-medium">
                   <span class="w-2 h-2 rounded-full bg-[#30D158] animate-pulse"></span>
-                  <span>Aulas Teóricas Didáticas (Richard Rumelt & Ries/Trout)</span>
+                  <span>Aulas Teóricas Didáticas & Checklist Multimídia</span>
                 </div>
                 <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-white" id="welcome-greeting">Bem-vindo, Alexandre!</h2>
                 <p class="text-xs lg:text-sm text-[#8E8E93] leading-relaxed">
-                  Acesse abaixo as aulas didáticas em texto corrido (Markdown) para aprofundar os fundamentos de Diagnóstico Estratégico antes dos exercícios práticos.
+                  Acesse os módulos em formato de streaming, leia os fundamentos teóricos em Markdown e acompanhe o seu avanço nos recursos multimídia interativos com checklist!
                 </p>
               </div>
 
@@ -224,8 +224,8 @@
                 <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-lg flex items-center space-x-2">
                   <span>📖 Abrir Aula: O Kernel do Diagnóstico (U1.1)</span>
                 </button>
-                <button onclick="openCodeModal()" class="px-4 py-2.5 bg-[#1C1C1E] hover:bg-[#2C2C2E] text-white border border-white/10 font-semibold text-xs rounded-xl transition">
-                  <span>TypeScript Engine</span>
+                <button onclick="switchView('discipline', 'DISC01')" class="px-4 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-semibold text-xs rounded-xl transition">
+                  <span>▶ Entrar no Módulo 1 (Estilo Streaming)</span>
                 </button>
               </div>
             </div>
@@ -380,39 +380,59 @@
 
         </div>
 
-        <!-- VIEW 2: DISCIPLINE DETAILS -->
+        <!-- VIEW 2: DISCIPLINE DETAILS (STREAMING NETFLIX STYLE) -->
         <div id="view-discipline" class="max-w-6xl mx-auto space-y-8 hidden">
           
-          <!-- DISCIPLINE HEADER -->
-          <div class="apple-glass rounded-3xl p-8 shadow-xl">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div class="space-y-2">
-                <div class="flex items-center space-x-2">
-                  <span id="disc-code-badge" class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-[#0A84FF]/20 text-[#0A84FF] border border-[#0A84FF]/30">DISC01</span>
-                  <span id="disc-status-badge" class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-[#30D158]/10 text-[#30D158] border border-[#30D158]/20">Em Andamento</span>
-                </div>
-                <h2 id="disc-title" class="text-2xl font-bold text-white tracking-tight">Diagnóstico Estratégico & Pensamento Crítico</h2>
-                <p id="disc-objective" class="text-xs text-[#8E8E93] max-w-3xl leading-relaxed">Dominar a separação de sintoma vs. causa raiz, isolar fatos de hipóteses e investigar gargalos de negócio.</p>
+          <!-- STREAMING CINEMATIC HERO BANNER -->
+          <div class="rounded-3xl p-8 shadow-2xl relative overflow-hidden border border-white/15 bg-gradient-to-r from-[#1C1C1E] via-[#121214] to-[#0A0A0C]">
+            <div class="relative z-10 space-y-4">
+              <div class="flex items-center space-x-3">
+                <span id="disc-code-badge" class="px-3 py-1 rounded-md text-xs font-mono font-bold bg-[#0A84FF] text-white shadow-md">DISC01</span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-[#0A84FF]">Formação Estratégica C-Level</span>
+                <span id="disc-status-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30">Em Andamento</span>
               </div>
 
-              <div class="bg-[#1C1C1E] border border-white/10 p-4 rounded-2xl text-center min-w-[150px]">
-                <p class="text-[11px] text-[#8E8E93]">Conclusão</p>
-                <p id="disc-header-progress" class="text-2xl font-bold text-[#0A84FF] mt-0.5">0%</p>
-                <div class="w-full bg-[#2C2C2E] rounded-full h-1 mt-2">
-                  <div id="disc-header-bar" class="bg-[#0A84FF] h-1 rounded-full" style="width: 0%"></div>
+              <h2 id="disc-title" class="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-none">Diagnóstico Estratégico & Pensamento Crítico</h2>
+              
+              <!-- INTRODUÇÃO GERAL DO MÓDULO (SYNPOSIS ESTILO STREAMING) -->
+              <div class="p-4 bg-black/40 border border-white/10 rounded-2xl max-w-4xl backdrop-blur-md">
+                <p id="disc-objective" class="text-xs lg:text-sm text-[#F5F5F7] leading-relaxed">
+                  Dominar a separação de sintoma vs. causa raiz, isolar fatos de hipóteses e investigar gargalos de negócio.
+                </p>
+              </div>
+
+              <!-- STREAMING ACTION BUTTONS & PROGRESS BAR -->
+              <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+                <div class="flex items-center space-x-3">
+                  <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-6 py-3 bg-[#30D158] hover:bg-[#28B84C] text-black font-extrabold text-xs rounded-xl shadow-lg transition flex items-center space-x-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <span>▶ Iniciar Teoria (Unidade 1)</span>
+                  </button>
+                  <a href="#apas-list-container" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl transition border border-white/15">
+                    <span>⚡ Ver Exercícios Práticos (APAs)</span>
+                  </a>
+                </div>
+
+                <div class="flex items-center space-x-3 bg-[#1C1C1E] px-4 py-2 rounded-2xl border border-white/10">
+                  <span class="text-xs text-[#8E8E93]">Progresso do Módulo:</span>
+                  <span id="disc-header-progress" class="text-sm font-bold text-[#0A84FF] font-mono">0%</span>
+                  <div class="w-24 bg-[#2C2C2E] rounded-full h-1.5">
+                    <div id="disc-header-bar" class="bg-[#0A84FF] h-1.5 rounded-full" style="width: 0%"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- UNIDADES DE ESTUDO & AULAS TEÓRICAS (LESSONS) -->
+          <!-- FILEIRA 1: EPISÓDIOS & AULAS TEÓRICAS (ESTILO NETFLIX) -->
           <div class="apple-glass rounded-3xl p-6 shadow-md border border-[#30D158]/20">
             <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
               <div>
-                <h3 class="font-semibold text-base text-white">Unidades de Aprendizagem & Fundamentos Teóricos</h3>
-                <p class="text-xs text-[#8E8E93]">Aulas em texto corrido (Markdown) baseadas em Richard Rumelt, Al Ries & Jack Trout.</p>
+                <span class="text-[10px] font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">FILEIRA DE EPISÓDIOS TEÓRICOS</span>
+                <h3 class="font-bold text-base text-white">📖 Aulas Didáticas em Texto Corrido (Markdown)</h3>
+                <p class="text-xs text-[#8E8E93]">Fundamentos teóricos embasados em Richard Rumelt e Al Ries & Jack Trout.</p>
               </div>
-              <span class="text-[10px] text-[#30D158] font-medium bg-[#30D158]/10 px-2.5 py-1 rounded-full border border-[#30D158]/20">Aulas Didáticas 📖</span>
+              <span class="text-[10px] text-[#30D158] font-medium bg-[#30D158]/10 px-2.5 py-1 rounded-full border border-[#30D158]/20">Fundamentação 📖</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="lessons-grid">
@@ -420,33 +440,39 @@
             </div>
           </div>
 
-          <!-- MULTIMEDIA HUB RECURSOS -->
-          <div class="apple-glass rounded-3xl p-6 shadow-md">
-            <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
-              <div>
-                <h3 class="font-semibold text-base text-white">Hub Multimídia & Acervo de Referência</h3>
-                <p class="text-xs text-[#8E8E93]">Livros de cabeceira, cursos recomendados, portais e vídeos com links diretos.</p>
-              </div>
-              <span class="text-[10px] text-[#0A84FF] font-medium bg-[#0A84FF]/10 px-2.5 py-1 rounded-full border border-[#0A84FF]/20">Links 100% Clicáveis ↗</span>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="multimedia-hub-grid">
-              <!-- Rendered dynamically -->
-            </div>
-          </div>
-
-          <!-- TRILHA DE APAS (EXERCÍCIOS MULTIMODAIS) -->
+          <!-- FILEIRA 2: TRILHA DE EXERCÍCIOS PRÁTICOS (APAS) -->
           <div class="apple-glass rounded-3xl p-6 shadow-md">
             <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <div>
-                <h3 class="font-semibold text-base text-white">Trilha de Exercícios Multimodais</h3>
-                <p class="text-xs text-[#8E8E93]">Exercícios práticos com dados simulados, roleplays e pareceres.</p>
+                <span class="text-[10px] font-mono font-bold text-[#0A84FF] uppercase tracking-wider block mb-1">DESAFIOS PRÁTICOS C-LEVEL</span>
+                <h3 class="font-bold text-base text-white">⚡ Trilha de Exercícios Multimodais</h3>
+                <p class="text-xs text-[#8E8E93]">Exercícios com dados simulados, roleplays C-Level e pareceres.</p>
               </div>
-              <span id="apa-counter-badge" class="text-xs text-[#8E8E93] px-3 py-1 bg-[#2C2C2E] rounded-lg">0 / 5 Concluídas</span>
+              <span id="apa-counter-badge" class="text-xs text-[#8E8E93] px-3 py-1 bg-[#2C2C2E] rounded-lg">0 / 5 Concluídos</span>
             </div>
 
             <div class="space-y-3" id="apas-list-container">
               <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- FILEIRA 3: ACERVO MULTIMÍDIA COM CHECKLIST INTERATIVO (NOVO LAYOUT) -->
+          <div class="apple-glass rounded-3xl p-6 shadow-md border border-white/10">
+            <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-mono font-bold text-[#FF9F0A] uppercase tracking-wider block mb-1">ATIVIDADES EXTRAS & RECURSOS COMPLEMENTARES</span>
+                <h3 class="font-bold text-base text-white">✅ Checklist Interativo do Acervo Multimídia</h3>
+                <p class="text-xs text-[#8E8E93]">Marque os livros lidos, cursos feitos e portais consultados para somar pontos no seu progresso.</p>
+              </div>
+              
+              <div class="flex items-center space-x-2 bg-[#1C1C1E] px-3 py-1.5 rounded-xl border border-white/10">
+                <span class="text-xs text-[#8E8E93]">Checklist:</span>
+                <span id="checklist-progress-text" class="text-xs font-bold text-[#30D158] font-mono">0 / 0 Feitos</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="multimedia-hub-grid">
+              <!-- Rendered dynamically as interactive checklist items -->
             </div>
           </div>
 
@@ -790,12 +816,12 @@ export type ActivityType =
       switchView(userState.activeView, userState.activeDisciplineId);
     }
 
-    // EXPANDED MULTIMODAL CURRICULUM DATABASE WITH LESSON TEXT MARKDOWN
+    // EXPANDED MULTIMODAL CURRICULUM DATABASE WITH LESSON TEXT MARKDOWN & UNIQUE RESOURCE IDS
     const curriculumData = [
       {
         id: "DISC01",
         title: "Diagnóstico Estratégico & Pensamento Crítico",
-        objective: "Dominar a separação de sintoma vs. causa raiz, isolar fatos de hipóteses e investigar gargalos de negócio.",
+        objective: "Neste módulo fundamental, você aprenderá a superar a ansiedade criativa e desenvolver um raciocínio de diagnóstico de negócios de alto nível C-Level. Entenda a diferença entre sintoma (queda de receita) e causa raiz (gargalo de conversão) e domine o Kernel da Estratégia de Richard Rumelt.",
         lessons: [
           {
             unitId: 'U1.1',
@@ -876,19 +902,19 @@ Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 
         ],
         multimedia: {
           books: [
-            { title: "Good Strategy Bad Strategy", author: "Richard Rumelt", focus: "O Núcleo da Estratégia", url: "https://www.google.com/search?q=Good+Strategy+Bad+Strategy+Richard+Rumelt" }
+            { id: "disc1_b1", title: "Good Strategy Bad Strategy", author: "Richard Rumelt", focus: "O Núcleo da Estratégia", url: "https://www.google.com/search?q=Good+Strategy+Bad+Strategy+Richard+Rumelt" }
           ],
           courses: [
-            { title: "Planejamento Estratégico", provider: "Sebrae", url: "https://www.sebrae.com.br/sites/PortalSebrae/cursosonline/planejamento-estrategico,e5cfb8a6a132e410VgnVCM1000003c23000aRCRD" },
-            { title: "Inbound Fundamentals", provider: "HubSpot Academy", url: "https://academy.hubspot.com/courses/inbound" }
+            { id: "disc1_c1", title: "Planejamento Estratégico", provider: "Sebrae", url: "https://www.sebrae.com.br/sites/PortalSebrae/cursosonline/planejamento-estrategico,e5cfb8a6a132e410VgnVCM1000003c23000aRCRD" },
+            { id: "disc1_c2", title: "Inbound Fundamentals", provider: "HubSpot Academy", url: "https://academy.hubspot.com/courses/inbound" }
           ],
           portals: [
-            { name: "Think with Google BR", url: "https://www.thinkwithgoogle.com/intl/pt-br/" },
-            { name: "McKinsey Insights", url: "https://www.mckinsey.com/featured-insights" }
+            { id: "disc1_p1", name: "Think with Google BR", url: "https://www.thinkwithgoogle.com/intl/pt-br/" },
+            { id: "disc1_p2", name: "McKinsey Insights", url: "https://www.mckinsey.com/featured-insights" }
           ],
           videos: [
-            { title: "Richard Rumelt: The Kernel of Strategy", url: "https://www.youtube.com/results?search_query=Richard+Rumelt+The+Kernel+of+Strategy" },
-            { title: "Breakdown: Turnaround Cases & Estratégia", url: "https://www.youtube.com/results?search_query=turnaround+cases+branding+estrategia" }
+            { id: "disc1_v1", title: "Richard Rumelt: The Kernel of Strategy", url: "https://www.youtube.com/results?search_query=Richard+Rumelt+The+Kernel+of+Strategy" },
+            { id: "disc1_v2", title: "Breakdown: Turnaround Cases & Estratégia", url: "https://www.youtube.com/results?search_query=turnaround+cases+branding+estrategia" }
           ]
         },
         apas: [
@@ -1027,7 +1053,7 @@ Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 
       {
         id: "DISC02",
         title: "Posicionamento de Marca, Categoria & Diferenciação",
-        objective: "Criar espaços únicos na mente do consumidor e definir territórios de diferenciação e atributos de valor.",
+        objective: "Explore as leis da diferenciação e criação de categoria na mente do consumidor. Aprenda a mapear territórios vazios no mercado e a redigir propostas de valor inconfundíveis baseadas nos conceitos de Al Ries, Jack Trout e Marty Neumeier.",
         lessons: [
           {
             unitId: 'U2.1',
@@ -1053,20 +1079,20 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
         ],
         multimedia: {
           books: [
-            { title: "Posicionamento: A Batalha por sua Mente", author: "Al Ries & Jack Trout", focus: "Escada Mental", url: "https://www.google.com/search?q=Posicionamento+A+Batalha+por+sua+Mente+Al+Ries" },
-            { title: "The Brand Gap", author: "Marty Neumeier", focus: "Diferenciação e O 'Oneness'", url: "https://www.google.com/search?q=The+Brand+Gap+Marty+Neumeier" }
+            { id: "disc2_b1", title: "Posicionamento: A Batalha por sua Mente", author: "Al Ries & Jack Trout", focus: "Escada Mental", url: "https://www.google.com/search?q=Posicionamento+A+Batalha+por+sua+Mente+Al+Ries" },
+            { id: "disc2_b2", title: "The Brand Gap", author: "Marty Neumeier", focus: "Diferenciação e O 'Oneness'", url: "https://www.google.com/search?q=The+Brand+Gap+Marty+Neumeier" }
           ],
           courses: [
-            { title: "Branding para PMEs", provider: "Sebrae", url: "https://www.sebrae.com.br/sites/PortalSebrae/cursosonline/como-construir-uma-marca-de-sucesso,4700b8a6a132e410VgnVCM1000003c23000aRCRD" }
+            { id: "disc2_c1", title: "Branding para PMEs", provider: "Sebrae", url: "https://www.sebrae.com.br/sites/PortalSebrae/cursosonline/como-construir-uma-marca-de-sucesso,4700b8a6a132e410VgnVCM1000003c23000aRCRD" }
           ],
           portals: [
-            { name: "Brandingmag", url: "https://www.brandingmag.com/" },
-            { name: "Brand New (UnderConsideration)", url: "https://www.underconsideration.com/brandnew/" },
-            { name: "BP&O (Brand Identity)", url: "https://bpando.org/" }
+            { id: "disc2_p1", name: "Brandingmag", url: "https://www.brandingmag.com/" },
+            { id: "disc2_p2", name: "Brand New (UnderConsideration)", url: "https://www.underconsideration.com/brandnew/" },
+            { id: "disc2_p3", name: "BP&O (Brand Identity)", url: "https://bpando.org/" }
           ],
           videos: [
-            { title: "Marty Neumeier Interview on Brand Strategy", url: "https://www.youtube.com/results?search_query=Marty+Neumeier+Brand+Strategy" },
-            { title: "Teardown: Arquitetura de Marca Apple & Nike", url: "https://www.youtube.com/results?search_query=analise+arquitetura+de+marca+apple+nike" }
+            { id: "disc2_v1", title: "Marty Neumeier Interview on Brand Strategy", url: "https://www.youtube.com/results?search_query=Marty+Neumeier+Brand+Strategy" },
+            { id: "disc2_v2", title: "Teardown: Arquitetura de Marca Apple & Nike", url: "https://www.youtube.com/results?search_query=analise+arquitetura+de+marca+apple+nike" }
           ]
         },
         apas: [
@@ -1113,72 +1139,28 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
             ],
             mentorTip: 'Posicionamento é provado nas escolhas operacionais, não no slogan.',
             sampleGabarito: 'A virada exigiu nova linha de produtos (Havaianas TOP), distribuição em boutiques selecionadas e endosso de celebridades.'
-          },
-          {
-            id: 'APA-2.3',
-            code: 'APA 03',
-            title: 'Advogado do Diabo: Subir Preços em 40% vs. Manter Preço',
-            type: 'DEVILS_ADVOCATE',
-            level: 'Sênior C-Level',
-            estimatedMinutes: 25,
-            badgeLabel: '⚔️ Advogado do Diabo',
-            icon: 'Shield',
-            scenarioText: 'Uma marca de cosméticos artesanais quer reposicionar-se como luxo e aumentar os preços em 40%. O sócio comercial teme debandada de clientes.',
-            instructions: [
-              'Defenda com força total a tese de AUMENTAR os preços (Lado A).',
-              'Defenda com igual força a tese de MANTER os preços e volume (Lado B).',
-              'Apresente a decisão recomendada de trade-off.'
-            ],
-            placeholderText: '### Defesa do Aumento de 40%...\n### Defesa do Volume e Manutenção...\n### Veredito Estratégico...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Dualidade de Argumentação', description: 'Apresentou argumentos sólidos para os dois lados.' }
-            ],
-            mentorTip: 'Estrategistas sêniores enxergam as forças operacionais opostas antes de recomendar um caminho.',
-            sampleGabarito: 'Lado A: Subir preço filtra clientes transacionais e margem custeia embalagem nobre. Lado B: Queda abrupta de volume compromete caixa imediato.'
-          },
-          {
-            id: 'APA-2.4',
-            code: 'APA 04',
-            title: 'Redação de Manifesto & Proposta de Valor',
-            type: 'MANIFESTO_VALUE_PROP',
-            level: 'Intermediário',
-            estimatedMinutes: 20,
-            badgeLabel: '📜 Redação de Manifesto',
-            icon: 'FileCode',
-            scenarioText: 'Redija o manifesto de posicionamento para uma marca de roupas de trabalho sustentáveis para profissionais criativos.',
-            instructions: [
-              'Defina o "Inimigo Comum" da categoria.',
-              'Escreva um manifesto emotivo e de forte convicção de 3 parágrafos.',
-              'Formule a frase de Proposta de Valor (Oneness).'
-            ],
-            placeholderText: '### O Inimigo Comum...\n### Manifesto...\n### Frase de Valor...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Clareza do Inimigo', description: 'Identificou o fast-fashion descartável como o vilão.' }
-            ],
-            mentorTip: 'Um bom manifesto cria um divisor de águas: atrai apaixonados e repele quem não tem fit.',
-            sampleGabarito: 'Não fazemos roupas descartáveis para tendências de 15 dias. Criamos peças duráveis para mentes criativas que constroem o futuro.'
           }
         ]
       },
       {
         id: "DISC03",
         title: "Consumer Insights, Pesquisa & Jobs to Be Done",
-        objective: "Mapear motivações do consumidor, conduzir entrevistas sem viés e extrair insights acionáveis.",
+        objective: "Domine a condução de pesquisas qualitativas sem viés (The Mom Test) e mapeie as motivações reais de compra através do framework Jobs to Be Done (Clayton Christensen).",
         multimedia: {
           books: [
-            { title: "The Mom Test", author: "Rob Fitzpatrick", focus: "Entrevistas sem viés", url: "https://www.google.com/search?q=The+Mom+Test+Rob+Fitzpatrick" },
-            { title: "Competing Against Luck", author: "Clayton Christensen", focus: "Teoria JTBD", url: "https://www.google.com/search?q=Competing+Against+Luck+Clayton+Christensen" }
+            { id: "disc3_b1", title: "The Mom Test", author: "Rob Fitzpatrick", focus: "Entrevistas sem viés", url: "https://www.google.com/search?q=The+Mom+Test+Rob+Fitzpatrick" },
+            { id: "disc3_b2", title: "Competing Against Luck", author: "Clayton Christensen", focus: "Teoria JTBD", url: "https://www.google.com/search?q=Competing+Against+Luck+Clayton+Christensen" }
           ],
           courses: [
-            { title: "Persona & Customer Journey", provider: "HubSpot Academy", url: "https://academy.hubspot.com/courses/customer-journey-mapping" }
+            { id: "disc3_c1", title: "Persona & Customer Journey", provider: "HubSpot Academy", url: "https://academy.hubspot.com/courses/customer-journey-mapping" }
           ],
           portals: [
-            { name: "Kantar Insights Brasil", url: "https://www.kantar.com/br" },
-            { name: "Nielsen Reports", url: "https://www.nielsen.com/br/pt/insights/" }
+            { id: "disc3_p1", name: "Kantar Insights Brasil", url: "https://www.kantar.com/br" },
+            { id: "disc3_p2", name: "Nielsen Reports", url: "https://www.nielsen.com/br/pt/insights/" }
           ],
           videos: [
-            { title: "Clayton Christensen: Milkshake Marketing", url: "https://www.youtube.com/results?search_query=Clayton+Christensen+Milkshake+Marketing" },
-            { title: "Guia de Entrevistas de Profundidade", url: "https://www.youtube.com/results?search_query=entrevista+qualitativa+de+profundidade+guia" }
+            { id: "disc3_v1", title: "Clayton Christensen: Milkshake Marketing", url: "https://www.youtube.com/results?search_query=Clayton+Christensen+Milkshake+Marketing" },
+            { id: "disc3_v2", title: "Guia de Entrevistas de Profundidade", url: "https://www.youtube.com/results?search_query=entrevista+qualitativa+de+profundidade+guia" }
           ]
         },
         apas: [
@@ -1204,50 +1186,28 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
             ],
             mentorTip: 'Pessoas mentem quando perguntadas sobre o futuro; o histórico de gastos não mente.',
             sampleGabarito: '1. Como você organizou suas notas fiscais no último mês? 2. Quanto tempo você gastou nessa tarefa? 3. Você contratou algum software ou planilha para isso?'
-          },
-          {
-            id: 'APA-3.2',
-            code: 'APA 02',
-            title: 'Restrição Extrema: Validação de Insight com R$ 0 de Budget',
-            type: 'EXTREME_CONSTRAINT',
-            level: 'Intermediário',
-            estimatedMinutes: 20,
-            badgeLabel: '⚡ Restrição Extrema',
-            icon: 'Zap',
-            scenarioText: 'Você tem R$ 0,00 de orçamento de mídia e 48 horas para descobrir a razão de abandono no carrinho de uma marca de cursos online.',
-            instructions: [
-              'Desenhe um plano de investigação usando apenas 1 canal proprietário.',
-              'Defina a abordagem direta com 5 clientes que abandonaram.',
-              'Apresente o indicador de sucesso do experimento.'
-            ],
-            placeholderText: '### Canal Selecionado...\n### Abordagem de Investigação...\n### Indicador de Sucesso...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Criatividade Operacional', description: 'Usou abordagens 1 a 1 via WhatsApp/Email sem custo.' }
-            ],
-            mentorTip: 'Falar com 5 clientes reais via mensagem vale mais que 1.000 respostas de formulário genérico.',
-            sampleGabarito: 'Enviar mensagem direta de áudio no WhatsApp das últimas 10 pessoas que abandonaram o carrinho oferecendo ajuda manual.'
           }
         ]
       },
       {
         id: "DISC04",
         title: "Business, Funil de Vendas & Mídia",
-        objective: "Conectar estratégia de marca com métricas financeiras (CAC, LTV, ROAS, Taxa de Conversão).",
+        objective: "Conecte a construção de marca com as métricas financeiras de negócio (CAC, LTV, ROAS, Taxa de Conversão). Aprenda a defender investimentos de Brand Equity perante o CFO.",
         multimedia: {
           books: [
-            { title: "Obviously Awesome", author: "April Dunford", focus: "Positioning & Market Category", url: "https://www.google.com/search?q=Obviously+Awesome+April+Dunford" }
+            { id: "disc4_b1", title: "Obviously Awesome", author: "April Dunford", focus: "Positioning & Market Category", url: "https://www.google.com/search?q=Obviously+Awesome+April+Dunford" }
           ],
           courses: [
-            { title: "Google Skillshop (GA4 & Ads)", provider: "Google", url: "https://skillshop.exceedlms.com/" },
-            { title: "Meta Blueprint", provider: "Meta", url: "https://www.facebook.com/business/learn" }
+            { id: "disc4_c1", title: "Google Skillshop (GA4 & Ads)", provider: "Google", url: "https://skillshop.exceedlms.com/" },
+            { id: "disc4_c2", title: "Meta Blueprint", provider: "Meta", url: "https://www.facebook.com/business/learn" }
           ],
           portals: [
-            { name: "Marketing Week", url: "https://www.marketingweek.com/" },
-            { name: "WARC Financial Impact", url: "https://www.warc.com/" }
+            { id: "disc4_p1", name: "Marketing Week", url: "https://www.marketingweek.com/" },
+            { id: "disc4_p2", name: "WARC Financial Impact", url: "https://www.warc.com/" }
           ],
           videos: [
-            { title: "Branding vs Performance Metrics (CAC/LTV)", url: "https://www.youtube.com/results?search_query=metricas+ecommerce+CAC+LTV+ROAS" },
-            { title: "Impacto Econômico do Branding (Les Binet)", url: "https://www.youtube.com/results?search_query=impacto+economico+do+branding+les+binet" }
+            { id: "disc4_v1", title: "Branding vs Performance Metrics (CAC/LTV)", url: "https://www.youtube.com/results?search_query=metricas+ecommerce+CAC+LTV+ROAS" },
+            { id: "disc4_v2", title: "Impacto Econômico do Branding (Les Binet)", url: "https://www.youtube.com/results?search_query=impacto+economico+do+branding+les+binet" }
           ]
         },
         apas: [
@@ -1272,51 +1232,29 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
             ],
             mentorTip: 'Performance gera vendas hoje; Branding garante vendas com margem amanhã.',
             sampleGabarito: 'A alocação 100% em performance causa saturação de audiência e escalada do CAC. O modelo 60/40 sustenta lembrança de marca.'
-          },
-          {
-            id: 'APA-4.2',
-            code: 'APA 02',
-            title: 'Inovação Cruzada: Trazendo UX Financeiro para o Varejo',
-            type: 'CROSS_INDUSTRY',
-            level: 'Avançado',
-            estimatedMinutes: 20,
-            badgeLabel: '🔀 Inovação Cruzada',
-            icon: 'Repeat',
-            scenarioText: 'Uma rede de lojas de móveis de escritório sofre com ciclo de venda longo e atrito no fechamento de orçamentos.',
-            instructions: [
-              'Selecione um benchmark de outro segmento (ex: facilidade de aprovação de crédito do Nubank).',
-              'Aplique essa lógica no processo de venda da loja de móveis.',
-              'Descreva o novo fluxo de checkout.'
-            ],
-            placeholderText: '### Segmento Doador do Benchmark...\n### Aplicação no Varejo...\n### Fluxo de Checkout Proposto...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Transferência de Aprendizado', description: 'Adaptou um conceito de fintech com sucesso no varejo.' }
-            ],
-            mentorTip: 'As melhores ideias de estratégia de marca vêm de olhar fora do seu próprio setor.',
-            sampleGabarito: 'Aplicar a aprovação instantânea de limite dos bancos digitais no momento de emissão de orçamento corporativo de móveis.'
           }
         ]
       },
       {
         id: "DISC05",
         title: "Planejamento Integrado & Criatividade Estratégica",
-        objective: "Traduzir diagnósticos e posicionamentos em briefings estratégicos e conceitos de campanha.",
+        objective: "Traduza diagnósticos e posicionamentos em briefings de criação de 1 página inspiradores e conceitos de campanha multicanal baseados no livro Made to Stick.",
         multimedia: {
           books: [
-            { title: "The Advertising Concept Book", author: "Pete Barry", focus: "Ideias e Execução", url: "https://www.google.com/search?q=The+Advertising+Concept+Book+Pete+Barry" },
-            { title: "Made to Stick", author: "Chip & Dan Heath", focus: "Critérios SUCCESs", url: "https://www.google.com/search?q=Made+to+Stick+Chip+Dan+Heath" }
+            { id: "disc5_b1", title: "The Advertising Concept Book", author: "Pete Barry", focus: "Ideias e Execução", url: "https://www.google.com/search?q=The+Advertising+Concept+Book+Pete+Barry" },
+            { id: "disc5_b2", title: "Made to Stick", author: "Chip & Dan Heath", focus: "Critérios SUCCESs", url: "https://www.google.com/search?q=Made+to+Stick+Chip+Dan+Heath" }
           ],
           courses: [
-            { title: "Content Marketing", provider: "HubSpot", url: "https://academy.hubspot.com/courses/content-marketing" }
+            { id: "disc5_c1", title: "Content Marketing", provider: "HubSpot", url: "https://academy.hubspot.com/courses/content-marketing" }
           ],
           portals: [
-            { name: "The Drum", url: "https://www.thedrum.com/" },
-            { name: "Adweek", url: "https://www.adweek.com/" },
-            { name: "Clube de Criação", url: "https://www.clubedecriacao.com.br/" }
+            { id: "disc5_p1", name: "The Drum", url: "https://www.thedrum.com/" },
+            { id: "disc5_p2", name: "Adweek", url: "https://www.adweek.com/" },
+            { id: "disc5_p3", name: "Clube de Criação", url: "https://www.clubedecriacao.com.br/" }
           ],
           videos: [
-            { title: "Cannes Lions Winners Breakdown", url: "https://www.youtube.com/results?search_query=Cannes+Lions+award+winning+campaigns+breakdown" },
-            { title: "How to Write a One-Page Brief", url: "https://www.youtube.com/results?search_query=how+to+write+a+one+page+creative+brief" }
+            { id: "disc5_v1", title: "Cannes Lions Winners Breakdown", url: "https://www.youtube.com/results?search_query=Cannes+Lions+award+winning+campaigns+breakdown" },
+            { id: "disc5_v2", title: "How to Write a One-Page Brief", url: "https://www.youtube.com/results?search_query=how+to+write+a+one+page+creative+brief" }
           ]
         },
         apas: [
@@ -1347,18 +1285,18 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       {
         id: "DISC06",
         title: "Defesa C-Level & Portfólio Estratégico",
-        objective: "Estruturar apresentações para conselhos/fundadores e consolidar 5 cases de alto nível para o portfólio sênior.",
+        objective: "Consolide 5 cases reais para o seu portfólio executivo de nível sênior e domine a gestão de crise PR e objeções C-Level.",
         multimedia: {
           books: [
-            { title: "This Is Marketing", author: "Seth Godin", focus: "Mudança cultural", url: "https://www.google.com/search?q=This+Is+Marketing+Seth+Godin" }
+            { id: "disc6_b1", title: "This Is Marketing", author: "Seth Godin", focus: "Mudança cultural", url: "https://www.google.com/search?q=This+Is+Marketing+Seth+Godin" }
           ],
           portals: [
-            { name: "Harvard Business Review (HBR Brasil)", url: "https://hbrbr.com.br/" },
-            { name: "WARC Effective Strategy", url: "https://www.warc.com/" }
+            { id: "disc6_p1", name: "Harvard Business Review (HBR Brasil)", url: "https://hbrbr.com.br/" },
+            { id: "disc6_p2", name: "WARC Effective Strategy", url: "https://www.warc.com/" }
           ],
           videos: [
-            { title: "Executive Pitching Masterclass", url: "https://www.youtube.com/results?search_query=executive+pitching+masterclass" },
-            { title: "Design Leadership in Boardrooms", url: "https://www.youtube.com/results?search_query=design+leadership+in+boardrooms" }
+            { id: "disc6_v1", title: "Executive Pitching Masterclass", url: "https://www.youtube.com/results?search_query=executive+pitching+masterclass" },
+            { id: "disc6_v2", title: "Design Leadership in Boardrooms", url: "https://www.youtube.com/results?search_query=design+leadership+in+boardrooms" }
           ]
         },
         apas: [
@@ -1396,6 +1334,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       activeLessonId: null,
       submissions: {},
       completedLessons: {},
+      completedResources: {},
       streak: 3
     };
 
@@ -1405,6 +1344,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
         try {
           userState = JSON.parse(saved);
           if (!userState.completedLessons) userState.completedLessons = {};
+          if (!userState.completedResources) userState.completedResources = {};
         } catch (e) {
           console.error("Error loading state", e);
         }
@@ -1416,6 +1356,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
           activeLessonId: null,
           submissions: {},
           completedLessons: {},
+          completedResources: {},
           streak: 3
         };
       }
@@ -1423,6 +1364,16 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
 
     function saveState() {
       localStorage.setItem(getStorageKey(), JSON.stringify(userState));
+    }
+
+    function toggleResourceCheck(resId) {
+      if (userState.completedResources[resId]) {
+        delete userState.completedResources[resId];
+      } else {
+        userState.completedResources[resId] = true;
+      }
+      saveState();
+      renderDisciplineView(userState.activeDisciplineId);
     }
 
     function getMetrics() {
@@ -1534,7 +1485,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
           </td>
           <td class="py-3 px-2 text-right font-bold font-mono ${avg !== '—' ? 'text-[#30D158]' : 'text-[#8E8E93]'}">${avg}</td>
           <td class="py-3 px-2 text-right">
-            <button onclick="switchView('discipline', '${disc.id}')" class="text-xs text-[#0A84FF] font-medium hover:underline">Ver Módulo</button>
+            <button onclick="switchView('discipline', '${disc.id}')" class="text-xs text-[#0A84FF] font-medium hover:underline">Ver Módulo ▶</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -1589,7 +1540,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       document.getElementById('disc-header-bar').style.width = `${pct}%`;
       document.getElementById('apa-counter-badge').innerText = `${done} / ${disc.apas.length} Concluídos`;
 
-      // RENDER UNIDADES TEÓRICAS (LESSONS)
+      // RENDER UNIDADES TEÓRICAS (LESSONS / EPISÓDIOS STREAMING)
       const lessonsGrid = document.getElementById('lessons-grid');
       lessonsGrid.innerHTML = '';
 
@@ -1614,8 +1565,8 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
               <span class="text-[11px] font-medium ${isRead ? 'text-[#30D158]' : 'text-[#8E8E93]'}">
                 ${isRead ? '✅ Aula Concluída' : '📖 Não Lida'}
               </span>
-              <button onclick="openLessonModal('${disc.id}', '${unit.unitId}')" class="px-3.5 py-1.5 bg-[#30D158]/10 hover:bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 font-medium text-xs rounded-xl transition">
-                ${isRead ? 'Revisar Aula' : 'Ler Aula 📖'}
+              <button onclick="openLessonModal('${disc.id}', '${unit.unitId}')" class="px-3.5 py-1.5 bg-[#30D158]/10 hover:bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 font-medium text-xs rounded-xl transition flex items-center space-x-1">
+                <span>${isRead ? 'Revisar Aula' : 'Ler Aula 📖'}</span>
               </button>
             </div>
           `;
@@ -1624,78 +1575,135 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       } else {
         lessonsGrid.innerHTML = `
           <div class="col-span-2 p-4 bg-[#1C1C1E] border border-white/10 rounded-2xl text-xs text-[#8E8E93] text-center">
-            📖 Leituras adicionais e fundamentação teórica para esta disciplina estão no Hub Multimídia abaixo.
+            📖 Leituras adicionais e fundamentação teórica para esta disciplina estão no Acervo Multimídia com Checklist abaixo.
           </div>
         `;
       }
 
-      // MULTIMEDIA HUB
+      // MULTIMEDIA HUB CHECKLIST METRICS
+      let totalResources = 0;
+      let checkedResources = 0;
+
+      const allResList = [
+        ...disc.multimedia.books,
+        ...disc.multimedia.courses,
+        ...disc.multimedia.portals,
+        ...disc.multimedia.videos
+      ];
+
+      allResList.forEach(r => {
+        totalResources++;
+        if (userState.completedResources[r.id]) checkedResources++;
+      });
+
+      document.getElementById('checklist-progress-text').innerText = `${checkedResources} / ${totalResources} Feitos (${totalResources > 0 ? Math.round((checkedResources / totalResources) * 100) : 0}%)`;
+
+      // RENDER MULTIMEDIA HUB AS INTERACTIVE CHECKLIST CARDS
       const hubGrid = document.getElementById('multimedia-hub-grid');
       hubGrid.innerHTML = '';
 
-      // Livros
+      // Livros Card Checklist
       const booksCard = document.createElement('div');
       booksCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
       booksCard.innerHTML = `
-        <div class="space-y-2">
+        <div class="space-y-3">
           <span class="text-[10px] font-semibold tracking-wider text-[#0A84FF] uppercase block">📚 Livros de Cabeceira</span>
-          ${disc.multimedia.books.map(b => `
-            <div>
-              <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-white hover:text-[#0A84FF] transition flex items-center space-x-1 group">
-                <span class="group-hover:underline">${b.title}</span>
-                <svg class="w-3 h-3 text-[#0A84FF] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-              <p class="text-[11px] text-[#8E8E93]">${b.author} — <em>${b.focus}</em></p>
-            </div>
-          `).join('')}
+          <div class="space-y-2">
+            ${disc.multimedia.books.map(b => {
+              const isChecked = !!userState.completedResources[b.id];
+              return `
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${b.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
+                  <div class="overflow-hidden">
+                    <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                      <span>${b.title}</span>
+                      <svg class="w-3 h-3 text-[#0A84FF] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                    <p class="text-[10px] text-[#8E8E93] mt-0.5">${b.author} — <em>${b.focus}</em></p>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
         </div>
       `;
       hubGrid.appendChild(booksCard);
 
-      // Cursos
+      // Cursos Card Checklist
       const coursesCard = document.createElement('div');
       coursesCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
       coursesCard.innerHTML = `
-        <div class="space-y-1.5">
-          <span class="text-[10px] font-semibold tracking-wider text-[#30D158] uppercase block mb-1">🎓 Cursos Recomendados</span>
-          ${disc.multimedia.courses.map(c => `
-            <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="text-xs text-[#8E8E93] hover:text-[#30D158] transition flex items-center space-x-1.5 py-0.5 group">
-              <svg class="w-3 h-3 text-[#30D158] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              <span class="truncate group-hover:underline"><strong class="text-white font-medium">${c.title}</strong> (${c.provider})</span>
-            </a>
-          `).join('')}
+        <div class="space-y-3">
+          <span class="text-[10px] font-semibold tracking-wider text-[#30D158] uppercase block">🎓 Cursos Recomendados</span>
+          <div class="space-y-2">
+            ${disc.multimedia.courses.map(c => {
+              const isChecked = !!userState.completedResources[c.id];
+              return `
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${c.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
+                  <div class="overflow-hidden">
+                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                      <span class="truncate">${c.title}</span>
+                      <svg class="w-3 h-3 text-[#30D158] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                    <p class="text-[10px] text-[#8E8E93] mt-0.5">Plataforma: ${c.provider}</p>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
         </div>
       `;
       hubGrid.appendChild(coursesCard);
 
-      // Portais
+      // Portais Card Checklist
       const portalsCard = document.createElement('div');
       portalsCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
       portalsCard.innerHTML = `
-        <div class="space-y-1.5">
-          <span class="text-[10px] font-semibold tracking-wider text-[#FF9F0A] uppercase block mb-1">📰 Intelligence & Portais</span>
-          ${disc.multimedia.portals.map(p => `
-            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-xs text-[#8E8E93] hover:text-[#FF9F0A] transition flex items-center space-x-1.5 py-0.5 group">
-              <svg class="w-3 h-3 text-[#FF9F0A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              <span class="truncate text-white font-medium group-hover:underline">${p.name}</span>
-            </a>
-          `).join('')}
+        <div class="space-y-3">
+          <span class="text-[10px] font-semibold tracking-wider text-[#FF9F0A] uppercase block">📰 Intelligence & Portais</span>
+          <div class="space-y-2">
+            ${disc.multimedia.portals.map(p => {
+              const isChecked = !!userState.completedResources[p.id];
+              return `
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${p.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
+                  <div class="overflow-hidden">
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                      <span class="truncate">${p.name}</span>
+                      <svg class="w-3 h-3 text-[#FF9F0A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
         </div>
       `;
       hubGrid.appendChild(portalsCard);
 
-      // Vídeos
+      // Vídeos Card Checklist
       const videosCard = document.createElement('div');
       videosCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex flex-col justify-between";
       videosCard.innerHTML = `
-        <div class="space-y-1.5">
-          <span class="text-[10px] font-semibold tracking-wider text-[#BF5AF2] uppercase block mb-1">🎥 Vídeos & Podcasts</span>
-          ${disc.multimedia.videos.map(v => `
-            <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="text-xs text-[#8E8E93] hover:text-[#BF5AF2] transition flex items-center space-x-1.5 py-0.5 group">
-              <svg class="w-3 h-3 text-[#BF5AF2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              <span class="truncate text-white font-medium group-hover:underline">${v.title}</span>
-            </a>
-          `).join('')}
+        <div class="space-y-3">
+          <span class="text-[10px] font-semibold tracking-wider text-[#BF5AF2] uppercase block">🎥 Vídeos & Podcasts</span>
+          <div class="space-y-2">
+            ${disc.multimedia.videos.map(v => {
+              const isChecked = !!userState.completedResources[v.id];
+              return `
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${v.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
+                  <div class="overflow-hidden">
+                    <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                      <span class="truncate">${v.title}</span>
+                      <svg class="w-3 h-3 text-[#BF5AF2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
         </div>
       `;
       hubGrid.appendChild(videosCard);
@@ -2049,6 +2057,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       if (confirm("Tem certeza que deseja resetar seu progresso nesta conta?")) {
         userState.submissions = {};
         userState.completedLessons = {};
+        userState.completedResources = {};
         saveState();
         updateHeaderStats();
         switchView('dashboard');
