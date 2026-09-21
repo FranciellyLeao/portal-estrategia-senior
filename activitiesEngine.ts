@@ -44,6 +44,13 @@ export interface MetricData {
   status?: 'warning' | 'danger' | 'success' | 'neutral';
 }
 
+export interface UnitLesson {
+  unitId: string;
+  unitTitle: string;
+  readingTimeMinutes: number;
+  lessonTextMarkdown: string;
+}
+
 export interface Activity {
   id: string;
   disciplineId: string; // ex: 'DISC01'
@@ -75,6 +82,113 @@ export interface Activity {
   mentorTip: string;
   sampleGabarito: string; // Exemplo de resposta de nível sênior para comparação
 }
+
+// ============================================================================
+// AULAS DIDÁTICAS DE FUNDAMENTAÇÃO TEÓRICA (LESSON TEXT MARKDOWN)
+// ============================================================================
+
+export const DISC01_LESSONS: UnitLesson[] = [
+  {
+    unitId: 'U1.1',
+    unitTitle: 'Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce',
+    readingTimeMinutes: 8,
+    lessonTextMarkdown: `
+### 🏛️ O Kernel do Diagnóstico Estratégico
+
+A maioria dos profissionais de criação opera sob uma lógica reativa: diante de uma queixa comercial do cliente, saltam imediatamente para uma proposta visual ou de comunicação. Essa tendência de pular etapas gera o seguinte atalho lógico:
+
+**Problema de Vendas → Mudar Posicionamento → Criar Marca Premium → Nova Identidade Visual**
+
+O papel de um estrategista sênior é quebrar essa ansiedade por respostas imediatas e segurar a solução até entender profundamente a causa raiz do problema.
+
+---
+
+### 1. O Núcleo da Estratégia (*The Kernel*)
+De acordo com Richard Rumelt (*Good Strategy Bad Strategy*), uma estratégia real não se define por metas financeiras ou desejos de crescimento. Toda boa estratégia possui uma estrutura interna coesa denominada **Kernel** (o Núcleo), composta por três elementos fundamentais:
+
+1. **O Diagnóstico:** Define a natureza exata do desafio. Ele simplifica a complexidade do cenário ao identificar quais aspectos da realidade são realmente críticos. Responde à pergunta: *"O que realmente está acontecendo aqui?"*.
+2. **A Política Guiada (*Guiding Policy*):** É a abordagem geral escolhida para superar os obstáculos identificados no diagnóstico. Ela direciona a energia e os recursos sem detalhar cada passo operacional.
+3. **As Ações Coerentes (*Coherent Actions*):** Conjunto de passos coordenados entre si para executar a política guiada. A força da estratégia reside na coerência dessas ações direcionadas ao mesmo objetivo.
+
+---
+
+### 2. Os Quatro Sinais da Má Estratégia
+Rumelt alerta que a "má estratégia" se manifesta por meio de quatro características centrais:
+
+* **Fluff (Linguagem Oca):** Uso de jargões complicados que criam a ilusão de pensamento de alto nível, mas não possuem substância.
+* **Incapacidade de Enfrentar o Desafio:** Omitir ou falhar em definir o verdadeiro problema da empresa.
+* **Confundir Metas com Estratégia:** Tratar desejos de crescimento (ex: *"crescer 30% no ano"*) como se fossem o plano para alcançar esse resultado.
+* **Objetivos Estratégicos Ruins:** Traçar metas impraticáveis ou contraditórias por incapacidade de fazer escolhas duras (*trade-offs*).
+
+---
+
+### 3. O Separador de Raciocínio na Prática
+Para atuar no nível sênior, o profissional precisa categorizar as informações do cliente em seis camadas:
+
+* **Fato:** O dado objetivo e comprovado (ex: *"A receita caiu 30% nos últimos dois trimestres"*).
+* **Hipótese:** Uma explicação plausível que precisa ser testada (ex: *"A queda pode estar ligada ao cancelamento de clientes antigos"*).
+* **Investigação:** As perguntas e pesquisas necessárias para auditar a hipótese.
+* **Insight:** A descoberta profunda sobre o comportamento ou operação após a investigação.
+* **Estratégia:** A decisão de onde alocar recursos e qual oportunidade perseguir.
+* **Expressão:** A tradução em identidade visual, linguagem, conteúdo e experiência.
+`
+  },
+  {
+    unitId: 'U1.2',
+    unitTitle: 'Unidade 2: Análise de Funil e Mapeamento de Causas Conflitantes',
+    readingTimeMinutes: 10,
+    lessonTextMarkdown: `
+### 📊 Diagnóstico de Funil de Vendas e Comportamento
+
+Quando investigamos um negócio, a opinião do fundador ou cliente frequentemente contém vícios de julgamento. Para realizar um diagnóstico preciso, é preciso analisar os dados de comportamento ao longo do funil de vendas.
+
+---
+
+### 1. A Batalha pela Mente e a Percepção de Valor
+Como destacam Al Ries e Jack Trout (*Posicionamento*), o marketing moderno não é uma batalha de produtos ou atributos objetivos, mas uma **batalha de percepções na mente do consumidor**. 
+
+Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 20% no faturamento, o problema não está na atração (topo de funil), mas na **qualidade do tráfego** ou na **falta de clareza do valor percebido** no meio/fim do funil.
+
+---
+
+### 2. Sintoma vs. Causa Raiz no E-commerce
+* **Sintoma:** Queda na taxa de conversão de vendas.
+* **Hipótese Falsa do Cliente:** *"Nosso preço está alto, precisamos dar desconto ou mudar a marca."*
+* **Causa Raiz Real (Exemplo):** Anúncios focados apenas em estética atraem visitantes curiosos sem intenção de compra. Quando chegam à página do produto, não encontram a explicação clara dos benefícios do produto.
+
+---
+
+### 3. As 3 Métricas Críticas de Investigação
+1. **Taxa de Conversão (CR):** Avalia a eficiência da página de destino em transformar visitantes em compradores.
+2. **Taxa de Abandono de Checkout:** Revela se o obstáculo está no momento do pagamento, frete ou decisão final.
+3. **Custo de Aquisição (CAC) vs. LTV (Lifetime Value):** Indica se o negócio é sustentável a longo prazo ou se está queimando caixa para atrair clientes que não retornam.
+`
+  }
+];
+
+export const DISC02_LESSONS: UnitLesson[] = [
+  {
+    unitId: 'U2.1',
+    unitTitle: 'Unidade 1: Leis Fundamentais do Posicionamento e Construção de Categoria',
+    readingTimeMinutes: 9,
+    lessonTextMarkdown: `
+### 🧠 Leis do Posicionamento (Al Ries & Jack Trout)
+
+Posicionamento não é o que você faz com um produto. Posicionamento é o que você faz com a mente do potencial comprador.
+
+---
+
+### 1. A Lei do Primeiro (*The Law of Leadership*)
+É preferível ser o primeiro do que ser o melhor. A marca líder na mente de uma categoria geralmente retém mais da metade da fatia de mercado.
+
+### 2. A Lei da Categoria (*The Law of Category*)
+Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em que você possa ser o primeiro.
+
+### 3. A Lei da Mente (*The Law of the Mind*)
+É melhor ser o primeiro na mente do que ser o primeiro na loja. A percepção do consumidor sobre se a marca é referência define o comportamento de escolha.
+`
+  }
+];
 
 // ============================================================================
 // BANCO DE DADOS DE ATIVIDADES EXEMPLO (POVOAMENTO DA ENGINE)
@@ -112,118 +226,8 @@ export const ACTIVITIES_DATABASE: Activity[] = [
     ],
     mentorTip: 'Foque em métricas de retenção e mix de produtos antes de falar de estética.',
     sampleGabarito: 'A queda de 30% é o fato; a marca ser antiquada é suposição...'
-  },
-  {
-    id: 'APA-1.2',
-    disciplineId: 'DISC01',
-    title: 'Gargalo no Funil: Alta de Tráfego e Queda de Receita',
-    type: 'METRICS_DASHBOARD',
-    level: 'Intermediário',
-    estimatedMinutes: 25,
-    badgeLabel: '📊 Análise de Painel',
-    icon: 'BarChart2',
-    dataPanel: [
-      { label: 'Tráfego Mensal', value: '140.000', change: '+40%', status: 'success' },
-      { label: 'Faturamento', value: 'R$ 180.000', change: '-20%', status: 'danger' },
-      { label: 'Taxa de Conversão', value: '0.6%', change: '-50%', status: 'danger' },
-      { label: 'Ticket Médio', value: 'R$ 210', change: '0%', status: 'neutral' }
-    ],
-    scenarioText: 'Uma marca D2C de suplementos aumentou os anúncios focando nas embalagens instagramáveis. O tráfego subiu 40%, mas a receita caiu 20%.',
-    instructions: [
-      'Analise a tabela acima e identifique a desconexão do funil.',
-      'Formule 2 hipóteses para o descompasso entre atração e conversão.',
-      'Indique quais 2 métricas adicionais pediria para o e-commerce.'
-    ],
-    responseFormat: 'TEXT_MARKDOWN',
-    placeholderText: '### Análise do Funil...\n### Hipóteses de Causa Raiz...\n### Métricas Solicitadas...',
-    evaluationCriteria: [
-      { id: 'c1', label: 'Leitura de Métricas', description: 'Identificou a queda da Taxa de Conversão.' },
-      { id: 'c2', label: 'Qualidade do Tráfego', description: 'Percebeu a atração de público não qualificado.' }
-    ],
-    mentorTip: 'Anúncios visuais sem promessa clara geram tráfego curioso, não comprador.',
-    sampleGabarito: 'O tráfego aumentou, mas a qualificação caiu drasticamente...'
-  },
-  {
-    id: 'APA-1.3',
-    disciplineId: 'DISC01',
-    title: 'Simulação C-Level: CEO Exigindo Rebranding em 30 Dias',
-    type: 'ROLEPLAY_C_LEVEL',
-    level: 'Sênior C-Level',
-    estimatedMinutes: 30,
-    badgeLabel: '🎙️ Roleplay C-Level',
-    icon: 'Mic',
-    forbiddenTerms: ['paleta de cores', 'logo', 'feed', 'tipografia', 'aesthetic', 'instagramável'],
-    clientProfile: {
-      companyName: 'Rede FitPrime Academias',
-      segment: 'Fitness Premium',
-      stakeholderRole: 'CEO & Sócio Majoritário'
-    },
-    scenarioText: '"Nossa marca está ultrapassada! As redes nacionais estão com neon e luzes modernas. Quero um rebranding completo em 30 dias para estancar a perda de alunos."',
-    instructions: [
-      'Escreva o script da sua fala em uma reunião de 3 minutos com esse CEO.',
-      'Convença-o a pausar o pedido de rebranding sem ser confrontacional.',
-      'Atenção: Você está PROIBIDO de usar os termos da lista de palavras bloqueadas.'
-    ],
-    responseFormat: 'AUDIO_OR_SCRIPT',
-    placeholderText: '"Entendo sua urgência, fulano. Mas como estrategista, meu papel é proteger o seu caixa. Vamos olhar para..."',
-    evaluationCriteria: [
-      { id: 'c1', label: 'Postura Executiva', description: 'Demonstrou autoridade de negócio sem ser agressivo.' },
-      { id: 'c2', label: 'Foco Financeiro', description: 'Alertou sobre o risco de gasto sem diagnóstico operacional.' }
-    ],
-    mentorTip: 'Fale de retenção de alunos, custo de aquisição e experiência de treino.',
-    sampleGabarito: 'Antes de investir em comunicação visual, precisamos entender por que os alunos estão cancelando...'
-  },
-  {
-    id: 'APA-1.4',
-    disciplineId: 'DISC01',
-    title: 'Caça-Erros: Corrigindo um Briefing Defeituoso',
-    type: 'FIX_THE_BRIEF',
-    level: 'Avançado',
-    estimatedMinutes: 20,
-    badgeLabel: '⚠️ Caça-Erros',
-    icon: 'AlertTriangle',
-    scenarioText: 'Briefing recebido do cliente: "Queremos ser o Uber dos pet shops. Nosso público é todo mundo que ama animais. Precisamos de um posicionamento jovem, moderno, barato e de luxo ao mesmo tempo."',
-    instructions: [
-      'Identifique os 4 erros graves e contradições deste briefing.',
-      'Reescreva o objetivo estratégico de forma coerente e focada.'
-    ],
-    responseFormat: 'TEXT_MARKDOWN',
-    placeholderText: '### Erros Identificados...\n### Briefing Reestruturado...',
-    evaluationCriteria: [
-      { id: 'c1', label: 'Detecção de Contradições', description: 'Apontou o conflito entre "barato" e "luxo" e o público "todo mundo".' }
-    ],
-    mentorTip: 'Estratégia é escolher o que NÃO fazer.',
-    sampleGabarito: 'Não é possível ser luxo e barato simultaneamente...'
-  },
-  {
-    id: 'APA-1.5',
-    disciplineId: 'DISC01',
-    title: 'Técnica Feynman: Explicando Causa Raiz para um Leigo',
-    type: 'FEYNMAN_TECHNIQUE',
-    level: 'Iniciante',
-    estimatedMinutes: 15,
-    badgeLabel: '💬 Pílula para Leigos',
-    icon: 'Smile',
-    forbiddenTerms: ['brand equity', 'funil', 'conversion rate', 'touchpoints', 'kpi'],
-    scenarioText: 'Um dono de uma padaria local quer entender por que você insiste em investigar o atendimento da recepção antes de mudar a placa da fachada da loja.',
-    instructions: [
-      'Explique a diferença entre "Tratar o Sintoma" e "Resolver a Causa Raiz".',
-      'Use uma analogia do cotidiano (ex: medicina ou mecânica).',
-      'Não utilize nenhum jargão de marketing.'
-    ],
-    responseFormat: 'TEXT_MARKDOWN',
-    placeholderText: 'Imagine que você está com dor de dente...',
-    evaluationCriteria: [
-      { id: 'c1', label: 'Clareza Didática', description: 'Usou analogia simples e compreensível.' }
-    ],
-    mentorTip: 'Se você não consegue explicar de forma simples, você não entendeu o conceito.',
-    sampleGabarito: 'Mudar a placa sem arrumar o atendimento é como tomar analgésico para dor de dente sem ir ao dentista...'
   }
 ];
-
-// ============================================================================
-// COMPONENTE DE SUGESTÃO PARA O FRONTEND (COMO RENDERIZAR CADA FORMATO)
-// ============================================================================
 
 export const RENDER_RULES = {
   ROLEPLAY_C_LEVEL: {

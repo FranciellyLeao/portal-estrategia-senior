@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estratégia Sênior — Engine de Atividades Multimodais (Apple HIG)</title>
+  <title>Estratégia Sênior — Engine Multimodal & Aulas Teóricas (Apple HIG)</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -73,7 +73,7 @@
 
       <div>
         <h2 class="text-xl font-semibold tracking-tight text-white">Estratégia Sênior</h2>
-        <p class="text-xs text-[#8E8E93] mt-1">Engine de Exercícios Multimodais & EAD</p>
+        <p class="text-xs text-[#8E8E93] mt-1">Portal Acadêmico • Teoria & Prática Multimodal</p>
       </div>
 
       <!-- FORM -->
@@ -206,11 +206,11 @@
               <div class="space-y-3 max-w-2xl">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#0A84FF]/10 border border-[#0A84FF]/20 text-[#0A84FF] text-[11px] font-medium">
                   <span class="w-2 h-2 rounded-full bg-[#0A84FF] animate-pulse"></span>
-                  <span>15 Formatos Multimodais Integrados</span>
+                  <span>Aulas Teóricas & Exercícios Multimodais</span>
                 </div>
                 <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-white" id="welcome-greeting">Bem-vindo, Alexandre!</h2>
                 <p class="text-xs lg:text-sm text-[#8E8E93] leading-relaxed">
-                  Engine de Atividades Multimodais ativada: roleplays C-Level, auditorias de funil com dados simulados, caça-erros de briefing, pílulas Feynman e memorandos executivos.
+                  Aulas em texto corrido (Rumelt & Ries/Trout) com leitor integrado + 15 formatos de exercícios práticos (roleplays C-Level, auditorias de funil e pareceres).
                 </p>
               </div>
 
@@ -218,9 +218,9 @@
               <div class="shrink-0 flex flex-col items-start lg:items-end space-y-2">
                 <button onclick="openCodeModal()" class="px-5 py-2.5 bg-gradient-to-r from-[#0A84FF] to-[#BF5AF2] hover:opacity-90 text-white font-semibold text-xs rounded-xl transition shadow-lg flex items-center space-x-2">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                  <span>Ver TypeScript Specification (`activitiesEngine.ts`)</span>
+                  <span>TypeScript Engine (`activitiesEngine.ts`)</span>
                 </button>
-                <span class="text-[10px] text-[#8E8E93]">15 Formatos | Critérios do Mentor | Jargões Bloqueados</span>
+                <span class="text-[10px] text-[#8E8E93]">Fundamentos Teóricos + Prática C-Level</span>
               </div>
             </div>
           </div>
@@ -335,6 +335,21 @@
             </div>
           </div>
 
+          <!-- UNIDADES DE ESTUDO & AULAS TEÓRICAS (LESSONS) -->
+          <div class="apple-glass rounded-3xl p-6 shadow-md">
+            <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
+              <div>
+                <h3 class="font-semibold text-base text-white">Unidades de Aprendizagem & Fundamentos Teóricos</h3>
+                <p class="text-xs text-[#8E8E93]">Aulas em texto corrido (Markdown) baseadas em Richard Rumelt, Al Ries & Jack Trout.</p>
+              </div>
+              <span class="text-[10px] text-[#30D158] font-medium bg-[#30D158]/10 px-2.5 py-1 rounded-full border border-[#30D158]/20">Aulas Didáticas 📖</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="lessons-grid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
           <!-- MULTIMEDIA HUB RECURSOS -->
           <div class="apple-glass rounded-3xl p-6 shadow-md">
             <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
@@ -368,6 +383,44 @@
         </div>
 
       </main>
+    </div>
+  </div>
+
+  <!-- MODAL DE LEITURA DA AULA TEÓRICA (LESSON READER SHEET) -->
+  <div id="lesson-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
+    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-white/15">
+      
+      <!-- LESSON MODAL HEADER -->
+      <div class="p-6 border-b border-white/10 flex items-start justify-between bg-[#161618]/90">
+        <div>
+          <div class="flex items-center space-x-2 mb-1.5">
+            <span id="modal-lesson-id" class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded">U1.1</span>
+            <span id="modal-lesson-time" class="text-[11px] font-medium px-2 py-0.5 bg-[#2C2C2E] text-[#8E8E93] rounded">⏱️ 8 min de leitura</span>
+          </div>
+          <h3 id="modal-lesson-title" class="text-lg font-semibold text-white">Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce</h3>
+        </div>
+        <button onclick="closeLessonModal()" class="text-[#8E8E93] hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- LESSON MODAL BODY (MARKDOWN RENDERED) -->
+      <div class="p-8 overflow-y-auto custom-scrollbar flex-1 bg-[#0A0A0C] space-y-4" id="modal-lesson-content">
+        <!-- Rendered dynamically by parseMarkdownToHTML -->
+      </div>
+
+      <!-- LESSON MODAL FOOTER -->
+      <div class="p-4 border-t border-white/10 bg-[#161618]/90 flex items-center justify-between">
+        <span class="text-xs text-[#8E8E93]" id="lesson-status-text">Fundamentação Teórica • Módulo de Estudo</span>
+
+        <div class="flex items-center space-x-3">
+          <button onclick="closeLessonModal()" class="px-4 py-2 text-xs text-[#8E8E93] hover:text-white transition">Fechar</button>
+          <button onclick="toggleLessonComplete()" id="btn-toggle-lesson" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm">
+            Marcar Unidade como Lida ✅
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -541,6 +594,13 @@
 // EAD ESTRATÉGIA DE MARCA — SYSTEMA DE ATIVIDADES & EXERCÍCIOS MULTIMODAIS
 // ============================================================================
 
+export interface UnitLesson {
+  unitId: string;
+  unitTitle: string;
+  readingTimeMinutes: number;
+  lessonTextMarkdown: string;
+}
+
 export type ActivityType =
   | 'REVERSE_ENGINEERING'      // Engenharia Reversa de Campanha/Marca
   | 'FIX_THE_BRIEF'            // Caça-Erros e Reescrita de Briefing
@@ -561,7 +621,7 @@ export type ActivityType =
       </div>
 
       <div class="p-4 border-t border-white/10 bg-[#161618] flex items-center justify-between">
-        <span class="text-xs text-[#8E8E93]">15 Formatos de Exercícios Práticos para Formação de Estrategista Sênior</span>
+        <span class="text-xs text-[#8E8E93]">15 Formatos de Exercícios + Aulas em Texto Corrido (`lessonTextMarkdown`)</span>
         <button onclick="copyTSCode()" class="px-4 py-2 bg-[#0A84FF] text-white font-medium text-xs rounded-xl hover:bg-[#007AFF] transition">
           Copiar Código TypeScript
         </button>
@@ -660,12 +720,90 @@ export type ActivityType =
       switchView(userState.activeView, userState.activeDisciplineId);
     }
 
-    // EXPANDED MULTIMODAL CURRICULUM DATABASE
+    // EXPANDED MULTIMODAL CURRICULUM DATABASE WITH LESSON TEXT MARKDOWN
     const curriculumData = [
       {
         id: "DISC01",
         title: "Diagnóstico Estratégico & Pensamento Crítico",
         objective: "Dominar a separação de sintoma vs. causa raiz, isolar fatos de hipóteses e investigar gargalos de negócio.",
+        lessons: [
+          {
+            unitId: 'U1.1',
+            unitTitle: 'Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce',
+            readingTimeMinutes: 8,
+            lessonTextMarkdown: `
+### 🏛️ O Kernel do Diagnóstico Estratégico
+
+A maioria dos profissionais de criação opera sob uma lógica reativa: diante de uma queixa comercial do cliente, saltam imediatamente para uma proposta visual ou de comunicação. Essa tendência de pular etapas gera o seguinte atalho lógico:
+
+**Problema de Vendas → Mudar Posicionamento → Criar Marca Premium → Nova Identidade Visual**
+
+O papel de um estrategista sênior é quebrar essa ansiedade por respostas imediatas e segurar a solução até entender profundamente a causa raiz do problema.
+
+---
+
+### 1. O Núcleo da Estratégia (*The Kernel*)
+De acordo com Richard Rumelt (*Good Strategy Bad Strategy*), uma estratégia real não se define por metas financeiras ou desejos de crescimento. Toda boa estratégia possui uma estrutura interna coesa denominada **Kernel** (o Núcleo), composta por três elementos fundamentais:
+
+1. **O Diagnóstico:** Define a natureza exata do desafio. Ele simplifica a complexidade do cenário ao identificar quais aspectos da realidade são realmente críticos. Responde à pergunta: *"O que realmente está acontecendo aqui?"*.
+2. **A Política Guiada (*Guiding Policy*):** É a abordagem geral escolhida para superar os obstáculos identificados no diagnóstico. Ela direciona a energia e os recursos sem detalhar cada passo operacional.
+3. **As Ações Coerentes (*Coherent Actions*):** Conjunto de passos coordenados entre si para executar a política guiada. A força da estratégia reside na coerência dessas ações direcionadas ao mesmo objetivo.
+
+---
+
+### 2. Os Quatro Sinais da Má Estratégia
+Rumelt alerta que a "má estratégia" se manifesta por meio de quatro características centrais:
+
+* **Fluff (Linguagem Oca):** Uso de jargões complicados que criam a illusions de pensamento de alto nível, mas não possuem substância.
+* **Incapacidade de Enfrentar o Desafio:** Omitir ou falhar em definir o verdadeiro problema da empresa.
+* **Confundir Metas com Estratégia:** Tratar desejos de crescimento (ex: *"crescer 30% no ano"*) como se fossem o plano para alcançar esse resultado.
+* **Objetivos Estratégicos Ruins:** Traçar metas impraticáveis ou contraditórias por incapacidade de fazer escolhas duras (*trade-offs*).
+
+---
+
+### 3. O Separador de Raciocínio na Prática
+Para atuar no nível sênior, o profissional precisa categorizar as informações do cliente em seis camadas:
+
+* **Fato:** O dado objetivo e comprovado (ex: *"A receita caiu 30% nos últimos dois trimestres"*).
+* **Hipótese:** Uma explicação plausível que precisa ser testada (ex: *"A queda pode estar ligada ao cancelamento de clientes antigos"*).
+* **Investigação:** As perguntas e pesquisas necessárias para auditar a hipótese.
+* **Insight:** A descoberta profunda sobre o comportamento ou operação após a investigação.
+* **Estratégia:** A decisão de onde alocar recursos e qual oportunidade perseguir.
+* **Expressão:** A tradução em identidade visual, linguagem, conteúdo e experiência.
+`
+          },
+          {
+            unitId: 'U1.2',
+            unitTitle: 'Unidade 2: Análise de Funil e Mapeamento de Causas Conflitantes',
+            readingTimeMinutes: 10,
+            lessonTextMarkdown: `
+### 📊 Diagnóstico de Funil de Vendas e Comportamento
+
+Quando investigamos um negócio, a opinião do fundador ou cliente frequentemente contém vícios de julgamento. Para realizar um diagnóstico preciso, é preciso analisar os dados de comportamento ao longo do funil de vendas.
+
+---
+
+### 1. A Batalha pela Mente e a Percepção de Valor
+Como destacam Al Ries e Jack Trout (*Posicionamento*), o marketing moderno não é uma batalha de produtos ou atributos objetivos, mas uma **batalha de percepções na mente do consumidor**. 
+
+Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 20% no faturamento, o problema não está na atração (topo de funil), mas na **qualidade do tráfego** ou na **falta de clareza do valor percebido** no meio/fim do funil.
+
+---
+
+### 2. Sintoma vs. Causa Raiz no E-commerce
+* **Sintoma:** Queda na taxa de conversão de vendas.
+* **Hipótese Falsa do Cliente:** *"Nosso preço está alto, precisamos dar desconto ou mudar a marca."*
+* **Causa Raiz Real (Exemplo):** Anúncios focados apenas em estética atraem visitantes curiosos sem intenção de compra. Quando chegam à página do produto, não encontram a explicação clara dos benefícios do produto.
+
+---
+
+### 3. As 3 Métricas Críticas de Investigação
+1. **Taxa de Conversão (CR):** Avalia a eficiência da página de destino em transformar visitantes em compradores.
+2. **Taxa de Abandono de Checkout:** Revela se o obstáculo está no momento do pagamento, frete ou decisão final.
+3. **Custo de Aquisição (CAC) vs. LTV (Lifetime Value):** Indica se o negócio é sustentável a longo prazo ou se está queimando caixa para atrair clientes que não retornam.
+`
+          }
+        ],
         multimedia: {
           books: [
             { title: "Good Strategy Bad Strategy", author: "Richard Rumelt", focus: "O Núcleo da Estratégia", url: "https://www.google.com/search?q=Good+Strategy+Bad+Strategy+Richard+Rumelt" }
@@ -820,6 +958,29 @@ export type ActivityType =
         id: "DISC02",
         title: "Posicionamento de Marca, Categoria & Diferenciação",
         objective: "Criar espaços únicos na mente do consumidor e definir territórios de diferenciação e atributos de valor.",
+        lessons: [
+          {
+            unitId: 'U2.1',
+            unitTitle: 'Unidade 1: Leis Fundamentais do Posicionamento e Construção de Categoria',
+            readingTimeMinutes: 9,
+            lessonTextMarkdown: `
+### 🧠 Leis do Posicionamento (Al Ries & Jack Trout)
+
+Posicionamento não é o que você faz com um produto. Posicionamento é o que você faz com a mente do potencial comprador.
+
+---
+
+### 1. A Lei do Primeiro (*The Law of Leadership*)
+É preferível ser o primeiro do que ser o melhor. A marca líder na mente de uma categoria geralmente retém mais da metade da fatia de mercado.
+
+### 2. A Lei da Categoria (*The Law of Category*)
+Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em que você possa ser o primeiro.
+
+### 3. A Lei da Mente (*The Law of the Mind*)
+É melhor ser o primeiro na mente do que ser o primeiro na loja. A percepção do consumidor sobre se a marca é referência define o comportamento de escolha.
+`
+          }
+        ],
         multimedia: {
           books: [
             { title: "Posicionamento: A Batalha por sua Mente", author: "Al Ries & Jack Trout", focus: "Escada Mental", url: "https://www.google.com/search?q=Posicionamento+A+Batalha+por+sua+Mente+Al+Ries" },
@@ -1162,7 +1323,9 @@ export type ActivityType =
       activeView: 'dashboard',
       activeDisciplineId: 'DISC01',
       activeAPAId: null,
+      activeLessonId: null,
       submissions: {},
+      completedLessons: {},
       streak: 3
     };
 
@@ -1171,6 +1334,7 @@ export type ActivityType =
       if (saved) {
         try {
           userState = JSON.parse(saved);
+          if (!userState.completedLessons) userState.completedLessons = {};
         } catch (e) {
           console.error("Error loading state", e);
         }
@@ -1179,7 +1343,9 @@ export type ActivityType =
           activeView: 'dashboard',
           activeDisciplineId: 'DISC01',
           activeAPAId: null,
+          activeLessonId: null,
           submissions: {},
+          completedLessons: {},
           streak: 3
         };
       }
@@ -1353,6 +1519,46 @@ export type ActivityType =
       document.getElementById('disc-header-bar').style.width = `${pct}%`;
       document.getElementById('apa-counter-badge').innerText = `${done} / ${disc.apas.length} Concluídos`;
 
+      // RENDER UNIDADES TEÓRICAS (LESSONS)
+      const lessonsGrid = document.getElementById('lessons-grid');
+      lessonsGrid.innerHTML = '';
+
+      if (disc.lessons && disc.lessons.length > 0) {
+        disc.lessons.forEach(unit => {
+          const isRead = !!userState.completedLessons[unit.unitId];
+          const card = document.createElement('div');
+          card.className = `p-5 rounded-2xl border transition flex flex-col justify-between space-y-4 ${
+            isRead ? 'bg-[#1C1C1E]/60 border-[#30D158]/30' : 'bg-[#1C1C1E] border-white/10 hover:border-white/20'
+          }`;
+
+          card.innerHTML = `
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded">${unit.unitId}</span>
+                <span class="text-[10px] text-[#8E8E93] font-medium">⏱️ ${unit.readingTimeMinutes} min de leitura</span>
+              </div>
+              <h4 class="text-sm font-semibold text-white leading-snug">${unit.unitTitle}</h4>
+            </div>
+
+            <div class="flex items-center justify-between pt-2 border-t border-white/10">
+              <span class="text-[11px] font-medium ${isRead ? 'text-[#30D158]' : 'text-[#8E8E93]'}">
+                ${isRead ? '✅ Aula Concluída' : '📖 Não Lida'}
+              </span>
+              <button onclick="openLessonModal('${disc.id}', '${unit.unitId}')" class="px-3.5 py-1.5 bg-[#30D158]/10 hover:bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 font-medium text-xs rounded-xl transition">
+                ${isRead ? 'Revisar Aula' : 'Ler Aula 📖'}
+              </button>
+            </div>
+          `;
+          lessonsGrid.appendChild(card);
+        });
+      } else {
+        lessonsGrid.innerHTML = `
+          <div class="col-span-2 p-4 bg-[#1C1C1E] border border-white/10 rounded-2xl text-xs text-[#8E8E93] text-center">
+            📖 Leituras adicionais e fundamentação teórica para esta disciplina estão no Hub Multimídia abaixo.
+          </div>
+        `;
+      }
+
       // MULTIMEDIA HUB
       const hubGrid = document.getElementById('multimedia-hub-grid');
       hubGrid.innerHTML = '';
@@ -1500,6 +1706,107 @@ export type ActivityType =
       updateHeaderStats();
     }
 
+    // LESSON MODAL READER LOGIC & MARKDOWN RENDERER
+    let currentLessonData = null;
+
+    function openLessonModal(discId, unitId) {
+      const disc = curriculumData.find(d => d.id === discId);
+      if (!disc || !disc.lessons) return;
+      const lesson = disc.lessons.find(u => u.unitId === unitId);
+      if (!lesson) return;
+
+      currentLessonData = { discId, unitId, lesson };
+      userState.activeLessonId = unitId;
+
+      document.getElementById('modal-lesson-id').innerText = lesson.unitId;
+      document.getElementById('modal-lesson-time').innerText = `⏱️ ${lesson.readingTimeMinutes} min de leitura`;
+      document.getElementById('modal-lesson-title').innerText = lesson.unitTitle;
+
+      // RENDER MARKDOWN TO HTML
+      const html = parseMarkdownToHTML(lesson.lessonTextMarkdown);
+      document.getElementById('modal-lesson-content').innerHTML = html;
+
+      // UPDATE TOGGLE BUTTON STATE
+      const isRead = !!userState.completedLessons[unitId];
+      const btn = document.getElementById('btn-toggle-lesson');
+      const statusText = document.getElementById('lesson-status-text');
+
+      if (isRead) {
+        btn.innerText = "Desmarcar Leitura ↩️";
+        btn.className = "px-5 py-2.5 bg-[#2C2C2E] text-white hover:bg-[#3A3A3C] font-semibold text-xs rounded-xl transition shadow-sm";
+        statusText.innerText = "Status: ✅ Aula Concluída";
+      } else {
+        btn.innerText = "Marcar Unidade como Lida ✅";
+        btn.className = "px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm";
+        statusText.innerText = "Status: 📖 Leitura Pendente";
+      }
+
+      document.getElementById('lesson-modal').classList.remove('hidden');
+    }
+
+    function closeLessonModal() {
+      document.getElementById('lesson-modal').classList.add('hidden');
+    }
+
+    function toggleLessonComplete() {
+      if (!currentLessonData) return;
+      const uid = currentLessonData.unitId;
+      if (userState.completedLessons[uid]) {
+        delete userState.completedLessons[uid];
+      } else {
+        userState.completedLessons[uid] = true;
+      }
+      saveState();
+      openLessonModal(currentLessonData.discId, uid);
+      renderDisciplineView(currentLessonData.discId);
+    }
+
+    function parseMarkdownToHTML(md) {
+      if (!md) return '';
+      let lines = md.split('\n');
+      let html = '';
+      let inList = false;
+
+      lines.forEach(line => {
+        let trimmed = line.trim();
+        if (trimmed.startsWith('---')) {
+          if (inList) { html += '</ul>'; inList = false; }
+          html += '<hr class="border-white/10 my-6" />';
+        } else if (trimmed.startsWith('### ')) {
+          if (inList) { html += '</ul>'; inList = false; }
+          const text = trimmed.substring(4);
+          html += `<h3 class="text-base font-bold text-[#0A84FF] mt-6 mb-3 flex items-center space-x-2">${parseInlineMarkdown(text)}</h3>`;
+        } else if (trimmed.startsWith('## ')) {
+          if (inList) { html += '</ul>'; inList = false; }
+          const text = trimmed.substring(3);
+          html += `<h2 class="text-lg font-bold text-white mt-8 mb-4 border-b border-white/10 pb-2">${parseInlineMarkdown(text)}</h2>`;
+        } else if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+          if (!inList) { html += '<ul class="space-y-2.5 my-3 pl-2">'; inList = true; }
+          const text = trimmed.substring(2);
+          html += `<li class="text-xs text-[#F5F5F7] leading-relaxed flex items-start space-x-2"><span class="text-[#0A84FF] shrink-0 mt-0.5">•</span><span>${parseInlineMarkdown(text)}</span></li>`;
+        } else if (trimmed.startsWith('> ')) {
+          if (inList) { html += '</ul>'; inList = false; }
+          const text = trimmed.substring(2);
+          html += `<blockquote class="border-l-2 border-[#0A84FF] pl-4 py-2 my-4 text-xs text-[#8E8E93] italic bg-white/5 rounded-r-xl leading-relaxed">${parseInlineMarkdown(text)}</blockquote>`;
+        } else if (trimmed.length === 0) {
+          if (inList) { html += '</ul>'; inList = false; }
+        } else {
+          if (inList) { html += '</ul>'; inList = false; }
+          html += `<p class="text-xs text-[#F5F5F7] leading-relaxed my-2">${parseInlineMarkdown(trimmed)}</p>`;
+        }
+      });
+
+      if (inList) html += '</ul>';
+      return html;
+    }
+
+    function parseInlineMarkdown(text) {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em class="text-[#8E8E93]">$1</em>')
+        .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 bg-[#2C2C2E] text-[#0A84FF] font-mono text-[11px] rounded">$1</code>');
+    }
+
     // MODAL APA LOGIC & REAL-TIME FORBIDDEN TERMS CHECK
     let currentModalData = null;
 
@@ -1521,7 +1828,6 @@ export type ActivityType =
       document.getElementById('modal-apa-title').innerText = apa.title;
       document.getElementById('modal-apa-scenario').innerHTML = apa.scenarioText || '';
 
-      // CLIENT PROFILE CARD
       const clientCard = document.getElementById('modal-client-card');
       if (apa.clientProfile) {
         clientCard.classList.remove('hidden');
@@ -1531,7 +1837,6 @@ export type ActivityType =
         clientCard.classList.add('hidden');
       }
 
-      // SIMULATED DATA PANEL
       const dataPanelBox = document.getElementById('modal-data-panel');
       const dataGrid = document.getElementById('data-panel-grid');
       if (apa.dataPanel && apa.dataPanel.length > 0) {
@@ -1556,7 +1861,6 @@ export type ActivityType =
         dataPanelBox.classList.add('hidden');
       }
 
-      // FORBIDDEN TERMS BOX
       const forbiddenBox = document.getElementById('modal-forbidden-box');
       const forbiddenTags = document.getElementById('modal-forbidden-tags');
       if (apa.forbiddenTerms && apa.forbiddenTerms.length > 0) {
@@ -1566,11 +1870,9 @@ export type ActivityType =
         forbiddenBox.classList.add('hidden');
       }
 
-      // INSTRUCTIONS LIST
       const instructionsList = document.getElementById('modal-instructions-list');
       instructionsList.innerHTML = (apa.instructions || []).map(ins => `<li>${ins}</li>`).join('');
 
-      // EVALUATION CRITERIA LIST
       const criteriaList = document.getElementById('modal-criteria-list');
       criteriaList.innerHTML = (apa.evaluationCriteria || []).map(c => `
         <div class="p-2 bg-[#2C2C2E]/60 rounded-lg border border-white/5 space-y-0.5">
@@ -1579,10 +1881,8 @@ export type ActivityType =
         </div>
       `).join('');
 
-      // MENTOR TIP
       document.getElementById('modal-mentor-tip-text').innerText = apa.mentorTip || 'Analise os dados com rigor de negócios.';
 
-      // RESPONSE INPUT & PREVIOUS SUBMISSION
       const sub = userState.submissions[apaId];
       const textarea = document.getElementById('apa-response-input');
       const feedbackBox = document.getElementById('modal-feedback-box');
@@ -1611,7 +1911,7 @@ export type ActivityType =
     function insertTemplate() {
       if (!currentModalData) return;
       const textarea = document.getElementById('apa-response-input');
-      textarea.value = currentModalData.apa.placeholderText || "### Diagnostic Executivo\n\n1. Fatos:\n2. Causa Raiz:\n3. Recomendação:\n";
+      textarea.value = currentModalData.apa.placeholderText || "### Diagnóstico Executivo\n\n1. Fatos:\n2. Causa Raiz:\n3. Recomendação:\n";
       updateCharCounter();
     }
 
@@ -1619,7 +1919,6 @@ export type ActivityType =
       const val = document.getElementById('apa-response-input').value;
       document.getElementById('char-counter').innerText = `${val.length} caracteres`;
 
-      // Live check forbidden terms
       if (currentModalData && currentModalData.apa.forbiddenTerms) {
         const lower = val.toLowerCase();
         const found = currentModalData.apa.forbiddenTerms.some(t => lower.includes(t.toLowerCase()));
@@ -1646,7 +1945,6 @@ export type ActivityType =
       let gradeLetter = "A";
       let feedback = "Excelente execução estratégica! Raciocínio de negócios impecável, separação clara de causa raiz e aderência total aos critérios do mentor.";
 
-      // Check forbidden terms penalty
       if (currentModalData.apa.forbiddenTerms) {
         const lower = responseText.toLowerCase();
         const usedForbidden = currentModalData.apa.forbiddenTerms.filter(t => lower.includes(t.toLowerCase()));
@@ -1680,6 +1978,7 @@ export type ActivityType =
     function resetProgress() {
       if (confirm("Tem certeza que deseja resetar seu progresso nesta conta?")) {
         userState.submissions = {};
+        userState.completedLessons = {};
         saveState();
         updateHeaderStats();
         switchView('dashboard');
