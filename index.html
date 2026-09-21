@@ -3,38 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estratégia Sênior — Portal Multimodal EAD (Apple HIG System)</title>
+  <title>Estratégia Sênior — Portal Multimodal EAD (Apple HIG & Substack Editorial)</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Charter:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
     
     :root {
-      --bg-main: #000000;
-      --bg-card: rgba(28, 28, 30, 0.75);
-      --bg-card-solid: #1C1C1E;
-      --bg-sidebar: rgba(18, 18, 20, 0.85);
-      --border-subtle: rgba(255, 255, 255, 0.1);
-      --text-main: #F5F5F7;
-      --text-muted: #8E8E93;
+      --bg-main: #0B0F17;
+      --bg-card: rgba(18, 24, 38, 0.75);
+      --bg-card-solid: #121826;
+      --bg-sidebar: rgba(15, 23, 42, 0.90);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text-main: #E2E8F0;
+      --text-muted: #94A3B8;
+      
+      /* Reading Editorial Token Colors */
+      --reading-bg: #0F172A;
+      --reading-header-bg: #121826;
+      --reading-text: #CBD5E1;
+      --reading-heading: #F8FAFC;
     }
 
     html.light {
-      --bg-main: #F5F5F7;
+      --bg-main: #F8FAFC;
       --bg-card: rgba(255, 255, 255, 0.85);
       --bg-card-solid: #FFFFFF;
-      --bg-sidebar: rgba(242, 242, 247, 0.95);
-      --border-subtle: rgba(0, 0, 0, 0.1);
-      --text-main: #1C1C1E;
-      --text-muted: #636366;
+      --bg-sidebar: rgba(241, 245, 249, 0.95);
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      
+      /* Reading Editorial Token Colors */
+      --reading-bg: #FAFAFA;
+      --reading-header-bg: #FFFFFF;
+      --reading-text: #1E293B;
+      --reading-heading: #0F172A;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-main);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Font Stacks */
+    .font-sans-ui {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    }
+
+    .font-serif-editorial {
+      font-family: 'Charter', 'Merriweather', 'Georgia', Cambria, serif !important;
     }
 
     /* Apple Frosted Glass Effects */
@@ -68,7 +89,7 @@
 
     /* DARK HERO BANNER - GUARANTEED HIGH CONTRAST IN BOTH LIGHT & DARK MODES */
     .hero-cinematic-banner {
-      background: linear-gradient(135deg, #1C1C1E 0%, #121214 60%, #0A0A0C 100%);
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F172A 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #FFFFFF !important;
     }
@@ -80,26 +101,26 @@
     }
 
     .hero-cinematic-banner p.hero-description {
-      color: #D1D1D6 !important;
+      color: #E2E8F0 !important;
     }
 
     .hero-cinematic-banner .hero-muted {
-      color: #98989D !important;
+      color: #94A3B8 !important;
     }
 
     html.light .hero-cinematic-banner {
-      background: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%) !important;
+      background: linear-gradient(135deg, #1E293B 0%, #334155 100%) !important;
       border: 1px solid rgba(0, 0, 0, 0.15) !important;
       box-shadow: 0 12px 32px rgba(0,0,0,0.12);
     }
 
-    /* Light mode text & container adjustments */
+    /* Theme Text utilities */
     html.light main {
-      background-color: #F5F5F7 !important;
+      background-color: #F8FAFC !important;
     }
 
     html.light .theme-text-main {
-      color: #1C1C1E !important;
+      color: #1E293B !important;
     }
 
     html.light .theme-bg-card {
@@ -108,12 +129,12 @@
     }
 
     html.light .theme-bg-subtle {
-      background-color: #E5E5EA !important;
-      color: #1C1C1E !important;
+      background-color: #F1F5F9 !important;
+      color: #1E293B !important;
     }
 
     html.light .theme-text-muted {
-      color: #636366 !important;
+      color: #64748B !important;
     }
 
     /* Custom Scrollbar */
@@ -125,15 +146,15 @@
       background: transparent;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: rgba(142, 142, 147, 0.3);
+      background: rgba(148, 163, 184, 0.3);
       border-radius: 9999px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: rgba(142, 142, 147, 0.5);
+      background: rgba(148, 163, 184, 0.5);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-[#0A84FF] selection:text-white">
+<body class="min-h-screen flex flex-col font-sans-ui antialiased selection:bg-[#0A84FF] selection:text-white">
 
   <!-- FLOATING THEME TOGGLE BUTTON (BOTTOM RIGHT CORNER) -->
   <button onclick="toggleTheme()" id="theme-toggle-btn" title="Alternar entre Modo Claro e Escuro" class="fixed bottom-6 right-6 z-40 apple-glass px-4 py-2.5 rounded-full border shadow-2xl flex items-center space-x-2 text-xs font-semibold hover:scale-105 transition active:scale-95 cursor-pointer">
@@ -149,7 +170,7 @@
     <div class="w-full max-w-sm apple-glass rounded-3xl p-8 shadow-2xl space-y-6 text-center border">
       
       <!-- APPLE-STYLE LOGO / ICON -->
-      <div class="w-14 h-14 rounded-2xl bg-gradient-to-b from-[#2C2C2E] to-[#1C1C1E] border border-white/15 mx-auto flex items-center justify-center text-white shadow-xl">
+      <div class="w-14 h-14 rounded-2xl bg-gradient-to-b from-[#1E293B] to-[#0F172A] border border-white/15 mx-auto flex items-center justify-center text-white shadow-xl">
         <svg class="w-7 h-7 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
       </div>
 
@@ -199,45 +220,55 @@
   <!-- APP CONTAINER -->
   <div id="app" class="flex flex-1 min-h-screen overflow-hidden">
     
-    <!-- SIDEBAR (APPLE MAC OS STYLE) -->
-    <aside id="sidebar" class="w-64 apple-sidebar flex flex-col justify-between shrink-0 z-20">
+    <!-- SIDEBAR (APPLE MAC OS STYLE - PERFECTLY ALIGNED 272px WIDE) -->
+    <aside id="sidebar" class="w-[272px] apple-sidebar flex flex-col justify-between shrink-0 z-20">
       <div>
         <!-- BRAND HEADER -->
         <div class="p-5 border-b border-white/10 flex items-center space-x-3">
-          <div class="w-7 h-7 rounded-lg bg-[#0A84FF] flex items-center justify-center font-bold text-white text-xs shadow-md">
+          <div class="w-8 h-8 rounded-lg bg-[#0A84FF] flex items-center justify-center font-bold text-white text-xs shadow-md shrink-0">
             E
           </div>
-          <div>
-            <h1 class="font-semibold text-xs tracking-tight theme-text-main">ESTRATÉGIA SÊNIOR</h1>
-            <p class="text-[10px] theme-text-muted">Portal Multimodal EAD</p>
+          <div class="overflow-hidden">
+            <h1 class="font-semibold text-xs tracking-tight theme-text-main truncate">ESTRATÉGIA SÊNIOR</h1>
+            <p class="text-[10px] theme-text-muted truncate">Portal Multimodal EAD</p>
           </div>
         </div>
 
-        <!-- NAVIGATION -->
+        <!-- NAVIGATION WITH PRECISE HORIZONTAL FLEX ALIGNMENT -->
         <nav class="p-3 space-y-1">
-          <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main cursor-pointer">
-            <svg class="w-4 h-4 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-            <span>Visão Geral</span>
+          <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main cursor-pointer">
+            <div class="w-4 h-4 flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            </div>
+            <span class="truncate">Visão Geral</span>
           </button>
 
-          <button onclick="switchView('all-disciplines')" id="nav-all-disciplines" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
-            <svg class="w-4 h-4 text-[#30D158]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-            <span>Todas as Disciplinas (1 a 6)</span>
+          <button onclick="switchView('all-disciplines')" id="nav-all-disciplines" class="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
+            <div class="w-4 h-4 flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4 text-[#30D158]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <span class="truncate">Todas as Disciplinas</span>
           </button>
 
-          <button onclick="switchView('all-apas')" id="nav-all-apas" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
-            <svg class="w-4 h-4 text-[#FF9F0A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-            <span>Banco de Exercícios (15 Formatos)</span>
+          <button onclick="switchView('all-apas')" id="nav-all-apas" class="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
+            <div class="w-4 h-4 flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4 text-[#FF9F0A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            </div>
+            <span class="truncate">Banco de Exercícios</span>
           </button>
 
-          <button onclick="switchView('global-acervo')" id="nav-global-acervo" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
-            <svg class="w-4 h-4 text-[#BF5AF2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            <span>Acervo Multimídia Global</span>
+          <button onclick="switchView('global-acervo')" id="nav-global-acervo" class="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
+            <div class="w-4 h-4 flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4 text-[#BF5AF2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <span class="truncate">Acervo Multimídia</span>
           </button>
 
-          <button onclick="openCodeModal()" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
-            <svg class="w-4 h-4 text-[#64D2FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-            <span>TypeScript Spec</span>
+          <button onclick="openCodeModal()" class="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
+            <div class="w-4 h-4 flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4 text-[#64D2FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <span class="truncate">TypeScript Spec</span>
           </button>
 
           <div class="pt-4 pb-1.5 px-3">
@@ -261,7 +292,7 @@
             <p id="user-display-email" class="text-[10px] theme-text-muted truncate">alexandre@empresa.com</p>
           </div>
         </div>
-        <button onclick="handleLogout()" title="Encerrar Sessão" class="p-1.5 text-[#8E8E93] hover:text-white rounded-md hover:bg-white/10 transition cursor-pointer">
+        <button onclick="handleLogout()" title="Encerrar Sessão" class="p-1.5 text-[#94A3B8] hover:text-white rounded-md hover:bg-white/10 transition cursor-pointer">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
         </button>
       </div>
@@ -307,7 +338,7 @@
                 </div>
                 <h2 class="text-2xl lg:text-3xl font-bold tracking-tight theme-text-main" id="welcome-greeting">Bem-vindo, Alexandre!</h2>
                 <p class="text-xs lg:text-sm theme-text-muted leading-relaxed">
-                  Acesse todas as disciplinas em estilo streaming, estude a fundamentação teórica em Markdown e resolva os exercícios de simulação executiva com avaliação instantânea!
+                  Acesse todas as disciplinas em estilo streaming, estude a fundamentação teórica em layout editorial e resolva os exercícios de simulação executiva com avaliação instantânea!
                 </p>
               </div>
 
@@ -527,7 +558,7 @@
               <div>
                 <span class="text-[10px] font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">FILEIRA DE EPISÓDIOS TEÓRICOS</span>
                 <h3 class="font-bold text-base theme-text-main">Aulas Didáticas em Texto Corrido (Markdown)</h3>
-                <p class="text-xs theme-text-muted">Fundamentos teóricos da disciplina para leitura prévia.</p>
+                <p class="text-xs theme-text-muted">Fundamentos teóricos da disciplina em diagramação editorial.</p>
               </div>
               <span class="text-[10px] text-[#30D158] font-medium bg-[#30D158]/10 px-2.5 py-1 rounded-full border border-[#30D158]/20">Fundamentação Teórica</span>
             </div>
@@ -656,36 +687,38 @@
     </div>
   </div>
 
-  <!-- MODAL DE LEITURA DA AULA TEÓRICA (LESSON READER SHEET) -->
+  <!-- MODAL DE LEITURA DA AULA TEÓRICA (MEDIUM/SUBSTACK EDITORIAL READER SHEET) -->
   <div id="lesson-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
-    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border">
+    <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border dark:bg-[#0F172A] bg-[#FAFAFA]">
       
       <!-- LESSON MODAL HEADER -->
-      <div class="p-6 border-b border-white/10 flex items-start justify-between">
+      <div class="p-6 border-b dark:border-slate-800 border-slate-200 flex items-start justify-between dark:bg-[#121826] bg-white shrink-0">
         <div>
-          <div class="flex items-center space-x-2 mb-1.5">
-            <span id="modal-lesson-id" class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded">U1.1</span>
-            <span id="modal-lesson-time" class="text-[11px] font-medium px-2 py-0.5 theme-bg-subtle theme-text-muted rounded">8 min de leitura</span>
+          <div class="flex items-center space-x-2.5 mb-2">
+            <span id="modal-lesson-id" class="text-xs font-mono font-semibold px-2.5 py-0.5 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded-md">U1.1</span>
+            <span id="modal-lesson-time" class="text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-slate-800 dark:text-slate-400 bg-slate-200 text-slate-600">8 min de leitura</span>
           </div>
-          <h3 id="modal-lesson-title" class="text-lg font-semibold theme-text-main">Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce</h3>
+          <h1 id="modal-lesson-title" class="font-sans-ui text-2xl md:text-3xl font-bold dark:text-[#F8FAFC] text-[#0F172A] leading-tight">Unidade 1: O Kernel do Diagnóstico</h1>
         </div>
-        <button onclick="closeLessonModal()" class="theme-text-muted hover:theme-text-main p-1.5 rounded-lg hover:bg-white/10 transition cursor-pointer">
+        <button onclick="closeLessonModal()" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
-      <!-- LESSON MODAL BODY (MARKDOWN RENDERED) -->
-      <div class="p-8 overflow-y-auto custom-scrollbar flex-1 theme-bg-card space-y-4" id="modal-lesson-content">
-        <!-- Rendered dynamically by parseMarkdownToHTML -->
+      <!-- LESSON MODAL BODY (SUBSTACK EDITORIAL READER - MAX WIDTH 700PX CENTERED) -->
+      <div class="p-8 md:p-12 overflow-y-auto custom-scrollbar flex-1 dark:bg-[#0F172A] bg-[#FAFAFA]">
+        <div class="max-w-[700px] mx-auto" id="modal-lesson-content">
+          <!-- Rendered dynamically by parseMarkdownToHTML -->
+        </div>
       </div>
 
       <!-- LESSON MODAL FOOTER -->
-      <div class="p-4 border-t border-white/10 flex items-center justify-between">
-        <span class="text-xs theme-text-muted" id="lesson-status-text">Fundamentação Teórica • Módulo de Estudo</span>
+      <div class="p-4 border-t dark:border-slate-800 border-slate-200 dark:bg-[#121826] bg-white flex items-center justify-between shrink-0">
+        <span class="text-xs text-slate-400 font-sans-ui" id="lesson-status-text">Fundamentação Teórica • Módulo de Estudo</span>
 
         <div class="flex items-center space-x-3">
-          <button onclick="closeLessonModal()" class="px-4 py-2 text-xs theme-text-muted hover:theme-text-main transition cursor-pointer">Fechar</button>
-          <button onclick="toggleLessonComplete()" id="btn-toggle-lesson" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer">
+          <button onclick="closeLessonModal()" class="px-4 py-2 text-xs text-slate-400 hover:text-white transition cursor-pointer font-sans-ui">Fechar</button>
+          <button onclick="toggleLessonComplete()" id="btn-toggle-lesson" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer font-sans-ui">
             Marcar Unidade como Lida
           </button>
         </div>
@@ -1617,7 +1650,7 @@ export interface Activity {
 
         const btn = document.createElement('button');
         btn.onclick = () => switchView('discipline', disc.id);
-        btn.className = `w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition flex items-center justify-between group cursor-pointer ${
+        btn.className = `w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between group cursor-pointer ${
           isActive 
             ? 'bg-white/10 theme-text-main font-semibold' 
             : 'theme-text-muted hover:theme-text-main hover:bg-white/5'
@@ -2215,7 +2248,7 @@ export interface Activity {
 
       ['nav-dashboard', 'nav-all-disciplines', 'nav-all-apas', 'nav-global-acervo'].forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer";
+        if (el) el.className = "w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer";
       });
 
       const breadcrumb = document.getElementById('breadcrumb-title');
@@ -2223,22 +2256,22 @@ export interface Activity {
       if (viewName === 'dashboard') {
         document.getElementById('view-dashboard').classList.remove('hidden');
         breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Visão Geral</strong>';
-        document.getElementById('nav-dashboard').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
+        document.getElementById('nav-dashboard').className = "w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderDashboard();
       } else if (viewName === 'all-disciplines') {
         document.getElementById('view-all-disciplines').classList.remove('hidden');
         breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Todas as Disciplinas</strong>';
-        document.getElementById('nav-all-disciplines').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
+        document.getElementById('nav-all-disciplines').className = "w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderAllDisciplinesView();
       } else if (viewName === 'all-apas') {
         document.getElementById('view-all-apas').classList.remove('hidden');
         breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Banco de Exercícios</strong>';
-        document.getElementById('nav-all-apas').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
+        document.getElementById('nav-all-apas').className = "w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderAllAPAsView();
       } else if (viewName === 'global-acervo') {
         document.getElementById('view-global-acervo').classList.remove('hidden');
         breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Acervo Multimídia Global</strong>';
-        document.getElementById('nav-global-acervo').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
+        document.getElementById('nav-global-acervo').className = "w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderGlobalAcervoView();
       } else {
         document.getElementById('view-discipline').classList.remove('hidden');
@@ -2251,7 +2284,7 @@ export interface Activity {
       updateHeaderStats();
     }
 
-    // LESSON MODAL READER LOGIC & MARKDOWN RENDERER
+    // LESSON MODAL READER LOGIC & MARKDOWN RENDERER (SUBSTACK / MEDIUM EDITORIAL)
     let currentLessonData = null;
 
     function openLessonModal(discId, unitId) {
@@ -2276,11 +2309,11 @@ export interface Activity {
 
       if (isRead) {
         btn.innerText = "Desmarcar Leitura";
-        btn.className = "px-5 py-2.5 theme-bg-subtle theme-text-main hover:bg-white/10 font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer";
+        btn.className = "px-5 py-2.5 dark:bg-slate-800 dark:text-slate-200 bg-slate-200 text-slate-700 hover:bg-slate-300 dark:hover:bg-slate-700 font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer font-sans-ui";
         statusText.innerText = "Status: Aula Concluída";
       } else {
         btn.innerText = "Marcar Unidade como Lida";
-        btn.className = "px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer";
+        btn.className = "px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer font-sans-ui";
         statusText.innerText = "Status: Leitura Pendente";
       }
 
@@ -2306,6 +2339,7 @@ export interface Activity {
       }
     }
 
+    // SUBSTACK / MEDIUM EDITORIAL MARKDOWN PARSER (700PX CENTERED COLUMN, SERIF BODY, SANS HEADINGS)
     function parseMarkdownToHTML(md) {
       if (!md) return '';
       let lines = md.split('\n');
@@ -2316,28 +2350,28 @@ export interface Activity {
         let trimmed = line.trim();
         if (trimmed.startsWith('---')) {
           if (inList) { html += '</ul>'; inList = false; }
-          html += '<hr class="border-white/10 my-6" />';
+          html += '<hr class="border-slate-300 dark:border-slate-800 my-8" />';
         } else if (trimmed.startsWith('### ')) {
           if (inList) { html += '</ul>'; inList = false; }
           const text = trimmed.substring(4);
-          html += `<h3 class="text-base font-bold text-[#0A84FF] mt-6 mb-3 flex items-center space-x-2">${parseInlineMarkdown(text)}</h3>`;
+          html += `<h3 class="font-sans-ui text-xl md:text-2xl font-bold dark:text-[#F8FAFC] text-[#0F172A] mt-10 mb-4 tracking-tight">${parseInlineMarkdown(text)}</h3>`;
         } else if (trimmed.startsWith('## ')) {
           if (inList) { html += '</ul>'; inList = false; }
           const text = trimmed.substring(3);
-          html += `<h2 class="text-lg font-bold theme-text-main mt-8 mb-4 border-b border-white/10 pb-2">${parseInlineMarkdown(text)}</h2>`;
+          html += `<h2 class="font-sans-ui text-2xl md:text-3xl font-bold dark:text-[#F8FAFC] text-[#0F172A] mt-12 mb-5 border-b dark:border-slate-800 border-slate-200 pb-3 tracking-tight">${parseInlineMarkdown(text)}</h2>`;
         } else if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
-          if (!inList) { html += '<ul class="space-y-2.5 my-3 pl-2">'; inList = true; }
+          if (!inList) { html += '<ul class="space-y-3 mb-7 font-serif-editorial text-[17px] md:text-[19px] leading-[1.68] tracking-[-0.003em] dark:text-[#CBD5E1] text-[#334155] pl-4">'; inList = true; }
           const text = trimmed.substring(2);
-          html += `<li class="text-xs theme-text-main leading-relaxed flex items-start space-x-2"><span class="text-[#0A84FF] shrink-0 mt-0.5">•</span><span>${parseInlineMarkdown(text)}</span></li>`;
+          html += `<li class="flex items-start space-x-2.5"><span class="text-[#0A84FF] font-bold shrink-0 mt-1">•</span><span>${parseInlineMarkdown(text)}</span></li>`;
         } else if (trimmed.startsWith('> ')) {
           if (inList) { html += '</ul>'; inList = false; }
           const text = trimmed.substring(2);
-          html += `<blockquote class="border-l-2 border-[#0A84FF] pl-4 py-2 my-4 text-xs theme-text-muted italic theme-bg-subtle rounded-r-xl leading-relaxed">${parseInlineMarkdown(text)}</blockquote>`;
+          html += `<blockquote class="border-l-4 border-indigo-500 pl-6 my-6 font-serif-editorial italic text-xl md:text-2xl dark:text-[#E2E8F0] text-[#1E293B] dark:bg-slate-900/50 bg-slate-100/70 py-3 rounded-r-xl leading-relaxed">${parseInlineMarkdown(text)}</blockquote>`;
         } else if (trimmed.length === 0) {
           if (inList) { html += '</ul>'; inList = false; }
         } else {
           if (inList) { html += '</ul>'; inList = false; }
-          html += `<p class="text-xs theme-text-main leading-relaxed my-2">${parseInlineMarkdown(trimmed)}</p>`;
+          html += `<p class="font-serif-editorial text-[17px] md:text-[19px] leading-[1.68] tracking-[-0.003em] dark:text-[#CBD5E1] text-[#334155] mb-7">${parseInlineMarkdown(trimmed)}</p>`;
         }
       });
 
@@ -2347,9 +2381,9 @@ export interface Activity {
 
     function parseInlineMarkdown(text) {
       return text
-        .replace(/\*\*(.*?)\*\*/g, '<strong class="theme-text-main font-semibold">$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em class="theme-text-muted">$1</em>')
-        .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 theme-bg-subtle text-[#0A84FF] font-mono text-[11px] rounded">$1</code>');
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="font-sans-ui dark:text-[#F8FAFC] text-[#0F172A] font-semibold">$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+        .replace(/`([^`]+)`/g, '<code class="px-2 py-0.5 dark:bg-slate-800 bg-slate-200 text-[#0A84FF] font-mono text-[13px] rounded-md">$1</code>');
     }
 
     // MODAL APA LOGIC & REAL-TIME FORBIDDEN TERMS CHECK
