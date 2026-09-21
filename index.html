@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estratégia Sênior — Portal Streaming & Light/Dark Mode (Apple HIG)</title>
+  <title>Estratégia Sênior — Portal Multimodal EAD (Apple HIG & Light/Dark Mode)</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
@@ -107,8 +107,8 @@
 
     /* Custom Scrollbar */
     .custom-scrollbar::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
     }
     .custom-scrollbar::-webkit-scrollbar-track {
       background: transparent;
@@ -141,7 +141,7 @@
 
       <div>
         <h2 class="text-xl font-semibold tracking-tight text-white">Estratégia Sênior</h2>
-        <p class="text-xs text-[#8E8E93] mt-1">Portal Acadêmico • Layout Streaming & Light/Dark Mode</p>
+        <p class="text-xs text-[#8E8E93] mt-1">Portal Acadêmico Multimodal • 6 Módulos & 15 Formatos</p>
       </div>
 
       <!-- FORM -->
@@ -166,15 +166,15 @@
           </select>
         </div>
 
-        <button type="submit" class="w-full mt-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-sm py-2.5 rounded-xl transition shadow-sm flex items-center justify-center space-x-1.5">
-          <span>Acessar Portal</span>
+        <button type="submit" class="w-full mt-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-sm py-2.5 rounded-xl transition shadow-sm flex items-center justify-center space-x-1.5 cursor-pointer">
+          <span>Acessar Portal Completo</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </button>
       </form>
 
       <!-- DEMO FAST LOGIN -->
       <div class="pt-3 border-t border-white/10">
-        <button onclick="loginAsDemo()" class="text-xs text-[#0A84FF] hover:underline font-medium transition">
+        <button onclick="loginAsDemo()" class="text-xs text-[#0A84FF] hover:underline font-medium transition cursor-pointer">
           Entrar como Aluno Demo
         </button>
       </div>
@@ -201,26 +201,36 @@
 
         <!-- NAVIGATION -->
         <nav class="p-3 space-y-1">
-          <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white">
+          <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white cursor-pointer">
             <svg class="w-4 h-4 text-[#0A84FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
             <span>Visão Geral</span>
           </button>
 
-          <button onclick="openLessonModal('DISC01', 'U1.1')" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#30D158] hover:bg-[#30D158]/10 border border-[#30D158]/20 my-1">
-            <svg class="w-4 h-4 text-[#30D158]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            <span>📖 Aulas Teóricas (Unidade 1 & 2)</span>
+          <button onclick="switchView('all-disciplines')" id="nav-all-disciplines" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer">
+            <svg class="w-4 h-4 text-[#30D158]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            <span>📚 Todas as Disciplinas (1 a 6)</span>
           </button>
 
-          <button onclick="openCodeModal()" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5">
-            <svg class="w-4 h-4 text-[#BF5AF2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-            <span>TypeScript Specification</span>
+          <button onclick="switchView('all-apas')" id="nav-all-apas" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer">
+            <svg class="w-4 h-4 text-[#FF9F0A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            <span>🎯 Banco de Exercícios (15 Formatos)</span>
+          </button>
+
+          <button onclick="switchView('global-acervo')" id="nav-global-acervo" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer">
+            <svg class="w-4 h-4 text-[#BF5AF2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>📂 Acervo Multimídia Global</span>
+          </button>
+
+          <button onclick="openCodeModal()" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer">
+            <svg class="w-4 h-4 text-[#64D2FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            <span>TypeScript Spec</span>
           </button>
 
           <div class="pt-4 pb-1.5 px-3">
-            <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider">Disciplinas do Curso</span>
+            <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider">Módulos do Curso</span>
           </div>
 
-          <div id="sidebar-disciplines" class="space-y-0.5 custom-scrollbar max-h-[calc(100vh-340px)] overflow-y-auto">
+          <div id="sidebar-disciplines" class="space-y-0.5 custom-scrollbar max-h-[calc(100vh-380px)] overflow-y-auto">
             <!-- Rendered dynamically -->
           </div>
         </nav>
@@ -237,7 +247,7 @@
             <p id="user-display-email" class="text-[10px] text-[#8E8E93] truncate">alexandre@empresa.com</p>
           </div>
         </div>
-        <button onclick="handleLogout()" title="Encerrar Sessão" class="p-1 text-[#8E8E93] hover:text-white rounded-md hover:bg-white/10 transition">
+        <button onclick="handleLogout()" title="Encerrar Sessão" class="p-1 text-[#8E8E93] hover:text-white rounded-md hover:bg-white/10 transition cursor-pointer">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
         </button>
       </div>
@@ -279,21 +289,21 @@
               <div class="space-y-3 max-w-2xl">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#30D158]/10 border border-[#30D158]/20 text-[#30D158] text-[11px] font-medium">
                   <span class="w-2 h-2 rounded-full bg-[#30D158] animate-pulse"></span>
-                  <span>Aulas Teóricas Didáticas & Checklist Multimídia</span>
+                  <span>6 Módulos & 15 Formatos de Exercícios Práticos</span>
                 </div>
                 <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-white" id="welcome-greeting">Bem-vindo, Alexandre!</h2>
                 <p class="text-xs lg:text-sm text-[#8E8E93] leading-relaxed">
-                  Acesse os módulos em formato de streaming, leia os fundamentos teóricos em Markdown e acompanhe o seu avanço nos recursos multimídia interativos com checklist!
+                  Acesse todas as disciplinas em estilo streaming, estude a fundamentação teórica em Markdown e resolva os exercícios de simulação executiva com avaliação instantânea!
                 </p>
               </div>
 
-              <!-- ENGINE QUICK ACTION BADGE -->
+              <!-- QUICK ACTIONS -->
               <div class="shrink-0 flex flex-wrap gap-2 items-center lg:justify-end">
-                <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-lg flex items-center space-x-2">
+                <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-lg flex items-center space-x-2 cursor-pointer">
                   <span>📖 Abrir Aula: O Kernel do Diagnóstico (U1.1)</span>
                 </button>
-                <button onclick="switchView('discipline', 'DISC01')" class="px-4 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-semibold text-xs rounded-xl transition">
-                  <span>▶ Entrar no Módulo 1 (Estilo Streaming)</span>
+                <button onclick="switchView('discipline', 'DISC01')" class="px-4 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-semibold text-xs rounded-xl transition cursor-pointer">
+                  <span>▶ Entrar no Módulo 1</span>
                 </button>
               </div>
             </div>
@@ -307,7 +317,7 @@
                 <h3 class="font-bold text-lg text-white flex items-center space-x-2">
                   <span>📚 Unidades Teóricas em Texto Corrido (Markdown)</span>
                 </h3>
-                <p class="text-xs text-[#8E8E93] mt-0.5">Leitura recomendada antes da realização das APAs.</p>
+                <p class="text-xs text-[#8E8E93] mt-0.5">Leitura recomendada antes da realização dos exercícios práticos.</p>
               </div>
               <span class="text-xs text-[#30D158] font-mono px-3 py-1 bg-[#30D158]/10 rounded-lg border border-[#30D158]/30">2 Aulas Disponíveis</span>
             </div>
@@ -325,13 +335,13 @@
                     O Kernel do Diagnóstico e a Armadilha da Solução Precoce
                   </h4>
                   <p class="text-xs text-[#8E8E93] leading-relaxed line-clamp-3">
-                    Conceitos de Richard Rumelt (<em>Good Strategy / Bad Strategy</em>): O Núcleo da Estratégia (Diagnóstico, Guiding Policy, Coherent Actions), Os 4 Sinais da Má Estratégia e o Separador de 6 Camadas de Raciocínio (Fato → Hipótese → Investigação → Insight → Estratégia → Expressão).
+                    Conceitos de Richard Rumelt (<em>Good Strategy / Bad Strategy</em>): O Núcleo da Estratégia (Diagnóstico, Guiding Policy, Coherent Actions), Os 4 Sinais da Má Estratégia e o Separador de 6 Camadas de Raciocínio.
                   </p>
                 </div>
 
                 <div class="pt-3 border-t border-white/10 flex items-center justify-between">
                   <span class="text-[11px] font-medium text-[#8E8E93]">Autor: Richard Rumelt</span>
-                  <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-4 py-2 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-sm flex items-center space-x-1.5">
+                  <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-4 py-2 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-sm flex items-center space-x-1.5 cursor-pointer">
                     <span>Ler Aula Completa 📖</span>
                   </button>
                 </div>
@@ -348,13 +358,13 @@
                     Análise de Funil e Mapeamento de Causas Conflitantes
                   </h4>
                   <p class="text-xs text-[#8E8E93] leading-relaxed line-clamp-3">
-                    Conceitos de Al Ries & Jack Trout (<em>Posicionamento</em>): A batalha pela mente do consumidor, diferenciação entre Sintoma e Causa Raiz em E-commerce e as 3 métricas críticas de investigação (Taxa de Conversão, Abandono de Checkout, CAC vs LTV).
+                    Conceitos de Al Ries & Jack Trout (<em>Posicionamento</em>): A batalha pela mente do consumidor, diferenciação entre Sintoma e Causa Raiz em E-commerce e métricas críticas de investigação.
                   </p>
                 </div>
 
                 <div class="pt-3 border-t border-white/10 flex items-center justify-between">
                   <span class="text-[11px] font-medium text-[#8E8E93]">Autores: Ries & Trout</span>
-                  <button onclick="openLessonModal('DISC01', 'U1.2')" class="px-4 py-2 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-sm flex items-center space-x-1.5">
+                  <button onclick="openLessonModal('DISC01', 'U1.2')" class="px-4 py-2 bg-[#30D158] hover:bg-[#28B84C] text-black font-bold text-xs rounded-xl transition shadow-sm flex items-center space-x-1.5 cursor-pointer">
                     <span>Ler Aula Completa 📖</span>
                   </button>
                 </div>
@@ -370,7 +380,7 @@
               <span class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block mb-1">Progresso Geral</span>
               <div class="flex items-baseline space-x-2">
                 <span class="text-2xl font-bold text-white font-mono" id="kpi-progress-text">0%</span>
-                <span class="text-xs text-[#8E8E93]" id="kpi-completed-count">0 / 25 Atividades</span>
+                <span class="text-xs text-[#8E8E93]" id="kpi-completed-count">0 / 18 Atividades</span>
               </div>
               <div class="w-full bg-[#2C2C2E] rounded-full h-1.5 mt-3">
                 <div id="kpi-progress-bar" class="bg-[#0A84FF] h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -404,10 +414,10 @@
             <div class="lg:col-span-2 apple-glass rounded-3xl p-6 shadow-sm">
               <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
                 <div>
-                  <h3 class="font-semibold text-base text-white">Boletim por Disciplina</h3>
-                  <p class="text-xs text-[#8E8E93]">Desempenho nos 15 tipos de exercícios práticos.</p>
+                  <h3 class="font-semibold text-base text-white">Boletim das 6 Disciplinas</h3>
+                  <p class="text-xs text-[#8E8E93]">Desempenho nos 18 exercícios multimodais.</p>
                 </div>
-                <button onclick="resetProgress()" class="text-xs text-red-400 hover:underline">Resetar Progresso</button>
+                <button onclick="resetProgress()" class="text-xs text-red-400 hover:underline cursor-pointer">Resetar Progresso</button>
               </div>
 
               <div class="overflow-x-auto">
@@ -433,8 +443,8 @@
             <div class="apple-glass rounded-3xl p-6 shadow-sm flex flex-col">
               <div class="flex items-center justify-between mb-4">
                 <div>
-                  <h3 class="font-semibold text-base text-white">Exercícios Recomendados</h3>
-                  <p class="text-xs text-[#8E8E93]">Trilha de APAs ativas.</p>
+                  <h3 class="font-semibold text-base text-white">Próximos Exercícios</h3>
+                  <p class="text-xs text-[#8E8E93]">Trilha de APAs recomendadas.</p>
                 </div>
                 <span class="w-2 h-2 rounded-full bg-[#0A84FF]"></span>
               </div>
@@ -472,9 +482,9 @@
               <!-- STREAMING ACTION BUTTONS & PROGRESS BAR -->
               <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
                 <div class="flex items-center space-x-3">
-                  <button onclick="openLessonModal('DISC01', 'U1.1')" class="px-6 py-3 bg-[#30D158] hover:bg-[#28B84C] text-black font-extrabold text-xs rounded-xl shadow-lg transition flex items-center space-x-2">
+                  <button id="disc-hero-start-btn" onclick="openLessonModal('DISC01', 'U1.1')" class="px-6 py-3 bg-[#30D158] hover:bg-[#28B84C] text-black font-extrabold text-xs rounded-xl shadow-lg transition flex items-center space-x-2 cursor-pointer">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    <span>▶ Iniciar Teoria (Unidade 1)</span>
+                    <span>▶ Iniciar Teoria</span>
                   </button>
                   <a href="#apas-list-container" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl transition border border-white/15">
                     <span>⚡ Ver Exercícios Práticos (APAs)</span>
@@ -498,7 +508,7 @@
               <div>
                 <span class="text-[10px] font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">FILEIRA DE EPISÓDIOS TEÓRICOS</span>
                 <h3 class="font-bold text-base text-white">📖 Aulas Didáticas em Texto Corrido (Markdown)</h3>
-                <p class="text-xs text-[#8E8E93]">Fundamentos teóricos embasados em Richard Rumelt e Al Ries & Jack Trout.</p>
+                <p class="text-xs text-[#8E8E93]">Fundamentos teóricos da disciplina para leitura prévia.</p>
               </div>
               <span class="text-[10px] text-[#30D158] font-medium bg-[#30D158]/10 px-2.5 py-1 rounded-full border border-[#30D158]/20">Fundamentação 📖</span>
             </div>
@@ -514,7 +524,7 @@
               <div>
                 <span class="text-[10px] font-mono font-bold text-[#0A84FF] uppercase tracking-wider block mb-1">DESAFIOS PRÁTICOS C-LEVEL</span>
                 <h3 class="font-bold text-base text-white">⚡ Trilha de Exercícios Multimodais</h3>
-                <p class="text-xs text-[#8E8E93]">Exercícios com dados simulados, roleplays C-Level e pareceres.</p>
+                <p class="text-xs text-[#8E8E93]">Exercícios com dados simulados, roleplays C-Level e pareceres executivos.</p>
               </div>
               <span id="apa-counter-badge" class="text-xs text-[#8E8E93] px-3 py-1 bg-[#2C2C2E] rounded-lg">0 / 5 Concluídos</span>
             </div>
@@ -524,13 +534,13 @@
             </div>
           </div>
 
-          <!-- FILEIRA 3: ACERVO MULTIMÍDIA COM CHECKLIST INTERATIVO (NOVO LAYOUT) -->
+          <!-- FILEIRA 3: ACERVO MULTIMÍDIA COM CHECKLIST INTERATIVO -->
           <div class="apple-glass rounded-3xl p-6 shadow-md border border-white/10">
             <div class="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
               <div>
                 <span class="text-[10px] font-mono font-bold text-[#FF9F0A] uppercase tracking-wider block mb-1">ATIVIDADES EXTRAS & RECURSOS COMPLEMENTARES</span>
                 <h3 class="font-bold text-base text-white">✅ Checklist Interativo do Acervo Multimídia</h3>
-                <p class="text-xs text-[#8E8E93]">Marque os livros lidos, cursos feitos e portais consultados para somar pontos no seu progresso.</p>
+                <p class="text-xs text-[#8E8E93]">Marque os livros lidos, cursos feitos e portais consultados nesta disciplina.</p>
               </div>
               
               <div class="flex items-center space-x-2 bg-[#1C1C1E] px-3 py-1.5 rounded-xl border border-white/10">
@@ -544,6 +554,83 @@
             </div>
           </div>
 
+        </div>
+
+        <!-- VIEW 3: TODAS AS DISCIPLINAS (MÓDULOS 1 AO 6) -->
+        <div id="view-all-disciplines" class="max-w-6xl mx-auto space-y-8 hidden">
+          <div class="apple-glass rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-6">
+              <div>
+                <span class="text-xs font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">GRADE CURRICULAR COMPLETA</span>
+                <h2 class="text-2xl font-bold text-white">Todas as Disciplinas da Formação (Módulos 1 ao 6)</h2>
+                <p class="text-xs text-[#8E8E93] mt-1">Conheça a jornada de aprendizado para se tornar um Estrategista de Marca Sênior.</p>
+              </div>
+              <span class="px-3 py-1 bg-[#30D158]/10 text-[#30D158] border border-[#30D158]/30 rounded-xl text-xs font-mono font-bold">6 Módulos Disponíveis</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="all-disciplines-grid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 4: BANCO DE EXERCÍCIOS MULTIMODAIS (15 FORMATOS) -->
+        <div id="view-all-apas" class="max-w-6xl mx-auto space-y-8 hidden">
+          <div class="apple-glass rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-6 gap-4">
+              <div>
+                <span class="text-xs font-mono font-bold text-[#FF9F0A] uppercase tracking-wider block mb-1">BANCO DE ATIVIDADES MULTIMODAIS</span>
+                <h2 class="text-2xl font-bold text-white">Acervo Geral de Exercícios Práticos (15 Formatos)</h2>
+                <p class="text-xs text-[#8E8E93] mt-1">Filtre por formato de atividade para treinar habilidades executivas específicas.</p>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <select id="apa-filter-type" onchange="renderAllAPAsView()" class="bg-[#1C1C1E] border border-white/10 text-xs text-white rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#0A84FF]">
+                  <option value="ALL">Todos os Formatos (15 Tipos)</option>
+                  <option value="ROLEPLAY_C_LEVEL">🎙️ Roleplay C-Level</option>
+                  <option value="METRICS_DASHBOARD">📊 Painel de Métricas</option>
+                  <option value="FIX_THE_BRIEF">⚠️ Caça-Erros de Briefing</option>
+                  <option value="PERCEPTUAL_MAPPING">🗺️ Mapeamento Perceptual</option>
+                  <option value="EXECUTIVE_MEMO">📝 Memo Executivo</option>
+                  <option value="FEYNMAN_TECHNIQUE">💬 Pílula Feynman</option>
+                  <option value="MANIFESTO_VALUE_PROP">📜 Redação de Manifesto</option>
+                  <option value="CROSS_INDUSTRY">🔄 Inovação Cruzada</option>
+                  <option value="DEVILS_ADVOCATE">⚔️ Advogado do Diabo</option>
+                  <option value="REVERSE_ENGINEERING">🔍 Engenharia Reversa</option>
+                  <option value="HARD_TRADE_OFFS">⚖️ Escolhas Difíceis</option>
+                  <option value="CREATIVE_BRIEF">📐 Briefing Criativo</option>
+                  <option value="MOM_TEST_INTERVIEW">🎙️ Entrevista Mom Test</option>
+                  <option value="EXTREME_CONSTRAINT">⚡ Restrição Extrema</option>
+                  <option value="CRISIS_PR_SIMULATION">🔥 Crise de PR</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="space-y-4" id="all-apas-container">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 5: ACERVO MULTIMÍDIA GLOBAL -->
+        <div id="view-global-acervo" class="max-w-6xl mx-auto space-y-8 hidden">
+          <div class="apple-glass rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-6 gap-4">
+              <div>
+                <span class="text-xs font-mono font-bold text-[#BF5AF2] uppercase tracking-wider block mb-1">HUB ACADÊMICO INTEGRADO</span>
+                <h2 class="text-2xl font-bold text-white">Acervo Multimídia & Referências com Checklist</h2>
+                <p class="text-xs text-[#8E8E93] mt-1">Todos os livros, cursos recomendados, portais de inteligência e vídeos dos 6 módulos reunidos em um único acervo clicável.</p>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <input type="text" id="acervo-search-input" oninput="renderGlobalAcervoView()" placeholder="Buscar por título ou autor..." class="bg-[#1C1C1E] border border-white/10 text-xs text-white rounded-xl px-3.5 py-2.5 w-64 focus:outline-none focus:border-[#BF5AF2]">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="global-acervo-grid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
         </div>
 
       </main>
@@ -563,7 +650,7 @@
           </div>
           <h3 id="modal-lesson-title" class="text-lg font-semibold text-white">Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce</h3>
         </div>
-        <button onclick="closeLessonModal()" class="text-[#8E8E93] hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition">
+        <button onclick="closeLessonModal()" class="text-[#8E8E93] hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -578,8 +665,8 @@
         <span class="text-xs text-[#8E8E93]" id="lesson-status-text">Fundamentação Teórica • Módulo de Estudo</span>
 
         <div class="flex items-center space-x-3">
-          <button onclick="closeLessonModal()" class="px-4 py-2 text-xs text-[#8E8E93] hover:text-white transition">Fechar</button>
-          <button onclick="toggleLessonComplete()" id="btn-toggle-lesson" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm">
+          <button onclick="closeLessonModal()" class="px-4 py-2 text-xs text-[#8E8E93] hover:text-white transition cursor-pointer">Fechar</button>
+          <button onclick="toggleLessonComplete()" id="btn-toggle-lesson" class="px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer">
             Marcar Unidade como Lida ✅
           </button>
         </div>
@@ -602,135 +689,123 @@
           </div>
           <h3 id="modal-apa-title" class="text-lg font-semibold text-white">Simulação C-Level: CEO Exigindo Rebranding em 30 Dias</h3>
         </div>
-        <button onclick="closeAPAModal()" class="text-[#8E8E93] hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition">
+        <button onclick="closeAPAModal()" class="text-[#8E8E93] hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
-      <!-- MODAL BODY -->
-      <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-6">
+      <!-- MODAL BODY CONTAINER -->
+      <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-6 bg-[#0A0A0C]">
         
-        <!-- CLIENT PROFILE CARD (IF PRESENT) -->
-        <div id="modal-client-card" class="hidden bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 flex items-center justify-between">
-          <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-[#0A84FF]/10 border border-[#0A84FF]/20 flex items-center justify-center text-[#0A84FF]">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V9a2 2 0 012-2h2a2 2 0 012 2v12"/></svg>
-            </div>
-            <div>
-              <p id="modal-client-name" class="text-xs font-semibold text-white">Rede FitPrime Academias</p>
-              <p id="modal-client-details" class="text-[11px] text-[#8E8E93]">Segmento: Fitness Premium | Stakeholder: CEO & Sócio Majoritário</p>
-            </div>
+        <!-- CLIENT PROFILE CARD -->
+        <div id="modal-client-card" class="p-4 bg-[#1C1C1E] border border-white/10 rounded-2xl flex items-center justify-between hidden">
+          <div>
+            <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider block">Perfil do Cliente & Stakeholder</span>
+            <span id="modal-client-name" class="text-sm font-bold text-white block mt-0.5">Rede FitPrime Academias</span>
+            <span id="modal-client-details" class="text-xs text-[#8E8E93]">Segmento: Fitness | Stakeholder: CEO & Sócio</span>
           </div>
-          <span class="px-2.5 py-1 bg-[#2C2C2E] text-[10px] font-medium text-[#8E8E93] rounded-md">Perfil de Cliente</span>
+          <span class="px-3 py-1 bg-[#0A84FF]/10 text-[#0A84FF] text-xs font-medium rounded-xl border border-[#0A84FF]/30">C-Level Persona</span>
         </div>
 
         <!-- SCENARIO & CONTEXT -->
-        <div class="bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 space-y-3">
-          <h4 class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider">Cenário Executivo & Contexto Real</h4>
-          <div id="modal-apa-scenario" class="text-xs text-[#F5F5F7] leading-relaxed">
-            <!-- Dynamic scenario -->
+        <div class="space-y-2">
+          <h4 class="text-xs font-semibold text-[#8E8E93] uppercase tracking-wider">Cenário & Desafio do Negócio</h4>
+          <div id="modal-apa-scenario" class="p-4 bg-[#1C1C1E]/60 border border-white/10 rounded-2xl text-xs text-[#F5F5F7] leading-relaxed">
+            <!-- Scenario text -->
           </div>
         </div>
 
-        <!-- SIMULATED DATA PANEL (IF PRESENT) -->
-        <div id="modal-data-panel" class="hidden bg-[#161618] border border-white/10 rounded-2xl p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <h4 class="text-[11px] font-semibold text-[#0A84FF] uppercase tracking-wider flex items-center space-x-1.5">
-              <span>📊 Painel de Métricas & Dados Simulados do E-Commerce</span>
-            </h4>
-            <span class="text-[10px] text-[#8E8E93]">Fonte: Analytics & CRM</span>
-          </div>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="data-panel-grid">
+        <!-- SIMULATED DATA PANEL (IF APPLICABLE) -->
+        <div id="modal-data-panel" class="space-y-2 hidden">
+          <h4 class="text-xs font-semibold text-[#8E8E93] uppercase tracking-wider">Painel de Métricas do Negócio</h4>
+          <div id="data-panel-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <!-- Rendered dynamically -->
           </div>
         </div>
 
-        <!-- FORBIDDEN TERMS ALERT (IF PRESENT) -->
-        <div id="modal-forbidden-box" class="hidden bg-red-500/10 border border-red-500/30 rounded-2xl p-4 space-y-1.5">
+        <!-- FORBIDDEN TERMS WARNING BOX -->
+        <div id="modal-forbidden-box" class="p-4 bg-red-500/10 border border-red-500/30 rounded-2xl space-y-2 hidden">
           <div class="flex items-center space-x-2 text-red-400">
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <h5 class="text-xs font-semibold">Regra de Restrição: Jargões & Palavras Bloqueadas</h5>
+            <span class="text-xs font-bold uppercase tracking-wider">Restrição de Defesa Executiva (Termos Bloqueados)</span>
           </div>
-          <p class="text-[11px] text-white/90">
-            Você está <strong>PROIBIDO</strong> de utilizar os seguintes termos na sua resposta:
-          </p>
+          <p class="text-[11px] text-[#8E8E93]">Neste exercício C-Level, sua resposta <strong>não pode</strong> conter os seguintes termos visuais/estéticos:</p>
           <div id="modal-forbidden-tags" class="flex flex-wrap gap-1.5 pt-1">
-            <!-- Rendered dynamically -->
-          </div>
-          <div id="forbidden-live-warning" class="hidden text-[11px] font-semibold text-red-400 pt-1">
-            ⚠️ Alerta: Você digitou um termo proibido! Remova para pontuação máxima.
+            <!-- Tags rendered -->
           </div>
         </div>
 
-        <!-- INSTRUCTIONS & EVALUATION CRITERIA -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          
-          <div class="bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 space-y-2">
-            <h5 class="text-[11px] font-semibold text-[#30D158] uppercase tracking-wider">🎯 Instruções de Execução</h5>
-            <ul id="modal-instructions-list" class="space-y-1.5 text-xs text-[#8E8E93] list-disc list-inside">
-              <!-- Rendered dynamically -->
-            </ul>
-          </div>
-
-          <div class="bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 space-y-2">
-            <h5 class="text-[11px] font-semibold text-[#FF9F0A] uppercase tracking-wider">⚖️ Critérios de Avaliação do Mentor</h5>
-            <div id="modal-criteria-list" class="space-y-1.5 text-xs">
-              <!-- Rendered dynamically -->
-            </div>
-          </div>
-
+        <!-- INSTRUCTIONS -->
+        <div class="space-y-2">
+          <h4 class="text-xs font-semibold text-[#8E8E93] uppercase tracking-wider">Instruções de Execução</h4>
+          <ul id="modal-instructions-list" class="space-y-1.5 text-xs text-[#F5F5F7] list-disc list-inside bg-[#1C1C1E]/40 p-4 rounded-2xl border border-white/5">
+            <!-- Instructions rendered -->
+          </ul>
         </div>
 
-        <!-- MENTOR TIP BADGE -->
-        <div id="modal-mentor-tip-box" class="bg-[#0A84FF]/10 border border-[#0A84FF]/20 rounded-2xl p-3.5 flex items-start space-x-3">
-          <span class="text-lg">💡</span>
-          <div>
-            <span class="text-[10px] font-semibold text-[#0A84FF] uppercase tracking-wider block">Dica Executiva do Mentor</span>
-            <p id="modal-mentor-tip-text" class="text-xs text-white/90">Foque em métricas de retenção e causa raiz antes de falar sobre estética.</p>
-          </div>
-        </div>
-
-        <!-- RESPONSE INPUT SECTION -->
+        <!-- STUDENT INPUT AREA -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <label class="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider" id="modal-input-label">Seu Script de Fala / Parecer Executivo</label>
-            <span id="char-counter" class="text-[10px] text-[#8E8E93] font-mono">0 caracteres</span>
+            <h4 class="text-xs font-semibold text-white uppercase tracking-wider">Sua Resposta Estratégica</h4>
+            <div class="flex items-center space-x-3">
+              <span id="char-counter" class="text-[10px] text-[#8E8E93] font-mono">0 caracteres</span>
+              <button onclick="insertTemplate()" class="text-[11px] text-[#0A84FF] hover:underline font-medium cursor-pointer">Inserir Estrutura Sugerida</button>
+            </div>
           </div>
-
-          <textarea id="apa-response-input" rows="8" placeholder="Escreva sua resposta estruturada..." class="w-full bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 text-xs text-white placeholder-[#636366] focus:outline-none focus:border-[#0A84FF] custom-scrollbar leading-relaxed font-mono"></textarea>
+          
+          <div class="relative">
+            <textarea id="apa-response-input" rows="7" placeholder="Desenvolva sua resposta em Markdown ou script de reunião..." class="w-full bg-[#1C1C1E] border border-white/10 rounded-2xl p-4 text-xs text-white placeholder-[#636366] focus:outline-none focus:border-[#0A84FF] transition font-mono leading-relaxed"></textarea>
+            
+            <div id="forbidden-live-warning" class="hidden absolute bottom-3 right-3 bg-red-500/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg backdrop-blur-md shadow-lg">
+              ⚠️ Alerta: Termo proibido detectado no texto!
+            </div>
+          </div>
         </div>
 
-        <!-- SUBMITTED FEEDBACK & GABARITO DISPLAY -->
-        <div id="modal-feedback-box" class="hidden bg-[#30D158]/10 border border-[#30D158]/30 rounded-2xl p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <h4 class="text-xs font-semibold text-[#30D158] uppercase tracking-wider">Avaliação do Mentor Sênior C-Level</h4>
-            <span id="feedback-grade-badge" class="px-2.5 py-0.5 bg-[#30D158]/20 text-[#30D158] font-bold text-xs rounded-md">Nota A (9.5)</span>
-          </div>
-          <p id="feedback-text" class="text-xs text-white leading-relaxed">
-            Excelente defesa oral!
-          </p>
-
-          <!-- SENIOR GABARITO COMPARISON -->
-          <div class="pt-3 border-t border-[#30D158]/20 space-y-2">
-            <span class="text-[10px] font-semibold text-[#30D158] uppercase tracking-wider block">⭐ Gabarito de Referência de Nível Sênior</span>
-            <div id="feedback-gabarito-text" class="p-3 bg-black/40 rounded-xl text-xs font-mono text-[#8E8E93] leading-relaxed">
-              <!-- Rendered sample gabarito -->
+        <!-- CRITERIA & MENTOR TIP -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <h4 class="text-xs font-semibold text-[#8E8E93] uppercase tracking-wider">Critérios de Avaliação do Mentor</h4>
+            <div id="modal-criteria-list" class="space-y-2 text-xs">
+              <!-- Criteria rendered -->
             </div>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="text-xs font-semibold text-amber-400 uppercase tracking-wider flex items-center space-x-1">
+              <span>💡 Dica de Mentoria Executiva</span>
+            </h4>
+            <div class="p-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl text-xs text-amber-200/90 leading-relaxed italic" id="modal-mentor-tip-text">
+              <!-- Mentor tip -->
+            </div>
+          </div>
+        </div>
+
+        <!-- PREVIOUS FEEDBACK (IF SUBMITTED) -->
+        <div id="modal-feedback-box" class="p-5 bg-[#30D158]/10 border border-[#30D158]/30 rounded-2xl space-y-2 hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-[#30D158] flex items-center space-x-1.5">
+              <span>✅ Exercício Avaliado pelo Mentor</span>
+            </span>
+            <span id="feedback-grade-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#30D158] text-black">Nota A (9.5)</span>
+          </div>
+          <p id="feedback-text" class="text-xs text-[#F5F5F7] leading-relaxed">Excelente raciocínio executivo.</p>
+          <div class="pt-2 border-t border-[#30D158]/20">
+            <span class="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider block">Gabarito de Referência Sênior:</span>
+            <p id="feedback-gabarito-text" class="text-xs text-[#8E8E93] italic mt-0.5"></p>
           </div>
         </div>
 
       </div>
 
       <!-- MODAL FOOTER -->
-      <div class="p-4 border-t border-white/10 bg-[#161618]/90 flex items-center justify-between">
-        <button onclick="insertTemplate()" class="text-xs text-[#0A84FF] hover:underline font-medium">
-          + Inserir Framework / Placeholder
-        </button>
+      <div class="p-4 border-t border-white/10 bg-[#161618]/80 flex items-center justify-between">
+        <span class="text-xs text-[#8E8E93]">Submissão sujeita a validação de jargões e consistência de métricas.</span>
 
         <div class="flex items-center space-x-3">
-          <button onclick="closeAPAModal()" class="px-4 py-2 text-xs text-[#8E8E93] hover:text-white transition">Cancelar</button>
-          <button onclick="submitAPAResolution()" id="btn-submit-apa" class="px-5 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm">
-            Submeter Exercício Prático
+          <button onclick="closeAPAModal()" class="px-4 py-2 text-xs text-[#8E8E93] hover:text-white transition cursor-pointer">Cancelar</button>
+          <button onclick="submitAPAResolution()" id="btn-submit-apa" class="px-5 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer">
+            Submeter Exercício
           </button>
         </div>
       </div>
@@ -738,33 +813,21 @@
     </div>
   </div>
 
-  <!-- TYPESCRIPT CODE VIEW MODAL -->
-  <div id="code-modal" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
+  <!-- TYPESCRIPT SPECIFICATION CODE MODAL -->
+  <div id="code-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
     <div class="apple-glass rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-white/15">
-      
-      <div class="p-5 border-b border-white/10 flex items-center justify-between bg-[#161618]">
-        <div class="flex items-center space-x-2">
-          <span class="text-xs font-mono font-bold text-[#BF5AF2] bg-[#BF5AF2]/10 px-2 py-1 rounded">TypeScript</span>
-          <h3 class="text-sm font-semibold text-white">Engine Specification (`activitiesEngine.ts`)</h3>
+      <div class="p-6 border-b border-white/10 flex items-center justify-between bg-[#161618]/80">
+        <div>
+          <span class="text-[10px] font-mono text-[#BF5AF2] uppercase tracking-wider block">ESPECIFICAÇÃO DE DADOS</span>
+          <h3 class="text-base font-bold text-white">TypeScript Engine & Data Schema (`activitiesEngine.ts`)</h3>
         </div>
-        <button onclick="closeCodeModal()" class="text-[#8E8E93] hover:text-white p-1 rounded hover:bg-white/10 transition">
+        <button onclick="closeCodeModal()" class="text-[#8E8E93] hover:text-white p-1 rounded-md hover:bg-white/10 transition cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
       <div class="p-6 overflow-y-auto custom-scrollbar flex-1 bg-[#0A0A0C]">
-        <pre class="text-xs font-mono text-[#30D158] leading-relaxed selection:bg-[#0A84FF] whitespace-pre-wrap" id="ts-code-block">
-// ============================================================================
-// EAD ESTRATÉGIA DE MARCA — SYSTEMA DE ATIVIDADES & EXERCÍCIOS MULTIMODAIS
-// ============================================================================
-
-export interface UnitLesson {
-  unitId: string;
-  unitTitle: string;
-  readingTimeMinutes: number;
-  lessonTextMarkdown: string;
-}
-
+        <pre class="text-[11px] font-mono text-emerald-400 bg-black/60 p-5 rounded-2xl border border-white/10 leading-relaxed overflow-x-auto selection:bg-[#0A84FF]" id="ts-code-block">
 export type ActivityType =
   | 'REVERSE_ENGINEERING'      // Engenharia Reversa de Campanha/Marca
   | 'FIX_THE_BRIEF'            // Caça-Erros e Reescrita de Briefing
@@ -777,127 +840,141 @@ export type ActivityType =
   | 'CROSS_INDUSTRY'           // Inovação Cruzada (Benchmark de outro segmento)
   | 'HARD_TRADE_OFFS'          // Teste da Escolha Difícil
   | 'EXECUTIVE_MEMO'           // Memo Executivo de 1 Página
-  | 'FEYNMAN_TECHNIQUE'        // A Pílula para Leigos
+  | 'FEYNMAN_TECHNIQUE'        // A Pílula para Leigos (Simplificação sem Jargão)
   | 'MANIFESTO_VALUE_PROP'     // Redação de Manifesto e Proposta de Valor
   | 'METRICS_DASHBOARD'        // Diagnóstico de Painel de Métricas / Funil
   | 'CREATIVE_BRIEF';          // Briefing Estratégico de Criação
+
+export type DifficultyLevel = 'Iniciante' | 'Intermediário' | 'Avançado' | 'Sênior C-Level';
+
+export interface UnitLesson {
+  unitId: string;
+  unitTitle: string;
+  readingTimeMinutes: number;
+  lessonTextMarkdown: string;
+}
+
+export interface Activity {
+  id: string;
+  disciplineId: string;
+  title: string;
+  type: ActivityType;
+  level: DifficultyLevel;
+  estimatedMinutes: number;
+  badgeLabel: string;
+  icon: string;
+  clientProfile?: {
+    companyName: string;
+    segment: string;
+    stakeholderRole: string;
+  };
+  scenarioText: string;
+  dataPanel?: MetricData[];
+  forbiddenTerms?: string[];
+  instructions: string[];
+  responseFormat: string;
+  placeholderText: string;
+  evaluationCriteria: { id: string; label: string; description: string; }[];
+  mentorTip: string;
+  sampleGabarito: string;
+}
         </pre>
       </div>
 
-      <div class="p-4 border-t border-white/10 bg-[#161618] flex items-center justify-between">
-        <span class="text-xs text-[#8E8E93]">15 Formatos de Exercícios + Aulas em Texto Corrido (`lessonTextMarkdown`)</span>
-        <button onclick="copyTSCode()" class="px-4 py-2 bg-[#0A84FF] text-white font-medium text-xs rounded-xl hover:bg-[#007AFF] transition">
-          Copiar Código TypeScript
+      <div class="p-4 border-t border-white/10 bg-[#161618]/80 flex items-center justify-between">
+        <span class="text-xs text-[#8E8E93]">Pronto para integração com NestJS, Next.js ou backend TypeScript.</span>
+        <button onclick="copyTSCode()" class="px-4 py-2 bg-[#BF5AF2] hover:bg-[#A242D6] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer">
+          Copiar Código TypeScript 📋
         </button>
       </div>
-
     </div>
   </div>
 
-  <!-- JAVASCRIPT APP ENGINE & DATA DATABASE -->
+  <!-- MAIN SCRIPT LOGIC -->
   <script>
-    // RENDER RULES FOR THE 15 ACTIVITY FORMATS
-    const RENDER_RULES = {
-      REVERSE_ENGINEERING: { color: 'bg-purple-500/10 border-purple-500/30 text-purple-400', label: '🔍 Engenharia Reversa', icon: '🔍' },
-      FIX_THE_BRIEF: { color: 'bg-amber-500/10 border-amber-500/30 text-amber-400', label: '⚠️ Caça-Erros de Briefing', icon: '⚠️' },
-      PERCEPTUAL_MAPPING: { color: 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400', label: '🗺️ Mapeamento Perceptual', icon: '🗺️' },
-      ROLEPLAY_C_LEVEL: { color: 'bg-red-500/10 border-red-500/30 text-red-400', label: '🎙️ Roleplay C-Level', icon: '🎙️' },
-      MOM_TEST_INTERVIEW: { color: 'bg-pink-500/10 border-pink-500/30 text-pink-400', label: '💬 Entrevista Mom Test', icon: '💬' },
-      CRISIS_PR_SIMULATION: { color: 'bg-red-600/10 border-red-600/30 text-red-500', label: '🔥 Resolução de Crise PR', icon: '🔥' },
-      DEVILS_ADVOCATE: { color: 'bg-orange-500/10 border-orange-500/30 text-orange-400', label: '⚔️ Advogado do Diabo', icon: '⚔️' },
-      EXTREME_CONSTRAINT: { color: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400', label: '⚡ Restrição Extrema', icon: '⚡' },
-      CROSS_INDUSTRY: { color: 'bg-teal-500/10 border-teal-500/30 text-teal-400', label: '🔀 Inovação Cruzada', icon: '🔀' },
-      HARD_TRADE_OFFS: { color: 'bg-stone-500/10 border-stone-500/30 text-stone-300', label: '⚖️ Escolha Difícil (Trade-Off)', icon: '⚖️' },
-      EXECUTIVE_MEMO: { color: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400', label: '📝 Memo Executivo', icon: '📝' },
-      FEYNMAN_TECHNIQUE: { color: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400', label: '👨‍🏫 Pílula Feynman', icon: '👨‍🏫' },
-      MANIFESTO_VALUE_PROP: { color: 'bg-blue-500/10 border-blue-500/30 text-blue-400', label: '📜 Redação de Manifesto', icon: '📜' },
-      METRICS_DASHBOARD: { color: 'bg-blue-500/10 border-blue-500/30 text-blue-400', label: '📊 Análise de Painel', icon: '📊' },
-      CREATIVE_BRIEF: { color: 'bg-violet-500/10 border-violet-500/30 text-violet-400', label: '🎨 Briefing Criativo', icon: '🎨' }
-    };
-
-    // USER AUTH & SESSION STATE
-    let currentUser = null;
-
-    function getStorageKey() {
-      return currentUser ? `estrategia_portal_state_${currentUser.email}` : 'estrategia_portal_state_guest';
-    }
-
-    function handleLoginSubmit(e) {
-      if (e) e.preventDefault();
-      const name = document.getElementById('login-name').value.trim();
-      const email = document.getElementById('login-email').value.trim();
-      const role = document.getElementById('login-role').value;
-
-      if (!email) return;
-
-      currentUser = {
-        name: name || email.split('@')[0],
-        email: email,
-        role: role
-      };
-
-      localStorage.setItem('estrategia_current_user', JSON.stringify(currentUser));
-      document.getElementById('login-overlay').classList.add('hidden');
-      
-      initUserSession();
-    }
-
-    function loginAsDemo() {
-      document.getElementById('login-name').value = "Alexandre Silva";
-      document.getElementById('login-email').value = "alexandre@empresa.com";
-      handleLoginSubmit();
-    }
-
-    function handleLogout() {
-      if (confirm("Deseja realmente sair da sua conta?")) {
-        localStorage.removeItem('estrategia_current_user');
-        currentUser = null;
-        document.getElementById('login-overlay').classList.remove('hidden');
-      }
-    }
-
-    // THEME TOGGLE (DARK / LIGHT MODE PERSISTENCE)
+    // THEME TOGGLE LOGIC
     function initTheme() {
       const savedTheme = localStorage.getItem('estrategia_theme') || 'dark';
       applyTheme(savedTheme);
     }
 
     function toggleTheme() {
-      const current = document.documentElement.classList.contains('light') ? 'light' : 'dark';
-      const next = current === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('estrategia_theme', next);
-      applyTheme(next);
+      const currentTheme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('estrategia_theme', newTheme);
     }
 
     function applyTheme(theme) {
       const btnIcon = document.getElementById('theme-toggle-icon');
       const btnText = document.getElementById('theme-toggle-text');
-      
+
       if (theme === 'light') {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
-        if (btnIcon) btnIcon.innerText = "🌙";
-        if (btnText) btnText.innerText = "Modo Escuro";
+        if (btnIcon) btnIcon.innerText = '🌙';
+        if (btnText) btnText.innerText = 'Modo Escuro';
       } else {
         document.documentElement.classList.remove('light');
         document.documentElement.classList.add('dark');
-        if (btnIcon) btnIcon.innerText = "☀️";
-        if (btnText) btnText.innerText = "Modo Claro";
+        if (btnIcon) btnIcon.innerText = '☀️';
+        if (btnText) btnText.innerText = 'Modo Claro';
       }
     }
 
+    initTheme();
+
+    // AUTHENTICATION & MULTI-ACCOUNT STATE MANAGEMENT
+    let currentUser = null;
+
+    function getStorageKey() {
+      return currentUser ? `estrategia_state_${currentUser.email}` : 'estrategia_state_guest';
+    }
+
     function checkAuthSession() {
-      initTheme();
-      const savedUser = localStorage.getItem('estrategia_current_user');
-      if (savedUser) {
+      const savedSession = localStorage.getItem('estrategia_user_session');
+      if (savedSession) {
         try {
-          currentUser = JSON.parse(savedUser);
+          currentUser = JSON.parse(savedSession);
           document.getElementById('login-overlay').classList.add('hidden');
           initUserSession();
-        } catch(e) {
+        } catch (e) {
           document.getElementById('login-overlay').classList.remove('hidden');
         }
       } else {
+        document.getElementById('login-overlay').classList.remove('hidden');
+      }
+    }
+
+    function handleLoginSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('login-name').value.trim();
+      const email = document.getElementById('login-email').value.trim().toLowerCase();
+      const role = document.getElementById('login-role').value;
+
+      if (!name || !email) return;
+
+      currentUser = { name, email, role };
+      localStorage.setItem('estrategia_user_session', JSON.stringify(currentUser));
+      document.getElementById('login-overlay').classList.add('hidden');
+      initUserSession();
+    }
+
+    function loginAsDemo() {
+      currentUser = {
+        name: "Alexandre Silva",
+        email: "demo.aluno@estrategia.com",
+        role: "Designer em Transição para Estrategista"
+      };
+      localStorage.setItem('estrategia_user_session', JSON.stringify(currentUser));
+      document.getElementById('login-overlay').classList.add('hidden');
+      initUserSession();
+    }
+
+    function handleLogout() {
+      if (confirm("Encerrar sessão nesta conta?")) {
+        localStorage.removeItem('estrategia_user_session');
+        currentUser = null;
         document.getElementById('login-overlay').classList.remove('hidden');
       }
     }
@@ -915,7 +992,7 @@ export type ActivityType =
       switchView(userState.activeView, userState.activeDisciplineId);
     }
 
-    // EXPANDED MULTIMODAL CURRICULUM DATABASE WITH LESSON TEXT MARKDOWN & UNIQUE RESOURCE IDS
+    // EXPANDED MULTIMODAL CURRICULUM DATABASE WITH ALL 6 DISCIPLINES
     const curriculumData = [
       {
         id: "DISC01",
@@ -926,77 +1003,13 @@ export type ActivityType =
             unitId: 'U1.1',
             unitTitle: 'Unidade 1: O Kernel do Diagnóstico e a Armadilha da Solução Precoce',
             readingTimeMinutes: 8,
-            lessonTextMarkdown: `
-### 🏛️ O Kernel do Diagnóstico Estratégico
-
-A maioria dos profissionais de criação opera sob uma lógica reativa: diante de uma queixa comercial do cliente, saltam imediatamente para uma proposta visual ou de comunicação. Essa tendência de pular etapas gera o seguinte atalho lógico:
-
-**Problema de Vendas → Mudar Posicionamento → Criar Marca Premium → Nova Identidade Visual**
-
-O papel de um estrategista sênior é quebrar essa ansiedade por respostas imediatas e segurar a solução até entender profundamente a causa raiz do problema.
-
----
-
-### 1. O Núcleo da Estratégia (*The Kernel*)
-De acordo com Richard Rumelt (*Good Strategy Bad Strategy*), uma estratégia real não se define por metas financeiras ou desejos de crescimento. Toda boa estratégia possui uma estrutura interna coesa denominada **Kernel** (o Núcleo), composta por três elementos fundamentais:
-
-1. **O Diagnóstico:** Define a natureza exata do desafio. Ele simplifica a complexidade do cenário ao identificar quais aspectos da realidade são realmente críticos. Responde à pergunta: *"O que realmente está acontecendo aqui?"*.
-2. **A Política Guiada (*Guiding Policy*):** É a abordagem geral escolhida para superar os obstáculos identificados no diagnóstico. Ela direciona a energia e os recursos sem detalhar cada passo operacional.
-3. **As Ações Coerentes (*Coherent Actions*):** Conjunto de passos coordenados entre si para executar a política guiada. A força da estratégia reside na coerência dessas ações direcionadas ao mesmo objetivo.
-
----
-
-### 2. Os Quatro Sinais da Má Estratégia
-Rumelt alerta que a "má estratégia" se manifesta por meio de quatro características centrais:
-
-* **Fluff (Linguagem Oca):** Uso de jargões complicados que criam a ilusão de pensamento de alto nível, mas não possuem substância.
-* **Incapacidade de Enfrentar o Desafio:** Omitir ou falhar em definir o verdadeiro problema da empresa.
-* **Confundir Metas com Estratégia:** Tratar desejos de crescimento (ex: *"crescer 30% no ano"*) como se fossem o plano para alcançar esse resultado.
-* **Objetivos Estratégicos Ruins:** Traçar metas impraticáveis ou contraditórias por incapacidade de fazer escolhas duras (*trade-offs*).
-
----
-
-### 3. O Separador de Raciocínio na Prática
-Para atuar no nível sênior, o profissional precisa categorizar as informações do cliente em seis camadas:
-
-* **Fato:** O dado objetivo e comprovado (ex: *"A receita caiu 30% nos últimos dois trimestres"*).
-* **Hipótese:** Uma explicação plausível que precisa ser testada (ex: *"A queda pode estar ligada ao cancelamento de clientes antigos"*).
-* **Investigação:** As perguntas e pesquisas necessárias para auditar a hipótese.
-* **Insight:** A descoberta profunda sobre o comportamento ou operação após a investigação.
-* **Estratégia:** A decisão de onde alocar recursos e qual oportunidade perseguir.
-* **Expressão:** A tradução em identidade visual, linguagem, conteúdo e experiência.
-`
+            lessonTextMarkdown: `### 🏛️ O Kernel do Diagnóstico Estratégico\n\nA maioria dos profissionais de criação opera sob uma lógica reativa: diante de uma queixa comercial do cliente, saltam imediatamente para uma proposta visual ou de comunicação. Essa tendência de pular etapas gera o seguinte atalho lógico:\n\n**Problema de Vendas → Mudar Posicionamento → Criar Marca Premium → Nova Identidade Visual**\n\nO papel de um estrategista sênior é quebrar essa ansiedade por respostas imediatas e segurar a solução até entender profundamente a causa raiz do problema.\n\n---\n\n### 1. O Núcleo da Estratégia (*The Kernel*)\nDe acordo com Richard Rumelt (*Good Strategy Bad Strategy*), uma estratégia real não se define por metas financeiras ou desejos de crescimento. Toda boa estratégia possui uma estrutura interna coesa denominada **Kernel** (o Núcleo), composta por três elementos fundamentais:\n\n1. **O Diagnóstico:** Define a natureza exata do desafio. Ele simplifica a complexidade do cenário ao identificar quais aspectos da realidade são realmente críticos. Responde à pergunta: *"O que realmente está acontecendo aqui?"*.\n2. **A Política Guiada (*Guiding Policy*):** É a abordagem geral escolhida para superar os obstáculos identificados no diagnóstico. Ela direciona a energia e os recursos sem detalhar cada passo operacional.\n3. **As Ações Coerentes (*Coherent Actions*):** Conjunto de passos coordenados entre si para executar a política guiada. A força da estratégia reside na coerência dessas ações direcionadas ao mesmo objetivo.\n\n---\n\n### 2. Os Quatro Sinais da Má Estratégia\nRumelt alerta que a "má estratégia" se manifesta por meio de quatro características centrais:\n\n* **Fluff (Linguagem Oca):** Uso de jargões complicados que criam a ilusão de pensamento de alto nível, mas não possuem substância.\n* **Incapacidade de Enfrentar o Desafio:** Omitir ou falhar em definir o verdadeiro problema da empresa.\n* **Confundir Metas com Estratégia:** Tratar desejos de crescimento (ex: *"crescer 30% no ano"*) como se fossem o plano para alcançar esse resultado.\n* **Objetivos Estratégicos Ruins:** Traçar metas impraticáveis ou contraditórias por incapacidade de fazer escolhas duras (*trade-offs*).\n\n---\n\n### 3. O Separador de Raciocínio na Prática\nPara atuar no nível sênior, o profissional precisa categorizar as informações do cliente em seis camadas:\n\n* **Fato:** O dado objetivo e comprovado (ex: *"A receita caiu 30% nos últimos dois trimestres"*).\n* **Hipótese:** Uma explicação plausível que precisa ser testada (ex: *"A queda pode estar ligada ao cancelamento de clientes antigos"*).\n* **Investigação:** As perguntas e pesquisas necessárias para auditar a hipótese.\n* **Insight:** A descoberta profunda sobre o comportamento ou operação após a investigação.\n* **Estratégia:** A decisão de onde alocar recursos e qual oportunidade perseguir.\n* **Expressão:** A tradução em identidade visual, linguagem, conteúdo e experiência.`
           },
           {
             unitId: 'U1.2',
             unitTitle: 'Unidade 2: Análise de Funil e Mapeamento de Causas Conflitantes',
             readingTimeMinutes: 10,
-            lessonTextMarkdown: `
-### 📊 Diagnóstico de Funil de Vendas e Comportamento
-
-Quando investigamos um negócio, a opinião do fundador ou cliente frequentemente contém vícios de julgamento. Para realizar um diagnóstico preciso, é preciso analisar os dados de comportamento ao longo do funil de vendas.
-
----
-
-### 1. A Batalha pela Mente e a Percepção de Valor
-Como destacam Al Ries e Jack Trout (*Posicionamento*), o marketing moderno não é uma batalha de produtos ou atributos objetivos, mas uma **batalha de percepções na mente do consumidor**. 
-
-Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 20% no faturamento, o problema não está na atração (topo de funil), mas na **qualidade do tráfego** ou na **falta de clareza do valor percebido** no meio/fim do funil.
-
----
-
-### 2. Sintoma vs. Causa Raiz no E-commerce
-* **Sintoma:** Queda na taxa de conversão de vendas.
-* **Hipótese Falsa do Cliente:** *"Nosso preço está alto, precisamos dar desconto ou mudar a marca."*
-* **Causa Raiz Real (Exemplo):** Anúncios focados apenas em estética atraem visitantes curiosos sem intenção de compra. Quando chegam à página do produto, não encontram a explicação clara dos benefícios do produto.
-
----
-
-### 3. As 3 Métricas Críticas de Investigação
-1. **Taxa de Conversão (CR):** Avalia a eficiência da página de destino em transformar visitantes em compradores.
-2. **Taxa de Abandono de Checkout:** Revela se o obstáculo está no momento do pagamento, frete ou decisão final.
-3. **Custo de Aquisição (CAC) vs. LTV (Lifetime Value):** Indica se o negócio é sustentável a longo prazo ou se está queimando caixa para atrair clientes que não retornam.
-`
+            lessonTextMarkdown: `### 📊 Diagnóstico de Funil de Vendas e Comportamento\n\nQuando investigamos um negócio, a opinião do fundador ou cliente frequentemente contém vícios de julgamento. Para realizar um diagnóstico preciso, é preciso analisar os dados de comportamento ao longo do funil de vendas.\n\n---\n\n### 1. A Batalha pela Mente e a Percepção de Valor\nComo destacam Al Ries e Jack Trout (*Posicionamento*), o marketing moderno não é uma batalha de produtos ou atributos objetivos, mas uma **batalha de percepções na mente do consumidor**.\n\nSe um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 20% no faturamento, o problema não está na atração (topo de funil), mas na **qualidade do tráfego** ou na **falta de clareza do valor percebido** no meio/fim do funil.\n\n---\n\n### 2. Sintoma vs. Causa Raiz no E-commerce\n* **Sintoma:** Queda na taxa de conversão de vendas.\n* **Hipótese Falsa do Cliente:** *"Nosso preço está alto, precisamos dar desconto ou mudar a marca."*\n* **Causa Raiz Real (Exemplo):** Anúncios focados apenas em estética atraem visitantes curiosos sem intenção de compra. Quando chegam à página do produto, não encontram a explicação clara dos benefícios do produto.\n\n---\n\n### 3. As 3 Métricas Críticas de Investigação\n1. **Taxa de Conversão (CR):** Avalia a eficiência da página de destino em transformar visitantes em compradores.\n2. **Taxa de Abandono de Checkout:** Revela se o obstáculo está no momento do pagamento, frete ou decisão final.\n3. **Custo de Aquisição (CAC) vs. LTV (Lifetime Value):** Indica se o negócio é sustentável a longo prazo ou se está queimando caixa para atrair clientes que não retornam.`
           }
         ],
         multimedia: {
@@ -1026,22 +1039,11 @@ Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 
             estimatedMinutes: 20,
             badgeLabel: '📝 Memo Executivo',
             icon: 'FileText',
-            clientProfile: {
-              companyName: 'Clínica OdontoLife',
-              segment: 'Saúde / Odontologia',
-              stakeholderRole: 'Fundador'
-            },
+            clientProfile: { companyName: 'Clínica OdontoLife', segment: 'Saúde / Odontologia', stakeholderRole: 'Fundador' },
             scenarioText: 'O fundador relata queda de 30% nas vendas nos últimos 2 trimestres e quer fazer um rebranding urgente porque acha a marca "antiquada".',
-            instructions: [
-              'Separe os fatos comprovados das meras opiniões do cliente.',
-              'Identifique por que o rebranding não deve ser a solução imediata.',
-              'Apresente 3 perguntas de investigação comercial.'
-            ],
+            instructions: ['Separe os fatos comprovados das meras opiniões do cliente.', 'Identifique por que o rebranding não deve ser a solução imediata.', 'Apresente 3 perguntas de investigação comercial.'],
             placeholderText: '### 1. Fatos vs. Interpretações...\n### 2. Diagnóstico de Risco...\n### 3. Perguntas de Investigação...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Isolamento de Fatos', description: 'Separou receita (-30%) de opinião visual.' },
-              { id: 'c2', label: 'Visão Comercial', description: 'Evitou soluções de design precoces.' }
-            ],
+            evaluationCriteria: [{ id: 'c1', label: 'Isolamento de Fatos', description: 'Separou receita (-30%) de opinião visual.' }, { id: 'c2', label: 'Visão Comercial', description: 'Evitou soluções de design precoces.' }],
             mentorTip: 'Foque em métricas de retenção e mix de produtos antes de falar de estética.',
             sampleGabarito: 'A queda de 30% é o fato; a marca ser antiquada é suposição. Investir em rebranding sem auditar o atendimento comercial criará desperdício financeiro.'
           },
@@ -1061,16 +1063,9 @@ Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 
               { label: 'Ticket Médio', value: 'R$ 210', change: '0%', status: 'neutral' }
             ],
             scenarioText: 'Uma marca D2C de suplementos aumentou os anúncios focando nas embalagens instagramáveis. O tráfego subiu 40%, mas a receita caiu 20%.',
-            instructions: [
-              'Analise a tabela acima e identifique a desconexão do funil.',
-              'Formule 2 hipóteses para o descompasso entre atração e conversão.',
-              'Indique quais 2 métricas adicionais pediria para o e-commerce.'
-            ],
+            instructions: ['Analise a tabela acima e identifique a desconexão do funil.', 'Formule 2 hipóteses para o descompasso entre atração e conversão.', 'Indique quais 2 métricas adicionais pediria para o e-commerce.'],
             placeholderText: '### Análise do Funil...\n### Hipóteses de Causa Raiz...\n### Métricas Solicitadas...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Leitura de Métricas', description: 'Identificou a queda da Taxa de Conversão.' },
-              { id: 'c2', label: 'Qualidade do Tráfego', description: 'Percebeu a atração de público não qualificado.' }
-            ],
+            evaluationCriteria: [{ id: 'c1', label: 'Leitura de Métricas', description: 'Identificou a queda da Taxa de Conversão.' }, { id: 'c2', label: 'Qualidade do Tráfego', description: 'Percebeu a atração de público não qualificado.' }],
             mentorTip: 'Anúncios visuais sem promessa clara geram tráfego curioso, não comprador.',
             sampleGabarito: 'O tráfego aumentou, mas a qualificação caiu drasticamente. O anúncio atrai curiosos pelo apelo estético, mas a página não gera confiança de compra.'
           },
@@ -1084,22 +1079,11 @@ Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 
             badgeLabel: '🎙️ Roleplay C-Level',
             icon: 'Mic',
             forbiddenTerms: ['paleta de cores', 'logo', 'feed', 'tipografia', 'aesthetic', 'instagramável'],
-            clientProfile: {
-              companyName: 'Rede FitPrime Academias',
-              segment: 'Fitness Premium',
-              stakeholderRole: 'CEO & Sócio Majoritário'
-            },
+            clientProfile: { companyName: 'Rede FitPrime Academias', segment: 'Fitness Premium', stakeholderRole: 'CEO & Sócio Majoritário' },
             scenarioText: '"Nossa marca está ultrapassada! As redes nacionais estão com neon e luzes modernas. Quero um rebranding completo em 30 dias para estancar a perda de alunos."',
-            instructions: [
-              'Escreva o script da sua fala em uma reunião de 3 minutos com esse CEO.',
-              'Convença-o a pausar o pedido de rebranding sem ser confrontacional.',
-              'Atenção: Você está PROIBIDO de usar os termos da lista de palavras bloqueadas.'
-            ],
+            instructions: ['Escreva o script da sua fala em uma reunião de 3 minutos com esse CEO.', 'Convença-o a pausar o pedido de rebranding sem ser confrontacional.', 'Atenção: Você está PROIBIDO de usar os termos da lista de palavras bloqueadas.'],
             placeholderText: '"Entendo sua urgência, Dr. Roberto. Mas como estrategista, meu papel é proteger o seu caixa. Vamos olhar para..."',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Postura Executiva', description: 'Demonstrou autoridade de negócio sem ser agressivo.' },
-              { id: 'c2', label: 'Foco Financeiro', description: 'Alertou sobre o risco de gasto sem diagnóstico operacional.' }
-            ],
+            evaluationCriteria: [{ id: 'c1', label: 'Postura Executiva', description: 'Demonstrou autoridade de negócio sem ser agressivo.' }, { id: 'c2', label: 'Foco Financeiro', description: 'Alertou sobre o risco de gasto sem diagnóstico operacional.' }],
             mentorTip: 'Fale de retenção de alunos, custo de aquisição e experiência de treino.',
             sampleGabarito: 'Antes de investir em comunicação visual, precisamos entender por que os alunos estão cancelando. Mudar o ambiente sem ajustar o contrato e recepção não deterá o churn.'
           },
@@ -1113,14 +1097,9 @@ Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 
             badgeLabel: '⚠️ Caça-Erros',
             icon: 'AlertTriangle',
             scenarioText: 'Briefing recebido do cliente: "Queremos ser o Uber dos pet shops. Nosso público é todo mundo que ama animais. Precisamos de um posicionamento jovem, moderno, barato e de luxo ao mesmo tempo."',
-            instructions: [
-              'Identifique os 4 erros graves e contradições deste briefing.',
-              'Reescreva o objetivo estratégico de forma coerente e focada.'
-            ],
+            instructions: ['Identifique os 4 erros graves e contradições deste briefing.', 'Reescreva o objetivo estratégico de forma coerente e focada.'],
             placeholderText: '### Erros Identificados...\n### Briefing Reestruturado...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Detecção de Contradições', description: 'Apontou o Conflito entre "barato" e "luxo" e o público "todo mundo".' }
-            ],
+            evaluationCriteria: [{ id: 'c1', label: 'Detecção de Contradições', description: 'Apontou o Conflito entre "barato" e "luxo" e o público "todo mundo".' }],
             mentorTip: 'Estratégia é escolher o que NÃO fazer.',
             sampleGabarito: 'Não é possível ser luxo e barato simultaneamente. "Todo mundo que ama animais" não é um público-alvo viável para aquisição eficiente.'
           },
@@ -1135,15 +1114,9 @@ Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 
             icon: 'Smile',
             forbiddenTerms: ['brand equity', 'funil', 'conversion rate', 'touchpoints', 'kpi'],
             scenarioText: 'Um dono de uma padaria local quer entender por que você insiste em investigar o atendimento da recepção antes de mudar a placa da fachada da loja.',
-            instructions: [
-              'Explique a diferença entre "Tratar o Sintoma" e "Resolver a Causa Raiz".',
-              'Use uma analogia do cotidiano (ex: medicina ou mecânica).',
-              'Não utilize nenhum jargão de marketing.'
-            ],
+            instructions: ['Explique a diferença entre "Tratar o Sintoma" e "Resolver a Causa Raiz".', 'Use uma analogia do cotidiano (ex: medicina ou mecânica).', 'Não utilize nenhum jargão de marketing.'],
             placeholderText: 'Imagine que você está com dor de dente...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Clareza Didática', description: 'Usou analogia simples e compreensível.' }
-            ],
+            evaluationCriteria: [{ id: 'c1', label: 'Clareza Didática', description: 'Usou analogia simples e compreensível.' }],
             mentorTip: 'Se você não consegue explicar de forma simples, você não entendeu o conceito.',
             sampleGabarito: 'Mudar a placa sem arrumar o atendimento é como tomar analgésico para dor de dente sem ir ao dentista: a dor passa por poucas horas, mas o dente continua estragado.'
           }
@@ -1158,22 +1131,13 @@ Se um e-commerce registra um aumento de tráfego de 40%, mas sofre uma queda de 
             unitId: 'U2.1',
             unitTitle: 'Unidade 1: Leis Fundamentais do Posicionamento e Construção de Categoria',
             readingTimeMinutes: 9,
-            lessonTextMarkdown: `
-### 🧠 Leis do Posicionamento (Al Ries & Jack Trout)
-
-Posicionamento não é o que você faz com um produto. Posicionamento é o que você faz com a mente do potencial comprador.
-
----
-
-### 1. A Lei do Primeiro (*The Law of Leadership*)
-É preferível ser o primeiro do que ser o melhor. A marca líder na mente de uma categoria geralmente retém mais da metade da fatia de mercado.
-
-### 2. A Lei da Categoria (*The Law of Category*)
-Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em que você possa ser o primeiro.
-
-### 3. A Lei da Mente (*The Law of the Mind*)
-É melhor ser o primeiro na mente do que ser o primeiro na loja. A percepção do consumidor sobre se a marca é referência define o comportamento de escolha.
-`
+            lessonTextMarkdown: `### 🧠 Leis do Posicionamento (Al Ries & Jack Trout)\n\nPosicionamento não é o que você faz com um produto. Posicionamento é o que você faz com a mente do potencial comprador.\n\n---\n\n### 1. A Lei do Primeiro (*The Law of Leadership*)\nÉ preferível ser o primeiro do que ser o melhor. A marca líder na mente de uma categoria geralmente retém mais da metade da fatia de mercado.\n\n### 2. A Lei da Categoria (*The Law of Category*)\nSe você não puder ser o primeiro em uma categoria, crie uma nova categoria em que você possa ser o primeiro.\n\n### 3. A Lei da Mente (*The Law of the Mind*)\nÉ melhor ser o primeiro na mente do que ser o primeiro na loja. A percepção do consumidor sobre se a marca é referência define o comportamento de escolha.`
+          },
+          {
+            unitId: 'U2.2',
+            unitTitle: 'Unidade 2: O Brand Gap e a Fórmula do ZAG (Marty Neumeier)',
+            readingTimeMinutes: 11,
+            lessonTextMarkdown: `### ⚡ A Fórmula do ZAG (Marty Neumeier)\n\nQuando todo mundo faz ZIG, faça ZAG.\n\n---\n\n### 1. O Teste de Diferenciação Radical\nPara testar se uma proposta de valor é verdadeiramente diferenciada, submeta a marca à seguinte declaração de uma frase:\n\n> *"Nossa marca é a ÚNICA [Substantivo de Categoria] que [Diferencial Único] para [Público-Alvo Específico] em [Geografia/Segmento] durante [Tensão do Mercado]."*`
           }
         ],
         multimedia: {
@@ -1205,21 +1169,352 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
             badgeLabel: '🗺️ Mapeamento Perceptual',
             icon: 'Compass',
             scenarioText: 'O mercado de fintechs B2B possui bancos tradicionais (alta burocracia, alto custo) e contas digitais simples (baixo custo, zero atendimento humano).',
-            instructions: [
-              'Defina os eixos X e Y da matriz de posicionamento.',
-              'Identifique o quadrante desatendido no mercado.',
-              'Escreva a proposta de valor em 1 frase.'
-            ],
+            instructions: ['Defina os eixos X e Y da matriz de posicionamento.', 'Identifique o quadrante desatendido no mercado.', 'Escreva a proposta de valor em 1 frase.'],
             placeholderText: '### Eixo X & Y...\n### Quadrante de Oportunidade...\n### Proposta de Valor...',
-            evaluationCriteria: [
-              { id: 'c1', label: 'Eixos Relevantes', description: 'Escolheu atributos de decisão real do cliente.' }
-            ],
+            evaluationCriteria: [{ id: 'c1', label: 'Eixos Relevantes', description: 'Escolheu atributos de decisão real do cliente.' }],
             mentorTip: 'Evite eixos vagos como "Qualidade vs Preço". Use "Velocidade de Suporte vs Complexidade Financeira".',
             sampleGabarito: 'Eixo X: Suporte Dedicado. Eixo Y: Especialização B2B. A brecha está em ser o parceiro financeiro consultivo para PMEs em escala.'
+          },
+          {
+            id: 'APA-2.2',
+            code: 'APA 02',
+            title: 'Manifesto & Proposta de Valor: SaaS de Automação',
+            type: 'MANIFESTO_VALUE_PROP',
+            level: 'Avançado',
+            estimatedMinutes: 20,
+            badgeLabel: '📜 Redação de Manifesto',
+            icon: 'Feather',
+            scenarioText: 'Um software de gestão para escritórios de advocacia deseja se posicionar não como "sistema administrativo", mas como "libertador de tempo estratégico para advogados".',
+            instructions: ['Escreva um manifesto de 3 parágrafos em tom aspiracional.', 'Elabore a declaração de "Único" de Marty Neumeier.'],
+            placeholderText: '### Manifesto de Marca...\n### Declaração de Diferenciação...',
+            evaluationCriteria: [{ id: 'c1', label: 'Poder de Invocação', description: 'Criou um manifesto emocionante focado no problema do cliente.' }],
+            mentorTip: 'Manifestos não vendem recursos do software, vendem a transformação na vida do usuário.',
+            sampleGabarito: 'Advogados estudaram para vencer causas, não para preencher planilhas. Nosso manifesto é devolver a nobreza ao exercício do Direito.'
+          },
+          {
+            id: 'APA-2.3',
+            code: 'APA 03',
+            title: 'Inovação Cruzada: Experiência da Hotelaria Premium em Clínicas',
+            type: 'CROSS_INDUSTRY',
+            level: 'Avançado',
+            estimatedMinutes: 20,
+            badgeLabel: '🔄 Inovação Cruzada',
+            icon: 'RefreshCw',
+            scenarioText: 'Uma rede de clínicas dermatológicas quer eliminar a sensação fria de "sala de espera hospitalar" inspirando-se no hospitality de hotéis 5 estrelas (ex: Ritz-Carlton).',
+            instructions: ['Selecione 3 rituais do Ritz-Carlton ou Four Seasons.', 'Adapte esses 3 rituais para a jornada de atendimento do paciente.'],
+            placeholderText: '### 1. Ritual de Boas-Vindas...\n### 2. Personalização do Espaço...\n### 3. Acompanhamento Pós-Consulta...',
+            evaluationCriteria: [{ id: 'c1', label: 'Transposição Estratégica', description: 'Conseguiu transpor o serviço hoteleiro sem violar normas da saúde.' }],
+            mentorTip: 'Pense em recepção nominal, aromaterapia e ausência de balcão com vidro.',
+            sampleGabarito: 'Substituição da recepção fria por um concierge que recebe o paciente pelo nome e oferece bebida personalizada.'
+          },
+          {
+            id: 'APA-2.4',
+            code: 'APA 04',
+            title: 'Advogado do Diabo: Nichar vs. Generalizar',
+            type: 'DEVILS_ADVOCATE',
+            level: 'Sênior C-Level',
+            estimatedMinutes: 30,
+            badgeLabel: '⚔️ Defender 2 Lados',
+            icon: 'ShieldAlert',
+            scenarioText: 'Uma agência de branding tem receita estagnada em R$ 500k/ano. O fundador quer decidir se deve focar 100% em Saúde (Niche) ou continuar atendendo todos os segmentos (Generalista).',
+            instructions: ['Escreva a defesa ferrenha da opção A (Nichar 100% em Saúde).', 'Escreva a defesa ferrenha da opção B (Permanecer Generalista).', 'Conclua com seu parecer final fundamentado.'],
+            placeholderText: '### Defesa Lado A (Especialização em Saúde)...\n### Defesa Lado B (Manutenção de Portfólio Amplo)...\n### Veredito Estratégico...',
+            evaluationCriteria: [{ id: 'c1', label: 'Imparcialidade e Rigor', description: 'Apresentou dados financeiros fortes para ambos os lados.' }],
+            mentorTip: 'O especialista cobra mais caro por projeto; o generalista tem mercado desempenhado maior.',
+            sampleGabarito: 'Nichar em saúde permite elevar a margem por projeto em 3x devido ao domínio regulatório, apesar de reduzir a quantidade bruta de leads.'
+          }
+        ]
+      },
+      {
+        id: "DISC03",
+        title: "Arquitetura de Marca & Gestão de Portfólio",
+        objective: "Domine a organização estrutural de portfólios de marcas e produtos. Aprenda quando usar House of Brands, Branded House ou marcas endossadas para maximizar eficiência de mídia e proteger o equity corporativo.",
+        lessons: [
+          {
+            unitId: 'U3.1',
+            unitTitle: 'Unidade 1: Modelos Clássicos de Arquitetura de Marca (David Aaker)',
+            readingTimeMinutes: 10,
+            lessonTextMarkdown: `### 🏢 Modelos de Arquitetura de Marca (David Aaker)\n\nArquitetura de marca é a estrutura de relacionamento entre as marcas de uma corporação.\n\n---\n\n### 1. Branded House (Monolítica)\nUma única marca forte cobre todos os produtos (ex: Virgin, Google, FedEx). Vantagem: eficiência em custos de marketing.\n\n### 2. House of Brands (Independente)\nMarcas autônomas operando para públicos distintos (ex: Unilever, Procter & Gamble). Vantagem: isolamento de crise de reputação.\n\n### 3. Endorsed Brands & Sub-brands\nCombinações onde a marca-mãe confere credibilidade à nova submarca (ex: Courtyard by Marriott, Apple iPhone).`
+          }
+        ],
+        multimedia: {
+          books: [
+            { id: "disc3_b1", title: "Brand Portfolio Strategy", author: "David A. Aaker", focus: "Arquitetura de Marca", url: "https://www.google.com/search?q=Brand+Portfolio+Strategy+David+Aaker" }
+          ],
+          courses: [
+            { id: "disc3_c1", title: "Gestão de Marcas e Portfólio", provider: "Sebrae", url: "https://www.sebrae.com.br/sites/PortalSebrae/cursosonline" }
+          ],
+          portals: [
+            { id: "disc3_p1", name: "Interbrand Insights", url: "https://interbrand.com/thinking/" }
+          ],
+          videos: [
+            { id: "disc3_v1", title: "Unilever vs. Virgin: Teardown de Arquitetura", url: "https://www.youtube.com/results?search_query=brand+architecture+house+of+brands+branded+house" }
+          ]
+        },
+        apas: [
+          {
+            id: 'APA-3.1',
+            code: 'APA 01',
+            title: 'Engenharia Reversa: Arquitetura Unilever vs. Apple',
+            type: 'REVERSE_ENGINEERING',
+            level: 'Intermediário',
+            estimatedMinutes: 20,
+            badgeLabel: '🔍 Engenharia Reversa',
+            icon: 'Search',
+            scenarioText: 'Desconstrua a estratégia por trás da escolha da Apple em manter uma Branded House monolítica contra a escolha da Unilever em gerir uma House of Brands.',
+            instructions: ['Compare o custo de lançamento de um novo produto para a Apple vs Unilever.', 'Identifique o risco de reputação caso 1 produto falhe gravemente.'],
+            placeholderText: '### Análise de Eficiência de Mídia...\n### Gestão de Risco de Imagem...',
+            evaluationCriteria: [{ id: 'c1', label: 'Domínio dos Modelos', description: 'Explicou corretamente a diferença entre os modelos de Aaker.' }],
+            mentorTip: 'Lembre-se que a Apple vende um ecossistema integrado; a Unilever vende bens de consumo de giro rápido.',
+            sampleGabarito: 'A Apple economiza em construção de autoridade pois o sufixo "Mac" ou "iPad" herda a confiança da marca-mãe. A Unilever aceita o custo maior para atingir gôndolas concorrentes.'
+          },
+          {
+            id: 'APA-3.2',
+            code: 'APA 02',
+            title: 'O Teste das Escolhas Difíceis: Matar 2 Produtos para Salvar 1 Marca',
+            type: 'HARD_TRADE_OFFS',
+            level: 'Sênior C-Level',
+            estimatedMinutes: 25,
+            badgeLabel: '⚖️ Escolha Difícil',
+            icon: 'Scissors',
+            scenarioText: 'Um grupo alimentício possui 3 linhas de biscoitos: Linha Tradicional (margem 5%, receita alta), Linha Fit (margem 25%, receita baixa) e Linha Gourmet (prejuízo há 2 anos). O orçamento de marketing foi cortado em 50%.',
+            instructions: ['Escolha qual linha descontinuar imediatamente e qual manter.', 'Justifique a decisão com base em margem de contribuição e equity.'],
+            placeholderText: '### Linha Descontinuada...\n### Reorganização do Caixa...',
+            evaluationCriteria: [{ id: 'c1', label: 'Visão Financeira', description: 'Priorizou a margem de contribuição e caixa em vez de apego a produtos.' }],
+            mentorTip: 'Cortar a linha em prejuízo estanca o sangramento de caixa imediato.',
+            sampleGabarito: 'Descontinuar a Linha Gourmet estanca a queima de caixa e permite redirecionar a verba para acelerar a Linha Fit de alta margem.'
+          },
+          {
+            id: 'APA-3.3',
+            code: 'APA 03',
+            title: 'Briefing Estratégico de Criação de Sub-marca Premium',
+            type: 'CREATIVE_BRIEF',
+            level: 'Avançado',
+            estimatedMinutes: 25,
+            badgeLabel: '📐 Briefing Criativo',
+            icon: 'Compass',
+            scenarioText: 'Uma marca popular de produtos de limpeza quer lançar uma linha ecológica premium para a classe A/B sem contaminar sua percepção de marca de preço baixo.',
+            instructions: ['Defina a estratégia de naming e endosso da marca-mãe.', 'Escreva o briefing de criação para a equipe de design.'],
+            placeholderText: '### Naming & Endosso...\n### Diretrizes do Briefing Criativo...',
+            evaluationCriteria: [{ id: 'c1', label: 'Clareza de Direção', description: 'Forneceu direcionamento acionável sem ditar a solução estética.' }],
+            mentorTip: 'Recomende um endosso discreto ("by MarcaMãe") em vez de destaque principal.',
+            sampleGabarito: 'Utilização de marca autônoma com endosso discreto "desenvolvido por..." no verso da embalagem.'
+          }
+        ]
+      },
+      {
+        id: "DISC04",
+        title: "Pesquisa Qualitativa, Entrevistas & Consumer Insights",
+        objective: "Desenvolva o domínio de metodologias de pesquisa sem viés indutivo. Aprenda a entrevistar clientes reais utilizando o método The Mom Test e a extrair insights acionáveis sobre tensão cultural e jornada do consumidor.",
+        lessons: [
+          {
+            unitId: 'U4.1',
+            unitTitle: 'Unidade 1: O Método The Mom Test para Entrevistas sem Viés (Rob Fitzpatrick)',
+            readingTimeMinutes: 9,
+            lessonTextMarkdown: `### 🗣️ O Método The Mom Test (Rob Fitzpatrick)\n\nRegra de Ouro: Nunca pergunte a ninguém se sua ideia é boa. Todo mundo mentirá para não ferir seus sentimentos.\n\n---\n\n### 1. As 3 Regras do Mom Test\n1. **Fale sobre a vida do entrevistado**, não sobre a sua ideia.\n2. **Pergunte sobre fatos do passado**, não sobre opiniões ou intenções futuras.\n3. **Fale menos e ouça mais**.`
+          }
+        ],
+        multimedia: {
+          books: [
+            { id: "disc4_b1", title: "The Mom Test", author: "Rob Fitzpatrick", focus: "Entrevistas sem Viés", url: "https://www.google.com/search?q=The+Mom+Test+Rob+Fitzpatrick" }
+          ],
+          courses: [
+            { id: "disc4_c1", title: "Customer Discovery & Pesquisa", provider: "HubSpot Academy", url: "https://academy.hubspot.com/" }
+          ],
+          portals: [
+            { id: "disc4_p1", name: "Nielsen Norman Group (UX & Research)", url: "https://www.nngroup.com/articles/" }
+          ],
+          videos: [
+            { id: "disc4_v1", title: "Rob Fitzpatrick: How to Talk to Customers", url: "https://www.youtube.com/results?search_query=Rob+Fitzpatrick+The+Mom+Test" }
+          ]
+        },
+        apas: [
+          {
+            id: 'APA-4.1',
+            code: 'APA 01',
+            title: 'Simulação de Entrevista sem Pergunta Indutiva (The Mom Test)',
+            type: 'MOM_TEST_INTERVIEW',
+            level: 'Intermediário',
+            estimatedMinutes: 20,
+            badgeLabel: '🎙️ Entrevista Mom Test',
+            icon: 'Mic',
+            forbiddenTerms: ['você pagaria', 'você gostaria', 'o que acha da ideia', 'é legal'],
+            scenarioText: 'Você está validando um aplicativo de marmitas saudáveis por assinatura. Reescreva as 3 perguntas indutivas do fundador em perguntas válidas do método Mom Test.',
+            instructions: ['Pergunta Ruim 1: "Você compraria um app de marmitas?" -> Reescreva.', 'Pergunta Ruim 2: "Você acha que economizaria dinheiro?" -> Reescreva.', 'Pergunta Ruim 3: "Você gosta de comer saudável?" -> Reescreva.'],
+            placeholderText: '### Pergunta 1 Reescrevida...\n### Pergunta 2 Reescrevida...\n### Pergunta 3 Reescrevida...',
+            evaluationCriteria: [{ id: 'c1', label: 'Eliminação de Viés', description: 'Substituiu opiniões futuras por fatos do comportamento passado.' }],
+            mentorTip: 'Pergunte quando foi a última vez que o cliente pediu marmita e quanto pagou.',
+            sampleGabarito: 'Substituir "Você compraria?" por "Quando foi a última vez que você pediu marmita durante a semana? O que atrapalhou?"'
+          },
+          {
+            id: 'APA-4.2',
+            code: 'APA 02',
+            title: 'Restrição Extrema: Pesquisa Qualitativa com 0 Orçamento em 48 Horas',
+            type: 'EXTREME_CONSTRAINT',
+            level: 'Avançado',
+            estimatedMinutes: 20,
+            badgeLabel: '⚡ Restrição Extrema',
+            icon: 'Zap',
+            scenarioText: 'Sua equipe tem 48 horas e R$ 0 de verba para entender por que mulheres acima de 40 anos estão abandonando um aplicativo de meditação.',
+            instructions: ['Desenhe um plano de escuta digital e recrutamento sem custo.', 'Indique 2 fontes não convencionais de dados de reclamação.'],
+            placeholderText: '### Plano de Escuta em 48h...\n### Fontes de Dados Gratuitas...',
+            evaluationCriteria: [{ id: 'c1', label: 'Engenhosidade e Agilidade', description: 'Usou escuta em comunidades ativas e reviews de concorrentes.' }],
+            mentorTip: 'Analise avaliações negativas de 1 a 3 estrelas na App Store dos concorrentes.',
+            sampleGabarito: 'Mineração de reclamações em fóruns de saúde e comentários em reviews da App Store de concorrentes diretos.'
+          }
+        ]
+      },
+      {
+        id: "DISC05",
+        title: "Estratégia de Conteúdo, Narrativa & Plataforma de Marca",
+        objective: "Aprenda a construir plataformas de marca vivas, codificar tom de voz e gerenciar narrativas de reputação. Capacite-se para responder a crises de Relações Públicas sob alta pressão e tempo limitado.",
+        lessons: [
+          {
+            unitId: 'U5.1',
+            unitTitle: 'Unidade 1: Estrutura de Plataforma de Marca e Tom de Voz',
+            readingTimeMinutes: 8,
+            lessonTextMarkdown: `### 📢 Plataforma de Marca e Tom de Voz\n\nUma plataforma de marca não é um manual de marca em PDF guardado em uma gaveta. É o sistema operacional de todas as mensagens emitidas pela empresa.\n\n---\n\n### 1. Pilares da Plataforma de Marca\n* **Propósito:** Por que existimos além de fazer dinheiro?\n* **Promessa:** O compromisso inegociável entregue em cada interação.\n* **Valores:** Os princípios que guiam o comportamento dos colaboradores.\n* **Tom de Voz:** A personalidade verbal refletida no vocabulário e ritmo.`
+          }
+        ],
+        multimedia: {
+          books: [
+            { id: "disc5_b1", title: "Building a StoryBrand", author: "Donald Miller", focus: "Narrativa de Marca", url: "https://www.google.com/search?q=Building+a+StoryBrand+Donald+Miller" }
+          ],
+          courses: [
+            { id: "disc5_c1", title: "Content Marketing Strategy", provider: "HubSpot Academy", url: "https://academy.hubspot.com/courses/content-marketing" }
+          ],
+          portals: [
+            { id: "disc5_p1", name: "Contently Insights", url: "https://contently.com/strategic-content/" }
+          ],
+          videos: [
+            { id: "disc5_v1", title: "Donald Miller: The StoryBrand Framework", url: "https://www.youtube.com/results?search_query=Donald+Miller+StoryBrand" }
+          ]
+        },
+        apas: [
+          {
+            id: 'APA-5.1',
+            code: 'APA 01',
+            title: 'Gestão de Crise de PR: Vazamento de Dados sob Tempo Restrito (30 min)',
+            type: 'CRISIS_PR_SIMULATION',
+            level: 'Sênior C-Level',
+            estimatedMinutes: 30,
+            badgeLabel: '🔥 Crise de PR',
+            icon: 'Flame',
+            forbiddenTerms: ['lamentamos se alguém se sentiu', 'foi um mal entendido', 'desculpe o inconveniente'],
+            scenarioText: 'A base de e-mails da sua marca e-commerce foi vazada e clientes estão recebendo mensagens de phishing nas redes sociais.',
+            instructions: ['Escreva a nota oficial de esclarecimento e retratação para a imprensa.', 'Assuma a responsabilidade sem expor a empresa a passivos jurídicos desnecessários.'],
+            placeholderText: '### Comunicação Oficial à Imprensa e Clientes...',
+            evaluationCriteria: [{ id: 'c1', label: 'Responsabilidade e Transparência', description: 'Evitou desculpas vazias e apresentou plano imediato de contenção.' }],
+            mentorTip: 'Instale transparência imediata: Fato -> Medida de contenção -> Canal de suporte.',
+            sampleGabarito: 'Nota transparente assumindo a falha de segurança, informando as medidas tomadas e oferecendo suporte direto aos afetados.'
+          },
+          {
+            id: 'APA-5.2',
+            code: 'APA 02',
+            title: 'Manifesto de Marca: Moda Sustentável e Economia Circular',
+            type: 'MANIFESTO_VALUE_PROP',
+            level: 'Intermediário',
+            estimatedMinutes: 20,
+            badgeLabel: '📜 Manifesto de Marca',
+            icon: 'Feather',
+            scenarioText: 'Crie o manifesto e os 4 pilares de tom de voz para uma marca de roupas sustentáveis de produção desacelerada (slow fashion).',
+            instructions: ['Escreva o texto do manifesto de 250 palavras.', 'Defina o tom de voz com a matriz "Somos [X], Mas Não Somos [Y]".'],
+            placeholderText: '### Manifesto da Marca...\n### Matriz de Tom de Voz...',
+            evaluationCriteria: [{ id: 'c1', label: 'Coerência de Tom', description: 'Manteve o tom autêntico sem soar clichê de "greenwashing".' }],
+            mentorTip: 'Evite palavras genéricas como "ecológico" e traga dados concretos de rastreabilidade.',
+            sampleGabarito: 'Manifesto focado no consumo consciente: "Não fazemos roupas para uma estação, fazemos para a vida toda."'
+          }
+        ]
+      },
+      {
+        id: "DISC06",
+        title: "Métricas de Branding, Valuation & ROI de Marca",
+        objective: "Converta conceitos de percepção de marca em linguagem financeira C-Level. Aprenda a medir Brand Equity, NPS, Share of Voice e a calcular o ROI de ações estratégicas para defender investimentos no conselho de administração.",
+        lessons: [
+          {
+            unitId: 'U6.1',
+            unitTitle: 'Unidade 1: Avaliação Financeira de Marca (ISO 10668 Valuation)',
+            readingTimeMinutes: 10,
+            lessonTextMarkdown: `### 📈 Avaliação Financeira e Valuation de Marca (ISO 10668)\n\nBranding não é gasto de marketing; é investimento em ativo intangível acumulado no balanço patrimonial.\n\n---\n\n### 1. As 3 Abordagens da ISO 10668\n1. **Abordagem de Mercado:** Comparação com transações de marcas similares.\n2. **Abordagem de Custo:** Custo acumulado para recriar uma marca equivalente do zero.\n3. **Abordagem de Renda (Relief from Royalty):** Valor presente dos royalties futuros economizados por possuir a marca.`
+          }
+        ],
+        multimedia: {
+          books: [
+            { id: "disc6_b1", title: "Strategic Brand Management", author: "Kevin Lane Keller", focus: "Métricas de Equity", url: "https://www.google.com/search?q=Strategic+Brand+Management+Kevin+Lane+Keller" }
+          ],
+          courses: [
+            { id: "disc6_c1", title: "Business Metrics for Data-Driven Companies", provider: "Coursera", url: "https://www.coursera.org/" }
+          ],
+          portals: [
+            { id: "disc6_p1", name: "Brand Finance Reports", url: "https://brandfinance.com/insights" }
+          ],
+          videos: [
+            { id: "disc6_v1", title: "How to Measure Brand Equity & Valuation", url: "https://www.youtube.com/results?search_query=how+to+measure+brand+equity+valuation" }
+          ]
+        },
+        apas: [
+          {
+            id: 'APA-6.1',
+            code: 'APA 01',
+            title: 'Simulação C-Level: Defendendo o Orçamento de Branding perante o CFO',
+            type: 'ROLEPLAY_C_LEVEL',
+            level: 'Sênior C-Level',
+            estimatedMinutes: 30,
+            badgeLabel: '🎙️ Defesa no Conselho',
+            icon: 'DollarSign',
+            forbiddenTerms: ['amor à marca', 'propósito bonito', 'design moderno', 'ficar bonito', 'feed de fotos'],
+            clientProfile: { companyName: 'Fintech CreditMais', segment: 'Crédito B2B', stakeholderRole: 'CFO (Chief Financial Officer)' },
+            scenarioText: 'O CFO quer cortar 40% do orçamento de branding alegando que "branding não traz tráfego direto nem vendas imediatas no mês".',
+            instructions: ['Escreva a defesa em 3 argumentos conectando branding à redução do CAC e aumento de margem.', 'Proíba-se de usar palavras subjetivas ou estéticas.'],
+            placeholderText: '"CFO, o investimento em reputação de marca é o que garante que nosso CAC não exploda quando..."',
+            evaluationCriteria: [{ id: 'c1', label: 'Linguagem Financeira', description: 'Usou conceitos de LTV, CAC, poder de precificação e prêmio de preço.' }],
+            mentorTip: 'Fale de poder de cobrança de prêmio de preço (Price Premium) e redução no custo de aquisição orgânico.',
+            sampleGabarito: 'A construção da marca reduz o CAC orgânico ao longo de 12 meses e permite cobrar um prêmio de preço de 15% sobre os concorrentes.'
+          },
+          {
+            id: 'APA-6.2',
+            code: 'APA 02',
+            title: 'Diagnóstico de Métricas de Equity & Valuation Financeiro',
+            type: 'METRICS_DASHBOARD',
+            level: 'Avançado',
+            estimatedMinutes: 25,
+            badgeLabel: '📊 Painel de Metrics',
+            icon: 'TrendingUp',
+            dataPanel: [
+              { label: 'NPS (Net Promoter Score)', value: '68', change: '+12 pts', status: 'success' },
+              { label: 'LTV (Lifetime Value)', value: 'R$ 4.200', change: '+18%', status: 'success' },
+              { label: 'CAC (Custo Aquisição)', value: 'R$ 850', change: '-15%', status: 'success' },
+              { label: 'Share of Voice (SoV)', value: '22%', change: '+5%', status: 'success' }
+            ],
+            scenarioText: 'Analise o painel de saúde de marca acima e apresente o relatório de sustentabilidade comercial para os investidores do conselho.',
+            instructions: ['Interprete a relação entre a alta do NPS e a queda do CAC.', 'Calcule o ROI da marca com a razão LTV/CAC.'],
+            placeholderText: '### Relatório de Saúde do Equity...\n### Cálculo da Relação LTV/CAC...',
+            evaluationCriteria: [{ id: 'c1', label: 'Cálculo de LTV/CAC', description: 'Demonstrou que a razão LTV/CAC é de 4.9x (excelente sustentabilidade).' }],
+            mentorTip: 'Uma razão LTV/CAC acima de 3.0x com CAC em queda comprova a tração da marca.',
+            sampleGabarito: 'Com a relação LTV/CAC subindo para 4.94x, o branding reduziu o custo de atração direta enquanto elevou a fidelização de clientes.'
           }
         ]
       }
     ];
+
+    // RENDER RULES FOR THE 15 FORMATS
+    const RENDER_RULES = {
+      ROLEPLAY_C_LEVEL: { color: 'bg-red-500/10 border-red-500/30 text-red-400', label: '🎙️ Roleplay C-Level', icon: '🎙️' },
+      METRICS_DASHBOARD: { color: 'bg-blue-500/10 border-blue-500/30 text-blue-400', label: '📊 Painel de Métricas', icon: '📊' },
+      FIX_THE_BRIEF: { color: 'bg-amber-500/10 border-amber-500/30 text-amber-400', label: '⚠️ Caça-Erros', icon: '⚠️' },
+      PERCEPTUAL_MAPPING: { color: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400', label: '🗺️ Mapeamento Perceptual', icon: '🗺️' },
+      EXECUTIVE_MEMO: { color: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400', label: '📝 Memo Executivo', icon: '📝' },
+      FEYNMAN_TECHNIQUE: { color: 'bg-teal-500/10 border-teal-500/30 text-teal-400', label: '💬 Pílula Feynman', icon: '💬' },
+      MANIFESTO_VALUE_PROP: { color: 'bg-purple-500/10 border-purple-500/30 text-purple-400', label: '📜 Manifesto & Proposta', icon: '📜' },
+      CROSS_INDUSTRY: { color: 'bg-pink-500/10 border-pink-500/30 text-pink-400', label: '🔄 Inovação Cruzada', icon: '🔄' },
+      DEVILS_ADVOCATE: { color: 'bg-orange-500/10 border-orange-500/30 text-orange-400', label: '⚔️ Defender 2 Lados', icon: '⚔️' },
+      REVERSE_ENGINEERING: { color: 'bg-[#64D2FF]/10 border-[#64D2FF]/30 text-[#64D2FF]', label: '🔍 Engenharia Reversa', icon: '🔍' },
+      HARD_TRADE_OFFS: { color: 'bg-rose-500/10 border-rose-500/30 text-rose-400', label: '⚖️ Escolha Difícil', icon: '⚖️' },
+      CREATIVE_BRIEF: { color: 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400', label: '📐 Briefing Criativo', icon: '📐' },
+      MOM_TEST_INTERVIEW: { color: 'bg-lime-500/10 border-lime-500/30 text-lime-400', label: '🎙️ Entrevista Mom Test', icon: '🎙️' },
+      EXTREME_CONSTRAINT: { color: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400', label: '⚡ Restrição Extrema', icon: '⚡' },
+      CRISIS_PR_SIMULATION: { color: 'bg-red-600/10 border-red-600/30 text-red-500', label: '🔥 Crise de PR', icon: '🔥' }
+    };
 
     // STATE MANAGEMENT WITH MULTI-ACCOUNT ISOLATION
     let userState = {
@@ -1268,7 +1563,12 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
         userState.completedResources[resId] = true;
       }
       saveState();
-      renderDisciplineView(userState.activeDisciplineId);
+      
+      if (userState.activeView === 'discipline') {
+        renderDisciplineView(userState.activeDisciplineId);
+      } else if (userState.activeView === 'global-acervo') {
+        renderGlobalAcervoView();
+      }
     }
 
     function getMetrics() {
@@ -1313,7 +1613,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
 
         const btn = document.createElement('button');
         btn.onclick = () => switchView('discipline', disc.id);
-        btn.className = `w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition flex items-center justify-between group ${
+        btn.className = `w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition flex items-center justify-between group cursor-pointer ${
           isActive 
             ? 'bg-white/10 text-white font-semibold' 
             : 'text-[#8E8E93] hover:text-white hover:bg-white/5'
@@ -1341,7 +1641,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       const metrics = getMetrics();
       
       document.getElementById('kpi-progress-text').innerText = `${metrics.progressPercent}%`;
-      document.getElementById('kpi-completed-count').innerText = `${metrics.completedCount} / ${metrics.totalAPAs} Exercícios`;
+      document.getElementById('kpi-completed-count').innerText = `${metrics.completedCount} / ${metrics.totalAPAs} Atividades`;
       document.getElementById('kpi-progress-bar').style.width = `${metrics.progressPercent}%`;
       document.getElementById('kpi-gpa').innerText = metrics.letterGrade;
 
@@ -1380,7 +1680,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
           </td>
           <td class="py-3 px-2 text-right font-bold font-mono ${avg !== '—' ? 'text-[#30D158]' : 'text-[#8E8E93]'}">${avg}</td>
           <td class="py-3 px-2 text-right">
-            <button onclick="switchView('discipline', '${disc.id}')" class="text-xs text-[#0A84FF] font-medium hover:underline">Ver Módulo ▶</button>
+            <button onclick="switchView('discipline', '${disc.id}')" class="text-xs text-[#0A84FF] font-medium hover:underline cursor-pointer">Ver Módulo ▶</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -1406,7 +1706,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
                 </div>
                 <h4 class="text-xs font-semibold text-white truncate">${apa.title}</h4>
               </div>
-              <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3 py-1.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-[11px] rounded-xl shrink-0 transition">
+              <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3 py-1.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-[11px] rounded-xl shrink-0 transition cursor-pointer">
                 Iniciar
               </button>
             `;
@@ -1427,6 +1727,9 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       document.getElementById('disc-title').innerText = disc.title;
       document.getElementById('disc-objective').innerText = disc.objective;
 
+      const firstUnitId = (disc.lessons && disc.lessons.length > 0) ? disc.lessons[0].unitId : 'U1.1';
+      document.getElementById('disc-hero-start-btn').setAttribute('onclick', `openLessonModal('${disc.id}', '${firstUnitId}')`);
+
       let done = 0;
       disc.apas.forEach(a => { if (userState.submissions[a.id]) done++; });
       const pct = Math.round((done / disc.apas.length) * 100);
@@ -1435,7 +1738,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       document.getElementById('disc-header-bar').style.width = `${pct}%`;
       document.getElementById('apa-counter-badge').innerText = `${done} / ${disc.apas.length} Concluídos`;
 
-      // RENDER UNIDADES TEÓRICAS (LESSONS / EPISÓDIOS STREAMING)
+      // RENDER UNIDADES TEÓRICAS
       const lessonsGrid = document.getElementById('lessons-grid');
       lessonsGrid.innerHTML = '';
 
@@ -1460,7 +1763,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
               <span class="text-[11px] font-medium ${isRead ? 'text-[#30D158]' : 'text-[#8E8E93]'}">
                 ${isRead ? '✅ Aula Concluída' : '📖 Não Lida'}
               </span>
-              <button onclick="openLessonModal('${disc.id}', '${unit.unitId}')" class="px-3.5 py-1.5 bg-[#30D158]/10 hover:bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 font-medium text-xs rounded-xl transition flex items-center space-x-1">
+              <button onclick="openLessonModal('${disc.id}', '${unit.unitId}')" class="px-3.5 py-1.5 bg-[#30D158]/10 hover:bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 font-medium text-xs rounded-xl transition flex items-center space-x-1 cursor-pointer">
                 <span>${isRead ? 'Revisar Aula' : 'Ler Aula 📖'}</span>
               </button>
             </div>
@@ -1480,10 +1783,10 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       let checkedResources = 0;
 
       const allResList = [
-        ...disc.multimedia.books,
-        ...disc.multimedia.courses,
-        ...disc.multimedia.portals,
-        ...disc.multimedia.videos
+        ...(disc.multimedia.books || []),
+        ...(disc.multimedia.courses || []),
+        ...(disc.multimedia.portals || []),
+        ...(disc.multimedia.videos || [])
       ];
 
       allResList.forEach(r => {
@@ -1504,7 +1807,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
         <div class="space-y-3">
           <span class="text-[10px] font-semibold tracking-wider text-[#0A84FF] uppercase block">📚 Livros de Cabeceira</span>
           <div class="space-y-2">
-            ${disc.multimedia.books.map(b => {
+            ${(disc.multimedia.books || []).map(b => {
               const isChecked = !!userState.completedResources[b.id];
               return `
                 <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
@@ -1531,7 +1834,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
         <div class="space-y-3">
           <span class="text-[10px] font-semibold tracking-wider text-[#30D158] uppercase block">🎓 Cursos Recomendados</span>
           <div class="space-y-2">
-            ${disc.multimedia.courses.map(c => {
+            ${(disc.multimedia.courses || []).map(c => {
               const isChecked = !!userState.completedResources[c.id];
               return `
                 <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
@@ -1558,7 +1861,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
         <div class="space-y-3">
           <span class="text-[10px] font-semibold tracking-wider text-[#FF9F0A] uppercase block">📰 Intelligence & Portais</span>
           <div class="space-y-2">
-            ${disc.multimedia.portals.map(p => {
+            ${(disc.multimedia.portals || []).map(p => {
               const isChecked = !!userState.completedResources[p.id];
               return `
                 <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
@@ -1584,7 +1887,7 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
         <div class="space-y-3">
           <span class="text-[10px] font-semibold tracking-wider text-[#BF5AF2] uppercase block">🎥 Vídeos & Podcasts</span>
           <div class="space-y-2">
-            ${disc.multimedia.videos.map(v => {
+            ${(disc.multimedia.videos || []).map(v => {
               const isChecked = !!userState.completedResources[v.id];
               return `
                 <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
@@ -1642,9 +1945,9 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
                   <span class="text-xs font-bold text-[#30D158] block">Nota ${sub.gradeLetter || 'A'}</span>
                   <span class="text-[10px] text-[#8E8E93] font-mono">${sub.date}</span>
                 </div>
-                <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3.5 py-1.5 bg-[#2C2C2E] hover:bg-[#3A3A3C] text-white font-medium text-xs rounded-xl transition">Ver Resposta</button>
+                <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3.5 py-1.5 bg-[#2C2C2E] hover:bg-[#3A3A3C] text-white font-medium text-xs rounded-xl transition cursor-pointer">Ver Resposta</button>
               ` : `
-                <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-4 py-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm">
+                <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-4 py-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer">
                   Resolver Exercício
                 </button>
               `}
@@ -1655,6 +1958,246 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       });
     }
 
+    // RENDER VIEW: TODAS AS DISCIPLINAS (1 AO 6)
+    function renderAllDisciplinesView() {
+      const grid = document.getElementById('all-disciplines-grid');
+      grid.innerHTML = '';
+
+      curriculumData.forEach(disc => {
+        let done = 0;
+        disc.apas.forEach(a => { if (userState.submissions[a.id]) done++; });
+        const pct = Math.round((done / disc.apas.length) * 100);
+
+        const card = document.createElement('div');
+        card.className = "apple-glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between space-y-4 hover:border-[#0A84FF]/40 transition group";
+        card.innerHTML = `
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-[#0A84FF] text-white">${disc.id}</span>
+              <span class="text-xs font-mono font-medium ${pct === 100 ? 'text-[#30D158]' : 'text-[#8E8E93]'}">${done} / ${disc.apas.length} Exercícios</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-[#0A84FF] transition leading-snug">${disc.title}</h3>
+            <p class="text-xs text-[#8E8E93] line-clamp-3 leading-relaxed">${disc.objective}</p>
+          </div>
+
+          <div class="space-y-3 pt-4 border-t border-white/10">
+            <div class="flex items-center justify-between text-xs text-[#8E8E93]">
+              <span>Progresso</span>
+              <span class="font-mono font-bold text-white">${pct}%</span>
+            </div>
+            <div class="w-full bg-[#2C2C2E] rounded-full h-1.5">
+              <div class="bg-[#0A84FF] h-1.5 rounded-full" style="width: ${pct}%"></div>
+            </div>
+
+            <button onclick="switchView('discipline', '${disc.id}')" class="w-full mt-2 py-2.5 bg-white/10 hover:bg-[#0A84FF] text-white font-medium text-xs rounded-xl transition cursor-pointer flex items-center justify-center space-x-1.5">
+              <span>Acessar Módulo</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // RENDER VIEW: BANCO DE EXERCÍCIOS (15 FORMATOS)
+    function renderAllAPAsView() {
+      const selectedType = document.getElementById('apa-filter-type').value;
+      const container = document.getElementById('all-apas-container');
+      container.innerHTML = '';
+
+      let count = 0;
+      curriculumData.forEach(disc => {
+        disc.apas.forEach(apa => {
+          if (selectedType === 'ALL' || apa.type === selectedType) {
+            count++;
+            const sub = userState.submissions[apa.id];
+            const isDone = !!sub;
+            const rule = RENDER_RULES[apa.type] || { color: 'bg-blue-500/10 border-blue-500/30 text-blue-400', label: apa.badgeLabel || 'Exercício' };
+
+            const card = document.createElement('div');
+            card.className = `p-5 rounded-2xl border transition ${
+              isDone ? 'bg-[#1C1C1E]/60 border-[#30D158]/30' : 'bg-[#1C1C1E] border-white/10 hover:border-white/20'
+            }`;
+
+            card.innerHTML = `
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-start space-x-3.5">
+                  <div class="w-10 h-10 rounded-xl bg-[#2C2C2E] flex items-center justify-center text-xl shrink-0">
+                    ${rule.icon || '📝'}
+                  </div>
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                      <span class="text-xs font-mono font-medium text-[#0A84FF]">${disc.id} • ${apa.code}</span>
+                      <span class="text-[10px] font-medium px-2 py-0.5 rounded border ${rule.color}">${rule.label}</span>
+                      <span class="text-[10px] font-medium px-2 py-0.5 bg-[#2C2C2E] text-[#8E8E93] rounded">${apa.level || 'Intermediário'}</span>
+                      ${apa.forbiddenTerms ? '<span class="text-[10px] font-medium px-2 py-0.5 bg-red-500/20 text-red-400 rounded border border-red-500/30">⚠️ Restrições C-Level</span>' : ''}
+                      ${isDone ? '<span class="text-[10px] font-medium px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] rounded">Concluído</span>' : ''}
+                    </div>
+                    <h4 class="text-sm font-semibold text-white">${apa.title}</h4>
+                    <p class="text-xs text-[#8E8E93] mt-1 line-clamp-2">${apa.scenarioText}</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-3 shrink-0 self-end md:self-center">
+                  ${isDone ? `
+                    <div class="text-right">
+                      <span class="text-xs font-bold text-[#30D158] block">Nota ${sub.gradeLetter || 'A'}</span>
+                      <span class="text-[10px] text-[#8E8E93] font-mono">${sub.date}</span>
+                    </div>
+                    <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-3.5 py-1.5 bg-[#2C2C2E] hover:bg-[#3A3A3C] text-white font-medium text-xs rounded-xl transition cursor-pointer">Ver Resposta</button>
+                  ` : `
+                    <button onclick="openAPAModal('${disc.id}', '${apa.id}')" class="px-4 py-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer">
+                      Resolver Exercício
+                    </button>
+                  `}
+                </div>
+              </div>
+            `;
+            container.appendChild(card);
+          }
+        });
+      });
+
+      if (count === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-xs text-[#8E8E93]">Nenhum exercício encontrado para o filtro selecionado.</div>`;
+      }
+    }
+
+    // RENDER VIEW: ACERVO MULTIMÍDIA GLOBAL
+    function renderGlobalAcervoView() {
+      const searchTerm = (document.getElementById('acervo-search-input').value || '').toLowerCase();
+      const grid = document.getElementById('global-acervo-grid');
+      grid.innerHTML = '';
+
+      let allBooks = [];
+      let allCourses = [];
+      let allPortals = [];
+      let allVideos = [];
+
+      curriculumData.forEach(disc => {
+        if (disc.multimedia) {
+          (disc.multimedia.books || []).forEach(b => allBooks.push({ ...b, discId: disc.id }));
+          (disc.multimedia.courses || []).forEach(c => allCourses.push({ ...c, discId: disc.id }));
+          (disc.multimedia.portals || []).forEach(p => allPortals.push({ ...p, discId: disc.id }));
+          (disc.multimedia.videos || []).forEach(v => allVideos.push({ ...v, discId: disc.id }));
+        }
+      });
+
+      // Filter
+      if (searchTerm) {
+        allBooks = allBooks.filter(b => b.title.toLowerCase().includes(searchTerm) || b.author.toLowerCase().includes(searchTerm));
+        allCourses = allCourses.filter(c => c.title.toLowerCase().includes(searchTerm) || c.provider.toLowerCase().includes(searchTerm));
+        allPortals = allPortals.filter(p => p.name.toLowerCase().includes(searchTerm));
+        allVideos = allVideos.filter(v => v.title.toLowerCase().includes(searchTerm));
+      }
+
+      // Books Card
+      const booksCard = document.createElement('div');
+      booksCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 flex flex-col justify-between";
+      booksCard.innerHTML = `
+        <div class="space-y-3">
+          <span class="text-xs font-semibold tracking-wider text-[#0A84FF] uppercase block">📚 Livros de Cabeceira</span>
+          <div class="space-y-2.5">
+            ${allBooks.map(b => {
+              const isChecked = !!userState.completedResources[b.id];
+              return `
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${b.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
+                  <div class="overflow-hidden">
+                    <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                      <span>${b.title}</span>
+                      <svg class="w-3 h-3 text-[#0A84FF] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                    <p class="text-[10px] text-[#8E8E93] mt-0.5">${b.author} • <span class="font-mono text-[#0A84FF]">${b.discId}</span></p>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+      grid.appendChild(booksCard);
+
+      // Courses Card
+      const coursesCard = document.createElement('div');
+      coursesCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 flex flex-col justify-between";
+      coursesCard.innerHTML = `
+        <div class="space-y-3">
+          <span class="text-xs font-semibold tracking-wider text-[#30D158] uppercase block">🎓 Cursos Recomendados</span>
+          <div class="space-y-2.5">
+            ${allCourses.map(c => {
+              const isChecked = !!userState.completedResources[c.id];
+              return `
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${c.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
+                  <div class="overflow-hidden">
+                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                      <span class="truncate">${c.title}</span>
+                      <svg class="w-3 h-3 text-[#30D158] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                    <p class="text-[10px] text-[#8E8E93] mt-0.5">${c.provider} • <span class="font-mono text-[#30D158]">${c.discId}</span></p>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+      grid.appendChild(coursesCard);
+
+      // Portals Card
+      const portalsCard = document.createElement('div');
+      portalsCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 flex flex-col justify-between";
+      portalsCard.innerHTML = `
+        <div class="space-y-3">
+          <span class="text-xs font-semibold tracking-wider text-[#FF9F0A] uppercase block">📰 Intelligence & Portais</span>
+          <div class="space-y-2.5">
+            ${allPortals.map(p => {
+              const isChecked = !!userState.completedResources[p.id];
+              return `
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${p.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
+                  <div class="overflow-hidden">
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                      <span class="truncate">${p.name}</span>
+                      <svg class="w-3 h-3 text-[#FF9F0A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+      grid.appendChild(portalsCard);
+
+      // Videos Card
+      const videosCard = document.createElement('div');
+      videosCard.className = "bg-[#1C1C1E] border border-white/10 rounded-2xl p-5 flex flex-col justify-between";
+      videosCard.innerHTML = `
+        <div class="space-y-3">
+          <span class="text-xs font-semibold tracking-wider text-[#BF5AF2] uppercase block">🎥 Vídeos & Podcasts</span>
+          <div class="space-y-2.5">
+            ${allVideos.map(v => {
+              const isChecked = !!userState.completedResources[v.id];
+              return `
+                <div class="p-2.5 rounded-xl border transition ${isChecked ? 'bg-[#30D158]/10 border-[#30D158]/30' : 'bg-black/40 border-white/5'} flex items-start space-x-2.5">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleResourceCheck('${v.id}')" class="mt-0.5 accent-[#30D158] cursor-pointer rounded">
+                  <div class="overflow-hidden">
+                    <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${isChecked ? 'text-[#30D158] line-through' : 'text-white'} hover:underline flex items-center space-x-1 group">
+                      <span class="truncate">${v.title}</span>
+                      <svg class="w-3 h-3 text-[#BF5AF2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+      grid.appendChild(videosCard);
+    }
+
     function switchView(viewName, discId = null) {
       userState.activeView = viewName;
       if (discId) userState.activeDisciplineId = discId;
@@ -1662,16 +2205,41 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
 
       document.getElementById('view-dashboard').classList.add('hidden');
       document.getElementById('view-discipline').classList.add('hidden');
+      document.getElementById('view-all-disciplines').classList.add('hidden');
+      document.getElementById('view-all-apas').classList.add('hidden');
+      document.getElementById('view-global-acervo').classList.add('hidden');
 
-      const navDashboard = document.getElementById('nav-dashboard');
+      ['nav-dashboard', 'nav-all-disciplines', 'nav-all-apas', 'nav-global-acervo'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5 cursor-pointer";
+      });
+
+      const breadcrumb = document.getElementById('breadcrumb-title');
+
       if (viewName === 'dashboard') {
         document.getElementById('view-dashboard').classList.remove('hidden');
-        document.getElementById('breadcrumb-title').innerHTML = "Portal Acadêmico / <strong class=\"text-white\">Visão Geral</strong>";
-        navDashboard.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white";
+        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="text-white">Visão Geral</strong>';
+        document.getElementById('nav-dashboard').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white font-semibold cursor-pointer";
         renderDashboard();
+      } else if (viewName === 'all-disciplines') {
+        document.getElementById('view-all-disciplines').classList.remove('hidden');
+        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="text-white">Todas as Disciplinas</strong>';
+        document.getElementById('nav-all-disciplines').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white font-semibold cursor-pointer";
+        renderAllDisciplinesView();
+      } else if (viewName === 'all-apas') {
+        document.getElementById('view-all-apas').classList.remove('hidden');
+        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="text-white">Banco de Exercícios</strong>';
+        document.getElementById('nav-all-apas').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white font-semibold cursor-pointer";
+        renderAllAPAsView();
+      } else if (viewName === 'global-acervo') {
+        document.getElementById('view-global-acervo').classList.remove('hidden');
+        breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="text-white">Acervo Multimídia Global</strong>';
+        document.getElementById('nav-global-acervo').className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition bg-white/10 text-white font-semibold cursor-pointer";
+        renderGlobalAcervoView();
       } else {
         document.getElementById('view-discipline').classList.remove('hidden');
-        navDashboard.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-medium transition text-[#8E8E93] hover:text-white hover:bg-white/5";
+        const disc = curriculumData.find(d => d.id === userState.activeDisciplineId) || curriculumData[0];
+        breadcrumb.innerHTML = `Portal Acadêmico / Disciplinas / <strong class="text-white">${disc.id}</strong>`;
         renderDisciplineView(userState.activeDisciplineId);
       }
 
@@ -1695,22 +2263,20 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       document.getElementById('modal-lesson-time').innerText = `⏱️ ${lesson.readingTimeMinutes} min de leitura`;
       document.getElementById('modal-lesson-title').innerText = lesson.unitTitle;
 
-      // RENDER MARKDOWN TO HTML
       const html = parseMarkdownToHTML(lesson.lessonTextMarkdown);
       document.getElementById('modal-lesson-content').innerHTML = html;
 
-      // UPDATE TOGGLE BUTTON STATE
       const isRead = !!userState.completedLessons[unitId];
       const btn = document.getElementById('btn-toggle-lesson');
       const statusText = document.getElementById('lesson-status-text');
 
       if (isRead) {
         btn.innerText = "Desmarcar Leitura ↩️";
-        btn.className = "px-5 py-2.5 bg-[#2C2C2E] text-white hover:bg-[#3A3A3C] font-semibold text-xs rounded-xl transition shadow-sm";
+        btn.className = "px-5 py-2.5 bg-[#2C2C2E] text-white hover:bg-[#3A3A3C] font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer";
         statusText.innerText = "Status: ✅ Aula Concluída";
       } else {
         btn.innerText = "Marcar Unidade como Lida ✅";
-        btn.className = "px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm";
+        btn.className = "px-5 py-2.5 bg-[#30D158] hover:bg-[#28B84C] text-black font-semibold text-xs rounded-xl transition shadow-sm cursor-pointer";
         statusText.innerText = "Status: 📖 Leitura Pendente";
       }
 
@@ -1731,7 +2297,9 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       }
       saveState();
       openLessonModal(currentLessonData.discId, uid);
-      renderDisciplineView(currentLessonData.discId);
+      if (userState.activeView === 'discipline') {
+        renderDisciplineView(currentLessonData.discId);
+      }
     }
 
     function parseMarkdownToHTML(md) {
@@ -1942,6 +2510,8 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
       updateHeaderStats();
       if (userState.activeView === 'dashboard') {
         renderDashboard();
+      } else if (userState.activeView === 'all-apas') {
+        renderAllAPAsView();
       } else {
         renderDisciplineView(userState.activeDisciplineId);
       }
