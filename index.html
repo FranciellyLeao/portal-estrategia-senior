@@ -218,20 +218,28 @@
   </div>
 
   <!-- APP CONTAINER -->
-  <div id="app" class="flex flex-1 min-h-screen overflow-hidden">
+  <div id="app" class="flex flex-1 min-h-screen overflow-hidden relative">
     
-    <!-- SIDEBAR (APPLE MAC OS STYLE - PERFECTLY ALIGNED 272px WIDE) -->
-    <aside id="sidebar" class="w-[272px] apple-sidebar flex flex-col justify-between shrink-0 z-20">
+    <!-- MOBILE SIDEBAR BACKDROP OVERLAY -->
+    <div id="sidebar-backdrop" onclick="closeMobileSidebar()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
+
+    <!-- SIDEBAR (APPLE MAC OS STYLE - PERFECTLY ALIGNED 272px WIDE DRAWER ON MOBILE) -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-[272px] apple-sidebar flex flex-col justify-between shrink-0 transform -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out">
       <div>
         <!-- BRAND HEADER -->
-        <div class="p-5 border-b border-white/10 flex items-center space-x-3">
-          <div class="w-8 h-8 rounded-lg bg-[#0A84FF] flex items-center justify-center font-bold text-white text-xs shadow-md shrink-0">
-            E
+        <div class="p-5 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center space-x-3 overflow-hidden">
+            <div class="w-8 h-8 rounded-lg bg-[#0A84FF] flex items-center justify-center font-bold text-white text-xs shadow-md shrink-0">
+              E
+            </div>
+            <div class="overflow-hidden">
+              <h1 class="font-semibold text-xs tracking-tight theme-text-main truncate">ESTRATÉGIA SÊNIOR</h1>
+              <p class="text-[10px] theme-text-muted truncate">Portal Multimodal EAD</p>
+            </div>
           </div>
-          <div class="overflow-hidden">
-            <h1 class="font-semibold text-xs tracking-tight theme-text-main truncate">ESTRATÉGIA SÊNIOR</h1>
-            <p class="text-[10px] theme-text-muted truncate">Portal Multimodal EAD</p>
-          </div>
+          <button onclick="closeMobileSidebar()" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition md:hidden cursor-pointer shrink-0" title="Fechar Menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
         </div>
 
         <!-- NAVIGATION WITH PRECISE HORIZONTAL FLEX ALIGNMENT -->
@@ -252,7 +260,7 @@
 
           <button onclick="switchView('all-apas')" id="nav-all-apas" class="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
             <div class="w-4 h-4 flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4 text-[#FF9F0A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              <svg class="w-4 h-4 text-[#FF9F0A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012 2h2a2 2 0 012 2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
             </div>
             <span class="truncate">Banco de Exercícios</span>
           </button>
@@ -302,28 +310,31 @@
     <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
       
       <!-- TOPBAR HEADER (APPLE MAC OS NAVBAR) -->
-      <header class="h-14 apple-sidebar px-6 flex items-center justify-between shrink-0">
-        <div class="flex items-center space-x-2">
-          <span id="breadcrumb-title" class="text-xs font-medium theme-text-muted">Portal Acadêmico / <strong class="theme-text-main">Visão Geral</strong></span>
+      <header class="h-14 apple-sidebar px-4 md:px-6 flex items-center justify-between shrink-0 gap-2">
+        <div class="flex items-center space-x-2.5 overflow-hidden">
+          <button onclick="openMobileSidebar()" class="p-1.5 -ml-1 text-slate-300 hover:text-white rounded-lg focus:outline-none md:hidden cursor-pointer shrink-0" title="Abrir Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <span id="breadcrumb-title" class="text-xs font-medium theme-text-muted truncate">Portal Acadêmico / <strong class="theme-text-main">Visão Geral</strong></span>
         </div>
 
         <!-- STATS BADGES IN HEADER -->
-        <div class="flex items-center space-x-3 text-xs">
-          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full theme-bg-card border text-amber-500">
+        <div class="flex items-center space-x-2 sm:space-x-3 text-xs shrink-0 overflow-x-auto custom-scrollbar">
+          <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full theme-bg-card border text-amber-500 shrink-0">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
-            <span class="theme-text-main font-medium text-[11px]" id="header-streak">3 dias seguidos</span>
+            <span class="theme-text-main font-medium text-[10px] sm:text-[11px]" id="header-streak">3 dias seguidos</span>
           </div>
-          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full theme-bg-card border text-[#30D158]">
-            <span class="theme-text-main font-medium text-[11px]">Média: <strong id="header-gpa" class="text-[#30D158]">A- (9.2)</strong></span>
+          <div class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full theme-bg-card border text-[#30D158] shrink-0">
+            <span class="theme-text-main font-medium text-[10px] sm:text-[11px]">Média: <strong id="header-gpa" class="text-[#30D158]">A- (9.2)</strong></span>
           </div>
-          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full theme-bg-card border text-[#0A84FF]">
-            <span class="theme-text-main font-medium text-[11px]">Concluído: <strong id="header-progress" class="theme-text-main">0%</strong></span>
+          <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full theme-bg-card border text-[#0A84FF] shrink-0">
+            <span class="theme-text-main font-medium text-[10px] sm:text-[11px]">Concluído: <strong id="header-progress" class="theme-text-main">0%</strong></span>
           </div>
         </div>
       </header>
 
       <!-- VIEW PANES CONTAINER -->
-      <main class="flex-1 overflow-y-auto custom-scrollbar p-8" id="main-container">
+      <main class="flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6 md:p-8" id="main-container">
         
         <!-- VIEW 1: DASHBOARD -->
         <div id="view-dashboard" class="max-w-6xl mx-auto space-y-8">
@@ -421,7 +432,7 @@
           </div>
 
           <!-- KPI STAT CARDS -->
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
             <div class="apple-glass rounded-2xl p-5 border">
               <span class="text-[11px] font-semibold theme-text-muted uppercase tracking-wider block mb-1">Progresso Geral</span>
@@ -944,6 +955,21 @@ export interface Activity {
 
   <!-- MAIN SCRIPT LOGIC -->
   <script>
+    // MOBILE SIDEBAR DRAWER TOGGLE LOGIC
+    function openMobileSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar) sidebar.classList.remove('-translate-x-full');
+      if (backdrop) backdrop.classList.remove('hidden');
+    }
+
+    function closeMobileSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar) sidebar.classList.add('-translate-x-full');
+      if (backdrop) backdrop.classList.add('hidden');
+    }
+
     // THEME TOGGLE LOGIC
     function initTheme() {
       const savedTheme = localStorage.getItem('estrategia_theme') || 'dark';
@@ -1028,6 +1054,7 @@ export interface Activity {
 
     function handleLogout() {
       if (confirm("Encerrar sessão nesta conta?")) {
+        closeMobileSidebar();
         localStorage.removeItem('estrategia_user_session');
         currentUser = null;
         document.getElementById('login-overlay').classList.remove('hidden');
@@ -2236,6 +2263,7 @@ export interface Activity {
     }
 
     function switchView(viewName, discId = null) {
+      closeMobileSidebar();
       userState.activeView = viewName;
       if (discId) userState.activeDisciplineId = discId;
       saveState();
@@ -2288,6 +2316,7 @@ export interface Activity {
     let currentLessonData = null;
 
     function openLessonModal(discId, unitId) {
+      closeMobileSidebar();
       const disc = curriculumData.find(d => d.id === discId);
       if (!disc || !disc.lessons) return;
       const lesson = disc.lessons.find(u => u.unitId === unitId);
@@ -2390,6 +2419,7 @@ export interface Activity {
     let currentModalData = null;
 
     function openAPAModal(discId, apaId) {
+      closeMobileSidebar();
       const disc = curriculumData.find(d => d.id === discId);
       if (!disc) return;
       const apa = disc.apas.find(a => a.id === apaId);
@@ -2569,6 +2599,7 @@ export interface Activity {
 
     // TYPESCRIPT CODE MODAL CONTROLS
     function openCodeModal() {
+      closeMobileSidebar();
       document.getElementById('code-modal').classList.remove('hidden');
     }
 
