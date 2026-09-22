@@ -1138,6 +1138,116 @@ export interface Activity {
     </div>
   </div>
 
+  <!-- CERTIFICADO EXECUTIVO MODAL -->
+  <div id="certificate-modal" class="fixed inset-0 bg-black/85 backdrop-blur-2xl z-50 flex items-center justify-center p-4 hidden">
+    <div class="apple-glass rounded-3xl max-w-3xl w-full flex flex-col shadow-2xl overflow-hidden border">
+      <div class="p-4 border-b border-white/10 flex items-center justify-between">
+        <span class="text-[10px] font-mono text-[#BF5AF2] uppercase tracking-wider">CERTIFICAÇÃO ACADÊMICA C-LEVEL</span>
+        <button onclick="closeCertificateModal()" class="theme-text-muted hover:theme-text-main p-1 rounded-md hover:bg-white/10 transition cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- PRINTABLE CERTIFICATE CARD BODY -->
+      <div class="p-8 sm:p-12 text-center bg-gradient-to-b from-[#0F172A] to-[#1E293B] border-m-4 border-[#0A84FF] relative overflow-hidden" id="certificate-printable-area">
+        <div class="w-12 h-12 rounded-2xl bg-[#0A84FF]/20 border border-[#0A84FF]/40 mx-auto flex items-center justify-center text-[#0A84FF] font-extrabold text-sm mb-4">
+          E
+        </div>
+        
+        <span class="text-[11px] font-mono tracking-widest text-[#0A84FF] uppercase block mb-2">CERTIFICADO DE FORMAÇÃO EXECUTIVA</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Estrategista de Marca Sênior C-Level</h2>
+        
+        <p class="text-xs text-slate-300 mt-6 max-w-lg mx-auto leading-relaxed">
+          Certificamos que <strong id="cert-student-name" class="text-white text-sm font-semibold">Alexandre Silva</strong> concluiu com êxito a trilha de formação executiva em Diagnóstico de Negócios, Posicionamento, Arquitetura de Marca e Defesa Executiva C-Level.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8 pt-6 border-t border-white/10 max-w-xl mx-auto text-left text-xs">
+          <div>
+            <span class="text-[10px] text-slate-400 uppercase block">Momento de Carreira</span>
+            <span id="cert-role" class="font-semibold text-white truncate block">Estrategista</span>
+          </div>
+          <div>
+            <span class="text-[10px] text-slate-400 uppercase block">Média Geral (GPA)</span>
+            <span id="cert-gpa" class="font-semibold text-[#30D158] font-mono block">A (9.5)</span>
+          </div>
+          <div>
+            <span class="text-[10px] text-slate-400 uppercase block">Data de Emissão</span>
+            <span id="cert-date" class="font-semibold text-white font-mono block">22/09/2026</span>
+          </div>
+          <div>
+            <span class="text-[10px] text-slate-400 uppercase block">Código de Autenticação</span>
+            <span id="cert-code" class="font-semibold text-[#BF5AF2] font-mono text-[10px] block">CERT-EST-8942</span>
+          </div>
+        </div>
+
+        <div class="pt-4 flex items-center justify-between max-w-xl mx-auto border-t border-white/10 text-[10px] text-slate-400">
+          <span>Conselho Acadêmico de Estratégia Sênior</span>
+          <span>Autenticação Digital Antigravity EAD</span>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-white/10 flex items-center justify-between">
+        <span class="text-xs theme-text-muted">Certificado com validade executiva e código de verificação.</span>
+        <div class="flex items-center space-x-2">
+          <button onclick="closeCertificateModal()" class="px-4 py-2 text-xs theme-text-muted transition cursor-pointer">Fechar</button>
+          <button onclick="printCertificate()" class="px-5 py-2.5 bg-[#BF5AF2] hover:bg-[#A242D6] text-white font-medium text-xs rounded-xl transition shadow-sm cursor-pointer flex items-center space-x-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            <span>Imprimir / Salvar PDF</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PITCH DECK SLIDES 16:9 -->
+  <div id="pitch-deck-modal" class="fixed inset-0 bg-black/90 backdrop-blur-2xl z-50 flex items-center justify-center p-4 hidden">
+    <div class="apple-glass rounded-3xl max-w-5xl w-full aspect-video flex flex-col shadow-2xl overflow-hidden border relative">
+      
+      <!-- PITCH SLIDE HEADER -->
+      <div class="p-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#BF5AF2]"></span>
+          <span class="text-xs font-mono font-semibold text-slate-300">PITCH DECK C-LEVEL • MODO REUNIÃO DE DIRETORIA</span>
+        </div>
+        <button onclick="closePitchDeckModal()" class="text-slate-400 hover:text-white p-1 rounded-md transition cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- SLIDE CONTENT CONTAINER -->
+      <div class="flex-1 p-8 sm:p-12 flex flex-col justify-between bg-gradient-to-br from-[#0F172A] to-[#1E293B] relative overflow-y-auto custom-scrollbar" id="pitch-slide-content">
+        <!-- Slide content rendered dynamically -->
+      </div>
+
+      <!-- SLIDE FOOTER CONTROLS -->
+      <div class="p-4 border-t border-white/10 flex items-center justify-between bg-black/40">
+        <span id="slide-number-indicator" class="text-xs font-mono text-slate-400">Slide 1 de 3</span>
+        <div class="flex items-center space-x-2">
+          <button onclick="prevPitchSlide()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs transition cursor-pointer">Anterior</button>
+          <button onclick="nextPitchSlide()" class="px-4 py-2 bg-[#0A84FF] hover:bg-[#007AFF] text-white rounded-xl text-xs font-semibold transition cursor-pointer">Próximo</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL BUSCA GLOBAL (CMD+K) -->
+  <div id="search-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-start justify-center pt-20 p-4 hidden">
+    <div class="apple-glass rounded-3xl max-w-2xl w-full flex flex-col shadow-2xl overflow-hidden border">
+      
+      <div class="p-4 border-b border-white/10 flex items-center space-x-3">
+        <svg class="w-5 h-5 text-[#0A84FF] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="global-search-input" oninput="handleGlobalSearchInput(this.value)" placeholder="Buscar aulas, métricas, livros, exercícios..." class="w-full bg-transparent text-sm theme-text-main focus:outline-none placeholder-[#8E8E93]">
+        <button onclick="closeSearchModal()" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded bg-white/10 transition cursor-pointer">ESC</button>
+      </div>
+
+      <div class="p-4 max-h-96 overflow-y-auto custom-scrollbar space-y-2" id="global-search-results">
+        <!-- Results rendered dynamically -->
+      </div>
+
+    </div>
+  </div>
+
   <!-- MAIN SCRIPT LOGIC -->
   <script>
     // MOBILE SIDEBAR DRAWER TOGGLE LOGIC
@@ -3199,6 +3309,199 @@ export interface Activity {
         updateHeaderStats();
         switchView('dashboard');
       }
+    }
+
+    // CERTIFICATE MODAL LOGIC
+    function openCertificateModal() {
+      closeMobileSidebar();
+      if (currentUser) {
+        document.getElementById('cert-student-name').innerText = currentUser.name;
+        document.getElementById('cert-role').innerText = currentUser.role || 'Estrategista Sênior';
+      }
+      document.getElementById('cert-gpa').innerText = document.getElementById('header-gpa').innerText || 'A (9.5)';
+      document.getElementById('cert-date').innerText = new Date().toLocaleDateString('pt-BR');
+      
+      const codeHash = 'CERT-EST-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('cert-code').innerText = codeHash;
+
+      document.getElementById('certificate-modal').classList.remove('hidden');
+    }
+
+    function closeCertificateModal() {
+      document.getElementById('certificate-modal').classList.add('hidden');
+    }
+
+    function printCertificate() {
+      const printable = document.getElementById('certificate-printable-area').outerHTML;
+      const printWindow = window.open('', '_blank');
+      if (!printWindow) return;
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+          <title>Certificado Executivo - Estratégia Sênior</title>
+          <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+          <style>@media print { body { padding: 0; margin: 0; } }</style>
+        </head>
+        <body class="bg-[#0F172A] text-white p-10 flex items-center justify-center min-h-screen">
+          ${printable}
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      setTimeout(() => printWindow.print(), 500);
+    }
+
+    // PITCH DECK SLIDES LOGIC (16:9)
+    let currentSlideIndex = 0;
+    let pitchSlidesData = [];
+
+    function openPitchDeckModal() {
+      if (!currentModalData) return;
+      const apa = currentModalData.apa;
+      const responseVal = document.getElementById('apa-response-input').value.trim() || 'Resposta em desenvolvimento...';
+
+      pitchSlidesData = [
+        {
+          title: apa.title,
+          subtitle: `Desafio C-Level • ${apa.badgeLabel || 'Estratégia'}`,
+          content: `<div class="p-6 bg-black/40 border border-white/10 rounded-2xl space-y-3">
+                      <span class="text-xs font-semibold text-[#0A84FF] uppercase">Cenário & Stakeholder</span>
+                      <p class="text-sm text-slate-200 leading-relaxed">${apa.scenarioText}</p>
+                    </div>`
+        },
+        {
+          title: "Parecer Executivo & Recomendação",
+          subtitle: "Defesa Estratégica Apresentada",
+          content: `<div class="p-6 bg-black/40 border border-white/10 rounded-2xl font-mono text-xs text-emerald-400 leading-relaxed max-h-64 overflow-y-auto">
+                      ${responseVal.replace(/\n/g, '<br>')}
+                    </div>`
+        },
+        {
+          title: "Critérios de Sucesso & Próximos Passos",
+          subtitle: "Validação & Governança C-Level",
+          content: `<div class="space-y-3">
+                      <p class="text-xs text-slate-300">Dica de Mentoria: <em>${apa.mentorTip}</em></p>
+                      <div class="p-4 bg-[#30D158]/10 border border-[#30D158]/30 rounded-2xl text-xs text-slate-200">
+                        <strong>Gabarito de Referência:</strong> ${apa.sampleGabarito}
+                      </div>
+                    </div>`
+        }
+      ];
+
+      currentSlideIndex = 0;
+      renderPitchSlide();
+      document.getElementById('pitch-deck-modal').classList.remove('hidden');
+    }
+
+    function closePitchDeckModal() {
+      document.getElementById('pitch-deck-modal').classList.add('hidden');
+    }
+
+    function renderPitchSlide() {
+      if (!pitchSlidesData || pitchSlidesData.length === 0) return;
+      const slide = pitchSlidesData[currentSlideIndex];
+      const container = document.getElementById('pitch-slide-content');
+      container.innerHTML = `
+        <div class="space-y-2">
+          <span class="text-xs font-mono text-[#0A84FF] uppercase tracking-wider">${slide.subtitle}</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white leading-tight">${slide.title}</h2>
+        </div>
+        <div class="my-6 flex-1 flex flex-col justify-center">
+          ${slide.content}
+        </div>
+        <div class="text-[10px] text-slate-400 font-mono flex items-center justify-between border-t border-white/10 pt-3">
+          <span>Portal Estratégia Sênior</span>
+          <span>Confidencial • Uso Executivo</span>
+        </div>
+      `;
+      document.getElementById('slide-number-indicator').innerText = `Slide ${currentSlideIndex + 1} de ${pitchSlidesData.length}`;
+    }
+
+    function prevPitchSlide() {
+      if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        renderPitchSlide();
+      }
+    }
+
+    function nextPitchSlide() {
+      if (currentSlideIndex < pitchSlidesData.length - 1) {
+        currentSlideIndex++;
+        renderPitchSlide();
+      }
+    }
+
+    // GLOBAL SEARCH MODAL (CMD+K / CTRL+K)
+    function openSearchModal() {
+      closeMobileSidebar();
+      document.getElementById('search-modal').classList.remove('hidden');
+      const input = document.getElementById('global-search-input');
+      input.value = '';
+      input.focus();
+      handleGlobalSearchInput('');
+    }
+
+    function closeSearchModal() {
+      document.getElementById('search-modal').classList.add('hidden');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openSearchModal();
+      }
+      if (e.key === 'Escape') {
+        closeSearchModal();
+      }
+    });
+
+    function handleGlobalSearchInput(query) {
+      const q = query.toLowerCase().trim();
+      const resultsContainer = document.getElementById('global-search-results');
+      resultsContainer.innerHTML = '';
+
+      if (!q) {
+        resultsContainer.innerHTML = '<p class="text-xs text-slate-400 p-2 text-center">Digite algo para buscar em aulas, exercícios, métricas e livros...</p>';
+        return;
+      }
+
+      let matches = [];
+
+      curriculumData.forEach(disc => {
+        if (disc.title.toLowerCase().includes(q) || disc.objective.toLowerCase().includes(q)) {
+          matches.push({ type: 'Disciplina', title: `${disc.id}: ${disc.title}`, action: () => { closeSearchModal(); switchView('discipline', disc.id); } });
+        }
+        (disc.lessons || []).forEach(l => {
+          if (l.unitTitle.toLowerCase().includes(q) || l.lessonTextMarkdown.toLowerCase().includes(q)) {
+            matches.push({ type: 'Aula Teórica', title: `${l.unitId}: ${l.unitTitle}`, action: () => { closeSearchModal(); openLessonModal(disc.id, l.unitId); } });
+          }
+        });
+        (disc.apas || []).forEach(a => {
+          if (a.title.toLowerCase().includes(q) || a.scenarioText.toLowerCase().includes(q)) {
+            matches.push({ type: 'Exercício APA', title: `${a.code}: ${a.title}`, action: () => { closeSearchModal(); openAPAModal(disc.id, a.id); } });
+          }
+        });
+      });
+
+      if (matches.length === 0) {
+        resultsContainer.innerHTML = '<p class="text-xs text-slate-400 p-3 text-center">Nenhum resultado encontrado.</p>';
+        return;
+      }
+
+      matches.slice(0, 8).forEach(m => {
+        const item = document.createElement('div');
+        item.className = "p-3 theme-bg-card hover:bg-[#0A84FF]/20 border rounded-xl flex items-center justify-between cursor-pointer transition";
+        item.innerHTML = `
+          <div>
+            <span class="text-[10px] font-mono text-[#0A84FF] uppercase block">${m.type}</span>
+            <span class="text-xs font-semibold theme-text-main block mt-0.5">${m.title}</span>
+          </div>
+          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        `;
+        item.onclick = m.action;
+        resultsContainer.appendChild(item);
+      });
     }
 
     // TYPESCRIPT CODE MODAL CONTROLS
