@@ -272,6 +272,13 @@
             <span class="truncate">Acervo Multimídia</span>
           </button>
 
+          <button onclick="openGlossaryModal()" class="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
+            <div class="w-4 h-4 flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4 text-[#FFD60A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m-6 4h6m-6 4h6M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <span class="truncate">Glossário & Métricas</span>
+          </button>
+
           <button onclick="openCodeModal()" class="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition theme-text-muted hover:theme-text-main hover:bg-white/5 cursor-pointer">
             <div class="w-4 h-4 flex items-center justify-center shrink-0">
               <svg class="w-4 h-4 text-[#64D2FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
@@ -318,8 +325,17 @@
           <span id="breadcrumb-title" class="text-xs font-medium theme-text-muted truncate">Portal Acadêmico / <strong class="theme-text-main">Visão Geral</strong></span>
         </div>
 
-        <!-- STATS BADGES IN HEADER -->
+        <!-- COURSE SELECTOR & STATS BADGES IN HEADER -->
         <div class="flex items-center space-x-2 sm:space-x-3 text-xs shrink-0 overflow-x-auto custom-scrollbar">
+          <div class="flex items-center space-x-1.5 theme-bg-card border rounded-full px-3 py-1 text-xs">
+            <span class="text-[10px] theme-text-muted font-medium hidden sm:inline">Curso:</span>
+            <select id="course-selector" onchange="switchCourse(this.value)" class="bg-transparent text-xs font-semibold theme-text-main focus:outline-none cursor-pointer">
+              <option value="CRS01" class="dark:bg-[#121826] text-black dark:text-white">Estrategista Sênior (6 Módulos)</option>
+              <option value="CRS02" class="dark:bg-[#121826] text-black dark:text-white">Growth & Métricas (4 Módulos)</option>
+              <option value="CRS03" class="dark:bg-[#121826] text-black dark:text-white">Branding & Arquitetura (4 Módulos)</option>
+            </select>
+          </div>
+
           <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full theme-bg-card border text-amber-500 shrink-0">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
             <span class="theme-text-main font-medium text-[10px] sm:text-[11px]" id="header-streak">3 dias seguidos</span>
@@ -550,6 +566,10 @@
                   <a href="#apas-list-container" class="px-5 py-3 bg-white/15 hover:bg-white/25 text-white font-semibold text-xs rounded-xl transition border border-white/20 flex items-center space-x-1.5">
                     <span>Ver Exercícios Práticos (APAs)</span>
                   </a>
+                  <button onclick="printModuleApostila()" class="px-5 py-3 bg-[#FF9F0A] hover:bg-[#E08A00] text-black font-extrabold text-xs rounded-xl shadow-lg transition flex items-center space-x-1.5 cursor-pointer" title="Gerar Apostila Completa em PDF">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                    <span>Apostila em PDF</span>
+                  </button>
                 </div>
 
                 <div class="flex items-center space-x-3 bg-black/50 px-4 py-2 rounded-2xl border border-white/15">
@@ -772,7 +792,13 @@
 
         <!-- SCENARIO & CONTEXT -->
         <div class="space-y-2">
-          <h4 class="text-xs font-semibold theme-text-muted uppercase tracking-wider">Cenário & Desafio do Negócio</h4>
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-semibold theme-text-muted uppercase tracking-wider">Cenário & Desafio do Negócio</h4>
+            <button onclick="playScenarioAudio()" id="btn-audio-briefing" class="px-2.5 py-1 bg-[#30D158]/10 text-[#30D158] hover:bg-[#30D158]/20 border border-[#30D158]/30 rounded-xl text-[11px] font-medium flex items-center space-x-1.5 transition cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              <span id="audio-btn-label">Ouvir Briefing (Áudio)</span>
+            </button>
+          </div>
           <div id="modal-apa-scenario" class="p-4 theme-bg-card border rounded-2xl text-xs theme-text-main leading-relaxed">
             <!-- Scenario text -->
           </div>
@@ -808,11 +834,15 @@
 
         <!-- STUDENT INPUT AREA -->
         <div class="space-y-2">
-          <div class="flex items-center justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2">
             <h4 class="text-xs font-semibold theme-text-main uppercase tracking-wider">Sua Resposta Estratégica</h4>
             <div class="flex items-center space-x-3">
+              <button onclick="toggleVoiceDictation()" id="btn-voice-dictation" class="px-2.5 py-1 bg-[#0A84FF]/10 text-[#0A84FF] hover:bg-[#0A84FF]/20 border border-[#0A84FF]/30 rounded-xl text-[11px] font-medium flex items-center space-x-1.5 transition cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 016 0v6a3 3 0 01-3 3z"/></svg>
+                <span id="voice-dictation-label">Gravar por Voz</span>
+              </button>
               <span id="char-counter" class="text-[10px] theme-text-muted font-mono">0 caracteres</span>
-              <button onclick="insertTemplate()" class="text-[11px] text-[#0A84FF] hover:underline font-medium cursor-pointer">Inserir Estrutura Sugerida</button>
+              <button onclick="insertTemplate()" class="text-[11px] text-[#0A84FF] hover:underline font-medium cursor-pointer">Estrutura Sugerida</button>
             </div>
           </div>
           
@@ -951,6 +981,162 @@ export interface Activity {
         </button>
       </div>
     </div>
+  <!-- GLOSSÁRIO E CALCULADORA DE MÉTRICAS MODAL -->
+  <div id="glossary-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
+    <div class="apple-glass rounded-3xl max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border">
+      
+      <div class="p-6 border-b border-white/10 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-mono text-[#FFD60A] uppercase tracking-wider block">GUIA EXECUTIVO DE MÉTRICAS</span>
+          <h3 class="text-xl font-bold theme-text-main">Glossário Estratégico & Calculadora Interativa (CAC, LTV, Ticket Médio)</h3>
+        </div>
+        <button onclick="closeGlossaryModal()" class="theme-text-muted hover:theme-text-main p-1 rounded-md hover:bg-white/10 transition cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-8 theme-bg-card">
+        
+        <!-- INTERACTIVE CALCULATOR SECTION -->
+        <div class="p-6 bg-[#0A84FF]/10 border border-[#0A84FF]/30 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="text-sm font-bold text-[#0A84FF] flex items-center space-x-2">
+                <span>Simulador Executivo: Calculadora de CAC & LTV em Tempo Real</span>
+              </h4>
+              <p class="text-xs theme-text-muted mt-0.5">Simule os números do seu cliente e verifique a saúde financeira do negócio.</p>
+            </div>
+            <span id="sim-status-badge" class="px-3 py-1 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded-xl text-xs font-mono font-bold">Saudável (LTV/CAC = 3.8x)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 pt-2">
+            <div>
+              <label class="block text-[10px] font-semibold theme-text-muted uppercase tracking-wider mb-1">Gasto Mkt & Vendas (R$)</label>
+              <input type="number" id="calc-spend" value="50000" oninput="updateCalculations()" class="w-full theme-bg-card border rounded-xl px-3 py-2 text-xs theme-text-main font-mono focus:outline-none focus:border-[#0A84FF]">
+            </div>
+            <div>
+              <label class="block text-[10px] font-semibold theme-text-muted uppercase tracking-wider mb-1">Novos Clientes</label>
+              <input type="number" id="calc-customers" value="100" oninput="updateCalculations()" class="w-full theme-bg-card border rounded-xl px-3 py-2 text-xs theme-text-main font-mono focus:outline-none focus:border-[#0A84FF]">
+            </div>
+            <div>
+              <label class="block text-[10px] font-semibold theme-text-muted uppercase tracking-wider mb-1">Ticket Médio (R$)</label>
+              <input type="number" id="calc-ticket" value="380" oninput="updateCalculations()" class="w-full theme-bg-card border rounded-xl px-3 py-2 text-xs theme-text-main font-mono focus:outline-none focus:border-[#0A84FF]">
+            </div>
+            <div>
+              <label class="block text-[10px] font-semibold theme-text-muted uppercase tracking-wider mb-1">Compras / Ano</label>
+              <input type="number" id="calc-freq" value="2.5" step="0.1" oninput="updateCalculations()" class="w-full theme-bg-card border rounded-xl px-3 py-2 text-xs theme-text-main font-mono focus:outline-none focus:border-[#0A84FF]">
+            </div>
+            <div>
+              <label class="block text-[10px] font-semibold theme-text-muted uppercase tracking-wider mb-1">Retenção (Anos)</label>
+              <input type="number" id="calc-retention" value="2" step="0.5" oninput="updateCalculations()" class="w-full theme-bg-card border rounded-xl px-3 py-2 text-xs theme-text-main font-mono focus:outline-none focus:border-[#0A84FF]">
+            </div>
+          </div>
+
+          <!-- CALCULATOR RESULTS GRID -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+            <div class="p-3 theme-bg-card border rounded-xl text-center">
+              <span class="text-[10px] theme-text-muted font-semibold uppercase block">CAC Resultado</span>
+              <span id="res-cac" class="text-lg font-bold font-mono text-[#0A84FF] mt-0.5 block">R$ 500,00</span>
+              <span class="text-[10px] theme-text-muted">Custo para capturar 1 cliente</span>
+            </div>
+            <div class="p-3 theme-bg-card border rounded-xl text-center">
+              <span class="text-[10px] theme-text-muted font-semibold uppercase block">LTV Resultado</span>
+              <span id="res-ltv" class="text-lg font-bold font-mono text-[#30D158] mt-0.5 block">R$ 1.900,00</span>
+              <span class="text-[10px] theme-text-muted">Receita total por vida do cliente</span>
+            </div>
+            <div class="p-3 theme-bg-card border rounded-xl text-center">
+              <span class="text-[10px] theme-text-muted font-semibold uppercase block">Relação LTV / CAC</span>
+              <span id="res-ratio" class="text-lg font-bold font-mono text-[#FFD60A] mt-0.5 block">3.8x</span>
+              <span class="text-[10px] theme-text-muted" id="res-ratio-desc">Retorno saudável (> 3.0x)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GLOSSARY CARDS GRID -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-semibold theme-text-muted uppercase tracking-wider">Conceitos Essenciais de Negócios & Métricas</h4>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="p-4 theme-bg-card border rounded-2xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-[#0A84FF]">CAC (Custo de Aquisição de Cliente)</span>
+                <span class="px-2 py-0.5 bg-[#0A84FF]/20 text-[#0A84FF] text-[10px] font-mono rounded">Fórmula: Mkt + Vendas / Clientes</span>
+              </div>
+              <p class="text-xs theme-text-main leading-relaxed">
+                Mede quanto a empresa gasta em anúncios, salários da equipe comercial e ferramentas para conquistar 1 novo cliente.
+              </p>
+              <div class="p-2.5 bg-black/40 rounded-xl text-[11px] theme-text-muted font-mono">
+                Exemplo: R$ 10.000 investidos para captar 20 clientes = CAC de R$ 500.
+              </div>
+            </div>
+
+            <div class="p-4 theme-bg-card border rounded-2xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-[#30D158]">LTV (Lifetime Value)</span>
+                <span class="px-2 py-0.5 bg-[#30D158]/20 text-[#30D158] text-[10px] font-mono rounded">Fórmula: Ticket × Freq × Anos</span>
+              </div>
+              <p class="text-xs theme-text-main leading-relaxed">
+                Valor total financeiro gerado por um cliente ao longo de todo o tempo em que ele continua comprando da sua marca.
+              </p>
+              <div class="p-2.5 bg-black/40 rounded-xl text-[11px] theme-text-muted font-mono">
+                Exemplo: R$ 200/mês durante 24 meses = LTV de R$ 4.800.
+              </div>
+            </div>
+
+            <div class="p-4 theme-bg-card border rounded-2xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-[#FF9F0A]">Ticket Médio</span>
+                <span class="px-2 py-0.5 bg-[#FF9F0A]/20 text-[#FF9F0A] text-[10px] font-mono rounded">Fórmula: Faturamento / Vendas</span>
+              </div>
+              <p class="text-xs theme-text-main leading-relaxed">
+                Valor médio gasto por cliente em cada transação individual. Aumentar o Ticket Médio por upsell eleva o LTV sem gastar mais CAC.
+              </p>
+            </div>
+
+            <div class="p-4 theme-bg-card border rounded-2xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-[#BF5AF2]">Churn Rate (Taxa de Cancelamento)</span>
+                <span class="px-2 py-0.5 bg-[#BF5AF2]/20 text-[#BF5AF2] text-[10px] font-mono rounded">Fórmula: Cancelados / Total Clientes</span>
+              </div>
+              <p class="text-xs theme-text-main leading-relaxed">
+                Porcentagem de clientes que cancelam ou deixam de comprar no período. Churn alto destrói o LTV e exige CAC constante.
+              </p>
+            </div>
+
+            <div class="p-4 theme-bg-card border rounded-2xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-[#64D2FF]">Payback do CAC</span>
+                <span class="px-2 py-0.5 bg-[#64D2FF]/20 text-[#64D2FF] text-[10px] font-mono rounded">Fórmula: CAC / Margem Mensal</span>
+              </div>
+              <p class="text-xs theme-text-main leading-relaxed">
+                Tempo (em meses) necessário para o cliente gerar margem suficiente para pagar o valor gasto na sua aquisição.
+              </p>
+            </div>
+
+            <div class="p-4 theme-bg-card border rounded-2xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-amber-400">Taxa de Conversão (CR)</span>
+                <span class="px-2 py-0.5 bg-amber-400/20 text-amber-400 text-[10px] font-mono rounded">Fórmula: Compradores / Visitantes</span>
+              </div>
+              <p class="text-xs theme-text-main leading-relaxed">
+                Eficiência do funil de vendas. Revela se o gargalo está na atração (topo) ou na proposta de valor (fim do funil).
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="p-4 border-t border-white/10 flex items-center justify-between">
+        <span class="text-xs theme-text-muted">Consulte este guia para embasar suas respostas e simulações C-Level.</span>
+        <button onclick="closeGlossaryModal()" class="px-5 py-2.5 bg-[#0A84FF] hover:bg-[#007AFF] text-white font-medium text-xs rounded-xl transition cursor-pointer">
+          Fechar Glossário
+        </button>
+      </div>
+
+    </div>
   </div>
 
   <!-- MAIN SCRIPT LOGIC -->
@@ -1071,11 +1257,15 @@ export interface Activity {
       document.getElementById('welcome-greeting').innerText = `Bem-vindo, ${currentUser.name.split(' ')[0]}!`;
 
       loadState();
-      switchView(userState.activeView, userState.activeDisciplineId);
+      const selector = document.getElementById('course-selector');
+      if (selector && userState.activeCourseId) {
+        selector.value = userState.activeCourseId;
+      }
+      switchView(userState.activeView || 'dashboard', userState.activeDisciplineId);
     }
 
     // EXPANDED MULTIMODAL CURRICULUM DATABASE WITH ALL 6 DISCIPLINES (ZERO EMOJIS)
-    const curriculumData = [
+    const COURSE_1_DISCIPLINES = [
       {
         id: "DISC01",
         title: "Diagnóstico Estratégico & Pensamento Crítico",
@@ -1560,6 +1750,153 @@ export interface Activity {
         ]
       }
     ];
+
+    // MULTI-COURSE ARCHITECTURE & DATABASE (COURSES_DATA)
+    const COURSES_DATA = [
+      {
+        id: "CRS01",
+        title: "Formação Estrategista Sênior C-Level",
+        shortTitle: "Estrategista Sênior",
+        description: "Formação executiva completa em 6 módulos sobre Diagnóstico, Posicionamento, Arquitetura de Marca, Cultura, GTM e Defesa C-Level.",
+        disciplines: COURSE_1_DISCIPLINES
+      },
+      {
+        id: "CRS02",
+        title: "Growth, Métricas & Funil de Marca",
+        shortTitle: "Growth & Métricas",
+        description: "Especialização prática em métricas financeiras de marketing: CAC, LTV, Ticket Médio, Churn, Payback, Margem de Contribuição e Otimização de Funil.",
+        disciplines: [
+          {
+            id: "GRW01",
+            title: "Economia da Aquisição: CAC & Margem de Contribuição",
+            objective: "Dominar o cálculo de CAC Pago vs. Orgânico, Payback e equilíbrio financeiro de campanhas de marca.",
+            lessons: [
+              {
+                unitId: 'GU1.1',
+                unitTitle: 'Unidade 1: Como Calcular e Otimizar o CAC (Custo de Aquisição de Cliente)',
+                readingTimeMinutes: 10,
+                lessonTextMarkdown: `### 💰 Anatomia Completa do CAC (Custo de Aquisição de Cliente)\n\nO **CAC** representa o custo total médio para atrair e converter um único novo cliente pagante.\n\n---\n\n### 1. A Fórmula Real do CAC\n\n**CAC = (Investimentos em MKT + Custo da Equipe de Vendas) / Número de Novos Clientes Conquistados**\n\n#### O que deve entrar no cálculo:\n- **Verba Direta de Mídia:** Anúncios em Meta, Google, LinkedIn e canais de atração.\n- **Folha de Pagamento & Comissões:** Salários do time de pré-vendas (SDR), executivos de conta (CLOSERS) e marketing.\n- **Ferramentas de Tecnologia:** CRM, plataformas de e-mail marketing e automação.\n\n---\n\n### 2. CAC Blended (Geral) vs. CAC Pago\n- **CAC Blended:** Divide o gasto total por TODOS os novos clientes (incluindo orgânicos e indicações).\n- **CAC Pago:** Divide o gasto de mídia paga apenas pelos clientes adquiridos por campanhas pagas. É a métrica mais transparente sobre a eficiência dos seus anúncios!\n\n---\n\n### 3. Exemplo Prático de Diagnóstico Executivo\nUma empresa investiu **R$ 50.000** em anúncios e **R$ 30.000** com a equipe de vendas em um mês (Total: R$ 80.000). Conquistou **200 novos clientes**.\n\n**CAC = R$ 80.000 / 200 = R$ 400 por cliente**\n\nSe o Ticket Médio dessa empresa for de apenas R$ 150 e a retenção for baixa, o negócio está **queimando caixa** a cada nova venda!`
+              },
+              {
+                unitId: 'GU1.2',
+                unitTitle: 'Unidade 2: LTV (Lifetime Value) e o Indicador LTV/CAC > 3x',
+                readingTimeMinutes: 12,
+                lessonTextMarkdown: `### 📈 LTV (Lifetime Value) & Retenção de Clientes\n\nO **LTV** é o valor total líquido de receita que um único cliente gera para a sua empresa durante todo o tempo em que ele permanece ativo (*lifetime*).\n\n---\n\n### 1. A Fórmula Prática do LTV\n\n**LTV = Ticket Médio x Frequência Anual de Compras x Tempo Médio de Retenção (Anos)**\n\n#### Exemplo:\n- Ticket Médio = R$ 200\n- Compras por ano = 4 vezes\n- Permanência média = 3 anos\n\n**LTV = 200 x 4 x 3 = R$ 2.400**\n\n---\n\n### 2. A Regra de Ouro do Mercado: Relação LTV / CAC\nPara que um modelo de negócios seja considerado financeiramente saudável e atraente para investidores:\n\n**LTV / CAC >= 3.0**\n\n- **Abaixo de 1.0:** Empresa perde dinheiro em cada cliente (Insolvência).\n- **Entre 1.0 e 2.0:** Negócio estagnado, sem margem para reinvestimento em inovação.\n- **Igual ou maior que 3.0:** Negócio altamente lucrativo e escalável!\n- **Maior que 5.0:** Empresa pode estar investindo pouco em marketing e deixando mercado para concorrentes.`
+              }
+            ],
+            multimedia: {
+              books: [{ id: "grw_b1", title: "Hacking Growth", author: "Sean Ellis", focus: "Engenharia de Crescimento", url: "https://www.google.com/search?q=Hacking+Growth+Sean+Ellis" }],
+              courses: [{ id: "grw_c1", title: "Growth Marketing", provider: "HubSpot Academy", url: "https://academy.hubspot.com/" }],
+              portals: [{ id: "grw_p1", name: "Reforge Insights", url: "https://www.reforge.com/" }],
+              videos: [{ id: "grw_v1", title: "CAC vs LTV Masterclass", url: "https://www.youtube.com/results?search_query=CAC+vs+LTV+masterclass" }]
+            },
+            apas: [
+              {
+                id: 'APA-G1',
+                code: 'APA-G1',
+                title: 'Diagnóstico de CAC Excessivo e Reestruturação de Funil',
+                type: 'METRICS_DASHBOARD',
+                level: 'Sênior C-Level',
+                estimatedMinutes: 25,
+                badgeLabel: '📊 Painel de Métricas',
+                clientProfile: { companyName: 'SaaS EduCloud', segment: 'EdTech B2B', stakeholderRole: 'CFO & Diretoria' },
+                scenarioText: 'A EduCloud gasta R$ 120.000/mês em tráfego pago para adquirir 100 clientes (CAC = R$ 1.200). Porém, o Ticket Médio mensal é de R$ 100 com churn mensal de 10% (LTV = R$ 1.000). A relação LTV/CAC é de 0,83x. O CFO quer cortar a verba de mídia em 50%.',
+                dataPanel: [
+                  { label: 'CAC Atual', value: 'R$ 1.200', change: 'ALTO', status: 'danger' },
+                  { label: 'LTV Calculado', value: 'R$ 1.000', change: 'BAIXO', status: 'danger' },
+                  { label: 'Relação LTV/CAC', value: '0,83x', change: '< 3.0x', status: 'danger' },
+                  { label: 'Churn Mensal', value: '10%', change: 'CRÍTICO', status: 'warning' }
+                ],
+                instructions: [
+                  'Identifique por que o negócio está destruindo valor (LTV/CAC < 1x).',
+                  'Calcule qual deve ser o Ticket Médio ou a taxa de churn necessária para atingir LTV/CAC de 3x.',
+                  'Recomende ações de branding e retenção para reduzir a dependência de anúncios pagos.'
+                ],
+                placeholderText: '### 1. Diagnóstico da Saúde Financeira...\n### 2. Recálculo das Métricas Alvo...\n### 3. Plano de Ação Estratégico...',
+                evaluationCriteria: [
+                  { id: 'c1', label: 'Cálculo de Métricas', description: 'Identificou o desequilíbrio LTV/CAC < 1x.' },
+                  { id: 'c2', label: 'Solução Executiva', description: 'Propos ações de retenção e aumento de Ticket Médio.' }
+                ],
+                mentorTip: 'Foque na redução do Churn e no aumento do Ticket Médio antes de cortar a verba.',
+                sampleGabarito: 'A empresa está destruindo valor pois gasta R$ 1.200 para capturar R$ 1.000 de LTV...'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "CRS03",
+        title: "Branding, Naming & Arquitetura de Portfólio",
+        shortTitle: "Branding & Naming",
+        description: "Especialização em criação de marcas, estratégia de naming, extensão de linha e modelos de arquitetura de marcas.",
+        disciplines: [
+          {
+            id: "BRD01",
+            title: "Arquitetura de Portfólio e Estratégias de Sub-marcas",
+            objective: "Dominar os modelos de arquitetura de marca (House of Brands vs. Branded House) e prevenir a canibalização entre produtos.",
+            lessons: [
+              {
+                unitId: 'BU1.1',
+                unitTitle: 'Unidade 1: Os 4 Modelos Fundamentais de Arquitetura de Marcas',
+                readingTimeMinutes: 10,
+                lessonTextMarkdown: `### 🏢 Modelos de Arquitetura de Portfólio de Marcas\n\nQuando uma empresa lança múltiplos produtos ou adquire concorrentes, a falta de uma arquitetura de marcas gera confusão na mente do consumidor e desperdício de investimento em comunicação.\n\n---\n\n### 1. Modelo Monolítico (Branded House)\n- **Conceito:** Uma única marca mãe cobre todas as divisões e produtos.\n- **Exemplo:** Virgin (Virgin Atlantic, Virgin Media), Google (Google Drive, Google Maps).\n- **Vantagem:** Eficiência total de mídia — todo dólar investido fortalece a marca mãe.\n\n---\n\n### 2. Modelo Endossado (Endorsed)\n- **Conceito:** Marcas individuais mantêm sua identidade, mas trazem a assinatura visível da marca mãe.\n- **Exemplo:** Courtyard by Marriott, Nespresso por Nestlé, PlayStation by Sony.\n\n---\n\n### 3. Modelo de Marcas Independentes (House of Brands)\n- **Conceito:** Cada produto opera sob uma marca totalmente independente sem vínculo público evidente.\n- **Exemplo:** Procter & Gamble (Pampers, Ariel, Pantene), Unilever (Dove, Kibon).`
+              }
+            ],
+            multimedia: {
+              books: [{ id: "brd_b1", title: "Designing Brand Identity", author: "Alina Wheeler", focus: "Identidade & Marca", url: "https://www.google.com/search?q=Designing+Brand+Identity+Alina+Wheeler" }],
+              courses: [{ id: "brd_c1", title: "Brand Architecture Strategy", provider: "Coursera", url: "https://www.coursera.org/" }],
+              portals: [{ id: "brd_p1", name: "Brand New / UnderConsideration", url: "https://www.underconsideration.com/brandnew/" }],
+              videos: [{ id: "brd_v1", title: "Brand Architecture Masterclass", url: "https://www.youtube.com/results?search_query=brand+architecture+masterclass" }]
+            },
+            apas: [
+              {
+                id: 'APA-B1',
+                code: 'APA-B1',
+                title: 'Reestruturação de Arquitetura para Grupo de Cosméticos',
+                type: 'ROLEPLAY_C_LEVEL',
+                level: 'Avançado',
+                estimatedMinutes: 20,
+                badgeLabel: '🗣️ Defesa C-Level',
+                clientProfile: { companyName: 'Grupo Naturae', segment: 'Cosméticos', stakeholderRole: 'CMO' },
+                scenarioText: 'O Grupo Naturae possui 5 marcas de shampoo sem conexão entre si. O investimento em marketing está fragmentado e os clientes não sabem que pertencem ao mesmo grupo.',
+                instructions: [
+                  'Recomende se o grupo deve adotar modelo Monolítico, Endossado ou Independente.',
+                  'Justifique sua escolha com base em eficiência de verba.'
+                ],
+                placeholderText: '### 1. Recomendação de Arquitetura...\n### 2. Análise de Eficiência...',
+                evaluationCriteria: [
+                  { id: 'c1', label: 'Domínio de Arquitetura', description: 'Recomendou modelo Endossado com justificativa técnica.' }
+                ],
+                mentorTip: 'Priorize o modelo Endossado em grupos com verba limitada.',
+                sampleGabarito: 'Recomendo a migração para o modelo Endossado...'
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    function getActiveCurriculum() {
+      const courseId = (userState && userState.activeCourseId) ? userState.activeCourseId : 'CRS01';
+      const course = COURSES_DATA.find(c => c.id === courseId) || COURSES_DATA[0];
+      return course.disciplines;
+    }
+
+    Object.defineProperty(window, 'curriculumData', {
+      get: function() { return getActiveCurriculum(); }
+    });
+
+    function switchCourse(courseId) {
+      userState.activeCourseId = courseId;
+      const disciplines = getActiveCurriculum();
+      if (disciplines && disciplines.length > 0) {
+        userState.activeDisciplineId = disciplines[0].id;
+      }
+      const selector = document.getElementById('course-selector');
+      if (selector) selector.value = courseId;
+      saveState();
+      switchView('dashboard');
+    }
 
     // RENDER RULES FOR THE 15 FORMATS (CLEAN WITHOUT EMOJIS)
     const RENDER_RULES = {
@@ -2542,6 +2879,83 @@ export interface Activity {
 
     document.getElementById('apa-response-input').addEventListener('input', updateCharCounter);
 
+    // DYNAMIC MULTI-CRITERIA EVALUATION ENGINE (REALISTIC GRADING A, B, C, D)
+    function evaluateStudentSubmission(responseText, apa) {
+      const textLength = responseText.length;
+      const lowerText = responseText.toLowerCase();
+      let feedbackLines = [];
+      let criteriaScores = [];
+
+      // 1. Structural Depth & Length Analysis (0 to 3 points)
+      let lenScore = 1.0;
+      if (textLength < 40) {
+        lenScore = 0.5;
+        feedbackLines.push("Resposta com pouca extensão. No nível C-Level, é fundamental apresentar fundamentação estruturada.");
+      } else if (textLength < 150) {
+        lenScore = 1.8;
+        feedbackLines.push("Boa resposta inicial. Tente aprofundar mais a justificativa das recomendações.");
+      } else if (textLength < 350) {
+        lenScore = 2.5;
+        feedbackLines.push("Excelente extensão de resposta com boa fundamentação temática.");
+      } else {
+        lenScore = 3.0;
+        feedbackLines.push("Excepcional profundidade e riqueza de detalhes na defesa estratégica!");
+      }
+      criteriaScores.push({ label: "Profundidade & Extensão", score: (lenScore / 3 * 10).toFixed(1) });
+
+      // 2. Business Metrics & Strategic Vocabulary Recognition (0 to 4 points)
+      const coreKeywords = ['fato', 'hipótese', 'causa raiz', 'diagnóstico', 'cac', 'ltv', 'ticket médio', 'métricas', 'conversão', 'ação', 'estratégia', 'churn', 'retenção', 'posicionamento', 'recomendação'];
+      const matchedKeywords = coreKeywords.filter(k => lowerText.includes(k));
+      let keyScore = Math.min(4.0, (matchedKeywords.length / 3) * 2.0);
+      if (matchedKeywords.length >= 3) {
+        feedbackLines.push(`Raciocínio ancorado em dados e métricas de negócios (Termos identificados: ${matchedKeywords.slice(0, 4).join(', ')}).`);
+      } else {
+        feedbackLines.push("Dica do Mentor: Enriqueça seu parecer utilizando conceitos de métricas de negócios (ex: Fatos, Causa Raiz, CAC, LTV, Ticket Médio).");
+      }
+      criteriaScores.push({ label: "Aderência a Métricas de Negócios", score: (keyScore / 4 * 10).toFixed(1) });
+
+      // 3. Structural Formatting & C-Level Presentation (0 to 3 points)
+      let structScore = 1.0;
+      if (responseText.includes('#') || responseText.includes('\n-') || responseText.includes('1.') || responseText.includes(':')) {
+        structScore = 3.0;
+        feedbackLines.push("Excelente organização visual com tópicos e cabeçalhos fáceis de escanear.");
+      } else {
+        structScore = 1.5;
+        feedbackLines.push("Organize seu texto em tópicos numerados ou tópicos com marcação (`###`) para facilitar a leitura executiva.");
+      }
+      criteriaScores.push({ label: "Formatação Executiva C-Level", score: (structScore / 3 * 10).toFixed(1) });
+
+      // 4. Forbidden Jargon Penalty
+      let penalty = 0;
+      if (apa && apa.forbiddenTerms && apa.forbiddenTerms.length > 0) {
+        const usedForbidden = apa.forbiddenTerms.filter(t => lowerText.includes(t.toLowerCase()));
+        if (usedForbidden.length > 0) {
+          penalty = 1.5;
+          feedbackLines.push(`Atenção ao Termo Bloqueado: Você usou "${usedForbidden.join(', ')}". Em simulações C-Level, evite jargões visuais e foque em metas de negócios.`);
+        }
+      }
+
+      // Calculate final score & concept letter
+      let rawScore = Math.max(2.0, lenScore + keyScore + structScore - penalty);
+      let finalGradeNum = Math.min(10.0, Math.round(rawScore * 10) / 10);
+
+      let gradeLetter = 'B';
+      if (finalGradeNum >= 9.5) gradeLetter = 'A+';
+      else if (finalGradeNum >= 8.8) gradeLetter = 'A';
+      else if (finalGradeNum >= 8.0) gradeLetter = 'A-';
+      else if (finalGradeNum >= 7.0) gradeLetter = 'B+';
+      else if (finalGradeNum >= 6.0) gradeLetter = 'B';
+      else if (finalGradeNum >= 5.0) gradeLetter = 'C';
+      else gradeLetter = 'D';
+
+      return {
+        gradeNum: finalGradeNum,
+        gradeLetter: gradeLetter,
+        feedback: feedbackLines.join(' '),
+        criteriaScores: criteriaScores
+      };
+    }
+
     function submitAPAResolution() {
       if (!currentModalData) return;
       const responseText = document.getElementById('apa-response-input').value.trim();
@@ -2550,25 +2964,13 @@ export interface Activity {
         return;
       }
 
-      let gradeNum = 9.5;
-      let gradeLetter = "A";
-      let feedback = "Excelente execução estratégica! Raciocínio de negócios impecável, separação clara de causa raiz e aderência total aos critérios do mentor.";
-
-      if (currentModalData.apa.forbiddenTerms) {
-        const lower = responseText.toLowerCase();
-        const usedForbidden = currentModalData.apa.forbiddenTerms.filter(t => lower.includes(t.toLowerCase()));
-        if (usedForbidden.length > 0) {
-          gradeNum = 8.0;
-          gradeLetter = "B";
-          feedback = `Atenção: Seu exercício utilizou o(s) termo(s) proibido(s): ${usedForbidden.join(', ')}. No nível C-Level, evite jargões estéticos e foque rigorosamente em métricas operacionais e de negócio.`;
-        }
-      }
+      const evalResult = evaluateStudentSubmission(responseText, currentModalData.apa);
 
       userState.submissions[currentModalData.apaId] = {
         response: responseText,
-        gradeNum: gradeNum,
-        gradeLetter: gradeLetter,
-        feedback: feedback,
+        gradeNum: evalResult.gradeNum,
+        gradeLetter: evalResult.gradeLetter,
+        feedback: evalResult.feedback,
         date: new Date().toLocaleDateString('pt-BR')
       };
 
@@ -2584,6 +2986,209 @@ export interface Activity {
         renderDisciplineView(userState.activeDisciplineId);
       }
       renderSidebar();
+    }
+
+    // MULTIMODAL VOICE DICTATION (WEB SPEECH API)
+    let speechRecognition = null;
+    let isRecordingVoice = false;
+
+    function toggleVoiceDictation() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert("Seu navegador não suporta a Web Speech API para ditado por voz. Recomendamos utilizar o Google Chrome, Edge ou Safari.");
+        return;
+      }
+
+      const label = document.getElementById('voice-dictation-label');
+      const textarea = document.getElementById('apa-response-input');
+
+      if (isRecordingVoice) {
+        if (speechRecognition) speechRecognition.stop();
+        isRecordingVoice = false;
+        label.innerText = "Gravar por Voz";
+        return;
+      }
+
+      try {
+        speechRecognition = new SpeechRecognition();
+        speechRecognition.lang = 'pt-BR';
+        speechRecognition.continuous = true;
+        speechRecognition.interimResults = true;
+
+        speechRecognition.onstart = function() {
+          isRecordingVoice = true;
+          label.innerText = "Ouvindo... (Clique para Parar)";
+        };
+
+        speechRecognition.onresult = function(event) {
+          let transcript = '';
+          for (let i = event.resultIndex; i < event.results.length; ++i) {
+            if (event.results[i].isFinal) {
+              transcript += event.results[i][0].transcript;
+            }
+          }
+          if (transcript) {
+            textarea.value = (textarea.value ? textarea.value + " " : "") + transcript;
+            updateCharCounter();
+          }
+        };
+
+        speechRecognition.onerror = function() {
+          isRecordingVoice = false;
+          label.innerText = "Gravar por Voz";
+        };
+
+        speechRecognition.onend = function() {
+          isRecordingVoice = false;
+          label.innerText = "Gravar por Voz";
+        };
+
+        speechRecognition.start();
+      } catch (e) {
+        alert("Não foi possível iniciar o microfone. Verifique a permissão do navegador.");
+      }
+    }
+
+    // AUDIO BRIEFING SPEECH SYNTHESIS (TEXT-TO-SPEECH)
+    let isPlayingAudio = false;
+
+    function playScenarioAudio() {
+      if (!('speechSynthesis' in window)) {
+        alert("Seu navegador não suporta a síntese de áudio (Text-to-Speech).");
+        return;
+      }
+
+      const label = document.getElementById('audio-btn-label');
+
+      if (isPlayingAudio) {
+        window.speechSynthesis.cancel();
+        isPlayingAudio = false;
+        label.innerText = "Ouvir Briefing (Áudio)";
+        return;
+      }
+
+      const scenarioText = document.getElementById('modal-apa-scenario').innerText;
+      if (!scenarioText) return;
+
+      const utterance = new SpeechSynthesisUtterance(scenarioText);
+      utterance.lang = 'pt-BR';
+      utterance.rate = 1.0;
+
+      utterance.onstart = function() {
+        isPlayingAudio = true;
+        label.innerText = "Reproduzindo... (Clique para Parar)";
+      };
+
+      utterance.onend = function() {
+        isPlayingAudio = false;
+        label.innerText = "Ouvir Briefing (Áudio)";
+      };
+
+      utterance.onerror = function() {
+        isPlayingAudio = false;
+        label.innerText = "Ouvir Briefing (Áudio)";
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // APOSTILA PDF EXPORT / PRINT FUNCTION
+    function printModuleApostila() {
+      const disc = curriculumData.find(d => d.id === userState.activeDisciplineId) || curriculumData[0];
+      const printWindow = window.open('', '_blank');
+      if (!printWindow) return;
+
+      const content = `
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+          <meta charset="UTF-8">
+          <title>Apostila Executiva — ${disc.id}: ${disc.title}</title>
+          <style>
+            body { font-family: 'Georgia', serif; color: #1E293B; line-height: 1.6; padding: 40px; max-width: 800px; margin: 0 auto; }
+            h1 { font-family: 'Arial', sans-serif; color: #0F172A; font-size: 24px; border-bottom: 2px solid #0A84FF; padding-bottom: 8px; }
+            h2 { font-family: 'Arial', sans-serif; color: #0A84FF; font-size: 18px; margin-top: 28px; }
+            h3 { font-family: 'Arial', sans-serif; font-size: 15px; margin-top: 18px; }
+            .badge { background: #0A84FF; color: white; padding: 4px 10px; border-radius: 4px; font-family: monospace; font-size: 12px; }
+            .lesson-box { background: #F8FAFC; border-left: 4px solid #30D158; padding: 16px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+            .apa-box { border: 1px solid #CBD5E1; padding: 16px; border-radius: 8px; margin: 20px 0; }
+            @media print { body { padding: 0; } }
+          </style>
+        </head>
+        <body>
+          <span class="badge">${disc.id}</span>
+          <h1>Apostila de Estudo Executivo — ${disc.title}</h1>
+          <p><em>${disc.objective}</em></p>
+          <hr />
+          <h2>Unidades Teóricas & Fundamentos</h2>
+          ${(disc.lessons || []).map(u => `
+            <div class="lesson-box">
+              <h3>${u.unitTitle}</h3>
+              <div>${u.lessonTextMarkdown.replace(/\n/g, '<br>')}</div>
+            </div>
+          `).join('')}
+          <h2>Trilha de Exercícios Práticos & Desafios</h2>
+          ${(disc.apas || []).map(a => `
+            <div class="apa-box">
+              <h3>${a.code}: ${a.title}</h3>
+              <p><strong>Cenário:</strong> ${a.scenarioText}</p>
+              <p><strong>Dica de Mentoria:</strong> <em>${a.mentorTip}</em></p>
+              <p><strong>Gabarito Sênior:</strong> <em>${a.sampleGabarito}</em></p>
+            </div>
+          `).join('')}
+        </body>
+        </html>
+      `;
+
+      printWindow.document.write(content);
+      printWindow.document.close();
+      setTimeout(() => {
+        printWindow.print();
+      }, 500);
+    }
+
+    // GLOSSARY & CALCULATOR MODAL LOGIC
+    function openGlossaryModal() {
+      closeMobileSidebar();
+      document.getElementById('glossary-modal').classList.remove('hidden');
+      updateCalculations();
+    }
+
+    function closeGlossaryModal() {
+      document.getElementById('glossary-modal').classList.add('hidden');
+    }
+
+    function updateCalculations() {
+      const spend = parseFloat(document.getElementById('calc-spend').value) || 0;
+      const customers = parseFloat(document.getElementById('calc-customers').value) || 1;
+      const ticket = parseFloat(document.getElementById('calc-ticket').value) || 0;
+      const freq = parseFloat(document.getElementById('calc-freq').value) || 1;
+      const retention = parseFloat(document.getElementById('calc-retention').value) || 1;
+
+      const cac = customers > 0 ? spend / customers : 0;
+      const ltv = ticket * freq * retention;
+      const ratio = cac > 0 ? (ltv / cac) : 0;
+
+      document.getElementById('res-cac').innerText = `R$ ${cac.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('res-ltv').innerText = `R$ ${ltv.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('res-ratio').innerText = `${ratio.toFixed(1)}x`;
+
+      const statusBadge = document.getElementById('sim-status-badge');
+      const ratioDesc = document.getElementById('res-ratio-desc');
+
+      if (ratio >= 3.0) {
+        statusBadge.innerText = `Saudável (LTV/CAC = ${ratio.toFixed(1)}x)`;
+        statusBadge.className = "px-3 py-1 bg-[#30D158]/20 text-[#30D158] border border-[#30D158]/30 rounded-xl text-xs font-mono font-bold";
+        ratioDesc.innerText = "Retorno saudável (>= 3.0x)";
+      } else if (ratio >= 1.0) {
+        statusBadge.innerText = `Atenção (LTV/CAC = ${ratio.toFixed(1)}x)`;
+        statusBadge.className = "px-3 py-1 bg-amber-400/20 text-amber-400 border border-amber-400/30 rounded-xl text-xs font-mono font-bold";
+        ratioDesc.innerText = "Margem apertada (< 3.0x)";
+      } else {
+        statusBadge.innerText = `Crítico (LTV/CAC = ${ratio.toFixed(1)}x)`;
+        statusBadge.className = "px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-xl text-xs font-mono font-bold";
+        ratioDesc.innerText = "Prejuízo operacional (< 1.0x)";
+      }
     }
 
     function resetProgress() {
