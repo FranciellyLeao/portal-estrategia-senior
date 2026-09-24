@@ -533,6 +533,18 @@
               <div id="pending-apas-list" class="space-y-2.5 flex-1 custom-scrollbar overflow-y-auto max-h-[400px] pr-1">
                 <!-- Rendered dynamically -->
               </div>
+
+              <!-- DASHBOARD QUICK CALCULATOR CARD -->
+              <div class="mt-4 p-4 bg-[#FFD60A]/10 border border-[#FFD60A]/30 rounded-2xl flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-mono font-semibold text-[#FFD60A] uppercase block">FERRAMENTA EXECUTIVA</span>
+                  <h4 class="text-xs font-bold theme-text-main mt-0.5">Calculadora LTV/CAC & Glossário</h4>
+                  <p class="text-[11px] theme-text-muted">Simule CAC, LTV e Payback em tempo real.</p>
+                </div>
+                <button onclick="openGlossaryModal()" class="px-3.5 py-2 bg-[#FFD60A] hover:bg-[#e6c208] text-black font-semibold text-xs rounded-xl transition cursor-pointer shrink-0">
+                  Simular
+                </button>
+              </div>
             </div>
 
           </div>
@@ -647,10 +659,10 @@
             <div class="flex items-center justify-between border-b border-white/10 pb-6">
               <div>
                 <span class="text-xs font-mono font-bold text-[#30D158] uppercase tracking-wider block mb-1">GRADE CURRICULAR COMPLETA</span>
-                <h2 class="text-2xl font-bold theme-text-main">Todas as Disciplinas da Formação (Módulos 1 ao 6)</h2>
+                <h2 class="text-2xl font-bold theme-text-main">Todas as Disciplinas da Formação (Módulos 1 ao 7)</h2>
                 <p class="text-xs theme-text-muted mt-1">Conheça a jornada de aprendizado para se tornar um Estrategista de Marca Sênior.</p>
               </div>
-              <span class="px-3 py-1 bg-[#30D158]/10 text-[#30D158] border border-[#30D158]/30 rounded-xl text-xs font-mono font-bold">6 Módulos Disponíveis</span>
+              <span class="px-3 py-1 bg-[#30D158]/10 text-[#30D158] border border-[#30D158]/30 rounded-xl text-xs font-mono font-bold">7 Módulos Disponíveis</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="all-disciplines-grid">
@@ -3429,8 +3441,16 @@ export interface Activity {
         e.preventDefault();
         openSearchModal();
       }
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'g') {
+        e.preventDefault();
+        openGlossaryModal();
+      }
       if (e.key === 'Escape') {
         closeSearchModal();
+        closeGlossaryModal();
+        closeCertificateModal();
+        closePitchDeckModal();
+        closeCodeModal();
       }
     });
 
