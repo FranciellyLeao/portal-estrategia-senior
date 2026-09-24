@@ -1857,6 +1857,89 @@ export interface Activity {
             sampleGabarito: 'Com a relação LTV/CAC subindo para 4.94x, o branding reduziu o custo de atração direta enquanto elevou a fidelização de clientes.'
           }
         ]
+      },
+      {
+        id: "DISC07",
+        title: "DesignOps & Gestão de Operações de Design",
+        objective: "Orquestração de pessoas, processos e entregáveis (Nielsen Norman Group - NN/g) e medição de eficiência de fluxo de design através de Lead Time, Cycle Time e Throughput.",
+        lessons: [
+          {
+            unitId: 'U7.1',
+            unitTitle: 'Unidade 1: Repensando Operações de Design — Do Fordismo ao DesignOps',
+            readingTimeMinutes: 12,
+            lessonTextMarkdown: `### ⚙️ Origem e Evolução das Operações\n\nA palavra **operar** deriva do latim *OPERARE* ("trabalhar, realizar esforço"). Historicamente, a busca por eficiência operacional evoluiu ao longo das revoluções industriais:\n1. **1ª Revolução Industrial:** Mecanização via energia a vapor.\n2. **2ª Revolução Industrial:** Produção em massa e eletricidade.\n3. **3ª Revolução Industrial:** Automação e tecnologia da informação.\n4. **4ª Revolução Industrial:** Fusão de tecnologias físicas, digitais e biológicas.\n\nNo design, criar uma operação significa **auxiliar, otimizar, escalar e expandir** a capacidade de entrega do time.\n\n---\n\n### 🏃 Agilidade vs. Velocidade no Design\n\nEmpresas frequentemente confundem agilidade com "entregar rápido sob pressão". No entanto, conforme o **Manifesto Ágil (2001)**:\n* **Agilidade é capacidade de adaptação:** É a velocidade com que o time responde a mudanças de escopo.\n* **Times Autogerenciáveis:** Exigem autonomia para negociar acordos entre si, em vez de depender de ordens hierárquicas rígidas.\n\n---\n\n### 📊 Métricas de Fluxo (Metrificar o Processo, Não as Pessoas)\n\nPara identificar gargalos e eliminar retrabalho sem punir a equipe, medimos três indicadores centrais:\n* **Lead Time:** Tempo total entre a abertura da demanda pelo cliente/área de negócio e a entrega final (inclui tempo de fila/espera).\n* **Cycle Time:** Duração do trabalho ativo de execução (do início do desenvolvimento até a conclusão).\n* **Throughput:** Quantidade de entregas concluídas dentro de um período fixo (ex: demandas entregues por sprint).\n\n---\n\n### 🏛️ Definição e Pilares do DesignOps\n\nConforme **Kate Kaplan (Nielsen Norman Group - NN/g)**:\n> *"DesignOps é a otimização e orquestração de pessoas, processos e entregáveis para ampliar o valor e o impacto do design em escala."*\n\nOs 3 pilares fundamentais de DesignOps são:\n1. **Como trabalhamos juntos (*How We Work Together*):** Organização humana, rituais, autonomia e colaboração.\n2. **Como fazemos o trabalho (*How We Get Work Done*):** Padronização de ferramentas, processos, governança e Design Systems.\n3. **Como criamos impacto (*How Our Work Creates Impact*):** Mensuração de resultados, visibilidade do valor do design e tempo focado em criação (*maker time*).`
+          },
+          {
+            unitId: 'U7.2',
+            unitTitle: 'Unidade 2: Governança, Design Systems e Redução de Retrabalho',
+            readingTimeMinutes: 10,
+            lessonTextMarkdown: `### 🛠️ Governança Operacional e Redução de Retrabalho\n\nDesignOps não existe para criar burocracia, mas sim para libertar o time de design de tarefas repetitivas e retrabalhos evitáveis.\n\n---\n\n### 1. Eliminação do Manteiga no Pão (Maker Time vs. Admin Time)\nDesigners gastam em média 40% do tempo procurando arquivos, respondendo sobre status de demandas ou refazendo telas por desalinhamento inicial. A governança centralizada garante frentes claras de alinhamento com produto e engenharia.\n\n---\n\n### 2. Taxonomia, Documentação e Design Systems\n- **Tokenização e Handoff:** Componentes estruturados no Figma alinhados a bibliotecas de código evitam dúvidas durante a implementação da engenharia.\n- **Matriz de Responsabilidade (RACI):** Define com clareza quem é Responsável, Aprovador, Consultado e Informado em cada etapa do fluxo de entrega.`
+          }
+        ],
+        multimedia: {
+          books: [
+            { id: "disc7_b1", title: "DesignOps Handbook", author: "Meredith Black & Dave Malouf", focus: "Estruturação de Operações", url: "https://www.designbetter.co/designops-handbook" },
+            { id: "disc7_b2", title: "Org Design for Design Orgs", author: "Peter Merholz & Kristin Skinner", focus: "Organização de Times", url: "https://orgdesignfordesignorgs.com/" }
+          ],
+          courses: [
+            { id: "disc7_c1", title: "DesignOps: Scaling Design Impact", provider: "Nielsen Norman Group (NN/g)", url: "https://www.nngroup.com/courses/design-ops/" }
+          ],
+          portals: [
+            { id: "disc7_p1", name: "DesignOps Assembly", url: "https://www.designopsassembly.com/" },
+            { id: "disc7_p2", name: "NN/g DesignOps Framework", url: "https://www.nngroup.com/articles/design-operations-framework/" }
+          ],
+          videos: [
+            { id: "disc7_v1", title: "Kate Kaplan (NN/g): What is DesignOps?", url: "https://www.youtube.com/results?search_query=Kate+Kaplan+NNg+DesignOps" },
+            { id: "disc7_v2", title: "Repensando Operações de Design com Caio Badu", url: "https://www.youtube.com/results?search_query=Caio+Badu+DesignOps" }
+          ]
+        },
+        apas: [
+          {
+            id: 'APA-7.1',
+            code: 'APA 01',
+            title: 'Diagnóstico de Operação: Lead Time vs. Throughput',
+            type: 'METRICS_DASHBOARD',
+            level: 'Avançado',
+            estimatedMinutes: 25,
+            badgeLabel: 'Painel Operacional',
+            clientProfile: { companyName: 'Fintech Nubiz', segment: 'Produtos Financeiros', stakeholderRole: 'Head de Design & CPO' },
+            scenarioText: 'O Lead Time médio das demandas de design subiu de 5 para 14 dias nas últimas 8 semanas. A diretoria acredita que o time precisa de novos designers (headcount), mas o Throughput manteve-se constante em 20 entregas/sprint. O diagnóstico indica que as demandas passam 9.5 dias paradas em tempo de fila aguardando aprovações.',
+            dataPanel: [
+              { label: 'Lead Time Médio', value: '14 Dias', change: '+9 dias (Fila)', status: 'danger' },
+              { label: 'Cycle Time Ativo', value: '3.5 Dias', change: 'Estável', status: 'success' },
+              { label: 'Throughput / Sprint', value: '20 Entregas', change: 'Normal', status: 'warning' },
+              { label: 'Tempo de Fila/Espera', value: '9.5 Dias', change: 'Gargalo (68%)', status: 'danger' }
+            ],
+            instructions: [
+              'Diferencie os gargalos de capacidade produtiva (Throughput) dos gargalos de aprovação/espera (Cycle Time vs. Lead Time).',
+              'Proponha 2 melhorias de governança de processo para reduzir o tempo de espera sem contratar novos profissionais.'
+            ],
+            placeholderText: '### Diagnóstico do Gargalo (Lead Time vs. Cycle Time)...\n### 1. Reestruturação do Fluxo de Aprovação...\n### 2. Acordos de Nível de Serviço (SLA)...',
+            evaluationCriteria: [{ id: 'c1', label: 'Análise de Fluxo', description: 'Identificou corretamente que o gargalo está na aprovação (tempo de fila) e não na capacidade de criação.' }],
+            mentorTip: 'Contratar mais designers para uma esteira com gargalo de aprovação apenas aumenta o trabalho em andamento (WIP) e piora o Lead Time.',
+            sampleGabarito: 'O Cycle Time de criação é de 3,5 dias, enquanto o tempo de fila aguardando validação atinge 9,5 dias. A solução exige descentralizar aprovações e definir rituais assíncronos de review (DesignOps) em vez de expandir a equipe.'
+          },
+          {
+            id: 'APA-7.2',
+            code: 'APA 02',
+            title: 'Simulação C-Level: Defendendo a Estruturação de DesignOps perante a Diretoria',
+            type: 'ROLEPLAY_C_LEVEL',
+            level: 'Sênior C-Level',
+            estimatedMinutes: 30,
+            badgeLabel: 'Defesa no Conselho',
+            forbiddenTerms: ['design mais bonito', 'deixar organizado', 'fazer telas mais rápido', 'substituir pessoas', 'burocracia'],
+            clientProfile: { companyName: 'TechCorp E-commerce', segment: 'Varejo Digital', stakeholderRole: 'VP de Engenharia & COO' },
+            scenarioText: 'O COO questiona o investimento em DesignOps alegando que "trata-se apenas de burocracia para criar mais reuniões e desacelerar os squads de desenvolvimento".',
+            instructions: [
+              'Escreva a defesa executiva conectando os 3 pilares do DesignOps (NN/g) com a redução do Lead Time e ganho de maker time.',
+              'Utilize métricas operacionais (Throughput, Cycle Time) para provar o retorno sobre o investimento.'
+            ],
+            placeholderText: '"COO, o DesignOps não é burocracia, mas sim a engenharia de processo que protege o tempo de criação (maker time)..."',
+            evaluationCriteria: [{ id: 'c1', label: 'Fundamentação em Métricas de Operação', description: 'Demonstrou como o DesignOps protege o tempo de criação (maker time) e elimina gargalos de retrabalho.' }],
+            mentorTip: 'Conecte o DesignOps à redução do retrabalho e ao alinhamento com engenharia via Design Systems.',
+            sampleGabarito: 'O DesignOps padroniza a governança de entregáveis e reduz em 40% o tempo perdido em refações por falta de alinhamento prévio, liberando maker time para os designers.'
+          }
+        ]
       }
     ];
 
@@ -1866,7 +1949,7 @@ export interface Activity {
         id: "CRS01",
         title: "Formação Estrategista Sênior C-Level",
         shortTitle: "Estrategista Sênior",
-        description: "Formação executiva completa em 6 módulos sobre Diagnóstico, Posicionamento, Arquitetura de Marca, Cultura, GTM e Defesa C-Level.",
+        description: "Formação executiva completa em 7 módulos sobre Diagnóstico, Posicionamento, Arquitetura de Marca, Cultura, GTM, Defesa C-Level e DesignOps.",
         disciplines: COURSE_1_DISCIPLINES
       },
       {

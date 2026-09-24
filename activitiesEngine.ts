@@ -190,6 +190,54 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
   }
 ];
 
+export const DISC07_LESSONS: UnitLesson[] = [
+  {
+    unitId: 'U7.1',
+    unitTitle: 'Unidade 1: Repensando Operações de Design — Do Fordismo ao DesignOps',
+    readingTimeMinutes: 12,
+    lessonTextMarkdown: `
+### ⚙️ Origem e Evolução das Operações
+
+A palavra **operar** deriva do latim *OPERARE* ("trabalhar, realizar esforço"). Historicamente, a busca por eficiência operacional evoluiu ao longo das revoluções industriais:
+1. **1ª Revolução Industrial:** Mecanização via energia a vapor.
+2. **2ª Revolução Industrial:** Produção em massa e eletricidade.
+3. **3ª Revolução Industrial:** Automação e tecnologia da informação.
+4. **4ª Revolução Industrial:** Fusão de tecnologias físicas, digitais e biológicas.
+
+No design, criar uma operação significa **auxiliar, otimizar, escalar e expandir** a capacidade de entrega do time.
+
+---
+
+### 🏃 Agilidade vs. Velocidade no Design
+
+Empresas frequentemente confundem agilidade com "entregar rápido sob pressão". No entanto, conforme o **Manifesto Ágil (2001)**:
+* **Agilidade é capacidade de adaptação:** É a velocidade com que o time responde a mudanças de escopo.
+* **Times Autogerenciáveis:** Exigem autonomia para negociar acordos entre si, em vez de depender de ordens hierárquicas rígidas.
+
+---
+
+### 📊 Métricas de Fluxo (Metrificar o Processo, Não as Pessoas)
+
+Para identificar gargalos e eliminar retrabalho sem punir a equipe, medimos três indicadores centrais:
+* **Lead Time:** Tempo total entre a abertura da demanda pelo cliente/área de negócio e a entrega final (inclui tempo de fila/espera).
+* **Cycle Time:** Duração do trabalho ativo de execução (do início do desenvolvimento até a conclusão).
+* **Throughput:** Quantidade de entregas concluídas dentro de um período fixo (ex: demandas entregues por sprint).
+
+---
+
+### 🏛️ Definição e Pilares do DesignOps
+
+Conforme **Kate Kaplan (Nielsen Norman Group - NN/g)**:
+> *"DesignOps é a otimização e orquestração de pessoas, processos e entregáveis para ampliar o valor e o impacto do design em escala."*
+
+Os 3 pilares fundamentais de DesignOps são:
+1. **Como trabalhamos juntos (*How We Work Together*):** Organização humana, rituais, autonomia e colaboração.
+2. **Como fazemos o trabalho (*How We Get Work Done*):** Padronização de ferramentas, processos, governança e Design Systems.
+3. **Como criamos impacto (*How Our Work Creates Impact*):** Mensuração de resultados, visibilidade do valor do design e tempo focado em criação (*maker time*).
+`
+  }
+];
+
 // ============================================================================
 // BANCO DE DADOS DE ATIVIDADES EXEMPLO (POVOAMENTO DA ENGINE)
 // ============================================================================
@@ -226,6 +274,42 @@ export const ACTIVITIES_DATABASE: Activity[] = [
     ],
     mentorTip: 'Foque em métricas de retenção e mix de produtos antes de falar de estética.',
     sampleGabarito: 'A queda de 30% é o fato; a marca ser antiquada é suposição...'
+  },
+  // --------------------------------------------------------------------------
+  // DISC07: DESIGNOPS & OPERAÇÕES DE DESIGN
+  // --------------------------------------------------------------------------
+  {
+    id: 'APA-7.1',
+    disciplineId: 'DISC07',
+    title: 'Diagnóstico de Operação: Lead Time vs. Throughput',
+    type: 'METRICS_DASHBOARD',
+    level: 'Avançado',
+    estimatedMinutes: 25,
+    badgeLabel: '📊 Painel Operacional',
+    icon: 'BarChart2',
+    clientProfile: {
+      companyName: 'Fintech Nubiz',
+      segment: 'Produtos Financeiros',
+      stakeholderRole: 'Head de Design & CPO'
+    },
+    scenarioText: 'O Lead Time médio das demandas de design subiu de 5 para 14 dias nas últimas 8 semanas. A diretoria acredita que o time precisa de mais designers, mas o Throughput manteve-se constante em 20 entregas/sprint.',
+    dataPanel: [
+      { label: 'Lead Time Médio', value: '14 Dias', change: '+9 dias (Fila)', status: 'danger' },
+      { label: 'Cycle Time Ativo', value: '3.5 Dias', change: 'Estável', status: 'success' },
+      { label: 'Throughput / Sprint', value: '20 Entregas', change: 'Normal', status: 'warning' },
+      { label: 'Tempo de Fila/Espera', value: '9.5 Dias', change: 'Gargalo (68%)', status: 'danger' }
+    ],
+    instructions: [
+      'Diferencie os gargalos de capacidade produtiva (Throughput) dos gargalos de aprovação/espera (Cycle Time vs. Lead Time).',
+      'Proponha 2 melhorias de governança de processo sem contratação de novos profissionais.'
+    ],
+    responseFormat: 'TEXT_MARKDOWN',
+    placeholderText: '### Diagnóstico do Gargalo...\n### 1. Reestruturação do Fluxo...\n### 2. SLA de Aprovação...',
+    evaluationCriteria: [
+      { id: 'c1', label: 'Análise de Fluxo', description: 'Identificou que o gargalo está na aprovação e tempo de espera.' }
+    ],
+    mentorTip: 'Aumentar o número de designers em esteiras com gargalo de aprovação piora o Lead Time.',
+    sampleGabarito: 'O Cycle Time ativo é de 3.5 dias, enquanto o tempo de fila atinge 9.5 dias. A solução exige descentralizar aprovações...'
   }
 ];
 
