@@ -345,6 +345,11 @@
           <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full theme-bg-card border text-[#0A84FF] shrink-0">
             <span class="theme-text-main font-medium text-[10px] sm:text-[11px]">Concluído: <strong id="header-progress" class="theme-text-main">0%</strong></span>
           </div>
+
+          <button onclick="openGlossaryModal()" title="Abrir Glossário & Calculadora de Métricas" class="apple-glass px-2.5 py-1 rounded-full border shadow-sm flex items-center space-x-1.5 text-xs font-semibold theme-text-main hover:border-[#FFD60A] transition cursor-pointer shrink-0">
+            <svg class="w-3.5 h-3.5 text-[#FFD60A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m-6 4h6m-6 4h6M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="hidden sm:inline">Glossário & Métricas</span>
+          </button>
         </div>
       </header>
 
@@ -2716,6 +2721,10 @@ export interface Activity {
         breadcrumb.innerHTML = 'Portal Acadêmico / <strong class="theme-text-main">Acervo Multimídia Global</strong>';
         document.getElementById('nav-global-acervo').className = "w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition bg-white/10 theme-text-main font-semibold cursor-pointer";
         renderGlobalAcervoView();
+      } else if (viewName === 'glossary') {
+        openGlossaryModal();
+        document.getElementById('view-dashboard').classList.remove('hidden');
+        renderDashboard();
       } else {
         document.getElementById('view-discipline').classList.remove('hidden');
         const disc = curriculumData.find(d => d.id === userState.activeDisciplineId) || curriculumData[0];
