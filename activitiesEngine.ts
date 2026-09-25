@@ -193,47 +193,73 @@ Se você não puder ser o primeiro em uma categoria, crie uma nova categoria em 
 export const DISC07_LESSONS: UnitLesson[] = [
   {
     unitId: 'U7.1',
-    unitTitle: 'Unidade 1: Repensando Operações de Design — Do Fordismo ao DesignOps',
+    unitTitle: 'Unidade 1: Repensando Operações — Do Fordismo às Métricas de Fluxo',
     readingTimeMinutes: 12,
     lessonTextMarkdown: `
-### ⚙️ Origem e Evolução das Operações
-
-A palavra **operar** deriva do latim *OPERARE* ("trabalhar, realizar esforço"). Historicamente, a busca por eficiência operacional evoluiu ao longo das revoluções industriais:
-1. **1ª Revolução Industrial:** Mecanização via energia a vapor.
-2. **2ª Revolução Industrial:** Produção em massa e eletricidade.
-3. **3ª Revolução Industrial:** Automação e tecnologia da informação.
-4. **4ª Revolução Industrial:** Fusão de tecnologias físicas, digitais e biológicas.
-
-No design, criar uma operação significa **auxiliar, otimizar, escalar e expandir** a capacidade de entrega do time.
+### ⚙️ 1. Origem do Conceito de Operação
+A palavra **operar** origina-se do latim *OPERARE* ("trabalhar, realizar um esforço"). A busca por eficiência operacional evoluiu ao longo das revoluções industriais, e no design se traduz em criar estruturas capazes de **auxiliar, otimizar, escalar e expandir** a capacidade de entrega do time.
 
 ---
 
-### 🏃 Agilidade vs. Velocidade no Design
-
-Empresas frequentemente confundem agilidade com "entregar rápido sob pressão". No entanto, conforme o **Manifesto Ágil (2001)**:
-* **Agilidade é capacidade de adaptação:** É a velocidade com que o time responde a mudanças de escopo.
-* **Times Autogerenciáveis:** Exigem autonomia para negociar acordos entre si, em vez de depender de ordens hierárquicas rígidas.
-
----
-
-### 📊 Métricas de Fluxo (Metrificar o Processo, Não as Pessoas)
-
-Para identificar gargalos e eliminar retrabalho sem punir a equipe, medimos três indicadores centrais:
-* **Lead Time:** Tempo total entre a abertura da demanda pelo cliente/área de negócio e a entrega final (inclui tempo de fila/espera).
-* **Cycle Time:** Duração do trabalho ativo de execução (do início do desenvolvimento até a conclusão).
-* **Throughput:** Quantidade de entregas concluídas dentro de um período fixo (ex: demandas entregues por sprint).
+### 🏃 2. Agilidade vs. Velocidade
+Muitas organizações confundem agilidade com "entregar rápido sob pressão". No entanto, conforme o **Manifesto Ágil (2001)**:
+* **Agilidade é capacidade de adaptação:** Refere-se a quão rápido a equipe consegue reconfigurar prioridades diante de mudanças de escopo.
+* **Times Autogerenciáveis:** Requerem autonomia para negociar acordos entre si em vez de seguir comandos hierárquicos engessados.
 
 ---
 
-### 🏛️ Definição e Pilares do DesignOps
+### 📊 3. Métricas de Fluxo (Metrificar o Processo, Não as Pessoas)
+Para identificar gargalos e eliminar refazer sem punir os profissionais, utilizamos três indicadores essenciais de fluxo:
+* **Lead Time:** Tempo total decorrido entre a solicitação inicial da demanda e sua entrega final ao cliente (tempo percebido de espera).
+* **Cycle Time:** Período de trabalho ativo dedicado à execução da demanda (do início formal do desenvolvimento até a conclusão).
+* **Throughput:** Taxa ou volume de entregas finalizadas dentro de um intervalo regular de tempo (ex: número de demandas entregues por sprint).
 
-Conforme **Kate Kaplan (Nielsen Norman Group - NN/g)**:
+---
+
+### 🏛️ 4. O Ecossistema de DesignOps
+Conforme definido por **Kate Kaplan (Nielsen Norman Group - NN/g)**:
 > *"DesignOps é a otimização e orquestração de pessoas, processos e entregáveis para ampliar o valor e o impacto do design em escala."*
 
-Os 3 pilares fundamentais de DesignOps são:
-1. **Como trabalhamos juntos (*How We Work Together*):** Organização humana, rituais, autonomia e colaboração.
-2. **Como fazemos o trabalho (*How We Get Work Done*):** Padronização de ferramentas, processos, governança e Design Systems.
-3. **Como criamos impacto (*How Our Work Creates Impact*):** Mensuração de resultados, visibilidade do valor do design e tempo focado em criação (*maker time*).
+Ele apoia-se em três pilares centrais:
+1. **How We Work Together:** Organização humana, rituais, colaboração e empatia.
+2. **How We Get Work Done:** Padronização de ferramentas, processos, governança de backlog e Design Systems.
+3. **How Our Work Creates Impact:** Mensuração de resultados, visibilidade do valor do design e garantia de tempo focado para os criativos (*maker time*).
+
+Na prática, a operação deve funcionar como uma **curadoria ajustada ao contexto real** de cada empresa.
+`
+  },
+  {
+    unitId: 'U7.2',
+    unitTitle: 'Unidade 2: Maturidade Operacional, Estruturas de Time e Lei de Conway',
+    readingTimeMinutes: 14,
+    lessonTextMarkdown: `
+### 🏛️ 1. As Camadas das Operações de Design
+A operação de design estrutura-se em uma pirâmide conceitual composta por três camadas de atuação:
+* **Camada Operacional:** Foco na execução diária, ferramentas e criação de artefatos.
+* **Camada Tática:** Mapeamento de processos, governança de demandas e alinhamento de esteiras.
+* **Camada Estratégica:** Conexão direta entre os resultados do design e os objetivos de negócio de longo prazo.
+
+---
+
+### 🎯 2. Senioridade vs. Competência e Trilhas de Carreira
+A avaliação de desenvolvimento no time exige distinguir anos de experiência de capacidade real de entrega:
+* **Senioridade ≠ Competência:** A senioridade em anos não garante maturidade; o profissional sênior destaca-se pelo valor agregado, autonomia e leitura de contexto.
+* **Trilhas de Progressão:** Podem ser direcionadas para **Especialista Técnico** (foco em *craft*), **Liderança Estratégica** (foco em gestão e negócios) ou caminhos **Híbridos**.
+
+---
+
+### 🧩 3. Modelos de Organização e a Lei de Conway
+A forma como o time se organiza condiciona a qualidade da comunicação e a consistência dos produtos:
+* **Modelos de Equipe:**
+  * *Solitário:* Designer único operando sem suporte operacional.
+  * *Centralizado:* Time concentrado atendendo múltiplas áreas.
+  * *Federado / Squads:* Designers distribuídos diretamente em times multidisciplinares.
+* **Lei de Conway & Estruturas Híbridas:** As organizações tendem a desenhar produtos que replicam suas próprias estruturas de comunicação. Para evitar "esteiras mortais" e sobrecarga, adotam-se modelos dinâmicos com boa governança de demanda (como a estrutura híbrida do Spotify).
+
+---
+
+### 📈 4. Régua de Maturidade Operacional (Níveis 1 a 6)
+A maturidade de DesignOps é mensurada em uma escala contínua de **1 a 6 níveis**. Esse diagnóstico permite identificar gargalos atuais, evitar rigidez excessiva e implementar rituais realistas que garantam a satisfação e a eficiência dos designers.
 `
   }
 ];
@@ -281,35 +307,65 @@ export const ACTIVITIES_DATABASE: Activity[] = [
   {
     id: 'APA-7.1',
     disciplineId: 'DISC07',
-    title: 'Diagnóstico de Operação: Lead Time vs. Throughput',
+    title: 'Diagnóstico de Fluxo: Lead Time vs. Throughput',
     type: 'METRICS_DASHBOARD',
-    level: 'Avançado',
-    estimatedMinutes: 25,
+    level: 'Intermediário',
+    estimatedMinutes: 20,
     badgeLabel: '📊 Painel Operacional',
-    icon: 'BarChart2',
+    icon: 'Activity',
     clientProfile: {
       companyName: 'Fintech Nubiz',
       segment: 'Produtos Financeiros',
       stakeholderRole: 'Head de Design & CPO'
     },
-    scenarioText: 'O Lead Time médio das demandas de design subiu de 5 para 14 dias nas últimas 8 semanas. A diretoria acredita que o time precisa de mais designers, mas o Throughput manteve-se constante em 20 entregas/sprint.',
+    scenarioText: 'O time de produto relata que o tempo médio de entrega das demandas de design subiu de 5 para 14 dias nas últimas sprints.',
     dataPanel: [
-      { label: 'Lead Time Médio', value: '14 Dias', change: '+9 dias (Fila)', status: 'danger' },
-      { label: 'Cycle Time Ativo', value: '3.5 Dias', change: 'Estável', status: 'success' },
-      { label: 'Throughput / Sprint', value: '20 Entregas', change: 'Normal', status: 'warning' },
-      { label: 'Tempo de Fila/Espera', value: '9.5 Dias', change: 'Gargalo (68%)', status: 'danger' }
+      { label: 'Lead Time Médio', value: '14 dias', change: '+180%', status: 'danger' },
+      { label: 'Cycle Time Ativo', value: '3 dias', change: '0%', status: 'success' },
+      { label: 'Throughput por Sprint', value: '12 tarefas', change: '-10%', status: 'neutral' }
     ],
     instructions: [
-      'Diferencie os gargalos de capacidade produtiva (Throughput) dos gargalos de aprovação/espera (Cycle Time vs. Lead Time).',
-      'Proponha 2 melhorias de governança de processo sem contratação de novos profissionais.'
+      'Analisar a tabela e identificar onde está ocorrendo o gargalo de tempo (fila de espera vs. execução ativa).',
+      'Diferenciar se o problema é de capacidade produtiva (Throughput) ou de tempo de validação e handoff (Lead Time).',
+      'Propor 2 ações práticas de DesignOps para reduzir o tempo de espera sem contratar novos designers.'
     ],
     responseFormat: 'TEXT_MARKDOWN',
-    placeholderText: '### Diagnóstico do Gargalo...\n### 1. Reestruturação do Fluxo...\n### 2. SLA de Aprovação...',
+    placeholderText: '### 1. Análise do Gargalo...\n### 2. Diagnóstico de Métricas...\n### 3. Plano de Ação de DesignOps...',
     evaluationCriteria: [
-      { id: 'c1', label: 'Análise de Fluxo', description: 'Identificou que o gargalo está na aprovação e tempo de espera.' }
+      { id: 'c1', label: 'Diferenciação de Métricas', description: 'Identificou que o Cycle Time permaneceu em 3 dias e que o atraso vem do tempo em fila no Lead Time.' },
+      { id: 'c2', label: 'Ações de Processo', description: 'Propôs melhorias em rituais, DoR/DoD ou governança em vez de focar apenas em velocidade de tela.' }
     ],
-    mentorTip: 'Aumentar o número de designers em esteiras com gargalo de aprovação piora o Lead Time.',
-    sampleGabarito: 'O Cycle Time ativo é de 3.5 dias, enquanto o tempo de fila atinge 9.5 dias. A solução exige descentralizar aprovações...'
+    mentorTip: 'Lembre-se de metrificar o processo e não as pessoas. Verifique quantos handoffs intermediários travam a fila.',
+    sampleGabarito: 'O Cycle Time permaneceu constante em 3 dias, comprovando que o atraso de 14 dias no Lead Time decorre de filas de espera e handoffs intermediários.'
+  },
+  {
+    id: 'APA-7.2',
+    disciplineId: 'DISC07',
+    title: 'Parecer Operacional: Reestruturação e Lei de Conway',
+    type: 'EXECUTIVE_MEMO',
+    level: 'Avançado',
+    estimatedMinutes: 25,
+    badgeLabel: '📝 Parecer de Maturidade',
+    icon: 'Layers',
+    clientProfile: {
+      companyName: 'SaaS EduScale',
+      segment: 'Produtos Digitais',
+      stakeholderRole: 'VP de Produto & CPO'
+    },
+    scenarioText: 'Uma empresa em expansão atua com um modelo de design centralizado. Os designers reclamam de isolamento e os Product Managers reclamam de falta de alinhamento e atrasos constantes nas entregas.',
+    instructions: [
+      'Classificar a maturidade operacional do time e diagnosticar o ruído de comunicação sob a ótica da Lei de Conway.',
+      'Avaliar os prós e contras de migrar do modelo Centralizado para um modelo Federado ou Híbrido.',
+      'Apresentar uma proposta de transição de papéis diferenciando senioridade de competência técnica.'
+    ],
+    responseFormat: 'TEXT_MARKDOWN',
+    placeholderText: '### 1. Diagnóstico de Maturidade e Lei de Conway...\n### 2. Análise de Modelos de Estrutura...\n### 3. Plano de Governança e Papéis...',
+    evaluationCriteria: [
+      { id: 'c1', label: 'Aplicação da Lei de Conway', description: 'Explicou como o modelo centralizado em silo reflete os rituais falhos nos artefatos de entrega.' },
+      { id: 'c2', label: 'Clareza de Governança', description: 'Propôs uma transição gradual garantindo autonomia e alinhamento do time.' }
+    ],
+    mentorTip: 'Lembre-se de abordar as três camadas (operacional, tática e estratégica) para embasar seu parecer.',
+    sampleGabarito: 'O modelo centralizado isola o design em um silo, gerando atritos que a Lei de Conway prevê: o produto reflete a estrutura fragmentada de comunicação.'
   }
 ];
 
